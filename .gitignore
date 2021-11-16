@@ -8,6 +8,8 @@
 **/.idea/**/misc.xml
 **/.idea/**/dictionaries
 **/.idea/**/shelf
+**/.idea/**/vcs.xml
+**/.idea/**/.gitignore
 
 # AWS User-specific
 **/.idea/**/aws.xml
