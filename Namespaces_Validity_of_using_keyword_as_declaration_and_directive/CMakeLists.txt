@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Namespaces_Validity_of_using_keyword_as_declaration_and_directive)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Namespaces_Validity_of_using_keyword_as_declaration_and_directive main.cpp)

@@ -1,0 +1,3 @@
+/home/laptop/CLionProjects/Design_patterns-Adapter-Motivation/build/CMakeFiles/rebuild_cache.dir
+/home/laptop/CLionProjects/Design_patterns-Adapter-Motivation/build/CMakeFiles/edit_cache.dir
+/home/laptop/CLionProjects/Design_patterns-Adapter-Motivation/build/CMakeFiles/design_paterns-adapter-motivation.dir

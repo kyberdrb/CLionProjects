@@ -1,0 +1,419 @@
+	.file	"main.cpp"
+	.text
+	.section	.text._ZN21DynamicImplementation4tickEm,"axG",@progbits,_ZN21DynamicImplementation4tickEm,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN21DynamicImplementation4tickEm
+	.type	_ZN21DynamicImplementation4tickEm, @function
+_ZN21DynamicImplementation4tickEm:
+.LFB2731:
+	.cfi_startproc
+	addq	%rsi, 8(%rdi)
+	ret
+	.cfi_endproc
+.LFE2731:
+	.size	_ZN21DynamicImplementation4tickEm, .-_ZN21DynamicImplementation4tickEm
+	.section	.text._ZN21DynamicImplementation8getValueEv,"axG",@progbits,_ZN21DynamicImplementation8getValueEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN21DynamicImplementation8getValueEv
+	.type	_ZN21DynamicImplementation8getValueEv, @function
+_ZN21DynamicImplementation8getValueEv:
+.LFB2732:
+	.cfi_startproc
+	movq	8(%rdi), %rax
+	ret
+	.cfi_endproc
+.LFE2732:
+	.size	_ZN21DynamicImplementation8getValueEv, .-_ZN21DynamicImplementation8getValueEv
+	.text
+	.p2align 4
+	.globl	_Z11run_dynamicP16DynamicInterface
+	.type	_Z11run_dynamicP16DynamicInterface, @function
+_Z11run_dynamicP16DynamicInterface:
+.LFB2733:
+	.cfi_startproc
+	pushq	%r13
+	.cfi_def_cfa_offset 16
+	.cfi_offset 13, -16
+	leaq	_ZN21DynamicImplementation4tickEm(%rip), %r13
+	pushq	%r12
+	.cfi_def_cfa_offset 24
+	.cfi_offset 12, -24
+	movl	$1, %r12d
+	pushq	%rbp
+	.cfi_def_cfa_offset 32
+	.cfi_offset 6, -32
+	movq	%rdi, %rbp
+	pushq	%rbx
+	.cfi_def_cfa_offset 40
+	.cfi_offset 3, -40
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 48
+	.p2align 4,,10
+	.p2align 3
+.L8:
+	xorl	%ebx, %ebx
+	jmp	.L7
+	.p2align 4,,10
+	.p2align 3
+.L13:
+	addq	%rbx, 8(%rbp)
+	addq	$1, %rbx
+	cmpq	%rbx, %r12
+	je	.L12
+.L7:
+	movq	0(%rbp), %rax
+	movq	(%rax), %rax
+	cmpq	%r13, %rax
+	je	.L13
+	movq	%rbx, %rsi
+	addq	$1, %rbx
+	movq	%rbp, %rdi
+	call	*%rax
+	cmpq	%rbx, %r12
+	jne	.L7
+.L12:
+	addq	$1, %r12
+	cmpq	$40000, %r12
+	jne	.L8
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 40
+	popq	%rbx
+	.cfi_def_cfa_offset 32
+	popq	%rbp
+	.cfi_def_cfa_offset 24
+	popq	%r12
+	.cfi_def_cfa_offset 16
+	popq	%r13
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE2733:
+	.size	_Z11run_dynamicP16DynamicInterface, .-_Z11run_dynamicP16DynamicInterface
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC0:
+	.string	"dynamic polymorphism:\t"
+.LC1:
+	.string	"static polymorphism:\t"
+.LC2:
+	.string	"int main()"
+.LC3:
+	.string	"main.cpp"
+	.section	.rodata.str1.8,"aMS",@progbits,1
+	.align 8
+.LC4:
+	.string	"dynamicImplementation->getValue() == crtpImplementation->getValue()"
+	.section	.text.unlikely,"ax",@progbits
+.LCOLDB5:
+	.section	.text.startup,"ax",@progbits
+.LHOTB5:
+	.p2align 4
+	.globl	main
+	.type	main, @function
+main:
+.LFB2743:
+	.cfi_startproc
+	.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+	.cfi_lsda 0x1b,.LLSDA2743
+	pushq	%r14
+	.cfi_def_cfa_offset 16
+	.cfi_offset 14, -16
+	pushq	%r13
+	.cfi_def_cfa_offset 24
+	.cfi_offset 13, -24
+	leaq	_ZN21DynamicImplementation4tickEm(%rip), %r13
+	pushq	%r12
+	.cfi_def_cfa_offset 32
+	.cfi_offset 12, -32
+	movl	$1, %r12d
+	pushq	%rbp
+	.cfi_def_cfa_offset 40
+	.cfi_offset 6, -40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	.cfi_offset 3, -48
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	movl	$16, %edi
+	movq	%rax, %r14
+.LEHB0:
+	call	_Znwm@PLT
+.LEHE0:
+	movq	%rax, %rbp
+	leaq	16+_ZTV21DynamicImplementation(%rip), %rax
+	movq	%rax, 0(%rbp)
+	movq	$0, 8(%rbp)
+	.p2align 4,,10
+	.p2align 3
+.L17:
+	xorl	%ebx, %ebx
+	jmp	.L15
+	.p2align 4,,10
+	.p2align 3
+.L33:
+	addq	%rbx, 8(%rbp)
+	addq	$1, %rbx
+	cmpq	%rbx, %r12
+	je	.L32
+.L15:
+	movq	0(%rbp), %rax
+	movq	(%rax), %rax
+	cmpq	%r13, %rax
+	je	.L33
+	movq	%rbx, %rsi
+	movq	%rbp, %rdi
+.LEHB1:
+	call	*%rax
+	addq	$1, %rbx
+	cmpq	%rbx, %r12
+	jne	.L15
+	.p2align 4,,10
+	.p2align 3
+.L32:
+	addq	$1, %r12
+	cmpq	$40000, %r12
+	jne	.L17
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	leaq	.LC0(%rip), %rsi
+	movabsq	$4835703278458516699, %rdx
+	leaq	_ZSt4cout(%rip), %rdi
+	subq	%r14, %rax
+	movq	%rax, %rcx
+	imulq	%rdx
+	sarq	$63, %rcx
+	sarq	$18, %rdx
+	subq	%rcx, %rdx
+	movq	%rdx, %rbx
+	movl	$22, %edx
+	call	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@PLT
+	movl	%ebx, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdi
+	call	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@PLT
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	movl	$1, %edi
+	movq	%rax, %rbx
+	call	_Znwm@PLT
+.LEHE1:
+	movq	%rax, %r12
+	movl	$1, %ecx
+	.p2align 4,,10
+	.p2align 3
+.L22:
+	movq	(%r12), %rdx
+	xorl	%eax, %eax
+	.p2align 4,,10
+	.p2align 3
+.L21:
+	addq	%rax, %rdx
+	addq	$1, %rax
+	cmpq	%rax, %rcx
+	jne	.L21
+	addq	$1, %rcx
+	movq	%rdx, (%r12)
+	cmpq	$40000, %rcx
+	jne	.L22
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	leaq	.LC1(%rip), %rsi
+	movabsq	$4835703278458516699, %rdx
+	leaq	_ZSt4cout(%rip), %rdi
+	subq	%rbx, %rax
+	movq	%rax, %rcx
+	imulq	%rdx
+	sarq	$63, %rcx
+	sarq	$18, %rdx
+	subq	%rcx, %rdx
+	movq	%rdx, %rbx
+	movl	$21, %edx
+.LEHB2:
+	call	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@PLT
+	movl	%ebx, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdi
+	call	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@PLT
+	movq	0(%rbp), %rax
+	movq	%rbp, %rdi
+	call	*8(%rax)
+.LEHE2:
+	cmpq	(%r12), %rax
+	jne	.L34
+	movq	%r12, %rdi
+	movl	$1, %esi
+	call	_ZdlPvm@PLT
+	movq	%rbp, %rdi
+	movl	$16, %esi
+	call	_ZdlPvm@PLT
+	popq	%rbx
+	.cfi_remember_state
+	.cfi_def_cfa_offset 40
+	xorl	%eax, %eax
+	popq	%rbp
+	.cfi_def_cfa_offset 32
+	popq	%r12
+	.cfi_def_cfa_offset 24
+	popq	%r13
+	.cfi_def_cfa_offset 16
+	popq	%r14
+	.cfi_def_cfa_offset 8
+	ret
+.L34:
+	.cfi_restore_state
+	leaq	.LC2(%rip), %rcx
+	movl	$102, %edx
+	leaq	.LC3(%rip), %rsi
+	leaq	.LC4(%rip), %rdi
+	call	__assert_fail@PLT
+.L27:
+	movq	%rax, %rbx
+	jmp	.L24
+.L26:
+	movq	%rax, %r12
+	jmp	.L25
+	.globl	__gxx_personality_v0
+	.section	.gcc_except_table,"a",@progbits
+.LLSDA2743:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE2743-.LLSDACSB2743
+.LLSDACSB2743:
+	.uleb128 .LEHB0-.LFB2743
+	.uleb128 .LEHE0-.LEHB0
+	.uleb128 0
+	.uleb128 0
+	.uleb128 .LEHB1-.LFB2743
+	.uleb128 .LEHE1-.LEHB1
+	.uleb128 .L26-.LFB2743
+	.uleb128 0
+	.uleb128 .LEHB2-.LFB2743
+	.uleb128 .LEHE2-.LEHB2
+	.uleb128 .L27-.LFB2743
+	.uleb128 0
+.LLSDACSE2743:
+	.section	.text.startup
+	.cfi_endproc
+	.section	.text.unlikely
+	.cfi_startproc
+	.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+	.cfi_lsda 0x1b,.LLSDAC2743
+	.type	main.cold, @function
+main.cold:
+.LFSB2743:
+.L24:
+	.cfi_def_cfa_offset 48
+	.cfi_offset 3, -48
+	.cfi_offset 6, -40
+	.cfi_offset 12, -32
+	.cfi_offset 13, -24
+	.cfi_offset 14, -16
+	movq	%r12, %rdi
+	movl	$1, %esi
+	movq	%rbx, %r12
+	call	_ZdlPvm@PLT
+.L25:
+	movq	%rbp, %rdi
+	movl	$16, %esi
+	call	_ZdlPvm@PLT
+	movq	%r12, %rdi
+.LEHB3:
+	call	_Unwind_Resume@PLT
+.LEHE3:
+	.cfi_endproc
+.LFE2743:
+	.section	.gcc_except_table
+.LLSDAC2743:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSEC2743-.LLSDACSBC2743
+.LLSDACSBC2743:
+	.uleb128 .LEHB3-.LCOLDB5
+	.uleb128 .LEHE3-.LEHB3
+	.uleb128 0
+	.uleb128 0
+.LLSDACSEC2743:
+	.section	.text.unlikely
+	.section	.text.startup
+	.size	main, .-main
+	.section	.text.unlikely
+	.size	main.cold, .-main.cold
+.LCOLDE5:
+	.section	.text.startup
+.LHOTE5:
+	.p2align 4
+	.type	_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface, @function
+_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface:
+.LFB3444:
+	.cfi_startproc
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	leaq	_ZStL8__ioinit(%rip), %rdi
+	call	_ZNSt8ios_base4InitC1Ev@PLT
+	movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rdi
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	leaq	__dso_handle(%rip), %rdx
+	leaq	_ZStL8__ioinit(%rip), %rsi
+	jmp	__cxa_atexit@PLT
+	.cfi_endproc
+.LFE3444:
+	.size	_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface, .-_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface
+	.section	.init_array,"aw"
+	.align 8
+	.quad	_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface
+	.weak	_ZTS16DynamicInterface
+	.section	.rodata._ZTS16DynamicInterface,"aG",@progbits,_ZTS16DynamicInterface,comdat
+	.align 16
+	.type	_ZTS16DynamicInterface, @object
+	.size	_ZTS16DynamicInterface, 19
+_ZTS16DynamicInterface:
+	.string	"16DynamicInterface"
+	.weak	_ZTI16DynamicInterface
+	.section	.data.rel.ro._ZTI16DynamicInterface,"awG",@progbits,_ZTI16DynamicInterface,comdat
+	.align 8
+	.type	_ZTI16DynamicInterface, @object
+	.size	_ZTI16DynamicInterface, 16
+_ZTI16DynamicInterface:
+	.quad	_ZTVN10__cxxabiv117__class_type_infoE+16
+	.quad	_ZTS16DynamicInterface
+	.weak	_ZTS21DynamicImplementation
+	.section	.rodata._ZTS21DynamicImplementation,"aG",@progbits,_ZTS21DynamicImplementation,comdat
+	.align 16
+	.type	_ZTS21DynamicImplementation, @object
+	.size	_ZTS21DynamicImplementation, 24
+_ZTS21DynamicImplementation:
+	.string	"21DynamicImplementation"
+	.weak	_ZTI21DynamicImplementation
+	.section	.data.rel.ro._ZTI21DynamicImplementation,"awG",@progbits,_ZTI21DynamicImplementation,comdat
+	.align 8
+	.type	_ZTI21DynamicImplementation, @object
+	.size	_ZTI21DynamicImplementation, 24
+_ZTI21DynamicImplementation:
+	.quad	_ZTVN10__cxxabiv120__si_class_type_infoE+16
+	.quad	_ZTS21DynamicImplementation
+	.quad	_ZTI16DynamicInterface
+	.weak	_ZTV21DynamicImplementation
+	.section	.data.rel.ro.local._ZTV21DynamicImplementation,"awG",@progbits,_ZTV21DynamicImplementation,comdat
+	.align 8
+	.type	_ZTV21DynamicImplementation, @object
+	.size	_ZTV21DynamicImplementation, 32
+_ZTV21DynamicImplementation:
+	.quad	0
+	.quad	_ZTI21DynamicImplementation
+	.quad	_ZN21DynamicImplementation4tickEm
+	.quad	_ZN21DynamicImplementation8getValueEv
+	.local	_ZStL8__ioinit
+	.comm	_ZStL8__ioinit,1,1
+	.hidden	DW.ref.__gxx_personality_v0
+	.weak	DW.ref.__gxx_personality_v0
+	.section	.data.rel.local.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat
+	.align 8
+	.type	DW.ref.__gxx_personality_v0, @object
+	.size	DW.ref.__gxx_personality_v0, 8
+DW.ref.__gxx_personality_v0:
+	.quad	__gxx_personality_v0
+	.hidden	__dso_handle
+	.ident	"GCC: (GNU) 9.2.0"
+	.section	.note.GNU-stack,"",@progbits

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(Builder_Facets_Creating_one_object_with_multiple_Builders)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Builder_Facets_Creating_one_object_with_multiple_Builders main.cpp Person.cpp Person.h PersonBuilder.cpp PersonBuilder.h PersonAddressBuilder.cpp PersonAddressBuilder.h PersonJobBuilder.cpp PersonJobBuilder.h)

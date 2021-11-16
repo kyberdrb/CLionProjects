@@ -1,0 +1,6 @@
+- https://xania.org/200712/cpp-strict-aliasing
+- https://en.cppreference.com/w/c/language/object - Strict aliasing
+- https://stackoverflow.com/questions/98650/what-is-the-strict-aliasing-rule/99010#99010
+- Type Punning in C++ [TheCherno]: https://www.youtube.com/watch?v=8egZ_5GA9Bc
+- https://en.wikipedia.org/wiki/Type_punning
+

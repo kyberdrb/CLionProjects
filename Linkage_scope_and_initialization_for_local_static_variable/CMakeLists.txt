@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(Linkage_scope_and_initialization_for_local_static_variable)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Linkage_scope_and_initialization_for_local_static_variable main.cpp)

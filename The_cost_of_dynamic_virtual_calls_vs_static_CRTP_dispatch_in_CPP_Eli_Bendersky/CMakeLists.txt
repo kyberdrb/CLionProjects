@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(The_cost_of_dynamic_virtual_calls_vs_static_CRTP_dispatch_in_CPP_Eli_Bendersky)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(The_cost_of_dynamic_virtual_calls_vs_static_CRTP_dispatch_in_CPP_Eli_Bendersky main.cpp)

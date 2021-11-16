@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Constructor_delegation_The_Problem_Multiple_Constructors)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(Constructor_delegation_The_Problem_Multiple_Constructors main.cpp)

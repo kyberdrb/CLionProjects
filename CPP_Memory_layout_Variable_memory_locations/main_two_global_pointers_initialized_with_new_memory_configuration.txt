@@ -1,0 +1,49 @@
+00000000000041a0 B anotherGlobalNumber
+                 U __assert_fail@@GLIBC_2.2.5
+0000000000004068 B __bss_start
+0000000000004190 b completed.7393
+                 U __cxa_atexit@@GLIBC_2.2.5
+                 w __cxa_finalize@@GLIBC_2.2.5
+0000000000004058 D __data_start
+0000000000004058 W data_start
+00000000000010e0 t deregister_tm_clones
+0000000000001150 t __do_global_dtors_aux
+0000000000003db0 d __do_global_dtors_aux_fini_array_entry
+0000000000004060 D __dso_handle
+0000000000003db8 d _DYNAMIC
+0000000000004068 D _edata
+00000000000041b0 B _end
+00000000000013d8 T _fini
+00000000000011a0 t frame_dummy
+0000000000003da0 d __frame_dummy_init_array_entry
+000000000000220c r __FRAME_END__
+0000000000004198 B globalNumber
+0000000000004000 d _GLOBAL_OFFSET_TABLE_
+0000000000001349 t _GLOBAL__sub_I_globalNumber
+                 w __gmon_start__
+00000000000020b4 r __GNU_EH_FRAME_HDR
+0000000000001000 t _init
+0000000000003db0 d __init_array_end
+0000000000003da0 d __init_array_start
+0000000000002000 R _IO_stdin_used
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+00000000000013d0 T __libc_csu_fini
+0000000000001360 T __libc_csu_init
+                 U __libc_start_main@@GLIBC_2.2.5
+00000000000011a9 T main
+0000000000001110 t register_tm_clones
+00000000000010b0 T _start
+0000000000004068 D __TMC_END__
+00000000000012cc t __static_initialization_and_destruction_0(int, int)
+                 U operator delete(void*, unsigned long)@@CXXABI_1.3.9
+                 U std::ostream::operator<<(std::ostream& (*)(std::ostream&))@@GLIBCXX_3.4
+                 U std::ostream::operator<<(void const*)@@GLIBCXX_3.4
+                 U std::ios_base::Init::Init()@@GLIBCXX_3.4
+                 U std::ios_base::Init::~Init()@@GLIBCXX_3.4
+                 U operator new(unsigned long)@@GLIBCXX_3.4
+0000000000004080 B std::cout@@GLIBCXX_3.4
+                 U std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)@@GLIBCXX_3.4
+0000000000002008 r std::piecewise_construct
+00000000000041a8 b std::__ioinit
+                 U std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@@GLIBCXX_3.4

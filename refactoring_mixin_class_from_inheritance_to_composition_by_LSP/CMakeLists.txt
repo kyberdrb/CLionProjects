@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(refactoring_mixin_class_from_inheritance_to_composition_by_LSP)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(refactoring_mixin_class_from_inheritance_to_composition_by_LSP main.cpp)

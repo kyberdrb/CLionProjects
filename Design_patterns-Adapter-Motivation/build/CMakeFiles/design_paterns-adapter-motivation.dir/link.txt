@@ -1,0 +1,1 @@
+/usr/bin/c++   -ggdb  -rdynamic CMakeFiles/design_paterns-adapter-motivation.dir/main.cpp.o  -o design_paterns-adapter-motivation 

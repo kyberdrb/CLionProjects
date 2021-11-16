@@ -1,0 +1,11 @@
+#ifndef C___OOP_EXERCISES_FOR_OBJECT_ORIENTED_PROGRAMMING_SECTION_H
+#define C___OOP_EXERCISES_FOR_OBJECT_ORIENTED_PROGRAMMING_SECTION_H
+
+
+class EXERCISES_for_Object_Oriented_Programming_Section {
+public:
+    void startExercise();
+};
+
+
+#endif //C___OOP_EXERCISES_FOR_OBJECT_ORIENTED_PROGRAMMING_SECTION_H

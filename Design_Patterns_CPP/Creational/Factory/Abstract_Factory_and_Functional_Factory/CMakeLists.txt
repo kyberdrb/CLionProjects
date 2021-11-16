@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(Abstract_Factory_and_Functional_Factory)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Abstract_Factory_and_Functional_Factory main.cpp)

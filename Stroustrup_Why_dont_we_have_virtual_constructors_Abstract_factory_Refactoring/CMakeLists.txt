@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Stroustrup_Why_dont_we_have_virtual_constructors_Abstract_factory_Refactoring)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Stroustrup_Why_dont_we_have_virtual_constructors_Abstract_factory_Refactoring main.cpp)

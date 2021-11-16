@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Combining_Static_and_Dynamic_Polymorphism_with_CPP_Mixin_classes_Part_1_The_Problem)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Combining_Static_and_Dynamic_Polymorphism_with_CPP_Mixin_classes_Part_1_The_Problem main.cpp)

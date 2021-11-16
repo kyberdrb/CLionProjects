@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(PIMPL_Idiom_Unique_pointer_Even_more_expressive_before_and_after)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(PIMPL_Idiom_Unique_pointer_Even_more_expressive_before_and_after main.cpp widget_old.h widget_old.cpp widget.cpp widget.h pimpl_h.h pimpl_impl.h)

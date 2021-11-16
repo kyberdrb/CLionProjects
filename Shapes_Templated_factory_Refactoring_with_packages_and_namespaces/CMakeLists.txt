@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Shapes_Templated_factory_Refactoring_with_packages_and_namespaces)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Shapes_Templated_factory_Refactoring_with_packages_and_namespaces main.cpp)

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Instance_ownership_Other_object_owns_the_instance_Instance_can_live_shorter_than_owner)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Instance_ownership_Other_object_owns_the_instance_Instance_can_live_shorter_than_owner main.cpp)

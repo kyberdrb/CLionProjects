@@ -1,0 +1,3 @@
+/home/laptop/CLionProjects/Design_patterns-Adapter-implemented_as_Object_Adapter/build/CMakeFiles/rebuild_cache.dir
+/home/laptop/CLionProjects/Design_patterns-Adapter-implemented_as_Object_Adapter/build/CMakeFiles/edit_cache.dir
+/home/laptop/CLionProjects/Design_patterns-Adapter-implemented_as_Object_Adapter/build/CMakeFiles/design_paterns-adapter-implemented_as_object_adapter.dir

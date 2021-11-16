@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(Groovy_Style_Builder_and_Defining_Custom_Domain_Specific_Language)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Groovy_Style_Builder_and_Defining_Custom_Domain_Specific_Language main.cpp)

@@ -1,0 +1,133 @@
+
+main_two_static_global_pointers.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <iostream>
+
+static float* globalNumber;
+static int* anotherGlobalNumber;
+
+int main() {
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+    assert(globalNumber == nullptr);
+   4:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # b <main+0xb>
+			7: R_X86_64_PC32	.bss+0x4
+   b:	48 85 c0             	test   %rax,%rax
+   e:	74 1f                	je     2f <main+0x2f>
+  10:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 17 <main+0x17>
+			13: R_X86_64_PC32	.rodata-0x3
+  17:	ba 08 00 00 00       	mov    $0x8,%edx
+  1c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 23 <main+0x23>
+			1f: R_X86_64_PC32	.rodata+0xc
+  23:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 2a <main+0x2a>
+			26: R_X86_64_PC32	.rodata+0x30
+  2a:	e8 00 00 00 00       	callq  2f <main+0x2f>
+			2b: R_X86_64_PLT32	__assert_fail-0x4
+    assert(anotherGlobalNumber == nullptr);
+  2f:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 36 <main+0x36>
+			32: R_X86_64_PC32	.bss+0xc
+  36:	48 85 c0             	test   %rax,%rax
+  39:	74 1f                	je     5a <main+0x5a>
+  3b:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 42 <main+0x42>
+			3e: R_X86_64_PC32	.rodata-0x3
+  42:	ba 09 00 00 00       	mov    $0x9,%edx
+  47:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 4e <main+0x4e>
+			4a: R_X86_64_PC32	.rodata+0xc
+  4e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 55 <main+0x55>
+			51: R_X86_64_PC32	.rodata+0x4c
+  55:	e8 00 00 00 00       	callq  5a <main+0x5a>
+			56: R_X86_64_PLT32	__assert_fail-0x4
+    std::cout << "globalNumber = " << globalNumber << std::endl;
+  5a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 61 <main+0x61>
+			5d: R_X86_64_PC32	.rodata+0x6b
+  61:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 68 <main+0x68>
+			64: R_X86_64_PC32	_ZSt4cout-0x4
+  68:	e8 00 00 00 00       	callq  6d <main+0x6d>
+			69: R_X86_64_PLT32	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc-0x4
+  6d:	48 89 c2             	mov    %rax,%rdx
+  70:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 77 <main+0x77>
+			73: R_X86_64_PC32	.bss+0x4
+  77:	48 89 c6             	mov    %rax,%rsi
+  7a:	48 89 d7             	mov    %rdx,%rdi
+  7d:	e8 00 00 00 00       	callq  82 <main+0x82>
+			7e: R_X86_64_PLT32	_ZNSolsEPKv-0x4
+  82:	48 89 c2             	mov    %rax,%rdx
+  85:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 8c <main+0x8c>
+			88: R_X86_64_REX_GOTPCRELX	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_-0x4
+  8c:	48 89 c6             	mov    %rax,%rsi
+  8f:	48 89 d7             	mov    %rdx,%rdi
+  92:	e8 00 00 00 00       	callq  97 <main+0x97>
+			93: R_X86_64_PLT32	_ZNSolsEPFRSoS_E-0x4
+    std::cout << "anotherGlobalNumber = " << anotherGlobalNumber << std::endl; 
+  97:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 9e <main+0x9e>
+			9a: R_X86_64_PC32	.rodata+0x7b
+  9e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # a5 <main+0xa5>
+			a1: R_X86_64_PC32	_ZSt4cout-0x4
+  a5:	e8 00 00 00 00       	callq  aa <main+0xaa>
+			a6: R_X86_64_PLT32	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc-0x4
+  aa:	48 89 c2             	mov    %rax,%rdx
+  ad:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # b4 <main+0xb4>
+			b0: R_X86_64_PC32	.bss+0xc
+  b4:	48 89 c6             	mov    %rax,%rsi
+  b7:	48 89 d7             	mov    %rdx,%rdi
+  ba:	e8 00 00 00 00       	callq  bf <main+0xbf>
+			bb: R_X86_64_PLT32	_ZNSolsEPKv-0x4
+  bf:	48 89 c2             	mov    %rax,%rdx
+  c2:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # c9 <main+0xc9>
+			c5: R_X86_64_REX_GOTPCRELX	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_-0x4
+  c9:	48 89 c6             	mov    %rax,%rsi
+  cc:	48 89 d7             	mov    %rdx,%rdi
+  cf:	e8 00 00 00 00       	callq  d4 <main+0xd4>
+			d0: R_X86_64_PLT32	_ZNSolsEPFRSoS_E-0x4
+
+    return 0;
+  d4:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  d9:	5d                   	pop    %rbp
+  da:	c3                   	retq   
+
+00000000000000db <_Z41__static_initialization_and_destruction_0ii>:
+  db:	55                   	push   %rbp
+  dc:	48 89 e5             	mov    %rsp,%rbp
+  df:	48 83 ec 10          	sub    $0x10,%rsp
+  e3:	89 7d fc             	mov    %edi,-0x4(%rbp)
+  e6:	89 75 f8             	mov    %esi,-0x8(%rbp)
+  e9:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+  ed:	75 32                	jne    121 <_Z41__static_initialization_and_destruction_0ii+0x46>
+  ef:	81 7d f8 ff ff 00 00 	cmpl   $0xffff,-0x8(%rbp)
+  f6:	75 29                	jne    121 <_Z41__static_initialization_and_destruction_0ii+0x46>
+  extern wostream wclog;	/// Linked to standard error (buffered)
+#endif
+  //@}
+
+  // For construction of filebuffers for cout, cin, cerr, clog et. al.
+  static ios_base::Init __ioinit;
+  f8:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # ff <_Z41__static_initialization_and_destruction_0ii+0x24>
+			fb: R_X86_64_PC32	.bss-0x4
+  ff:	e8 00 00 00 00       	callq  104 <_Z41__static_initialization_and_destruction_0ii+0x29>
+			100: R_X86_64_PLT32	_ZNSt8ios_base4InitC1Ev-0x4
+ 104:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 10b <_Z41__static_initialization_and_destruction_0ii+0x30>
+			107: R_X86_64_PC32	__dso_handle-0x4
+ 10b:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 112 <_Z41__static_initialization_and_destruction_0ii+0x37>
+			10e: R_X86_64_PC32	.bss-0x4
+ 112:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 119 <_Z41__static_initialization_and_destruction_0ii+0x3e>
+			115: R_X86_64_REX_GOTPCRELX	_ZNSt8ios_base4InitD1Ev-0x4
+ 119:	48 89 c7             	mov    %rax,%rdi
+ 11c:	e8 00 00 00 00       	callq  121 <_Z41__static_initialization_and_destruction_0ii+0x46>
+			11d: R_X86_64_PLT32	__cxa_atexit-0x4
+ 121:	90                   	nop
+ 122:	c9                   	leaveq 
+ 123:	c3                   	retq   
+
+0000000000000124 <_GLOBAL__sub_I_main>:
+ 124:	55                   	push   %rbp
+ 125:	48 89 e5             	mov    %rsp,%rbp
+ 128:	be ff ff 00 00       	mov    $0xffff,%esi
+ 12d:	bf 01 00 00 00       	mov    $0x1,%edi
+ 132:	e8 a4 ff ff ff       	callq  db <_Z41__static_initialization_and_destruction_0ii>
+ 137:	5d                   	pop    %rbp
+ 138:	c3                   	retq   

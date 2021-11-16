@@ -1,0 +1,54 @@
+
+main_static_member_var_initialized_to_other_value_than_0.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_Z11doSomethingv>:
+    static int globalNumber;
+};
+
+int foo::globalNumber = 1;
+
+int doSomething() {
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+    // static int i = foo::globalNumber;
+    // i++;
+    foo::globalNumber += 3;
+   4:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # a <_Z11doSomethingv+0xa>
+			6: R_X86_64_PC32	_ZN3foo12globalNumberE-0x4
+   a:	83 c0 03             	add    $0x3,%eax
+   d:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 13 <_Z11doSomethingv+0x13>
+			f: R_X86_64_PC32	_ZN3foo12globalNumberE-0x4
+    return foo::globalNumber;
+  13:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 19 <_Z11doSomethingv+0x19>
+			15: R_X86_64_PC32	_ZN3foo12globalNumberE-0x4
+}
+  19:	5d                   	pop    %rbp
+  1a:	c3                   	retq   
+
+000000000000001b <main>:
+
+int main() {
+  1b:	55                   	push   %rbp
+  1c:	48 89 e5             	mov    %rsp,%rbp
+  1f:	48 83 ec 10          	sub    $0x10,%rsp
+    foo f;
+    doSomething();
+  23:	e8 00 00 00 00       	callq  28 <main+0xd>
+			24: R_X86_64_PLT32	_Z11doSomethingv-0x4
+    printf("%d\n", foo::globalNumber);
+  28:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 2e <main+0x13>
+			2a: R_X86_64_PC32	_ZN3foo12globalNumberE-0x4
+  2e:	89 c6                	mov    %eax,%esi
+  30:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 37 <main+0x1c>
+			33: R_X86_64_PC32	.rodata-0x4
+  37:	b8 00 00 00 00       	mov    $0x0,%eax
+  3c:	e8 00 00 00 00       	callq  41 <main+0x26>
+			3d: R_X86_64_PLT32	printf-0x4
+    return 0;
+  41:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  46:	c9                   	leaveq 
+  47:	c3                   	retq   

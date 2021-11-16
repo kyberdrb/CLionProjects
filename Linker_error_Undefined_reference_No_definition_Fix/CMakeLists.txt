@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Linker_error_Undefined_reference_No_definition_Fix)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(Linker_error_Undefined_reference_No_definition_Fix main.cpp)

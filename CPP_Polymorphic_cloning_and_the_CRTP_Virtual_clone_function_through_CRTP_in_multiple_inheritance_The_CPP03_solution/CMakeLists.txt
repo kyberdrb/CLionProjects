@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(CPP_Polymorphic_cloning_and_the_CRTP_Virtual_clone_function_through_CRTP_in_multiple_inheritance_The_CPP03_solution)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(CPP_Polymorphic_cloning_and_the_CRTP_Virtual_clone_function_through_CRTP_in_multiple_inheritance_The_CPP03_solution main.cpp)

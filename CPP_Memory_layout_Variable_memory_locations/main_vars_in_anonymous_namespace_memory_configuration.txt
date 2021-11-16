@@ -1,0 +1,45 @@
+0000000000004038 B __bss_start
+0000000000004038 b completed.7393
+                 w __cxa_finalize@@GLIBC_2.2.5
+0000000000004018 D __data_start
+0000000000004018 W data_start
+0000000000001050 t deregister_tm_clones
+00000000000010c0 t __do_global_dtors_aux
+0000000000003e00 d __do_global_dtors_aux_fini_array_entry
+0000000000004020 D __dso_handle
+0000000000003e08 d _DYNAMIC
+0000000000004038 D _edata
+0000000000004050 B _end
+0000000000001124 T externallyLinkedFunctionForGlobalNumberIgnoring
+00000000000011b8 T _fini
+0000000000001110 t frame_dummy
+0000000000003df8 d __frame_dummy_init_array_entry
+000000000000213c r __FRAME_END__
+0000000000004000 d _GLOBAL_OFFSET_TABLE_
+                 w __gmon_start__
+0000000000002014 r __GNU_EH_FRAME_HDR
+0000000000001000 t _init
+0000000000003e00 d __init_array_end
+0000000000003df8 d __init_array_start
+0000000000002000 R _IO_stdin_used
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+00000000000011b0 T __libc_csu_fini
+0000000000001140 T __libc_csu_init
+                 U __libc_start_main@@GLIBC_2.2.5
+000000000000112f T main
+0000000000004030 D p
+0000000000001080 t register_tm_clones
+0000000000001020 T _start
+0000000000004038 D __TMC_END__
+0000000000004040 b (anonymous namespace)::globalNumberInitToZero
+000000000000403c b (anonymous namespace)::uninitializedGlobalNumber
+0000000000004028 d (anonymous namespace)::globalNumberInitToOtherThanZero
+0000000000001119 t (anonymous namespace)::internallyLinkedFunctionForGlobalNumberDespiteExternKeyword()
+0000000000002004 r (anonymous namespace)::constGlobalNumberInitToZero
+0000000000004048 b (anonymous namespace)::staticGlobalNumberInitToZero
+0000000000004044 b (anonymous namespace)::uninitializedStaticGlobalNumber
+0000000000002008 r (anonymous namespace)::constGlobalNumberInitToOtherThan0
+000000000000200c r (anonymous namespace)::constStaticGlobalNumberInitToZero
+000000000000402c d (anonymous namespace)::staticGlobalNumberInitToOtherThanZero
+0000000000002010 r (anonymous namespace)::constStaticGlobalNumberInitToOtherThanZero

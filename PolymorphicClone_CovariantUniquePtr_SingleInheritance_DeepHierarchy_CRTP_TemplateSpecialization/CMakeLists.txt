@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(PolymorphicClone_CovariantUniquePtr_SingleInheritance_DeepHierarchy_CRTP_TemplateSpecialization)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(PolymorphicClone_CovariantUniquePtr_SingleInheritance_DeepHierarchy_CRTP_TemplateSpecialization main.cpp)

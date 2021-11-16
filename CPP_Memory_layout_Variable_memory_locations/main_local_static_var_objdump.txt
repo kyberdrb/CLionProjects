@@ -1,0 +1,53 @@
+
+main_local_static_var.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_Z1fv>:
+#include <stdio.h>
+
+int f() {
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+    static int i = 1;
+    i++;
+   4:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # a <_Z1fv+0xa>
+			6: R_X86_64_PC32	.data-0x4
+   a:	83 c0 01             	add    $0x1,%eax
+   d:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 13 <_Z1fv+0x13>
+			f: R_X86_64_PC32	.data-0x4
+    return i;
+  13:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 19 <_Z1fv+0x19>
+			15: R_X86_64_PC32	.data-0x4
+}
+  19:	5d                   	pop    %rbp
+  1a:	c3                   	retq   
+
+000000000000001b <main>:
+
+int main() {
+  1b:	55                   	push   %rbp
+  1c:	48 89 e5             	mov    %rsp,%rbp
+    printf("%d\n", f());
+  1f:	e8 00 00 00 00       	callq  24 <main+0x9>
+			20: R_X86_64_PLT32	_Z1fv-0x4
+  24:	89 c6                	mov    %eax,%esi
+  26:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 2d <main+0x12>
+			29: R_X86_64_PC32	.rodata-0x4
+  2d:	b8 00 00 00 00       	mov    $0x0,%eax
+  32:	e8 00 00 00 00       	callq  37 <main+0x1c>
+			33: R_X86_64_PLT32	printf-0x4
+    printf("%d\n", f());
+  37:	e8 00 00 00 00       	callq  3c <main+0x21>
+			38: R_X86_64_PLT32	_Z1fv-0x4
+  3c:	89 c6                	mov    %eax,%esi
+  3e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 45 <main+0x2a>
+			41: R_X86_64_PC32	.rodata-0x4
+  45:	b8 00 00 00 00       	mov    $0x0,%eax
+  4a:	e8 00 00 00 00       	callq  4f <main+0x34>
+			4b: R_X86_64_PLT32	printf-0x4
+    return 0;
+  4f:	b8 00 00 00 00       	mov    $0x0,%eax
+  54:	5d                   	pop    %rbp
+  55:	c3                   	retq   

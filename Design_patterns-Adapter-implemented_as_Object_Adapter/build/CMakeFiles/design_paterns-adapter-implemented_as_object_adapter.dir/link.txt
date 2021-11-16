@@ -1,0 +1,1 @@
+/usr/bin/c++   -ggdb  -rdynamic CMakeFiles/design_paterns-adapter-implemented_as_object_adapter.dir/main.cpp.o  -o design_paterns-adapter-implemented_as_object_adapter 

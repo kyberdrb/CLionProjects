@@ -1,0 +1,30 @@
+
+main_string_literal.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <cstdio>
+
+int main() {
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 10          	sub    $0x10,%rsp
+    const char* string = "hello";
+   8:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # f <main+0xf>
+			b: R_X86_64_PC32	.rodata-0x4
+   f:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    printf("%s", string);
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	48 89 c6             	mov    %rax,%rsi
+  1a:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 21 <main+0x21>
+			1d: R_X86_64_PC32	.rodata+0x2
+  21:	b8 00 00 00 00       	mov    $0x0,%eax
+  26:	e8 00 00 00 00       	callq  2b <main+0x2b>
+			27: R_X86_64_PLT32	printf-0x4
+    return 0;
+  2b:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  30:	c9                   	leaveq 
+  31:	c3                   	retq   

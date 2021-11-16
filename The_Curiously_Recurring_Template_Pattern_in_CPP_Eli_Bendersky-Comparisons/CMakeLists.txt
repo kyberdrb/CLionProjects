@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(The_Curiously_Recurring_Template_Pattern_in_CPP_Eli_Bendersky_Comparisons)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(The_Curiously_Recurring_Template_Pattern_in_CPP_Eli_Bendersky_Comparisons main.cpp)

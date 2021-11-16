@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(Dependency_Injection)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Dependency_Injection main.cpp simpleSingletonDatabase/SingletonDatabase.h simpleSingletonDatabase/SingletonDatabase.cpp simpleSingletonDatabase/Database.h simpleSingletonDatabase/DummyDatabase.h recordFinders/SingletonRecordFinder.h recordFinders/ConfigurableRecordFinder.h)

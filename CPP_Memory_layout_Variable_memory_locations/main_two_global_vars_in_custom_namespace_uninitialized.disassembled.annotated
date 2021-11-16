@@ -1,0 +1,79 @@
+   1              		.file	"main_two_global_vars_in_custom_namespace_uninitialized.cpp"
+   2              	# GNU C++14 (Arch Linux 9.3.0-1) version 9.3.0 (x86_64-pc-linux-gnu)
+   3              	#	compiled by GNU C version 9.3.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl ve
+   4              	
+   5              	# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+   6              	# options passed:  -D_GNU_SOURCE
+   7              	# main_two_global_vars_in_custom_namespace_uninitialized.cpp -mtune=generic
+   8              	# -march=x86-64
+   9              	# -auxbase-strip main_two_global_vars_in_custom_namespace_uninitialized.disassembled
+  10              	# -g -fverbose-asm
+  11              	# options enabled:  -fPIC -fPIE -faggressive-loop-optimizations
+  12              	# -fassume-phsa -fasynchronous-unwind-tables -fauto-inc-dec -fcommon
+  13              	# -fdelete-null-pointer-checks -fdwarf2-cfi-asm -fearly-inlining
+  14              	# -feliminate-unused-debug-types -fexceptions -ffp-int-builtin-inexact
+  15              	# -ffunction-cse -fgcse-lm -fgnu-runtime -fgnu-unique -fident
+  16              	# -finline-atomics -fipa-stack-alignment -fira-hoist-pressure
+  17              	# -fira-share-save-slots -fira-share-spill-slots -fivopts
+  18              	# -fkeep-static-consts -fleading-underscore -flifetime-dse
+  19              	# -flto-odr-type-merging -fmath-errno -fmerge-debug-strings -fpeephole
+  20              	# -fplt -fprefetch-loop-arrays -freg-struct-return
+  21              	# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+  22              	# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+  23              	# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+  24              	# -fsched-stalled-insns-dep -fschedule-fusion -fsemantic-interposition
+  25              	# -fshow-column -fshrink-wrap-separate -fsigned-zeros
+  26              	# -fsplit-ivs-in-unroller -fssa-backprop -fstack-protector-strong
+  27              	# -fstdarg-opt -fstrict-volatile-bitfields -fsync-libcalls -ftrapping-math
+  28              	# -ftree-cselim -ftree-forwprop -ftree-loop-if-convert -ftree-loop-im
+  29              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  30              	# -ftree-phiprop -ftree-reassoc -ftree-scev-cprop -funit-at-a-time
+  31              	# -funwind-tables -fverbose-asm -fzero-initialized-in-bss
+  32              	# -m128bit-long-double -m64 -m80387 -malign-stringops
+  33              	# -mavx256-split-unaligned-load -mavx256-split-unaligned-store
+  34              	# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mglibc -mieee-fp
+  35              	# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+  36              	# -mstv -mtls-direct-seg-refs -mvzeroupper
+  37              	
+  38              		.text
+  39              	.Ltext0:
+  40              		.globl	_ZN3foo12globalNumberE
+  41              		.bss
+  42              		.align 4
+  45              	_ZN3foo12globalNumberE:
+  46 0000 00000000 		.zero	4
+  47              		.globl	_ZN3foo19anotherGlobalNumberE
+  50              	_ZN3foo19anotherGlobalNumberE:
+  51 0004 00       		.zero	1
+  52              		.text
+  53              		.globl	main
+  55              	main:
+  56              	.LFB0:
+  57              		.file 1 "main_two_global_vars_in_custom_namespace_uninitialized.cpp"
+   1:main_two_global_vars_in_custom_namespace_uninitialized.cpp **** namespace foo {
+   2:main_two_global_vars_in_custom_namespace_uninitialized.cpp ****     float globalNumber;
+   3:main_two_global_vars_in_custom_namespace_uninitialized.cpp ****     char anotherGlobalNumber;
+   4:main_two_global_vars_in_custom_namespace_uninitialized.cpp **** }
+   5:main_two_global_vars_in_custom_namespace_uninitialized.cpp **** 
+   6:main_two_global_vars_in_custom_namespace_uninitialized.cpp **** int main() {
+  58              		.loc 1 6 12
+  59              		.cfi_startproc
+  60 0000 55       		pushq	%rbp	#
+  61              		.cfi_def_cfa_offset 16
+  62              		.cfi_offset 6, -16
+  63 0001 4889E5   		movq	%rsp, %rbp	#,
+  64              		.cfi_def_cfa_register 6
+  65              	# main_two_global_vars_in_custom_namespace_uninitialized.cpp:7:     return 0;
+   7:main_two_global_vars_in_custom_namespace_uninitialized.cpp ****     return 0;
+  66              		.loc 1 7 12
+  67 0004 B8000000 		movl	$0, %eax	#, _1
+  67      00
+  68              	# main_two_global_vars_in_custom_namespace_uninitialized.cpp:8: }
+   8:main_two_global_vars_in_custom_namespace_uninitialized.cpp **** }
+  69              		.loc 1 8 1
+  70 0009 5D       		popq	%rbp	#
+  71              		.cfi_def_cfa 7, 8
+  72 000a C3       		ret	
+  73              		.cfi_endproc
+  74              	.LFE0:
+  76              	.Letext0:

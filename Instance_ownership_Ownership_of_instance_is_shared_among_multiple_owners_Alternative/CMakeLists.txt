@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(Instance_ownership_Ownership_of_instance_is_shared_among_multiple_owners_Alternative)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Instance_ownership_Ownership_of_instance_is_shared_among_multiple_owners_Alternative main.cpp)

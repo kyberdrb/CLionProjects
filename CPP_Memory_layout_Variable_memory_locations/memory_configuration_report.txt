@@ -1,0 +1,712 @@
+[H[2J[3J
+===============================================================
+main_basic.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_basic
+
+
+===============================================================
+main_global_var_uninitialized.cpp
+
+looks like the 'bss' block is aligned to 8 bytes by hard
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_global_var_uninitialized
+
+000000000000402c B globalNumber
+
+===============================================================
+main_global_var_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_global_var_initialized_to_0
+
+000000000000402c B globalNumber
+
+===============================================================
+main_global_var_initialized_to_other_value_than_0.cpp
+
+looks like the 'bss' block is aligned to 8 bytes by hard unless the 'data' sgment is involved... then it's aligned to 1 byte
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    561	      7	   1889	    761	main_global_var_initialized_to_other_value_than_0
+
+0000000000004028 D globalNumber
+
+===============================================================
+main_two_global_vars_uninitialized.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_vars_uninitialized
+
+0000000000004030 B anotherGlobalNumber
+000000000000402c B globalNumber
+
+===============================================================
+main_two_global_vars_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_vars_initialized_to_0
+
+0000000000004030 B anotherGlobalNumber
+000000000000402c B globalNumber
+
+===============================================================
+main_two_global_vars_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    565	      3	   1889	    761	main_two_global_vars_initialized_to_other_value_than_0
+
+000000000000402c D anotherGlobalNumber
+0000000000004028 D globalNumber
+
+===============================================================
+main_global_static_var_uninitialized.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_global_static_var_uninitialized
+
+000000000000402c b globalNumber
+
+===============================================================
+main_global_static_var_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_global_static_var_initialized_to_0
+
+000000000000402c b globalNumber
+
+===============================================================
+main_global_static_var_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    561	      7	   1889	    761	main_global_static_var_initialized_to_other_value_than_0
+
+0000000000004028 d globalNumber
+
+===============================================================
+main_two_global_static_vars_uninitialized.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_static_vars_uninitialized
+
+000000000000402c b globalNumber
+0000000000004030 b anotherGlobalNumber
+
+===============================================================
+main_two_global_static_vars_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_static_vars_initialized_to_0
+
+000000000000402c b globalNumber
+0000000000004030 b anotherGlobalNumber
+
+===============================================================
+main_two_global_static_vars_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    565	      3	   1889	    761	main_two_global_static_vars_initialized_to_other_value_than_0
+
+0000000000004028 d globalNumber
+000000000000402c d anotherGlobalNumber
+
+===============================================================
+main_const_global_var_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1325	    560	      8	   1893	    765	main_const_global_var_initialized_to_0
+
+0000000000002004 r globalNumber
+
+===============================================================
+main_const_global_var_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1322	    560	      8	   1890	    762	main_const_global_var_initialized_to_other_value_than_0
+
+0000000000002004 r globalNumber
+
+===============================================================
+main_two_const_global_vars_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_two_const_global_vars_initialized_to_0
+
+0000000000002004 r globalNumber
+0000000000002008 r anotherGlobalNumber
+
+===============================================================
+main_two_const_global_vars_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_two_const_global_vars_initialized_to_other_value_than_0
+
+0000000000002004 r globalNumber
+0000000000002008 r anotherGlobalNumber
+
+===============================================================
+main_const_global_static_var_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1325	    560	      8	   1893	    765	main_const_global_static_var_initialized_to_0
+
+0000000000002004 r globalNumber
+
+===============================================================
+main_const_global_static_var_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1322	    560	      8	   1890	    762	main_const_global_static_var_initialized_to_other_value_than_0
+
+0000000000002004 r globalNumber
+
+===============================================================
+main_const_two_global_static_vars_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_const_two_global_static_vars_initialized_to_0
+
+0000000000002004 r globalNumber
+0000000000002008 r anotherGlobalNumber
+
+===============================================================
+main_const_two_global_static_vars_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_const_two_global_static_vars_initialized_to_other_value_than_0
+
+0000000000002004 r globalNumber
+0000000000002008 r anotherGlobalNumber
+
+===============================================================
+main_static_member_var_uninitialized.cpp
+
+Is this variable even allocated? Uninitialized static member variable is located in the 'bss' part of the Data section in the memory
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_static_member_var_uninitialized
+
+
+===============================================================
+main_static_member_var_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_static_member_var_initialized_to_0
+
+000000000000402c B foo::globalNumber
+
+===============================================================
+main_static_member_var_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1566	    636	      4	   2206	    89e	main_static_member_var_initialized_to_other_value_than_0
+
+0000000000004030 D foo::globalNumber
+
+===============================================================
+main_two_static_member_vars_uninitialized.cpp
+
+Will the variables even be allocated? Uninitialized static member variable is located in the 'bss' part of the Data section in the memory
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_two_static_member_vars_uninitialized
+
+
+===============================================================
+main_two_static_member_vars_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_static_member_vars_initialized_to_0
+
+000000000000402c B foo::globalNumber
+0000000000004030 B foo::anotherGlobalNumber
+
+===============================================================
+main_two_static_member_vars_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    565	      3	   1889	    761	main_two_static_member_vars_initialized_to_other_value_than_0
+
+0000000000004028 D foo::globalNumber
+000000000000402c D foo::anotherGlobalNumber
+
+===============================================================
+main_const_static_member_var_uninitialized.cpp
+
+Is this variable even allocated? Uninitialized const static member variable is located in the 'read only' part of the Data section in the memory
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_const_static_member_var_uninitialized
+
+
+===============================================================
+main_const_static_member_var_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1325	    560	      8	   1893	    765	main_const_static_member_var_initialized_to_0
+
+0000000000002004 R foo::globalNumber
+
+===============================================================
+main_const_static_member_var_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1325	    560	      8	   1893	    765	main_const_static_member_var_initialized_to_other_value_than_0
+
+0000000000002004 R foo::globalNumber
+
+===============================================================
+main_const_two_static_member_vars_uninitialized.cpp
+
+Will the variables even be allocated? Uninitialized const static member variable is located in the 'read only' part of the Data section in the memory
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	      8	   1889	    761	main_const_two_static_member_vars_uninitialized
+
+
+===============================================================
+main_const_two_static_member_vars_initialized_to_0.cpp
+
+Static member variable initialized to 0 is located in the 'read only' part of the Data section in the memory
+
+   text	   data	    bss	    dec	    hex	filename
+   1329	    560	      8	   1897	    769	main_const_two_static_member_vars_initialized_to_0
+
+0000000000002004 R foo::globalNumber
+0000000000002008 R foo::anotherGlobalNumber
+
+===============================================================
+main_const_two_static_member_vars_initialized_to_other_value_than_0.cpp
+
+Static member variable initialized to other value than 0 is located in the 'read only' part of the Data section in the memory
+
+   text	   data	    bss	    dec	    hex	filename
+   1329	    560	      8	   1897	    769	main_const_two_static_member_vars_initialized_to_other_value_than_0
+
+0000000000002004 R foo::globalNumber
+0000000000002008 R foo::anotherGlobalNumber
+
+===============================================================
+main_two_global_vars_in_custom_namespace_uninitialized.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_vars_in_custom_namespace_uninitialized
+
+000000000000402c B foo::globalNumber
+0000000000004030 B foo::anotherGlobalNumber
+
+===============================================================
+main_two_global_vars_in_custom_namespace_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_vars_in_custom_namespace_initialized_to_0
+
+000000000000402c B foo::globalNumber
+0000000000004030 B foo::anotherGlobalNumber
+
+===============================================================
+main_two_global_vars_in_custom_namespace_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    565	      3	   1889	    761	main_two_global_vars_in_custom_namespace_initialized_to_other_value_than_0
+
+0000000000004028 D foo::globalNumber
+000000000000402c D foo::anotherGlobalNumber
+
+===============================================================
+main_two_global_static_vars_in_custom_namespace_uninitialized.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_static_vars_in_custom_namespace_uninitialized
+
+000000000000402c b foo::globalNumber
+0000000000004030 b foo::anotherGlobalNumber
+
+===============================================================
+main_two_global_static_vars_in_custom_namespace_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    560	     16	   1897	    769	main_two_global_static_vars_in_custom_namespace_initialized_to_0
+
+000000000000402c b foo::globalNumber
+0000000000004030 b foo::anotherGlobalNumber
+
+===============================================================
+main_two_global_static_vars_in_custom_namespace_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1321	    565	      3	   1889	    761	main_two_global_static_vars_in_custom_namespace_initialized_to_other_value_than_0
+
+0000000000004028 d foo::globalNumber
+000000000000402c d foo::anotherGlobalNumber
+
+===============================================================
+main_two_const_global_vars_in_custom_namespace_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_two_const_global_vars_in_custom_namespace_initialized_to_0
+
+0000000000002004 r foo::globalNumber
+0000000000002008 r foo::anotherGlobalNumber
+
+===============================================================
+main_two_const_global_vars_in_custom_namespace_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_two_const_global_vars_in_custom_namespace_initialized_to_other_value_than_0
+
+0000000000002004 r foo::globalNumber
+0000000000002008 r foo::anotherGlobalNumber
+
+===============================================================
+main_two_const_global_static_vars_in_custom_namespace_initialized_to_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_two_const_global_static_vars_in_custom_namespace_initialized_to_0
+
+0000000000002004 r foo::globalNumber
+0000000000002008 r foo::anotherGlobalNumber
+
+===============================================================
+main_two_const_global_static_vars_in_custom_namespace_initialized_to_other_value_than_0.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1326	    560	      8	   1894	    766	main_two_const_global_static_vars_in_custom_namespace_initialized_to_other_value_than_0
+
+0000000000002004 r foo::globalNumber
+0000000000002008 r foo::anotherGlobalNumber
+
+===============================================================
+main_vars_in_anonymous_namespace.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1457	    576	     24	   2057	    809	main_vars_in_anonymous_namespace
+
+0000000000001124 T externallyLinkedFunctionForGlobalNumberIgnoring
+0000000000004040 b (anonymous namespace)::globalNumberInitToZero
+000000000000403c b (anonymous namespace)::uninitializedGlobalNumber
+0000000000004028 d (anonymous namespace)::globalNumberInitToOtherThanZero
+0000000000001119 t (anonymous namespace)::internallyLinkedFunctionForGlobalNumberDespiteExternKeyword()
+0000000000002004 r (anonymous namespace)::constGlobalNumberInitToZero
+0000000000004048 b (anonymous namespace)::staticGlobalNumberInitToZero
+0000000000004044 b (anonymous namespace)::uninitializedStaticGlobalNumber
+0000000000002008 r (anonymous namespace)::constGlobalNumberInitToOtherThan0
+000000000000200c r (anonymous namespace)::constStaticGlobalNumberInitToZero
+000000000000402c d (anonymous namespace)::staticGlobalNumberInitToOtherThanZero
+0000000000002010 r (anonymous namespace)::constStaticGlobalNumberInitToOtherThanZero
+
+===============================================================
+main_string_literal.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1499	    632	      8	   2139	    85b	main_string_literal
+
+    const char* string = "hello";
+   8:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # f <main+0xf>
+			b: R_X86_64_PC32	.rodata-0x4
+
+===============================================================
+main_local_static_var.cpp
+
+
+
+   text	   data	    bss	    dec	    hex	filename
+   1566	    636	      4	   2206	    89e	main_local_static_var
+
+    static int i = 1;
+    i++;
+   4:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # a <_Z1fv+0xa>
+			6: R_X86_64_PC32	.data-0x4
+
+===============================================================
+main_two_global_pointers.cpp
+
+
+
+
+*** Dumping AST Record Layout
+         0 | struct std::piecewise_construct_t (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_less_iter (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct (anonymous at /usr/include/pthread.h:501:3)
+         0 |   __jmp_buf __cancel_jmp_buf
+        64 |   int __mask_was_saved
+           | [sizeof=72, dsize=72, align=8,
+           |  nvsize=72, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | lldiv_t
+         0 |   long long quot
+         8 |   long long rem
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::_Impl
+         0 |   _Atomic_word _M_refcount
+         8 |   const class std::locale::facet ** _M_facets
+        16 |   std::size_t _M_facets_size
+        24 |   const class std::locale::facet ** _M_caches
+        32 |   char ** _M_names
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::ios_base::_Words
+         0 |   void * _M_pword
+         8 |   long _M_iword
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+   text	   data	    bss	    dec	    hex	filename
+   2766	    696	    304	   3766	    eb6	main_two_global_pointers
+
+0000000000004180 B anotherGlobalNumber
+0000000000004178 B globalNumber
+00000000000012ad t _GLOBAL__sub_I_globalNumber
+
+globalNumber = 0
+anotherGlobalNumber = 0
+
+===============================================================
+main_two_static_global_pointers.cpp
+
+
+
+
+*** Dumping AST Record Layout
+         0 | struct std::piecewise_construct_t (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_less_iter (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct (anonymous at /usr/include/pthread.h:501:3)
+         0 |   __jmp_buf __cancel_jmp_buf
+        64 |   int __mask_was_saved
+           | [sizeof=72, dsize=72, align=8,
+           |  nvsize=72, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | lldiv_t
+         0 |   long long quot
+         8 |   long long rem
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::_Impl
+         0 |   _Atomic_word _M_refcount
+         8 |   const class std::locale::facet ** _M_facets
+        16 |   std::size_t _M_facets_size
+        24 |   const class std::locale::facet ** _M_caches
+        32 |   char ** _M_names
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::ios_base::_Words
+         0 |   void * _M_pword
+         8 |   long _M_iword
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+   text	   data	    bss	    dec	    hex	filename
+   2774	    696	    304	   3774	    ebe	main_two_static_global_pointers
+
+0000000000004180 b globalNumber
+0000000000004188 b anotherGlobalNumber
+
+globalNumber = 0
+anotherGlobalNumber = 0
+
+===============================================================
+main_two_global_pointers_initialized_with_new.cpp
+
+
+
+
+*** Dumping AST Record Layout
+         0 | struct std::piecewise_construct_t (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_less_iter (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct (anonymous at /usr/include/pthread.h:501:3)
+         0 |   __jmp_buf __cancel_jmp_buf
+        64 |   int __mask_was_saved
+           | [sizeof=72, dsize=72, align=8,
+           |  nvsize=72, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | lldiv_t
+         0 |   long long quot
+         8 |   long long rem
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::_Impl
+         0 |   _Atomic_word _M_refcount
+         8 |   const class std::locale::facet ** _M_facets
+        16 |   std::size_t _M_facets_size
+        24 |   const class std::locale::facet ** _M_caches
+        32 |   char ** _M_names
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::ios_base::_Words
+         0 |   void * _M_pword
+         8 |   long _M_iword
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+   text	   data	    bss	    dec	    hex	filename
+   3083	    712	    304	   4099	   1003	main_two_global_pointers_initialized_with_new
+
+00000000000041a0 B anotherGlobalNumber
+0000000000004198 B globalNumber
+0000000000001349 t _GLOBAL__sub_I_globalNumber
+
+===============================================================
+main_two_static_global_pointers_initialized_with_new.cpp
+
+
+
+
+*** Dumping AST Record Layout
+         0 | struct std::piecewise_construct_t (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_less_iter (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct (anonymous at /usr/include/pthread.h:501:3)
+         0 |   __jmp_buf __cancel_jmp_buf
+        64 |   int __mask_was_saved
+           | [sizeof=72, dsize=72, align=8,
+           |  nvsize=72, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | lldiv_t
+         0 |   long long quot
+         8 |   long long rem
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::_Impl
+         0 |   _Atomic_word _M_refcount
+         8 |   const class std::locale::facet ** _M_facets
+        16 |   std::size_t _M_facets_size
+        24 |   const class std::locale::facet ** _M_caches
+        32 |   char ** _M_names
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::ios_base::_Words
+         0 |   void * _M_pword
+         8 |   long _M_iword
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+   text	   data	    bss	    dec	    hex	filename
+   3091	    712	    304	   4107	   100b	main_two_static_global_pointers_initialized_with_new
+
+00000000000041a0 b globalNumber
+00000000000041a8 b anotherGlobalNumber
+

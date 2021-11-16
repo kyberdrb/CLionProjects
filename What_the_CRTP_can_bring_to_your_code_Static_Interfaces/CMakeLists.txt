@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(What_the_CRTP_can_bring_to_your_code_Static_Interfaces)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(What_the_CRTP_can_bring_to_your_code_Static_Interfaces main.cpp)

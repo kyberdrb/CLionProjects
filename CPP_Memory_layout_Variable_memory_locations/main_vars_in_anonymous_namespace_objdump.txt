@@ -1,0 +1,45 @@
+
+main_vars_in_anonymous_namespace.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_ZN12_GLOBAL__N_159internallyLinkedFunctionForGlobalNumberDespiteExternKeywordEv>:
+    static float staticGlobalNumberInitToOtherThanZero = 1;
+
+    const static float constStaticGlobalNumberInitToZero = 0;
+    const static float constStaticGlobalNumberInitToOtherThanZero = 1;
+
+    extern int internallyLinkedFunctionForGlobalNumberDespiteExternKeyword() {    // has internal linkage despite 'extern'
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+        return 0; 
+   4:	b8 00 00 00 00       	mov    $0x0,%eax
+    }
+   9:	5d                   	pop    %rbp
+   a:	c3                   	retq   
+
+000000000000000b <externallyLinkedFunctionForGlobalNumberIgnoring>:
+
+    extern "C" int externallyLinkedFunctionForGlobalNumberIgnoring() {      // ignores linkage of namespace
+   b:	55                   	push   %rbp
+   c:	48 89 e5             	mov    %rsp,%rbp
+        return 0;
+   f:	b8 00 00 00 00       	mov    $0x0,%eax
+    }
+  14:	5d                   	pop    %rbp
+  15:	c3                   	retq   
+
+0000000000000016 <main>:
+}
+
+int (*p)() = internallyLinkedFunctionForGlobalNumberDespiteExternKeyword;  // ensure 'f' won't be optimized away
+
+int main() {
+  16:	55                   	push   %rbp
+  17:	48 89 e5             	mov    %rsp,%rbp
+    return 0;
+  1a:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  1f:	5d                   	pop    %rbp
+  20:	c3                   	retq   

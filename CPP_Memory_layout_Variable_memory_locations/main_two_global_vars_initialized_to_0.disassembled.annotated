@@ -1,0 +1,75 @@
+   1              		.file	"main_two_global_vars_initialized_to_0.cpp"
+   2              	# GNU C++14 (Arch Linux 9.3.0-1) version 9.3.0 (x86_64-pc-linux-gnu)
+   3              	#	compiled by GNU C version 9.3.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl ve
+   4              	
+   5              	# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+   6              	# options passed:  -D_GNU_SOURCE main_two_global_vars_initialized_to_0.cpp
+   7              	# -mtune=generic -march=x86-64
+   8              	# -auxbase-strip main_two_global_vars_initialized_to_0.disassembled -g
+   9              	# -fverbose-asm
+  10              	# options enabled:  -fPIC -fPIE -faggressive-loop-optimizations
+  11              	# -fassume-phsa -fasynchronous-unwind-tables -fauto-inc-dec -fcommon
+  12              	# -fdelete-null-pointer-checks -fdwarf2-cfi-asm -fearly-inlining
+  13              	# -feliminate-unused-debug-types -fexceptions -ffp-int-builtin-inexact
+  14              	# -ffunction-cse -fgcse-lm -fgnu-runtime -fgnu-unique -fident
+  15              	# -finline-atomics -fipa-stack-alignment -fira-hoist-pressure
+  16              	# -fira-share-save-slots -fira-share-spill-slots -fivopts
+  17              	# -fkeep-static-consts -fleading-underscore -flifetime-dse
+  18              	# -flto-odr-type-merging -fmath-errno -fmerge-debug-strings -fpeephole
+  19              	# -fplt -fprefetch-loop-arrays -freg-struct-return
+  20              	# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+  21              	# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+  22              	# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+  23              	# -fsched-stalled-insns-dep -fschedule-fusion -fsemantic-interposition
+  24              	# -fshow-column -fshrink-wrap-separate -fsigned-zeros
+  25              	# -fsplit-ivs-in-unroller -fssa-backprop -fstack-protector-strong
+  26              	# -fstdarg-opt -fstrict-volatile-bitfields -fsync-libcalls -ftrapping-math
+  27              	# -ftree-cselim -ftree-forwprop -ftree-loop-if-convert -ftree-loop-im
+  28              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  29              	# -ftree-phiprop -ftree-reassoc -ftree-scev-cprop -funit-at-a-time
+  30              	# -funwind-tables -fverbose-asm -fzero-initialized-in-bss
+  31              	# -m128bit-long-double -m64 -m80387 -malign-stringops
+  32              	# -mavx256-split-unaligned-load -mavx256-split-unaligned-store
+  33              	# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mglibc -mieee-fp
+  34              	# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+  35              	# -mstv -mtls-direct-seg-refs -mvzeroupper
+  36              	
+  37              		.text
+  38              	.Ltext0:
+  39              		.globl	globalNumber
+  40              		.bss
+  41              		.align 4
+  44              	globalNumber:
+  45 0000 00000000 		.zero	4
+  46              		.globl	anotherGlobalNumber
+  49              	anotherGlobalNumber:
+  50 0004 00       		.zero	1
+  51              		.text
+  52              		.globl	main
+  54              	main:
+  55              	.LFB0:
+  56              		.file 1 "main_two_global_vars_initialized_to_0.cpp"
+   1:main_two_global_vars_initialized_to_0.cpp **** float globalNumber = 0;
+   2:main_two_global_vars_initialized_to_0.cpp **** char anotherGlobalNumber = 0;
+   3:main_two_global_vars_initialized_to_0.cpp **** int main() {
+  57              		.loc 1 3 12
+  58              		.cfi_startproc
+  59 0000 55       		pushq	%rbp	#
+  60              		.cfi_def_cfa_offset 16
+  61              		.cfi_offset 6, -16
+  62 0001 4889E5   		movq	%rsp, %rbp	#,
+  63              		.cfi_def_cfa_register 6
+  64              	# main_two_global_vars_initialized_to_0.cpp:4:     return 0;
+   4:main_two_global_vars_initialized_to_0.cpp ****     return 0;
+  65              		.loc 1 4 12
+  66 0004 B8000000 		movl	$0, %eax	#, _1
+  66      00
+  67              	# main_two_global_vars_initialized_to_0.cpp:5: }
+   5:main_two_global_vars_initialized_to_0.cpp **** }
+  68              		.loc 1 5 1
+  69 0009 5D       		popq	%rbp	#
+  70              		.cfi_def_cfa 7, 8
+  71 000a C3       		ret	
+  72              		.cfi_endproc
+  73              	.LFE0:
+  75              	.Letext0:

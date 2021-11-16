@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/laptop/CLionProjects/Design_patterns-Adapter-Motivation/main.cpp
+iostream
+-
+memory
+-
+cassert
+-
+cmath
+-
+

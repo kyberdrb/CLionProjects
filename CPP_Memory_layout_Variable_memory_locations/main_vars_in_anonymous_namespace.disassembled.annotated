@@ -1,0 +1,169 @@
+   1              		.file	"main_vars_in_anonymous_namespace.cpp"
+   2              	# GNU C++14 (Arch Linux 9.3.0-1) version 9.3.0 (x86_64-pc-linux-gnu)
+   3              	#	compiled by GNU C version 9.3.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl ve
+   4              	
+   5              	# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+   6              	# options passed:  -D_GNU_SOURCE main_vars_in_anonymous_namespace.cpp
+   7              	# -mtune=generic -march=x86-64
+   8              	# -auxbase-strip main_vars_in_anonymous_namespace.disassembled -g
+   9              	# -fverbose-asm
+  10              	# options enabled:  -fPIC -fPIE -faggressive-loop-optimizations
+  11              	# -fassume-phsa -fasynchronous-unwind-tables -fauto-inc-dec -fcommon
+  12              	# -fdelete-null-pointer-checks -fdwarf2-cfi-asm -fearly-inlining
+  13              	# -feliminate-unused-debug-types -fexceptions -ffp-int-builtin-inexact
+  14              	# -ffunction-cse -fgcse-lm -fgnu-runtime -fgnu-unique -fident
+  15              	# -finline-atomics -fipa-stack-alignment -fira-hoist-pressure
+  16              	# -fira-share-save-slots -fira-share-spill-slots -fivopts
+  17              	# -fkeep-static-consts -fleading-underscore -flifetime-dse
+  18              	# -flto-odr-type-merging -fmath-errno -fmerge-debug-strings -fpeephole
+  19              	# -fplt -fprefetch-loop-arrays -freg-struct-return
+  20              	# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+  21              	# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+  22              	# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+  23              	# -fsched-stalled-insns-dep -fschedule-fusion -fsemantic-interposition
+  24              	# -fshow-column -fshrink-wrap-separate -fsigned-zeros
+  25              	# -fsplit-ivs-in-unroller -fssa-backprop -fstack-protector-strong
+  26              	# -fstdarg-opt -fstrict-volatile-bitfields -fsync-libcalls -ftrapping-math
+  27              	# -ftree-cselim -ftree-forwprop -ftree-loop-if-convert -ftree-loop-im
+  28              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  29              	# -ftree-phiprop -ftree-reassoc -ftree-scev-cprop -funit-at-a-time
+  30              	# -funwind-tables -fverbose-asm -fzero-initialized-in-bss
+  31              	# -m128bit-long-double -m64 -m80387 -malign-stringops
+  32              	# -mavx256-split-unaligned-load -mavx256-split-unaligned-store
+  33              	# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mglibc -mieee-fp
+  34              	# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+  35              	# -mstv -mtls-direct-seg-refs -mvzeroupper
+  36              	
+  37              		.text
+  38              	.Ltext0:
+  39              		.local	_ZN12_GLOBAL__N_125uninitializedGlobalNumberE
+  40              		.comm	_ZN12_GLOBAL__N_125uninitializedGlobalNumberE,4,4
+  41              		.local	_ZN12_GLOBAL__N_122globalNumberInitToZeroE
+  42              		.comm	_ZN12_GLOBAL__N_122globalNumberInitToZeroE,4,4
+  43              		.data
+  44              		.align 4
+  47              	_ZN12_GLOBAL__N_131globalNumberInitToOtherThanZeroE:
+  48 0000 0000803F 		.long	1065353216
+  49              		.section	.rodata
+  50              		.align 4
+  53              	_ZN12_GLOBAL__N_1L27constGlobalNumberInitToZeroE:
+  54 0000 00000000 		.zero	4
+  55              		.align 4
+  58              	_ZN12_GLOBAL__N_1L33constGlobalNumberInitToOtherThan0E:
+  59 0004 0000803F 		.long	1065353216
+  60              		.local	_ZN12_GLOBAL__N_1L31uninitializedStaticGlobalNumberE
+  61              		.comm	_ZN12_GLOBAL__N_1L31uninitializedStaticGlobalNumberE,4,4
+  62              		.local	_ZN12_GLOBAL__N_1L28staticGlobalNumberInitToZeroE
+  63              		.comm	_ZN12_GLOBAL__N_1L28staticGlobalNumberInitToZeroE,4,4
+  64              		.data
+  65              		.align 4
+  68              	_ZN12_GLOBAL__N_1L37staticGlobalNumberInitToOtherThanZeroE:
+  69 0004 0000803F 		.long	1065353216
+  70              		.section	.rodata
+  71              		.align 4
+  74              	_ZN12_GLOBAL__N_1L33constStaticGlobalNumberInitToZeroE:
+  75 0008 00000000 		.zero	4
+  76              		.align 4
+  79              	_ZN12_GLOBAL__N_1L42constStaticGlobalNumberInitToOtherThanZeroE:
+  80 000c 0000803F 		.long	1065353216
+  81              		.text
+  83              	_ZN12_GLOBAL__N_159internallyLinkedFunctionForGlobalNumberDespiteExternKeywordEv:
+  84              	.LFB0:
+  85              		.file 1 "main_vars_in_anonymous_namespace.cpp"
+   1:main_vars_in_anonymous_namespace.cpp **** namespace {
+   2:main_vars_in_anonymous_namespace.cpp ****     float uninitializedGlobalNumber;    // In C++03, this one has external linkage
+   3:main_vars_in_anonymous_namespace.cpp ****     float globalNumberInitToZero = 0;
+   4:main_vars_in_anonymous_namespace.cpp ****     float globalNumberInitToOtherThanZero = 1;
+   5:main_vars_in_anonymous_namespace.cpp **** 
+   6:main_vars_in_anonymous_namespace.cpp ****     const float constGlobalNumberInitToZero = 0;
+   7:main_vars_in_anonymous_namespace.cpp ****     const float constGlobalNumberInitToOtherThan0 = 1;
+   8:main_vars_in_anonymous_namespace.cpp **** 
+   9:main_vars_in_anonymous_namespace.cpp ****     static float uninitializedStaticGlobalNumber;
+  10:main_vars_in_anonymous_namespace.cpp ****     static float staticGlobalNumberInitToZero = 0;
+  11:main_vars_in_anonymous_namespace.cpp ****     static float staticGlobalNumberInitToOtherThanZero = 1;
+  12:main_vars_in_anonymous_namespace.cpp **** 
+  13:main_vars_in_anonymous_namespace.cpp ****     const static float constStaticGlobalNumberInitToZero = 0;
+  14:main_vars_in_anonymous_namespace.cpp ****     const static float constStaticGlobalNumberInitToOtherThanZero = 1;
+  15:main_vars_in_anonymous_namespace.cpp **** 
+  16:main_vars_in_anonymous_namespace.cpp ****     extern int internallyLinkedFunctionForGlobalNumberDespiteExternKeyword() {    // has internal l
+  86              		.loc 1 16 78
+  87              		.cfi_startproc
+  88 0000 55       		pushq	%rbp	#
+  89              		.cfi_def_cfa_offset 16
+  90              		.cfi_offset 6, -16
+  91 0001 4889E5   		movq	%rsp, %rbp	#,
+  92              		.cfi_def_cfa_register 6
+  93              	# main_vars_in_anonymous_namespace.cpp:17:         return 0; 
+  17:main_vars_in_anonymous_namespace.cpp ****         return 0; 
+  94              		.loc 1 17 16
+  95 0004 B8000000 		movl	$0, %eax	#, _1
+  95      00
+  96              	# main_vars_in_anonymous_namespace.cpp:18:     }
+  18:main_vars_in_anonymous_namespace.cpp ****     }
+  97              		.loc 1 18 5
+  98 0009 5D       		popq	%rbp	#
+  99              		.cfi_def_cfa 7, 8
+ 100 000a C3       		ret	
+ 101              		.cfi_endproc
+ 102              	.LFE0:
+ 104              		.globl	externallyLinkedFunctionForGlobalNumberIgnoring
+ 106              	externallyLinkedFunctionForGlobalNumberIgnoring:
+ 107              	.LFB1:
+  19:main_vars_in_anonymous_namespace.cpp **** 
+  20:main_vars_in_anonymous_namespace.cpp ****     extern "C" int externallyLinkedFunctionForGlobalNumberIgnoring() {      // ignores linkage of n
+ 108              		.loc 1 20 70
+ 109              		.cfi_startproc
+ 110 000b 55       		pushq	%rbp	#
+ 111              		.cfi_def_cfa_offset 16
+ 112              		.cfi_offset 6, -16
+ 113 000c 4889E5   		movq	%rsp, %rbp	#,
+ 114              		.cfi_def_cfa_register 6
+ 115              	# main_vars_in_anonymous_namespace.cpp:21:         return 0;
+  21:main_vars_in_anonymous_namespace.cpp ****         return 0;
+ 116              		.loc 1 21 16
+ 117 000f B8000000 		movl	$0, %eax	#, _1
+ 117      00
+ 118              	# main_vars_in_anonymous_namespace.cpp:22:     }
+  22:main_vars_in_anonymous_namespace.cpp ****     }
+ 119              		.loc 1 22 5
+ 120 0014 5D       		popq	%rbp	#
+ 121              		.cfi_def_cfa 7, 8
+ 122 0015 C3       		ret	
+ 123              		.cfi_endproc
+ 124              	.LFE1:
+ 126              		.globl	p
+ 127              		.section	.data.rel.local,"aw"
+ 128              		.align 8
+ 131              	p:
+ 132 0000 00000000 		.quad	_ZN12_GLOBAL__N_159internallyLinkedFunctionForGlobalNumberDespiteExternKeywordEv
+ 132      00000000 
+ 133              		.text
+ 134              		.globl	main
+ 136              	main:
+ 137              	.LFB2:
+  23:main_vars_in_anonymous_namespace.cpp **** }
+  24:main_vars_in_anonymous_namespace.cpp **** 
+  25:main_vars_in_anonymous_namespace.cpp **** int (*p)() = internallyLinkedFunctionForGlobalNumberDespiteExternKeyword;  // ensure 'f' won't be o
+  26:main_vars_in_anonymous_namespace.cpp **** 
+  27:main_vars_in_anonymous_namespace.cpp **** int main() {
+ 138              		.loc 1 27 12
+ 139              		.cfi_startproc
+ 140 0016 55       		pushq	%rbp	#
+ 141              		.cfi_def_cfa_offset 16
+ 142              		.cfi_offset 6, -16
+ 143 0017 4889E5   		movq	%rsp, %rbp	#,
+ 144              		.cfi_def_cfa_register 6
+ 145              	# main_vars_in_anonymous_namespace.cpp:28:     return 0;
+  28:main_vars_in_anonymous_namespace.cpp ****     return 0;
+ 146              		.loc 1 28 12
+ 147 001a B8000000 		movl	$0, %eax	#, _1
+ 147      00
+ 148              	# main_vars_in_anonymous_namespace.cpp:29: }
+  29:main_vars_in_anonymous_namespace.cpp **** }
+ 149              		.loc 1 29 1
+ 150 001f 5D       		popq	%rbp	#
+ 151              		.cfi_def_cfa 7, 8
+ 152 0020 C3       		ret	
+ 153              		.cfi_endproc
+ 154              	.LFE2:
+ 156              	.Letext0:

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(C___OOP)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(C___OOP main.cpp "1_EXERCISE for Data Structures and Pointers/EXERCISE_for_Data_Structures_and_Pointers.cpp" "1_EXERCISE for Data Structures and Pointers/EXERCISE_for_Data_Structures_and_Pointers.h" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Book.cpp" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Book.h" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Library.cpp" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Library.h" "2_EXERCISES for Object Oriented Programming Section/EXERCISES_for_Object_Oriented_Programming_Section.cpp" "2_EXERCISES for Object Oriented Programming Section/EXERCISES_for_Object_Oriented_Programming_Section.h" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/User.cpp" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/User.h" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Borrower.cpp" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Borrower.h" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Librarian.cpp" "2_EXERCISES for Object Oriented Programming Section/Custom_solution/Librarian.h")

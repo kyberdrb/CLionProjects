@@ -1,0 +1,140 @@
+During the section of "Structures and Classes - Object Oriented Programming" all of the presented
+lectures will share the exercises list. The exercises will be performed in steps in order
+to develop one bigger application. Each step corresponds to the knowledge based on different
+lectures from the course. 
+
+The application we are going to create together will be a representation of a public library.
+I would like you to think on your own while designing the features of the application, but I
+will provide a guidance to each step as well as the working solution.
+
+Our main goal is to create a Library with Books that can be borrowed by Borrowers.
+
+STEP 1 - Lecture #40 classes
+
+First of all we would like to create a library. In the object oriented programming we are designing
+classes which are a "form" (mold, pattern) to create objects. If you think about it the library
+itself can be the main program. However, what if we wanted to have more libraries ? The best
+way is to treat the library like some object in our program. Next, what is the purpose of the
+library ? The first idea that comes to mind is: "to store the literature". The library should
+posses some books then. But what is the book in our program ? Yes, It can be another object!
+But if we create a book object it is still not associated with the library. The library should
+be able to add and show a book to/from its collection.
+
+GUIDE:
+a) change the book structure from "Data structures and pointers" exercises into a Book class
+b) create a book object inside of the main function and set its fields (author, title, publication year)
+c) create the Library class 
+d) create a member variable of Book type and make it an array of 5 elements
+e) create addBook method which adds an existing book to the array inside the Library object
+f) create getBook method that will return a book requested from the book array inside the Library object
+g) create a library object inside of the main function
+h) use addBook method to add the book object created before library object
+i) use getBook method to get info about the added book
+
+STEP 2 - Lecture #40 classes
+
+In the first step we have created a simple model of the library. If all of the libraries in the
+city were the same we could leave our library the way it is at the moment. However, in reality
+we would describe our library in more details. For example one library can store more books than
+the other. The limit on the number of the books is influenced by the size of the library building.
+While the size was defined while CONSTRUCTION of the building.
+
+GUIDE:
+a) create a private member maxAmountOfBooks in the Library class
+b) redesign the Library constructor so the array of Books is created dynamically with the
+maxAmountOfBooks sent as the argument of the constructor
+c) redesign the Library destructor to free the memory from the books in the dynamic array
+
+STEP 3 - Lecture #40 classes
+
+In the second step we said that our library can have some space inside to store its collection
+of the books. We know that we can for example store 2000 books. However, if we add a book to
+the collection we have less space. So how much more books can be added to our library ? 
+The library should count how many were already added ! Also if you consider that the books 
+are ordered from 0 to 2000 and each of the book has its own position on the shelve the newly
+added book should go to the first free position on the shelve.
+
+GUIDE:
+a) create a private member currentAmountOfBooks
+b) redesign addBook method so adds the book to the first free position on the shelve
+c) check in the addbook method if the maxAmountOfbooks is exceeded
+d) check in the getbook method if the index of the book doesn't exceed maxAmountOfbooks 
+(if the maxAmountOfBooks is exceeded return, first book in the set by default)
+e) create another two Book objects in the main function
+f) add the newly created books into the Library object
+g) inside of the Library class create the showBooks method it should print out in the console
+all of the books inside of the library (as well as their positions)
+
+
+STEP 4 -  Lecture #41 static variables and functions and #42 constant classes and methods
+
+We have talked much about the library class. Now we should spend some time to think in more
+detail about the book. When the library lents you a book it expects you to return exactly 
+the same book you have rented. For example we can provide a book with an unique identification
+number during the creation of the book. In my opinion the book should also be an object
+which cannot be changed ! Because how can a book change its title/autor/publicationYear ?
+
+GUIDE:
+Expand the book class:
+a) add static field that represents the number of books that were already created
+b) make all of the property fields private (except static field) and get methods for all of them
+c) redefine the constructor so it initializes the book parameters (title, author, publication year)
+and using the static field from a) give each of the book an unique ID number 
+d) in the main function initialize all of the three books created in earlier steps with the use
+of the redefined constructor
+f) all of the book objects should be constant
+g) user should be able to use the get methods on the book objects
+
+
+STEP 5 - Lecture #45 copy constructor and Lecture #46 convert constructor
+
+Talking more about the book, lets think about the way that books are created. You take the original
+copy of the book and reprint it in much more copies. But this way, all of the books will have exactly
+the same "UNIQUE" identification number. It would be good idea to implement inside of our printer
+a section that is unique to each of the copies printed. Now the library can register all of its books
+with corresponding identification number.
+
+GUIDE:
+a) update the showBooks method so it prints the unique id of the book 
+b) create another two books same as book3 using copy constructor and add them into the library
+c) use the showBooks to see the outcome
+
+THINK WHY THE BOOKS 3,4,5 have the same "UNIQUE" id ?
+
+d) redefine the copy constructor for book class
+e) use references to pass the actual book (not a copy) in order to preserve the UNIQUE ID given during creation.
+
+STEP 6 - Lecture #47 inheritance and Lectures #43, #44 friend mechanisms
+
+We are almost at the end! Now we have got a nicely modeled Library and Book representations. 
+However, both library and book are not objects that can act on their own! Also there is none
+who can borrow a book from the library! 
+
+We should think about introducing another class to the system. The new class should be a representation
+of a human being, a person. But a person can be also the one who borrows the books(borrower)
+and the one who works in the library (librarian). Both borrower and librarian are a person
+but the librarian could also be a borrower. 
+
+GUIDE:
+a) create class User with fields - name, lastName and methods getName getLastName, the constructor should initialize both fields
+b) create class Borrower that will inherit from the User, the Borrower needs member fields to store the books in his possesion
+aswell as maxAmount he can posses and the amount he already has. 
+c) borrower methods should allow him to return books and show all of the books in his possesion
+d) eliminate the copy constructor and the convert consstructor for '=' operator of the borrower class 
+
+The borrower with his possesions is an unique object ! You shouldn't be able to copy any of borrower type objects.
+However with implicit copy constructor you can simply input: Borrower borrower2 = borrower1; 
+	with '=' operator you can simply input borrower2 = borrower1;
+
+You don't have to introduce explicit copy and covert constructors, you can delete the functions instead.
+To do so you have to add '= delete' which informs compiler about removal operation.
+
+Foo (const Foo&) = delete;				 <- the method is deleted hence, no one can do Foo foo2 = foo1;
+Foo& operator= (const Foo&) = delete;    <- the method is deleted hence, no one can do foo2 = foo1;
+
+
+e) create class Librarian that will inherit from the Borrower, the Librarian should have additional method which allows him
+to lend books from chosen library to chosen borrower or librarian type object
+
+The lendBook method should be able to take any book from the library resources (eg. index2) and reorder
+the rest of the collection. The same should happen with the borrower resources when he returns the book

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/laptop/CLionProjects/Design_patterns-Adapter-implemented_as_Object_Adapter/main.cpp
+cstdint
+-
+functional
+-
+iostream
+-
+memory
+-
+

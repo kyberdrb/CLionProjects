@@ -1,0 +1,484 @@
+   1              		.file	"main_two_static_global_pointers_initialized_with_new.cpp"
+   2              	# GNU C++14 (Arch Linux 9.3.0-1) version 9.3.0 (x86_64-pc-linux-gnu)
+   3              	#	compiled by GNU C version 9.3.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl ve
+   4              	
+   5              	# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+   6              	# options passed:  -D_GNU_SOURCE
+   7              	# main_two_static_global_pointers_initialized_with_new.cpp -mtune=generic
+   8              	# -march=x86-64
+   9              	# -auxbase-strip main_two_static_global_pointers_initialized_with_new.disassembled
+  10              	# -g -fverbose-asm
+  11              	# options enabled:  -fPIC -fPIE -faggressive-loop-optimizations
+  12              	# -fassume-phsa -fasynchronous-unwind-tables -fauto-inc-dec -fcommon
+  13              	# -fdelete-null-pointer-checks -fdwarf2-cfi-asm -fearly-inlining
+  14              	# -feliminate-unused-debug-types -fexceptions -ffp-int-builtin-inexact
+  15              	# -ffunction-cse -fgcse-lm -fgnu-runtime -fgnu-unique -fident
+  16              	# -finline-atomics -fipa-stack-alignment -fira-hoist-pressure
+  17              	# -fira-share-save-slots -fira-share-spill-slots -fivopts
+  18              	# -fkeep-static-consts -fleading-underscore -flifetime-dse
+  19              	# -flto-odr-type-merging -fmath-errno -fmerge-debug-strings -fpeephole
+  20              	# -fplt -fprefetch-loop-arrays -freg-struct-return
+  21              	# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+  22              	# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+  23              	# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+  24              	# -fsched-stalled-insns-dep -fschedule-fusion -fsemantic-interposition
+  25              	# -fshow-column -fshrink-wrap-separate -fsigned-zeros
+  26              	# -fsplit-ivs-in-unroller -fssa-backprop -fstack-protector-strong
+  27              	# -fstdarg-opt -fstrict-volatile-bitfields -fsync-libcalls -ftrapping-math
+  28              	# -ftree-cselim -ftree-forwprop -ftree-loop-if-convert -ftree-loop-im
+  29              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  30              	# -ftree-phiprop -ftree-reassoc -ftree-scev-cprop -funit-at-a-time
+  31              	# -funwind-tables -fverbose-asm -fzero-initialized-in-bss
+  32              	# -m128bit-long-double -m64 -m80387 -malign-stringops
+  33              	# -mavx256-split-unaligned-load -mavx256-split-unaligned-store
+  34              	# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mglibc -mieee-fp
+  35              	# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+  36              	# -mstv -mtls-direct-seg-refs -mvzeroupper
+  37              	
+  38              		.text
+  39              	.Ltext0:
+  40              		.section	.rodata
+  43              	_ZStL19piecewise_construct:
+  44 0000 00       		.zero	1
+  45              		.local	_ZStL8__ioinit
+  46              		.comm	_ZStL8__ioinit,1,1
+  47              		.local	_ZL12globalNumber
+  48              		.comm	_ZL12globalNumber,8,8
+  49              		.local	_ZL19anotherGlobalNumber
+  50              		.comm	_ZL19anotherGlobalNumber,8,8
+  51              	.LC0:
+  52 0001 696E7420 		.string	"int main()"
+  52      6D61696E 
+  52      282900
+  53 000c 00000000 		.align 8
+  54              	.LC1:
+  55 0010 6D61696E 		.string	"main_two_static_global_pointers_initialized_with_new.cpp"
+  55      5F74776F 
+  55      5F737461 
+  55      7469635F 
+  55      676C6F62 
+  56              	.LC2:
+  57 0049 676C6F62 		.string	"globalNumber == nullptr"
+  57      616C4E75 
+  57      6D626572 
+  57      203D3D20 
+  57      6E756C6C 
+  58 0061 00000000 		.align 8
+  58      000000
+  59              	.LC3:
+  60 0068 616E6F74 		.string	"anotherGlobalNumber == nullptr"
+  60      68657247 
+  60      6C6F6261 
+  60      6C4E756D 
+  60      62657220 
+  61              	.LC4:
+  62 0087 676C6F62 		.string	"globalNumber = "
+  62      616C4E75 
+  62      6D626572 
+  62      203D2000 
+  63              	.LC5:
+  64 0097 616E6F74 		.string	"anotherGlobalNumber = "
+  64      68657247 
+  64      6C6F6261 
+  64      6C4E756D 
+  64      62657220 
+  65              		.text
+  66              		.globl	main
+  68              	main:
+  69              	.LFB1522:
+  70              		.file 1 "main_two_static_global_pointers_initialized_with_new.cpp"
+   1:main_two_static_global_pointers_initialized_with_new.cpp **** #include <cassert>
+   2:main_two_static_global_pointers_initialized_with_new.cpp **** #include <iostream>
+   3:main_two_static_global_pointers_initialized_with_new.cpp **** 
+   4:main_two_static_global_pointers_initialized_with_new.cpp **** static float* globalNumber = new float(1.2);
+   5:main_two_static_global_pointers_initialized_with_new.cpp **** static int* anotherGlobalNumber = new int{34};
+   6:main_two_static_global_pointers_initialized_with_new.cpp **** 
+   7:main_two_static_global_pointers_initialized_with_new.cpp **** int main() {
+  71              		.loc 1 7 12
+  72              		.cfi_startproc
+  73 0000 55       		pushq	%rbp	#
+  74              		.cfi_def_cfa_offset 16
+  75              		.cfi_offset 6, -16
+  76 0001 4889E5   		movq	%rsp, %rbp	#,
+  77              		.cfi_def_cfa_register 6
+  78              	# main_two_static_global_pointers_initialized_with_new.cpp:8:     assert(globalNumber == nullptr);
+   8:main_two_static_global_pointers_initialized_with_new.cpp ****     assert(globalNumber == nullptr);
+  79              		.loc 1 8 5
+  80 0004 488B0500 		movq	_ZL12globalNumber(%rip), %rax	# globalNumber, globalNumber.0_1
+  80      000000
+  81 000b 4885C0   		testq	%rax, %rax	# globalNumber.0_1
+  82 000e 741F     		je	.L2	#,
+  83              	# main_two_static_global_pointers_initialized_with_new.cpp:8:     assert(globalNumber == nullptr);
+  84              		.loc 1 8 5 is_stmt 0 discriminator 1
+  85 0010 488D0D00 		leaq	.LC0(%rip), %rcx	#,
+  85      000000
+  86 0017 BA080000 		movl	$8, %edx	#,
+  86      00
+  87 001c 488D3500 		leaq	.LC1(%rip), %rsi	#,
+  87      000000
+  88 0023 488D3D00 		leaq	.LC2(%rip), %rdi	#,
+  88      000000
+  89 002a E8000000 		call	__assert_fail@PLT	#
+  89      00
+  90              	.L2:
+  91              	# main_two_static_global_pointers_initialized_with_new.cpp:9:     assert(anotherGlobalNumber == nul
+   9:main_two_static_global_pointers_initialized_with_new.cpp ****     assert(anotherGlobalNumber == nullptr);
+  92              		.loc 1 9 5 is_stmt 1
+  93 002f 488B0500 		movq	_ZL19anotherGlobalNumber(%rip), %rax	# anotherGlobalNumber, anotherGlobalNumber.1_2
+  93      000000
+  94 0036 4885C0   		testq	%rax, %rax	# anotherGlobalNumber.1_2
+  95 0039 741F     		je	.L3	#,
+  96              	# main_two_static_global_pointers_initialized_with_new.cpp:9:     assert(anotherGlobalNumber == nul
+  97              		.loc 1 9 5 is_stmt 0 discriminator 1
+  98 003b 488D0D00 		leaq	.LC0(%rip), %rcx	#,
+  98      000000
+  99 0042 BA090000 		movl	$9, %edx	#,
+  99      00
+ 100 0047 488D3500 		leaq	.LC1(%rip), %rsi	#,
+ 100      000000
+ 101 004e 488D3D00 		leaq	.LC3(%rip), %rdi	#,
+ 101      000000
+ 102 0055 E8000000 		call	__assert_fail@PLT	#
+ 102      00
+ 103              	.L3:
+ 104              	# main_two_static_global_pointers_initialized_with_new.cpp:10:     std::cout << "globalNumber = " <
+  10:main_two_static_global_pointers_initialized_with_new.cpp ****     std::cout << "globalNumber = " << globalNumber << std::endl;
+ 105              		.loc 1 10 18 is_stmt 1
+ 106 005a 488D3500 		leaq	.LC4(%rip), %rsi	#,
+ 106      000000
+ 107 0061 488D3D00 		leaq	_ZSt4cout(%rip), %rdi	#,
+ 107      000000
+ 108 0068 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT	#
+ 108      00
+ 109 006d 4889C2   		movq	%rax, %rdx	#, _3
+ 110              	# main_two_static_global_pointers_initialized_with_new.cpp:10:     std::cout << "globalNumber = " <
+ 111              		.loc 1 10 39
+ 112 0070 488B0500 		movq	_ZL12globalNumber(%rip), %rax	# globalNumber, globalNumber.2_4
+ 112      000000
+ 113 0077 4889C6   		movq	%rax, %rsi	# globalNumber.2_4,
+ 114 007a 4889D7   		movq	%rdx, %rdi	# _3,
+ 115 007d E8000000 		call	_ZNSolsEPKv@PLT	#
+ 115      00
+ 116 0082 4889C2   		movq	%rax, %rdx	#, _5
+ 117              	# main_two_static_global_pointers_initialized_with_new.cpp:10:     std::cout << "globalNumber = " <
+ 118              		.loc 1 10 60
+ 119 0085 488B0500 		movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax	#, tmp94
+ 119      000000
+ 120 008c 4889C6   		movq	%rax, %rsi	# tmp94,
+ 121 008f 4889D7   		movq	%rdx, %rdi	# _5,
+ 122 0092 E8000000 		call	_ZNSolsEPFRSoS_E@PLT	#
+ 122      00
+ 123              	# main_two_static_global_pointers_initialized_with_new.cpp:11:     std::cout << "anotherGlobalNumbe
+  11:main_two_static_global_pointers_initialized_with_new.cpp ****     std::cout << "anotherGlobalNumber = " << anotherGlobalNumber << std::endl; 
+ 124              		.loc 1 11 18
+ 125 0097 488D3500 		leaq	.LC5(%rip), %rsi	#,
+ 125      000000
+ 126 009e 488D3D00 		leaq	_ZSt4cout(%rip), %rdi	#,
+ 126      000000
+ 127 00a5 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT	#
+ 127      00
+ 128 00aa 4889C2   		movq	%rax, %rdx	#, _6
+ 129              	# main_two_static_global_pointers_initialized_with_new.cpp:11:     std::cout << "anotherGlobalNumbe
+ 130              		.loc 1 11 46
+ 131 00ad 488B0500 		movq	_ZL19anotherGlobalNumber(%rip), %rax	# anotherGlobalNumber, anotherGlobalNumber.3_7
+ 131      000000
+ 132 00b4 4889C6   		movq	%rax, %rsi	# anotherGlobalNumber.3_7,
+ 133 00b7 4889D7   		movq	%rdx, %rdi	# _6,
+ 134 00ba E8000000 		call	_ZNSolsEPKv@PLT	#
+ 134      00
+ 135 00bf 4889C2   		movq	%rax, %rdx	#, _8
+ 136              	# main_two_static_global_pointers_initialized_with_new.cpp:11:     std::cout << "anotherGlobalNumbe
+ 137              		.loc 1 11 74
+ 138 00c2 488B0500 		movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax	#, tmp95
+ 138      000000
+ 139 00c9 4889C6   		movq	%rax, %rsi	# tmp95,
+ 140 00cc 4889D7   		movq	%rdx, %rdi	# _8,
+ 141 00cf E8000000 		call	_ZNSolsEPFRSoS_E@PLT	#
+ 141      00
+ 142              	# main_two_static_global_pointers_initialized_with_new.cpp:13:     delete globalNumber;
+  12:main_two_static_global_pointers_initialized_with_new.cpp **** 
+  13:main_two_static_global_pointers_initialized_with_new.cpp ****     delete globalNumber;
+ 143              		.loc 1 13 12
+ 144 00d4 488B0500 		movq	_ZL12globalNumber(%rip), %rax	# globalNumber, globalNumber.4_24
+ 144      000000
+ 145              	# main_two_static_global_pointers_initialized_with_new.cpp:13:     delete globalNumber;
+ 146              		.loc 1 13 24
+ 147 00db 4885C0   		testq	%rax, %rax	# globalNumber.4_24
+ 148 00de 740D     		je	.L4	#,
+ 149              	# main_two_static_global_pointers_initialized_with_new.cpp:13:     delete globalNumber;
+ 150              		.loc 1 13 12 discriminator 1
+ 151 00e0 BE040000 		movl	$4, %esi	#,
+ 151      00
+ 152 00e5 4889C7   		movq	%rax, %rdi	# globalNumber.4_24,
+ 153 00e8 E8000000 		call	_ZdlPvm@PLT	#
+ 153      00
+ 154              	.L4:
+ 155              	# main_two_static_global_pointers_initialized_with_new.cpp:14:     globalNumber = nullptr;
+  14:main_two_static_global_pointers_initialized_with_new.cpp ****     globalNumber = nullptr;
+ 156              		.loc 1 14 18
+ 157 00ed 48C70500 		movq	$0, _ZL12globalNumber(%rip)	#, globalNumber
+ 157      00000000 
+ 157      000000
+ 158              	# main_two_static_global_pointers_initialized_with_new.cpp:15:     delete anotherGlobalNumber;
+  15:main_two_static_global_pointers_initialized_with_new.cpp ****     delete anotherGlobalNumber;
+ 159              		.loc 1 15 12
+ 160 00f8 488B0500 		movq	_ZL19anotherGlobalNumber(%rip), %rax	# anotherGlobalNumber, anotherGlobalNumber.5_28
+ 160      000000
+ 161              	# main_two_static_global_pointers_initialized_with_new.cpp:15:     delete anotherGlobalNumber;
+ 162              		.loc 1 15 31
+ 163 00ff 4885C0   		testq	%rax, %rax	# anotherGlobalNumber.5_28
+ 164 0102 740D     		je	.L5	#,
+ 165              	# main_two_static_global_pointers_initialized_with_new.cpp:15:     delete anotherGlobalNumber;
+ 166              		.loc 1 15 12 discriminator 1
+ 167 0104 BE040000 		movl	$4, %esi	#,
+ 167      00
+ 168 0109 4889C7   		movq	%rax, %rdi	# anotherGlobalNumber.5_28,
+ 169 010c E8000000 		call	_ZdlPvm@PLT	#
+ 169      00
+ 170              	.L5:
+ 171              	# main_two_static_global_pointers_initialized_with_new.cpp:16:     anotherGlobalNumber = nullptr;
+  16:main_two_static_global_pointers_initialized_with_new.cpp ****     anotherGlobalNumber = nullptr;
+ 172              		.loc 1 16 25
+ 173 0111 48C70500 		movq	$0, _ZL19anotherGlobalNumber(%rip)	#, anotherGlobalNumber
+ 173      00000000 
+ 173      000000
+ 174              	# main_two_static_global_pointers_initialized_with_new.cpp:18:     return 0;
+  17:main_two_static_global_pointers_initialized_with_new.cpp **** 
+  18:main_two_static_global_pointers_initialized_with_new.cpp ****     return 0;
+ 175              		.loc 1 18 12
+ 176 011c B8000000 		movl	$0, %eax	#, _32
+ 176      00
+ 177              	# main_two_static_global_pointers_initialized_with_new.cpp:19: }
+  19:main_two_static_global_pointers_initialized_with_new.cpp **** }
+ 178              		.loc 1 19 1
+ 179 0121 5D       		popq	%rbp	#
+ 180              		.cfi_def_cfa 7, 8
+ 181 0122 C3       		ret	
+ 182              		.cfi_endproc
+ 183              	.LFE1522:
+ 186              	_Z41__static_initialization_and_destruction_0ii:
+ 187              	.LFB2012:
+ 188              		.loc 1 19 1
+ 189              		.cfi_startproc
+ 190 0123 55       		pushq	%rbp	#
+ 191              		.cfi_def_cfa_offset 16
+ 192              		.cfi_offset 6, -16
+ 193 0124 4889E5   		movq	%rsp, %rbp	#,
+ 194              		.cfi_def_cfa_register 6
+ 195 0127 4883EC10 		subq	$16, %rsp	#,
+ 196 012b 897DFC   		movl	%edi, -4(%rbp)	# __initialize_p, __initialize_p
+ 197 012e 8975F8   		movl	%esi, -8(%rbp)	# __priority, __priority
+ 198              	# main_two_static_global_pointers_initialized_with_new.cpp:19: }
+ 199              		.loc 1 19 1
+ 200 0131 837DFC01 		cmpl	$1, -4(%rbp)	#, __initialize_p
+ 201 0135 7566     		jne	.L9	#,
+ 202              	# main_two_static_global_pointers_initialized_with_new.cpp:19: }
+ 203              		.loc 1 19 1 is_stmt 0 discriminator 1
+ 204 0137 817DF8FF 		cmpl	$65535, -8(%rbp)	#, __priority
+ 204      FF0000
+ 205 013e 755D     		jne	.L9	#,
+ 206              	# /usr/include/c++/9.3.0/iostream:74:   static ios_base::Init __ioinit;
+ 207              		.file 2 "/usr/include/c++/9.3.0/iostream"
+   1:/usr/include/c++/9.3.0/iostream **** // Standard iostream objects -*- C++ -*-
+   2:/usr/include/c++/9.3.0/iostream **** 
+   3:/usr/include/c++/9.3.0/iostream **** // Copyright (C) 1997-2019 Free Software Foundation, Inc.
+   4:/usr/include/c++/9.3.0/iostream **** //
+   5:/usr/include/c++/9.3.0/iostream **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:/usr/include/c++/9.3.0/iostream **** // software; you can redistribute it and/or modify it under the
+   7:/usr/include/c++/9.3.0/iostream **** // terms of the GNU General Public License as published by the
+   8:/usr/include/c++/9.3.0/iostream **** // Free Software Foundation; either version 3, or (at your option)
+   9:/usr/include/c++/9.3.0/iostream **** // any later version.
+  10:/usr/include/c++/9.3.0/iostream **** 
+  11:/usr/include/c++/9.3.0/iostream **** // This library is distributed in the hope that it will be useful,
+  12:/usr/include/c++/9.3.0/iostream **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:/usr/include/c++/9.3.0/iostream **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:/usr/include/c++/9.3.0/iostream **** // GNU General Public License for more details.
+  15:/usr/include/c++/9.3.0/iostream **** 
+  16:/usr/include/c++/9.3.0/iostream **** // Under Section 7 of GPL version 3, you are granted additional
+  17:/usr/include/c++/9.3.0/iostream **** // permissions described in the GCC Runtime Library Exception, version
+  18:/usr/include/c++/9.3.0/iostream **** // 3.1, as published by the Free Software Foundation.
+  19:/usr/include/c++/9.3.0/iostream **** 
+  20:/usr/include/c++/9.3.0/iostream **** // You should have received a copy of the GNU General Public License and
+  21:/usr/include/c++/9.3.0/iostream **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:/usr/include/c++/9.3.0/iostream **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:/usr/include/c++/9.3.0/iostream **** // <http://www.gnu.org/licenses/>.
+  24:/usr/include/c++/9.3.0/iostream **** 
+  25:/usr/include/c++/9.3.0/iostream **** /** @file include/iostream
+  26:/usr/include/c++/9.3.0/iostream ****  *  This is a Standard C++ Library header.
+  27:/usr/include/c++/9.3.0/iostream ****  */
+  28:/usr/include/c++/9.3.0/iostream **** 
+  29:/usr/include/c++/9.3.0/iostream **** //
+  30:/usr/include/c++/9.3.0/iostream **** // ISO C++ 14882: 27.3  Standard iostream objects
+  31:/usr/include/c++/9.3.0/iostream **** //
+  32:/usr/include/c++/9.3.0/iostream **** 
+  33:/usr/include/c++/9.3.0/iostream **** #ifndef _GLIBCXX_IOSTREAM
+  34:/usr/include/c++/9.3.0/iostream **** #define _GLIBCXX_IOSTREAM 1
+  35:/usr/include/c++/9.3.0/iostream **** 
+  36:/usr/include/c++/9.3.0/iostream **** #pragma GCC system_header
+  37:/usr/include/c++/9.3.0/iostream **** 
+  38:/usr/include/c++/9.3.0/iostream **** #include <bits/c++config.h>
+  39:/usr/include/c++/9.3.0/iostream **** #include <ostream>
+  40:/usr/include/c++/9.3.0/iostream **** #include <istream>
+  41:/usr/include/c++/9.3.0/iostream **** 
+  42:/usr/include/c++/9.3.0/iostream **** namespace std _GLIBCXX_VISIBILITY(default)
+  43:/usr/include/c++/9.3.0/iostream **** {
+  44:/usr/include/c++/9.3.0/iostream **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  45:/usr/include/c++/9.3.0/iostream **** 
+  46:/usr/include/c++/9.3.0/iostream ****   /**
+  47:/usr/include/c++/9.3.0/iostream ****    *  @name Standard Stream Objects
+  48:/usr/include/c++/9.3.0/iostream ****    *
+  49:/usr/include/c++/9.3.0/iostream ****    *  The &lt;iostream&gt; header declares the eight <em>standard stream
+  50:/usr/include/c++/9.3.0/iostream ****    *  objects</em>.  For other declarations, see
+  51:/usr/include/c++/9.3.0/iostream ****    *  http://gcc.gnu.org/onlinedocs/libstdc++/manual/io.html
+  52:/usr/include/c++/9.3.0/iostream ****    *  and the @link iosfwd I/O forward declarations @endlink
+  53:/usr/include/c++/9.3.0/iostream ****    *
+  54:/usr/include/c++/9.3.0/iostream ****    *  They are required by default to cooperate with the global C
+  55:/usr/include/c++/9.3.0/iostream ****    *  library's @c FILE streams, and to be available during program
+  56:/usr/include/c++/9.3.0/iostream ****    *  startup and termination. For more information, see the section of the
+  57:/usr/include/c++/9.3.0/iostream ****    *  manual linked to above.
+  58:/usr/include/c++/9.3.0/iostream ****   */
+  59:/usr/include/c++/9.3.0/iostream ****   //@{
+  60:/usr/include/c++/9.3.0/iostream ****   extern istream cin;		/// Linked to standard input
+  61:/usr/include/c++/9.3.0/iostream ****   extern ostream cout;		/// Linked to standard output
+  62:/usr/include/c++/9.3.0/iostream ****   extern ostream cerr;		/// Linked to standard error (unbuffered)
+  63:/usr/include/c++/9.3.0/iostream ****   extern ostream clog;		/// Linked to standard error (buffered)
+  64:/usr/include/c++/9.3.0/iostream **** 
+  65:/usr/include/c++/9.3.0/iostream **** #ifdef _GLIBCXX_USE_WCHAR_T
+  66:/usr/include/c++/9.3.0/iostream ****   extern wistream wcin;		/// Linked to standard input
+  67:/usr/include/c++/9.3.0/iostream ****   extern wostream wcout;	/// Linked to standard output
+  68:/usr/include/c++/9.3.0/iostream ****   extern wostream wcerr;	/// Linked to standard error (unbuffered)
+  69:/usr/include/c++/9.3.0/iostream ****   extern wostream wclog;	/// Linked to standard error (buffered)
+  70:/usr/include/c++/9.3.0/iostream **** #endif
+  71:/usr/include/c++/9.3.0/iostream ****   //@}
+  72:/usr/include/c++/9.3.0/iostream **** 
+  73:/usr/include/c++/9.3.0/iostream ****   // For construction of filebuffers for cout, cin, cerr, clog et. al.
+  74:/usr/include/c++/9.3.0/iostream ****   static ios_base::Init __ioinit;
+ 208              		.loc 2 74 25 is_stmt 1
+ 209 0140 488D3D00 		leaq	_ZStL8__ioinit(%rip), %rdi	#,
+ 209      000000
+ 210 0147 E8000000 		call	_ZNSt8ios_base4InitC1Ev@PLT	#
+ 210      00
+ 211 014c 488D1500 		leaq	__dso_handle(%rip), %rdx	#,
+ 211      000000
+ 212 0153 488D3500 		leaq	_ZStL8__ioinit(%rip), %rsi	#,
+ 212      000000
+ 213 015a 488B0500 		movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rax	#, tmp84
+ 213      000000
+ 214 0161 4889C7   		movq	%rax, %rdi	# tmp84,
+ 215 0164 E8000000 		call	__cxa_atexit@PLT	#
+ 215      00
+ 216              	# main_two_static_global_pointers_initialized_with_new.cpp:4: static float* globalNumber = new floa
+   4:main_two_static_global_pointers_initialized_with_new.cpp **** static int* anotherGlobalNumber = new int{34};
+ 217              		.loc 1 4 43
+ 218 0169 BF040000 		movl	$4, %edi	#,
+ 218      00
+ 219 016e E8000000 		call	_Znwm@PLT	#
+ 219      00
+ 220 0173 F30F1005 		movss	.LC6(%rip), %xmm0	#, tmp86
+ 220      00000000 
+ 221 017b F30F1100 		movss	%xmm0, (%rax)	# tmp86, MEM[(float *)_9]
+ 222              	# main_two_static_global_pointers_initialized_with_new.cpp:4: static float* globalNumber = new floa
+   4:main_two_static_global_pointers_initialized_with_new.cpp **** static int* anotherGlobalNumber = new int{34};
+ 223              		.loc 1 4 15
+ 224 017f 48890500 		movq	%rax, _ZL12globalNumber(%rip)	# _8, globalNumber
+ 224      000000
+ 225              	# main_two_static_global_pointers_initialized_with_new.cpp:5: static int* anotherGlobalNumber = new
+   5:main_two_static_global_pointers_initialized_with_new.cpp **** 
+ 226              		.loc 1 5 45
+ 227 0186 BF040000 		movl	$4, %edi	#,
+ 227      00
+ 228 018b E8000000 		call	_Znwm@PLT	#
+ 228      00
+ 229 0190 C7002200 		movl	$34, (%rax)	#, MEM[(int *)_14]
+ 229      0000
+ 230              	# main_two_static_global_pointers_initialized_with_new.cpp:5: static int* anotherGlobalNumber = new
+   5:main_two_static_global_pointers_initialized_with_new.cpp **** 
+ 231              		.loc 1 5 13
+ 232 0196 48890500 		movq	%rax, _ZL19anotherGlobalNumber(%rip)	# _13, anotherGlobalNumber
+ 232      000000
+ 233              	.L9:
+ 234              	# main_two_static_global_pointers_initialized_with_new.cpp:19: }
+ 235              		.loc 1 19 1
+ 236 019d 90       		nop	
+ 237 019e C9       		leave	
+ 238              		.cfi_def_cfa 7, 8
+ 239 019f C3       		ret	
+ 240              		.cfi_endproc
+ 241              	.LFE2012:
+ 244              	_GLOBAL__sub_I_main:
+ 245              	.LFB2013:
+ 246              		.loc 1 19 1
+ 247              		.cfi_startproc
+ 248 01a0 55       		pushq	%rbp	#
+ 249              		.cfi_def_cfa_offset 16
+ 250              		.cfi_offset 6, -16
+ 251 01a1 4889E5   		movq	%rsp, %rbp	#,
+ 252              		.cfi_def_cfa_register 6
+ 253              	# main_two_static_global_pointers_initialized_with_new.cpp:19: }
+ 254              		.loc 1 19 1
+ 255 01a4 BEFFFF00 		movl	$65535, %esi	#,
+ 255      00
+ 256 01a9 BF010000 		movl	$1, %edi	#,
+ 256      00
+ 257 01ae E870FFFF 		call	_Z41__static_initialization_and_destruction_0ii	#
+ 257      FF
+ 258 01b3 5D       		popq	%rbp	#
+ 259              		.cfi_def_cfa 7, 8
+ 260 01b4 C3       		ret	
+ 261              		.cfi_endproc
+ 262              	.LFE2013:
+ 264              		.section	.init_array,"aw"
+ 265              		.align 8
+ 266 0000 00000000 		.quad	_GLOBAL__sub_I_main
+ 266      00000000 
+ 267              		.section	.rodata
+ 268 00ae 0000     		.align 4
+ 269              	.LC6:
+ 270 00b0 9A99993F 		.long	1067030938
+ 271              		.text
+ 272              	.Letext0:
+ 273              		.file 3 "/usr/include/c++/9.3.0/cwchar"
+ 274              		.file 4 "/usr/include/c++/9.3.0/new"
+ 275              		.file 5 "/usr/include/c++/9.3.0/bits/exception_ptr.h"
+ 276              		.file 6 "/usr/include/c++/9.3.0/type_traits"
+ 277              		.file 7 "/usr/include/c++/9.3.0/x86_64-pc-linux-gnu/bits/c++config.h"
+ 278              		.file 8 "/usr/include/c++/9.3.0/bits/cpp_type_traits.h"
+ 279              		.file 9 "/usr/include/c++/9.3.0/bits/stl_pair.h"
+ 280              		.file 10 "/usr/include/c++/9.3.0/debug/debug.h"
+ 281              		.file 11 "/usr/include/c++/9.3.0/bits/char_traits.h"
+ 282              		.file 12 "/usr/include/c++/9.3.0/cstdint"
+ 283              		.file 13 "/usr/include/c++/9.3.0/clocale"
+ 284              		.file 14 "/usr/include/c++/9.3.0/cstdlib"
+ 285              		.file 15 "/usr/include/c++/9.3.0/cstdio"
+ 286              		.file 16 "/usr/include/c++/9.3.0/bits/basic_string.h"
+ 287              		.file 17 "/usr/include/c++/9.3.0/system_error"
+ 288              		.file 18 "/usr/include/c++/9.3.0/bits/ios_base.h"
+ 289              		.file 19 "/usr/include/c++/9.3.0/cwctype"
+ 290              		.file 20 "/usr/include/c++/9.3.0/iosfwd"
+ 291              		.file 21 "/usr/include/c++/9.3.0/bits/predefined_ops.h"
+ 292              		.file 22 "/usr/include/c++/9.3.0/ext/new_allocator.h"
+ 293              		.file 23 "/usr/include/c++/9.3.0/ext/numeric_traits.h"
+ 294              		.file 24 "/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include/stddef.h"
+ 295              		.file 25 "<built-in>"
+ 296              		.file 26 "/usr/include/bits/types/wint_t.h"
+ 297              		.file 27 "/usr/include/bits/types/__mbstate_t.h"
+ 298              		.file 28 "/usr/include/bits/types/mbstate_t.h"
+ 299              		.file 29 "/usr/include/bits/types/__FILE.h"
+ 300              		.file 30 "/usr/include/bits/types/struct_FILE.h"
+ 301              		.file 31 "/usr/include/bits/types/FILE.h"
+ 302              		.file 32 "/usr/include/wchar.h"
+ 303              		.file 33 "/usr/include/bits/types/struct_tm.h"
+ 304              		.file 34 "/usr/include/bits/types.h"
+ 305              		.file 35 "/usr/include/bits/stdint-intn.h"
+ 306              		.file 36 "/usr/include/bits/stdint-uintn.h"
+ 307              		.file 37 "/usr/include/stdint.h"
+ 308              		.file 38 "/usr/include/locale.h"
+ 309              		.file 39 "/usr/include/time.h"
+ 310              		.file 40 "/usr/include/c++/9.3.0/x86_64-pc-linux-gnu/bits/atomic_word.h"
+ 311              		.file 41 "/usr/include/stdlib.h"
+ 312              		.file 42 "/usr/include/bits/types/__fpos_t.h"
+ 313              		.file 43 "/usr/include/stdio.h"
+ 314              		.file 44 "/usr/include/bits/sys_errlist.h"
+ 315              		.file 45 "/usr/include/errno.h"
+ 316              		.file 46 "/usr/include/bits/wctype-wchar.h"
+ 317              		.file 47 "/usr/include/wctype.h"

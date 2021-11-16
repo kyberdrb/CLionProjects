@@ -1,0 +1,1385 @@
+	.file	"main.cpp"
+	.text
+	.section	.text._ZN21DynamicImplementation4tickEm,"axG",@progbits,_ZN21DynamicImplementation4tickEm,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN21DynamicImplementation4tickEm
+	.type	_ZN21DynamicImplementation4tickEm, @function
+_ZN21DynamicImplementation4tickEm:
+.LFB2695:
+	.cfi_startproc
+	addq	%rsi, 8(%rdi)
+	ret
+	.cfi_endproc
+.LFE2695:
+	.size	_ZN21DynamicImplementation4tickEm, .-_ZN21DynamicImplementation4tickEm
+	.section	.text._ZN21DynamicImplementation8getValueEv,"axG",@progbits,_ZN21DynamicImplementation8getValueEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN21DynamicImplementation8getValueEv
+	.type	_ZN21DynamicImplementation8getValueEv, @function
+_ZN21DynamicImplementation8getValueEv:
+.LFB2696:
+	.cfi_startproc
+	movq	8(%rdi), %rax
+	ret
+	.cfi_endproc
+.LFE2696:
+	.size	_ZN21DynamicImplementation8getValueEv, .-_ZN21DynamicImplementation8getValueEv
+	.text
+	.align 2
+	.p2align 4
+	.type	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0, @function
+_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0:
+.LFB3425:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3425:
+	.size	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0, .-_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0
+	.set	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000EEE5countEv.isra.0,_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0
+	.section	.text._ZNSt6chrono8durationIlSt5ratioILl1ELl1000000000EEEC1IlvEERKT_.isra.0,"axG",@progbits,_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_,comdat
+	.align 2
+	.p2align 4
+	.type	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000000000EEEC1IlvEERKT_.isra.0, @function
+_ZNSt6chrono8durationIlSt5ratioILl1ELl1000000000EEEC1IlvEERKT_.isra.0:
+.LFB3426:
+	.cfi_startproc
+	movq	%rsi, (%rdi)
+	ret
+	.cfi_endproc
+.LFE3426:
+	.size	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000000000EEEC1IlvEERKT_.isra.0, .-_ZNSt6chrono8durationIlSt5ratioILl1ELl1000000000EEEC1IlvEERKT_.isra.0
+	.section	.text._ZN18CRTPImplementation4tickEm.isra.0,"axG",@progbits,_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm,comdat
+	.align 2
+	.p2align 4
+	.type	_ZN18CRTPImplementation4tickEm.isra.0, @function
+_ZN18CRTPImplementation4tickEm.isra.0:
+.LFB3427:
+	.cfi_startproc
+	addq	%rsi, (%rdi)
+	ret
+	.cfi_endproc
+.LFE3427:
+	.size	_ZN18CRTPImplementation4tickEm.isra.0, .-_ZN18CRTPImplementation4tickEm.isra.0
+	.section	.text._ZN18CRTPImplementation8getValueEv.isra.0,"axG",@progbits,_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv,comdat
+	.align 2
+	.p2align 4
+	.type	_ZN18CRTPImplementation8getValueEv.isra.0, @function
+_ZN18CRTPImplementation8getValueEv.isra.0:
+.LFB3428:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3428:
+	.size	_ZN18CRTPImplementation8getValueEv.isra.0, .-_ZN18CRTPImplementation8getValueEv.isra.0
+	.section	.text._ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0,"axG",@progbits,_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE,comdat
+	.align 2
+	.p2align 4
+	.type	_ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0, @function
+_ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0:
+.LFB3430:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3430:
+	.size	_ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0, .-_ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0
+	.section	.text._ZNKSt14default_deleteI21DynamicImplementationEclEPS0_.isra.0,"axG",@progbits,_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED5Ev,comdat
+	.align 2
+	.p2align 4
+	.type	_ZNKSt14default_deleteI21DynamicImplementationEclEPS0_.isra.0, @function
+_ZNKSt14default_deleteI21DynamicImplementationEclEPS0_.isra.0:
+.LFB3431:
+	.cfi_startproc
+	testq	%rdi, %rdi
+	je	.L9
+	movl	$16, %esi
+	jmp	_ZdlPvm@PLT
+	.p2align 4,,10
+	.p2align 3
+.L9:
+	ret
+	.cfi_endproc
+.LFE3431:
+	.size	_ZNKSt14default_deleteI21DynamicImplementationEclEPS0_.isra.0, .-_ZNKSt14default_deleteI21DynamicImplementationEclEPS0_.isra.0
+	.section	.text._ZNKSt14default_deleteI13CRTPInterfaceI18CRTPImplementationEEclEPS2_.isra.0,"axG",@progbits,_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED5Ev,comdat
+	.align 2
+	.p2align 4
+	.type	_ZNKSt14default_deleteI13CRTPInterfaceI18CRTPImplementationEEclEPS2_.isra.0, @function
+_ZNKSt14default_deleteI13CRTPInterfaceI18CRTPImplementationEEclEPS2_.isra.0:
+.LFB3432:
+	.cfi_startproc
+	testq	%rdi, %rdi
+	je	.L11
+	movl	$1, %esi
+	jmp	_ZdlPvm@PLT
+	.p2align 4,,10
+	.p2align 3
+.L11:
+	ret
+	.cfi_endproc
+.LFE3432:
+	.size	_ZNKSt14default_deleteI13CRTPInterfaceI18CRTPImplementationEEclEPS2_.isra.0, .-_ZNKSt14default_deleteI13CRTPInterfaceI18CRTPImplementationEEclEPS2_.isra.0
+	.section	.text.startup,"ax",@progbits
+	.p2align 4
+	.type	_Z41__static_initialization_and_destruction_0ii.constprop.0, @function
+_Z41__static_initialization_and_destruction_0ii.constprop.0:
+.LFB3433:
+	.cfi_startproc
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	leaq	_ZStL8__ioinit(%rip), %rdi
+	call	_ZNSt8ios_base4InitC1Ev@PLT
+	movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rdi
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	leaq	__dso_handle(%rip), %rdx
+	leaq	_ZStL8__ioinit(%rip), %rsi
+	jmp	__cxa_atexit@PLT
+	.cfi_endproc
+.LFE3433:
+	.size	_Z41__static_initialization_and_destruction_0ii.constprop.0, .-_Z41__static_initialization_and_destruction_0ii.constprop.0
+	.section	.text._ZN16DynamicInterfaceC2Ev,"axG",@progbits,_ZN16DynamicInterfaceC5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN16DynamicInterfaceC2Ev
+	.type	_ZN16DynamicInterfaceC2Ev, @function
+_ZN16DynamicInterfaceC2Ev:
+.LFB2691:
+	.cfi_startproc
+	leaq	16+_ZTV16DynamicInterface(%rip), %rax
+	movq	%rax, (%rdi)
+	ret
+	.cfi_endproc
+.LFE2691:
+	.size	_ZN16DynamicInterfaceC2Ev, .-_ZN16DynamicInterfaceC2Ev
+	.weak	_ZN16DynamicInterfaceC1Ev
+	.set	_ZN16DynamicInterfaceC1Ev,_ZN16DynamicInterfaceC2Ev
+	.section	.text._ZN21DynamicImplementationC2Ev,"axG",@progbits,_ZN21DynamicImplementationC5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN21DynamicImplementationC2Ev
+	.type	_ZN21DynamicImplementationC2Ev, @function
+_ZN21DynamicImplementationC2Ev:
+.LFB2693:
+	.cfi_startproc
+	pushq	%rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	movq	%rdi, %rbx
+	call	_ZN16DynamicInterfaceC2Ev
+	leaq	16+_ZTV21DynamicImplementation(%rip), %rax
+	movq	$0, 8(%rbx)
+	movq	%rax, (%rbx)
+	popq	%rbx
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE2693:
+	.size	_ZN21DynamicImplementationC2Ev, .-_ZN21DynamicImplementationC2Ev
+	.weak	_ZN21DynamicImplementationC1Ev
+	.set	_ZN21DynamicImplementationC1Ev,_ZN21DynamicImplementationC2Ev
+	.text
+	.p2align 4
+	.globl	_Z11run_dynamicP16DynamicInterface
+	.type	_Z11run_dynamicP16DynamicInterface, @function
+_Z11run_dynamicP16DynamicInterface:
+.LFB2697:
+	.cfi_startproc
+	pushq	%r12
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
+	movl	$1, %r12d
+	pushq	%rbp
+	.cfi_def_cfa_offset 24
+	.cfi_offset 6, -24
+	movq	%rdi, %rbp
+	pushq	%rbx
+	.cfi_def_cfa_offset 32
+	.cfi_offset 3, -32
+	.p2align 4,,10
+	.p2align 3
+.L20:
+	xorl	%ebx, %ebx
+	.p2align 4,,10
+	.p2align 3
+.L19:
+	movq	0(%rbp), %rax
+	movq	%rbx, %rsi
+	addq	$1, %rbx
+	movq	%rbp, %rdi
+	call	*(%rax)
+	cmpq	%rbx, %r12
+	jne	.L19
+	addq	$1, %r12
+	cmpq	$40000, %r12
+	jne	.L20
+	popq	%rbx
+	.cfi_def_cfa_offset 24
+	popq	%rbp
+	.cfi_def_cfa_offset 16
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE2697:
+	.size	_Z11run_dynamicP16DynamicInterface, .-_Z11run_dynamicP16DynamicInterface
+	.section	.text._ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_,"axG",@progbits,_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_,comdat
+	.p2align 4
+	.weak	_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_
+	.type	_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_, @function
+_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_:
+.LFB2716:
+	.cfi_startproc
+	subq	$24, %rsp
+	.cfi_def_cfa_offset 32
+	movq	(%rdi), %rdi
+	movq	%rsi, %rdx
+	movq	%fs:40, %rax
+	movq	%rax, 8(%rsp)
+	xorl	%eax, %eax
+	call	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0
+	movq	(%rdx), %rdi
+	movq	%rax, %rsi
+	call	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0
+	movq	%rsp, %rdi
+	subq	%rax, %rsi
+	call	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000000000EEEC1IlvEERKT_.isra.0
+	movq	(%rsp), %rax
+	movq	8(%rsp), %rcx
+	xorq	%fs:40, %rcx
+	jne	.L27
+	addq	$24, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	ret
+.L27:
+	.cfi_restore_state
+	call	__stack_chk_fail@PLT
+	.cfi_endproc
+.LFE2716:
+	.size	_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_, .-_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_
+	.section	.text._ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE,"axG",@progbits,_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE,comdat
+	.p2align 4
+	.weak	_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE
+	.type	_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE, @function
+_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE:
+.LFB2715:
+	.cfi_startproc
+	subq	$40, %rsp
+	.cfi_def_cfa_offset 48
+	movq	%rdi, %rdx
+	movq	(%rsi), %rdi
+	movq	%fs:40, %rax
+	movq	%rax, 24(%rsp)
+	xorl	%eax, %eax
+	call	_ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0
+	movq	(%rdx), %rdi
+	movq	%rax, 16(%rsp)
+	call	_ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv.isra.0
+	leaq	16(%rsp), %rsi
+	leaq	8(%rsp), %rdi
+	movq	%rax, 8(%rsp)
+	call	_ZNSt6chronomiIlSt5ratioILl1ELl1000000000EElS2_EENSt11common_typeIJNS_8durationIT_T0_EENS4_IT1_T2_EEEE4typeERKS7_RKSA_
+	movq	24(%rsp), %rcx
+	xorq	%fs:40, %rcx
+	jne	.L31
+	addq	$40, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	ret
+.L31:
+	.cfi_restore_state
+	call	__stack_chk_fail@PLT
+	.cfi_endproc
+.LFE2715:
+	.size	_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE, .-_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE
+	.section	.text._ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_,"axG",@progbits,_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_,comdat
+	.p2align 4
+	.weak	_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_
+	.type	_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_, @function
+_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_:
+.LFB3140:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3140:
+	.size	_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_, .-_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_
+	.section	.text._ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_,"axG",@progbits,_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC5IlvEERKT_,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_
+	.type	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_, @function
+_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_:
+.LFB3151:
+	.cfi_startproc
+	movq	(%rsi), %rax
+	movq	%rax, (%rdi)
+	ret
+	.cfi_endproc
+.LFE3151:
+	.size	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_, .-_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_
+	.weak	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC1IlvEERKT_
+	.set	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC1IlvEERKT_,_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC2IlvEERKT_
+	.section	.text._ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE,"axG",@progbits,_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE,comdat
+	.p2align 4
+	.weak	_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE
+	.type	_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE, @function
+_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE:
+.LFB2997:
+	.cfi_startproc
+	subq	$40, %rsp
+	.cfi_def_cfa_offset 48
+	movq	(%rdi), %rdi
+	movq	%fs:40, %rax
+	movq	%rax, 24(%rsp)
+	xorl	%eax, %eax
+	call	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000000EEE5countEv.isra.0
+	leaq	8(%rsp), %rsi
+	leaq	16(%rsp), %rdi
+	movabsq	$4835703278458516699, %rdx
+	movq	%rax, %rcx
+	imulq	%rdx
+	sarq	$63, %rcx
+	sarq	$18, %rdx
+	subq	%rcx, %rdx
+	movq	%rdx, 8(%rsp)
+	call	_ZNSt6chrono8durationIlSt5ratioILl1ELl1000EEEC1IlvEERKT_
+	movq	16(%rsp), %rax
+	movq	24(%rsp), %rsi
+	xorq	%fs:40, %rsi
+	jne	.L37
+	addq	$40, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	ret
+.L37:
+	.cfi_restore_state
+	call	__stack_chk_fail@PLT
+	.cfi_endproc
+.LFE2997:
+	.size	_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE, .-_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE
+	.section	.text._ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE,"axG",@progbits,_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE,comdat
+	.p2align 4
+	.weak	_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE
+	.type	_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE, @function
+_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE:
+.LFB2714:
+	.cfi_startproc
+	jmp	_ZNSt6chrono20__duration_cast_implINS_8durationIlSt5ratioILl1ELl1000EEEES2_ILl1ELl1000000EElLb1ELb0EE6__castIlS2_ILl1ELl1000000000EEEES4_RKNS1_IT_T0_EE
+	.cfi_endproc
+.LFE2714:
+	.size	_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE, .-_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE
+	.section	.text._ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_,"axG",@progbits,_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_,comdat
+	.p2align 4
+	.weak	_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_
+	.type	_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_, @function
+_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_:
+.LFB3161:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3161:
+	.size	_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_, .-_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_
+	.section	.text._ZN13CRTPInterfaceI18CRTPImplementationE4implEv,"axG",@progbits,_ZN13CRTPInterfaceI18CRTPImplementationE4implEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN13CRTPInterfaceI18CRTPImplementationE4implEv
+	.type	_ZN13CRTPInterfaceI18CRTPImplementationE4implEv, @function
+_ZN13CRTPInterfaceI18CRTPImplementationE4implEv:
+.LFB3172:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3172:
+	.size	_ZN13CRTPInterfaceI18CRTPImplementationE4implEv, .-_ZN13CRTPInterfaceI18CRTPImplementationE4implEv
+	.section	.text._ZN13CRTPInterfaceI18CRTPImplementationE4tickEm,"axG",@progbits,_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm
+	.type	_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm, @function
+_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm:
+.LFB3171:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsi, %rbp
+	call	_ZN13CRTPInterfaceI18CRTPImplementationE4implEv
+	movq	%rbp, %rsi
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	movq	%rax, %rdi
+	jmp	_ZN18CRTPImplementation4tickEm.isra.0
+	.cfi_endproc
+.LFE3171:
+	.size	_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm, .-_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm
+	.section	.text._Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E,"axG",@progbits,_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E,comdat
+	.p2align 4
+	.weak	_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E
+	.type	_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E, @function
+_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E:
+.LFB3013:
+	.cfi_startproc
+	pushq	%r12
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
+	movq	%rdi, %r12
+	pushq	%rbp
+	.cfi_def_cfa_offset 24
+	.cfi_offset 6, -24
+	movl	$1, %ebp
+	pushq	%rbx
+	.cfi_def_cfa_offset 32
+	.cfi_offset 3, -32
+	.p2align 4,,10
+	.p2align 3
+.L45:
+	xorl	%ebx, %ebx
+	.p2align 4,,10
+	.p2align 3
+.L44:
+	movq	%rbx, %rsi
+	movq	%r12, %rdi
+	addq	$1, %rbx
+	call	_ZN13CRTPInterfaceI18CRTPImplementationE4tickEm
+	cmpq	%rbx, %rbp
+	jne	.L44
+	addq	$1, %rbp
+	cmpq	$40000, %rbp
+	jne	.L45
+	popq	%rbx
+	.cfi_def_cfa_offset 24
+	popq	%rbp
+	.cfi_def_cfa_offset 16
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3013:
+	.size	_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E, .-_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E
+	.section	.text._ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv,"axG",@progbits,_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv
+	.type	_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv, @function
+_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv:
+.LFB3016:
+	.cfi_startproc
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	call	_ZN13CRTPInterfaceI18CRTPImplementationE4implEv
+	movq	(%rax), %rdi
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	jmp	_ZN18CRTPImplementation8getValueEv.isra.0
+	.cfi_endproc
+.LFE3016:
+	.size	_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv, .-_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv
+	.section	.text._ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev,"axG",@progbits,_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev
+	.type	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev, @function
+_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev:
+.LFB3366:
+	.cfi_startproc
+	movq	$0, (%rdi)
+	ret
+	.cfi_endproc
+.LFE3366:
+	.size	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev, .-_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev
+	.weak	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC1Ev
+	.set	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC1Ev,_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev
+	.section	.text._ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev,"axG",@progbits,_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev
+	.type	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev, @function
+_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev:
+.LFB3312:
+	.cfi_startproc
+	jmp	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EEC2Ev
+	.cfi_endproc
+.LFE3312:
+	.size	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev, .-_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev
+	.weak	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC1Ev
+	.set	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC1Ev,_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev
+	.section	.text._ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv,"axG",@progbits,_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC5IS1_S3_Lb1EEEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv
+	.type	_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv, @function
+_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv:
+.LFB3263:
+	.cfi_startproc
+	jmp	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEEC2Ev
+	.cfi_endproc
+.LFE3263:
+	.size	_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv, .-_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv
+	.weak	_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC1IS1_S3_Lb1EEEv
+	.set	_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC1IS1_S3_Lb1EEEv,_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC2IS1_S3_Lb1EEEv
+	.section	.text._ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_,"axG",@progbits,_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_,comdat
+	.p2align 4
+	.weak	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_
+	.type	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_, @function
+_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_:
+.LFB3368:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3368:
+	.size	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_, .-_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_
+	.section	.text._ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_,"axG",@progbits,_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_,comdat
+	.p2align 4
+	.weak	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_
+	.type	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_, @function
+_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_:
+.LFB3314:
+	.cfi_startproc
+	jmp	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERS2_
+	.cfi_endproc
+.LFE3314:
+	.size	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_, .-_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_
+	.section	.text._ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE,"axG",@progbits,_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE,comdat
+	.p2align 4
+	.weak	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE
+	.type	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE, @function
+_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE:
+.LFB3265:
+	.cfi_startproc
+	jmp	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERS4_
+	.cfi_endproc
+.LFE3265:
+	.size	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE, .-_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE
+	.section	.text._ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_,"axG",@progbits,_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_,comdat
+	.p2align 4
+	.weak	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_
+	.type	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_, @function
+_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_:
+.LFB3211:
+	.cfi_startproc
+	jmp	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE
+	.cfi_endproc
+.LFE3211:
+	.size	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_, .-_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_
+	.section	.text._ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv,"axG",@progbits,_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	.type	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv, @function
+_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv:
+.LFB3138:
+	.cfi_startproc
+	jmp	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS8_
+	.cfi_endproc
+.LFE3138:
+	.size	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv, .-_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	.section	.text._ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_,"axG",@progbits,_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC5EPS0_,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_
+	.type	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_, @function
+_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_:
+.LFB3209:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rdi, %rbp
+	pushq	%rbx
+	.cfi_def_cfa_offset 24
+	.cfi_offset 3, -24
+	movq	%rsi, %rbx
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 32
+	call	_ZNSt5tupleIJP21DynamicImplementationSt14default_deleteIS0_EEEC1IS1_S3_Lb1EEEv
+	movq	%rbp, %rdi
+	call	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	movq	%rbx, (%rax)
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 24
+	popq	%rbx
+	.cfi_def_cfa_offset 16
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3209:
+	.size	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_, .-_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_
+	.weak	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC1EPS0_
+	.set	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC1EPS0_,_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC2EPS0_
+	.section	.text._ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_,"axG",@progbits,_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC5IS2_vEEPS0_,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_
+	.type	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_, @function
+_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_:
+.LFB3136:
+	.cfi_startproc
+	jmp	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EEC1EPS0_
+	.cfi_endproc
+.LFE3136:
+	.size	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_, .-_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_
+	.weak	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC1IS2_vEEPS0_
+	.set	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC1IS2_vEEPS0_,_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC2IS2_vEEPS0_
+	.section	.text._ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_,"axG",@progbits,_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_,comdat
+	.p2align 4
+	.weak	_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_
+	.type	_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_, @function
+_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_:
+.LFB2985:
+	.cfi_startproc
+	pushq	%r12
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
+	movq	%rdi, %r12
+	movl	$16, %edi
+	pushq	%rbp
+	.cfi_def_cfa_offset 24
+	.cfi_offset 6, -24
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 32
+	call	_Znwm@PLT
+	movq	%rax, %rbp
+	movq	%rax, %rdi
+	call	_ZN21DynamicImplementationC1Ev
+	movq	%rbp, %rsi
+	movq	%r12, %rdi
+	call	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEC1IS2_vEEPS0_
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 24
+	movq	%r12, %rax
+	popq	%rbp
+	.cfi_def_cfa_offset 16
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE2985:
+	.size	_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_, .-_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_
+	.section	.text._ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev,"axG",@progbits,_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev
+	.type	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev, @function
+_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev:
+.LFB2987:
+	.cfi_startproc
+	pushq	%rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	call	_ZNSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	cmpq	$0, (%rax)
+	movq	%rax, %rbx
+	je	.L65
+	movq	%rax, %rdi
+	call	_ZSt4moveIRP21DynamicImplementationEONSt16remove_referenceIT_E4typeEOS4_
+	movq	(%rax), %rdi
+	call	_ZNKSt14default_deleteI21DynamicImplementationEclEPS0_.isra.0
+.L65:
+	movq	$0, (%rbx)
+	popq	%rbx
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE2987:
+	.size	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev, .-_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev
+	.weak	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED1Ev
+	.set	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED1Ev,_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED2Ev
+	.section	.text._ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_,"axG",@progbits,_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_,comdat
+	.p2align 4
+	.weak	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_
+	.type	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_, @function
+_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_:
+.LFB3373:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3373:
+	.size	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_, .-_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_
+	.section	.text._ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_,"axG",@progbits,_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_,comdat
+	.p2align 4
+	.weak	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_
+	.type	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_, @function
+_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_:
+.LFB3322:
+	.cfi_startproc
+	jmp	_ZNSt10_Head_baseILm0EP21DynamicImplementationLb0EE7_M_headERKS2_
+	.cfi_endproc
+.LFE3322:
+	.size	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_, .-_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_
+	.section	.text._ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE,"axG",@progbits,_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE,comdat
+	.p2align 4
+	.weak	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE
+	.type	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE, @function
+_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE:
+.LFB3271:
+	.cfi_startproc
+	jmp	_ZNSt11_Tuple_implILm0EJP21DynamicImplementationSt14default_deleteIS0_EEE7_M_headERKS4_
+	.cfi_endproc
+.LFE3271:
+	.size	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE, .-_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE
+	.section	.text._ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_,"axG",@progbits,_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_,comdat
+	.p2align 4
+	.weak	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_
+	.type	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_, @function
+_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_:
+.LFB3216:
+	.cfi_startproc
+	jmp	_ZSt12__get_helperILm0EP21DynamicImplementationJSt14default_deleteIS0_EEERKT0_RKSt11_Tuple_implIXT_EJS4_DpT1_EE
+	.cfi_endproc
+.LFE3216:
+	.size	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_, .-_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_
+	.section	.text._ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv,"axG",@progbits,_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	.type	_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv, @function
+_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv:
+.LFB3149:
+	.cfi_startproc
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	call	_ZSt3getILm0EJP21DynamicImplementationSt14default_deleteIS0_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS8_
+	movq	(%rax), %rax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3149:
+	.size	_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv, .-_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	.section	.text._ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv,"axG",@progbits,_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv
+	.type	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv, @function
+_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv:
+.LFB2996:
+	.cfi_startproc
+	jmp	_ZNKSt15__uniq_ptr_implI21DynamicImplementationSt14default_deleteIS0_EE6_M_ptrEv
+	.cfi_endproc
+.LFE2996:
+	.size	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv, .-_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv
+	.section	.text._ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv,"axG",@progbits,_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv
+	.type	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv, @function
+_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv:
+.LFB3014:
+	.cfi_startproc
+	jmp	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv
+	.cfi_endproc
+.LFE3014:
+	.size	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv, .-_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv
+	.section	.text._ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev,"axG",@progbits,_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev
+	.type	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev, @function
+_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev:
+.LFB3378:
+	.cfi_startproc
+	movq	$0, (%rdi)
+	ret
+	.cfi_endproc
+.LFE3378:
+	.size	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev, .-_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev
+	.weak	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC1Ev
+	.set	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC1Ev,_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev
+	.section	.text._ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev,"axG",@progbits,_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev
+	.type	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev, @function
+_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev:
+.LFB3324:
+	.cfi_startproc
+	jmp	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EEC2Ev
+	.cfi_endproc
+.LFE3324:
+	.size	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev, .-_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev
+	.weak	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC1Ev
+	.set	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC1Ev,_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev
+	.section	.text._ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv,"axG",@progbits,_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC5IS3_S5_Lb1EEEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv
+	.type	_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv, @function
+_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv:
+.LFB3273:
+	.cfi_startproc
+	jmp	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2Ev
+	.cfi_endproc
+.LFE3273:
+	.size	_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv, .-_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv
+	.weak	_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC1IS3_S5_Lb1EEEv
+	.set	_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC1IS3_S5_Lb1EEEv,_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC2IS3_S5_Lb1EEEv
+	.section	.text._ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_,"axG",@progbits,_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_,comdat
+	.p2align 4
+	.weak	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_
+	.type	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_, @function
+_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_:
+.LFB3380:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3380:
+	.size	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_, .-_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_
+	.section	.text._ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_,"axG",@progbits,_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_,comdat
+	.p2align 4
+	.weak	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_
+	.type	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_, @function
+_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_:
+.LFB3326:
+	.cfi_startproc
+	jmp	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERS4_
+	.cfi_endproc
+.LFE3326:
+	.size	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_, .-_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_
+	.section	.text._ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE,"axG",@progbits,_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE,comdat
+	.p2align 4
+	.weak	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE
+	.type	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE, @function
+_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE:
+.LFB3275:
+	.cfi_startproc
+	jmp	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERS6_
+	.cfi_endproc
+.LFE3275:
+	.size	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE, .-_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE
+	.section	.text._ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_,"axG",@progbits,_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_,comdat
+	.p2align 4
+	.weak	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_
+	.type	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_, @function
+_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_:
+.LFB3222:
+	.cfi_startproc
+	jmp	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERT0_RSt11_Tuple_implIXT_EJS6_DpT1_EE
+	.cfi_endproc
+.LFE3222:
+	.size	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_, .-_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_
+	.section	.text._ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv,"axG",@progbits,_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	.type	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv, @function
+_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv:
+.LFB3159:
+	.cfi_startproc
+	jmp	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERSA_
+	.cfi_endproc
+.LFE3159:
+	.size	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv, .-_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	.section	.text._ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_,"axG",@progbits,_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC5EPS2_,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_
+	.type	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_, @function
+_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_:
+.LFB3220:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rdi, %rbp
+	pushq	%rbx
+	.cfi_def_cfa_offset 24
+	.cfi_offset 3, -24
+	movq	%rsi, %rbx
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 32
+	call	_ZNSt5tupleIJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEEC1IS3_S5_Lb1EEEv
+	movq	%rbp, %rdi
+	call	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	movq	%rbx, (%rax)
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 24
+	popq	%rbx
+	.cfi_def_cfa_offset 16
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3220:
+	.size	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_, .-_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_
+	.weak	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC1EPS2_
+	.set	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC1EPS2_,_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2EPS2_
+	.section	.text._ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_,"axG",@progbits,_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC5IS4_vEEPS2_,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_
+	.type	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_, @function
+_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_:
+.LFB3157:
+	.cfi_startproc
+	jmp	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC1EPS2_
+	.cfi_endproc
+.LFE3157:
+	.size	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_, .-_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_
+	.weak	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC1IS4_vEEPS2_
+	.set	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC1IS4_vEEPS2_,_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC2IS4_vEEPS2_
+	.section	.text._ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_,"axG",@progbits,_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_,comdat
+	.p2align 4
+	.weak	_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_
+	.type	_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_, @function
+_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_:
+.LFB3001:
+	.cfi_startproc
+	pushq	%r12
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
+	movq	%rdi, %r12
+	movl	$1, %edi
+	call	_Znwm@PLT
+	movq	%r12, %rdi
+	movq	%rax, %rsi
+	call	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEC1IS4_vEEPS2_
+	movq	%r12, %rax
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3001:
+	.size	_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_, .-_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_
+	.section	.text._ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev,"axG",@progbits,_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED5Ev,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev
+	.type	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev, @function
+_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev:
+.LFB3003:
+	.cfi_startproc
+	pushq	%rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	call	_ZNSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	cmpq	$0, (%rax)
+	movq	%rax, %rbx
+	je	.L89
+	movq	%rax, %rdi
+	call	_ZSt4moveIRP13CRTPInterfaceI18CRTPImplementationEEONSt16remove_referenceIT_E4typeEOS6_
+	movq	(%rax), %rdi
+	call	_ZNKSt14default_deleteI13CRTPInterfaceI18CRTPImplementationEEclEPS2_.isra.0
+.L89:
+	movq	$0, (%rbx)
+	popq	%rbx
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3003:
+	.size	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev, .-_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev
+	.weak	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED1Ev
+	.set	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED1Ev,_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED2Ev
+	.section	.text._ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_,"axG",@progbits,_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_,comdat
+	.p2align 4
+	.weak	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_
+	.type	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_, @function
+_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_:
+.LFB3385:
+	.cfi_startproc
+	movq	%rdi, %rax
+	ret
+	.cfi_endproc
+.LFE3385:
+	.size	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_, .-_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_
+	.section	.text._ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_,"axG",@progbits,_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_,comdat
+	.p2align 4
+	.weak	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_
+	.type	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_, @function
+_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_:
+.LFB3334:
+	.cfi_startproc
+	jmp	_ZNSt10_Head_baseILm0EP13CRTPInterfaceI18CRTPImplementationELb0EE7_M_headERKS4_
+	.cfi_endproc
+.LFE3334:
+	.size	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_, .-_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_
+	.section	.text._ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE,"axG",@progbits,_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE,comdat
+	.p2align 4
+	.weak	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE
+	.type	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE, @function
+_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE:
+.LFB3281:
+	.cfi_startproc
+	jmp	_ZNSt11_Tuple_implILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEE7_M_headERKS6_
+	.cfi_endproc
+.LFE3281:
+	.size	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE, .-_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE
+	.section	.text._ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_,"axG",@progbits,_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_,comdat
+	.p2align 4
+	.weak	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_
+	.type	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_, @function
+_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_:
+.LFB3227:
+	.cfi_startproc
+	jmp	_ZSt12__get_helperILm0EP13CRTPInterfaceI18CRTPImplementationEJSt14default_deleteIS2_EEERKT0_RKSt11_Tuple_implIXT_EJS6_DpT1_EE
+	.cfi_endproc
+.LFE3227:
+	.size	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_, .-_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_
+	.section	.text._ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv,"axG",@progbits,_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	.type	_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv, @function
+_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv:
+.LFB3170:
+	.cfi_startproc
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	call	_ZSt3getILm0EJP13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKSA_
+	movq	(%rax), %rax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE3170:
+	.size	_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv, .-_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	.section	.text._ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv,"axG",@progbits,_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv
+	.type	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv, @function
+_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv:
+.LFB3012:
+	.cfi_startproc
+	jmp	_ZNKSt15__uniq_ptr_implI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE6_M_ptrEv
+	.cfi_endproc
+.LFE3012:
+	.size	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv, .-_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv
+	.section	.text._ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv,"axG",@progbits,_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv,comdat
+	.align 2
+	.p2align 4
+	.weak	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv
+	.type	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv, @function
+_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv:
+.LFB3015:
+	.cfi_startproc
+	jmp	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv
+	.cfi_endproc
+.LFE3015:
+	.size	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv, .-_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC0:
+	.string	"dynamic polymorphism:\t"
+.LC1:
+	.string	"static polymorphism:\t"
+.LC2:
+	.string	"int main()"
+.LC3:
+	.string	"main.cpp"
+	.section	.rodata.str1.8,"aMS",@progbits,1
+	.align 8
+.LC4:
+	.string	"dynamicImplementation->getValue() == crtpImplementation->getValue()"
+	.section	.text.unlikely,"ax",@progbits
+.LCOLDB5:
+	.section	.text.startup
+.LHOTB5:
+	.p2align 4
+	.globl	main
+	.type	main, @function
+main:
+.LFB2707:
+	.cfi_startproc
+	.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+	.cfi_lsda 0x1b,.LLSDA2707
+	pushq	%r15
+	.cfi_def_cfa_offset 16
+	.cfi_offset 15, -16
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	.cfi_offset 14, -24
+	pushq	%r13
+	.cfi_def_cfa_offset 32
+	.cfi_offset 13, -32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	.cfi_offset 12, -40
+	pushq	%rbp
+	.cfi_def_cfa_offset 48
+	.cfi_offset 6, -48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	.cfi_offset 3, -56
+	subq	$56, %rsp
+	.cfi_def_cfa_offset 112
+	movq	%fs:40, %rax
+	movq	%rax, 40(%rsp)
+	xorl	%eax, %eax
+	leaq	16(%rsp), %rbp
+	movq	$0, (%rsp)
+	movq	$0, 8(%rsp)
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	movq	%rbp, %rdi
+	movq	%rax, (%rsp)
+.LEHB0:
+	call	_ZSt11make_uniqueI21DynamicImplementationJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_
+.LEHE0:
+	movq	%rbp, %rdi
+	call	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EE3getEv
+	movq	%rax, %rdi
+.LEHB1:
+	call	_Z11run_dynamicP16DynamicInterface
+	movq	%rsp, %rbx
+	leaq	8(%rsp), %r15
+	leaq	32(%rsp), %r14
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	movq	%rbx, %rsi
+	movq	%r15, %rdi
+	movq	%rax, 8(%rsp)
+	call	_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE
+	movq	%r14, %rdi
+	movq	%rax, 32(%rsp)
+	call	_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE
+	movq	%rax, %rdi
+	call	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000EEE5countEv.isra.0
+	leaq	.LC0(%rip), %rsi
+	leaq	_ZSt4cout(%rip), %rdi
+	movq	%rax, %r12
+	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+	movq	%rax, %rdi
+	movl	%r12d, %esi
+	call	_ZNSolsEi@PLT
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %r13
+	movq	%rax, %rdi
+	movq	%r13, %rsi
+	call	_ZNSolsEPFRSoS_E@PLT
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	leaq	24(%rsp), %r12
+	movq	%r12, %rdi
+	movq	%rax, (%rsp)
+	call	_ZSt11make_uniqueI13CRTPInterfaceI18CRTPImplementationEJEENSt9_MakeUniqIT_E15__single_objectEDpOT0_
+.LEHE1:
+	movq	%r12, %rdi
+	call	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EE3getEv
+	movq	%rax, %rdi
+	call	_Z8run_crtpI18CRTPImplementationEvP13CRTPInterfaceIT_E
+	call	_ZNSt6chrono3_V212system_clock3nowEv@PLT
+	movq	%rbx, %rsi
+	movq	%r15, %rdi
+	movq	%rax, 8(%rsp)
+	call	_ZNSt6chronomiINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEES6_EENSt11common_typeIJT0_T1_EE4typeERKNS_10time_pointIT_S8_EERKNSC_ISD_S9_EE
+	movq	%r14, %rdi
+	movq	%rax, 32(%rsp)
+	call	_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsrNS_13__is_durationIT_EE5valueES8_E4typeERKNS1_IT0_T1_EE
+	movq	%rax, %rdi
+	call	_ZNKSt6chrono8durationIlSt5ratioILl1ELl1000EEE5countEv.isra.0
+	leaq	.LC1(%rip), %rsi
+	leaq	_ZSt4cout(%rip), %rdi
+	movq	%rax, %rbx
+.LEHB2:
+	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+	movq	%rax, %rdi
+	movl	%ebx, %esi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdi
+	movq	%r13, %rsi
+	call	_ZNSolsEPFRSoS_E@PLT
+	movq	%rbp, %rdi
+	call	_ZNKSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EEptEv
+	movq	%rax, %rdi
+	movq	(%rax), %rax
+	call	*8(%rax)
+.LEHE2:
+	movq	%r12, %rdi
+	movq	%rax, %rbx
+	call	_ZNKSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EEptEv
+	movq	%rax, %rdi
+	call	_ZN13CRTPInterfaceI18CRTPImplementationE8getValueEv
+	cmpq	%rax, %rbx
+	jne	.L108
+	movq	%r12, %rdi
+	call	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED1Ev
+	movq	%rbp, %rdi
+	call	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED1Ev
+	movq	40(%rsp), %rax
+	xorq	%fs:40, %rax
+	jne	.L109
+	addq	$56, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 56
+	xorl	%eax, %eax
+	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%rbp
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
+	popq	%r13
+	.cfi_def_cfa_offset 24
+	popq	%r14
+	.cfi_def_cfa_offset 16
+	popq	%r15
+	.cfi_def_cfa_offset 8
+	ret
+.L108:
+	.cfi_restore_state
+	leaq	.LC2(%rip), %rcx
+	movl	$102, %edx
+	leaq	.LC3(%rip), %rsi
+	leaq	.LC4(%rip), %rdi
+	call	__assert_fail@PLT
+.L109:
+	call	__stack_chk_fail@PLT
+.L105:
+	movq	%rax, %rbx
+	jmp	.L101
+.L104:
+	movq	%rax, %r12
+	jmp	.L102
+	.globl	__gxx_personality_v0
+	.section	.gcc_except_table,"a",@progbits
+.LLSDA2707:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE2707-.LLSDACSB2707
+.LLSDACSB2707:
+	.uleb128 .LEHB0-.LFB2707
+	.uleb128 .LEHE0-.LEHB0
+	.uleb128 0
+	.uleb128 0
+	.uleb128 .LEHB1-.LFB2707
+	.uleb128 .LEHE1-.LEHB1
+	.uleb128 .L104-.LFB2707
+	.uleb128 0
+	.uleb128 .LEHB2-.LFB2707
+	.uleb128 .LEHE2-.LEHB2
+	.uleb128 .L105-.LFB2707
+	.uleb128 0
+.LLSDACSE2707:
+	.section	.text.startup
+	.cfi_endproc
+	.section	.text.unlikely
+	.cfi_startproc
+	.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+	.cfi_lsda 0x1b,.LLSDAC2707
+	.type	main.cold, @function
+main.cold:
+.LFSB2707:
+.L101:
+	.cfi_def_cfa_offset 112
+	.cfi_offset 3, -56
+	.cfi_offset 6, -48
+	.cfi_offset 12, -40
+	.cfi_offset 13, -32
+	.cfi_offset 14, -24
+	.cfi_offset 15, -16
+	movq	%r12, %rdi
+	movq	%rbx, %r12
+	call	_ZNSt10unique_ptrI13CRTPInterfaceI18CRTPImplementationESt14default_deleteIS2_EED1Ev
+.L102:
+	movq	%rbp, %rdi
+	call	_ZNSt10unique_ptrI21DynamicImplementationSt14default_deleteIS0_EED1Ev
+	movq	%r12, %rdi
+.LEHB3:
+	call	_Unwind_Resume@PLT
+.LEHE3:
+	.cfi_endproc
+.LFE2707:
+	.section	.gcc_except_table
+.LLSDAC2707:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSEC2707-.LLSDACSBC2707
+.LLSDACSBC2707:
+	.uleb128 .LEHB3-.LCOLDB5
+	.uleb128 .LEHE3-.LEHB3
+	.uleb128 0
+	.uleb128 0
+.LLSDACSEC2707:
+	.section	.text.unlikely
+	.section	.text.startup
+	.size	main, .-main
+	.section	.text.unlikely
+	.size	main.cold, .-main.cold
+.LCOLDE5:
+	.section	.text.startup
+.LHOTE5:
+	.p2align 4
+	.type	_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface, @function
+_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface:
+.LFB3423:
+	.cfi_startproc
+	jmp	_Z41__static_initialization_and_destruction_0ii.constprop.0
+	.cfi_endproc
+.LFE3423:
+	.size	_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface, .-_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface
+	.section	.init_array,"aw"
+	.align 8
+	.quad	_GLOBAL__sub_I__Z11run_dynamicP16DynamicInterface
+	.weak	_ZTS16DynamicInterface
+	.section	.rodata._ZTS16DynamicInterface,"aG",@progbits,_ZTS16DynamicInterface,comdat
+	.align 16
+	.type	_ZTS16DynamicInterface, @object
+	.size	_ZTS16DynamicInterface, 19
+_ZTS16DynamicInterface:
+	.string	"16DynamicInterface"
+	.weak	_ZTI16DynamicInterface
+	.section	.data.rel.ro._ZTI16DynamicInterface,"awG",@progbits,_ZTI16DynamicInterface,comdat
+	.align 8
+	.type	_ZTI16DynamicInterface, @object
+	.size	_ZTI16DynamicInterface, 16
+_ZTI16DynamicInterface:
+	.quad	_ZTVN10__cxxabiv117__class_type_infoE+16
+	.quad	_ZTS16DynamicInterface
+	.weak	_ZTS21DynamicImplementation
+	.section	.rodata._ZTS21DynamicImplementation,"aG",@progbits,_ZTS21DynamicImplementation,comdat
+	.align 16
+	.type	_ZTS21DynamicImplementation, @object
+	.size	_ZTS21DynamicImplementation, 24
+_ZTS21DynamicImplementation:
+	.string	"21DynamicImplementation"
+	.weak	_ZTI21DynamicImplementation
+	.section	.data.rel.ro._ZTI21DynamicImplementation,"awG",@progbits,_ZTI21DynamicImplementation,comdat
+	.align 8
+	.type	_ZTI21DynamicImplementation, @object
+	.size	_ZTI21DynamicImplementation, 24
+_ZTI21DynamicImplementation:
+	.quad	_ZTVN10__cxxabiv120__si_class_type_infoE+16
+	.quad	_ZTS21DynamicImplementation
+	.quad	_ZTI16DynamicInterface
+	.weak	_ZTV16DynamicInterface
+	.section	.data.rel.ro._ZTV16DynamicInterface,"awG",@progbits,_ZTV16DynamicInterface,comdat
+	.align 8
+	.type	_ZTV16DynamicInterface, @object
+	.size	_ZTV16DynamicInterface, 32
+_ZTV16DynamicInterface:
+	.quad	0
+	.quad	_ZTI16DynamicInterface
+	.quad	__cxa_pure_virtual
+	.quad	__cxa_pure_virtual
+	.weak	_ZTV21DynamicImplementation
+	.section	.data.rel.ro.local._ZTV21DynamicImplementation,"awG",@progbits,_ZTV21DynamicImplementation,comdat
+	.align 8
+	.type	_ZTV21DynamicImplementation, @object
+	.size	_ZTV21DynamicImplementation, 32
+_ZTV21DynamicImplementation:
+	.quad	0
+	.quad	_ZTI21DynamicImplementation
+	.quad	_ZN21DynamicImplementation4tickEm
+	.quad	_ZN21DynamicImplementation8getValueEv
+	.local	_ZStL8__ioinit
+	.comm	_ZStL8__ioinit,1,1
+	.hidden	DW.ref.__gxx_personality_v0
+	.weak	DW.ref.__gxx_personality_v0
+	.section	.data.rel.local.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat
+	.align 8
+	.type	DW.ref.__gxx_personality_v0, @object
+	.size	DW.ref.__gxx_personality_v0, 8
+DW.ref.__gxx_personality_v0:
+	.quad	__gxx_personality_v0
+	.hidden	__dso_handle
+	.ident	"GCC: (GNU) 9.2.0"
+	.section	.note.GNU-stack,"",@progbits
