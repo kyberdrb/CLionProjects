@@ -20,9 +20,6 @@ void Game::runGame() {
     clearTerminal();
 
     constructionSite->showFinalStep();
-    waitForBrickDescent();
-
-    showConstructionSite();
 }
 
 void Game::clearTerminal() {

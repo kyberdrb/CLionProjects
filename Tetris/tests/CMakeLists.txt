@@ -3,7 +3,7 @@ target_sources(
         unit_tests
 
         PRIVATE
-        ExampleTestSuite.cpp
+        TetrisTestSuite.cpp
 )
 
 target_link_libraries(

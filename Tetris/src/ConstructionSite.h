@@ -1,20 +1,34 @@
 #pragma once
 
+#include "Brick.h"
+
 #include <string>
+#include <memory>
 
 class ConstructionSite {
+private:
+    std::unique_ptr<Brick> brick;
+
 public:
-    std::string playground[2][2] = {
-            {"0", "1"}, {"4", "5"}
+    static constexpr uint_fast32_t ROWS = 3;
+    static constexpr uint_fast32_t  COLUMNS = 5;
+
+    const std::string FLOOR = "‾"; // OVERLINE
+    const std::string WALL = "|"; // PIPE
+
+    std::string playground[ROWS][COLUMNS] = {
+            {WALL, " ", " ", " ", WALL},
+            {WALL,  " ", " ", " ", WALL},
+            {FLOOR, FLOOR, FLOOR, FLOOR, FLOOR}
     };
 
-    const char16_t FLOOR = u'‾'; // OVERLINE
-
-    ConstructionSite() = default;
+    ConstructionSite();
 
     void showFirstStep();
     void showSecondStep();
     void showFinalStep();
 
-    std::string getCurrentPlayground() const;
+    std::string getCurrentPlayground();
+    void showBrick();
+    void moveBrickOneStepDown();
 };
