@@ -10,7 +10,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 add_subdirectory(src)
 
-set(GOOGLE_TEST_DIR "tests/googletest")
+set(GOOGLE_TEST_DIR tests/googletest)
 add_subdirectory(${GOOGLE_TEST_DIR})
 include_directories(${GOOGLE_TEST_DIR}/googletest/include)
 enable_testing()

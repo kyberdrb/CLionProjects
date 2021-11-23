@@ -1,10 +1,17 @@
 #pragma once
 
+#include "ConstructionSite.h"
+
+#include <memory>
+
 class Game {
 public:
-    Game() = default;
+    std::unique_ptr<ConstructionSite> constructionSite;
+
+    Game();
 
     void runGame();
     void clearTerminal();
     void waitForBrickDescent();
+    void showConstructionSite() const;
 };

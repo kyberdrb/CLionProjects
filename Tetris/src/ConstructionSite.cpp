@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <memory>
+#include <sstream>
 
 void ConstructionSite::showFirstStep() {
     std::cout << "ConstructionSite (stavenisko - hracia plocha)" << std::endl;
@@ -32,4 +33,16 @@ void ConstructionSite::showFinalStep() {
     std::cout << "|   |" << std::endl;
     std::cout << "| " << brick->showBrick() << " |" << std::endl;
     std::cout << "‾‾‾‾‾" << std::endl;
+}
+
+std::string ConstructionSite::getCurrentPlayground() const {
+    std::stringstream buffer{};
+    for (int row = 0; row < 2; ++row) {
+        for (int column = 0; column < 2; ++column) {
+            buffer << playground[row][column];
+            buffer << " ";
+        }
+        buffer << "\n";
+    }
+    return buffer.str();
 }

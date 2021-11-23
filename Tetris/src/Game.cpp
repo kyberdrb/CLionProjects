@@ -1,14 +1,15 @@
-#include "ConstructionSite.h"
 #include "Game.h"
 
 #include <chrono>
 #include <thread>
 #include <iostream>
 
+Game::Game() :
+    constructionSite(std::make_unique<ConstructionSite>())
+{}
+
 void Game::runGame() {
     clearTerminal();
-
-    auto constructionSite = std::make_unique<ConstructionSite>();
 
     constructionSite->showFirstStep();
     waitForBrickDescent();
@@ -19,6 +20,9 @@ void Game::runGame() {
     clearTerminal();
 
     constructionSite->showFinalStep();
+    waitForBrickDescent();
+
+    showConstructionSite();
 }
 
 void Game::clearTerminal() {
@@ -32,3 +36,7 @@ void Game::clearTerminal() {
 void Game::waitForBrickDescent() {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 };
+
+void Game::showConstructionSite() const {
+    std::cout << constructionSite->getCurrentPlayground() << std::endl;
+}
