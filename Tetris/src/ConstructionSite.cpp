@@ -5,52 +5,62 @@
 #include <memory>
 #include <sstream>
 
-ConstructionSite::ConstructionSite() :
-    brick(std::make_unique<Brick>())
-{}
-
-void ConstructionSite::showFirstStep() {
-    std::cout << "ConstructionSite (stavenisko - hracia plocha)" << std::endl;
-    std::cout << std::endl;
-
-    std::cout<< getCurrentPlayground() << std::flush;
-}
-
-void ConstructionSite::showSecondStep() {
-    std::cout << "Brick (one part of a Tetromino - tehlička)" << std::endl;
-    std::cout << std::endl;
-
-    brick->makeVisible();
-    std::cout<< getCurrentPlayground() << std::flush;
-}
-void ConstructionSite::showFinalStep() {
-    std::cout << "Brick has fallen to the bottom - this brick stops moving and next brick starts falling" << std::endl;
-    std::cout << std::endl;
-
-    moveBrickOneStepDown();
-    std::cout<< getCurrentPlayground() << std::flush;
-}
-
-std::string ConstructionSite::getCurrentPlayground() {
-    if (brick->isVisible()) {
-        showBrick();
+ConstructionSite::ConstructionSite(uint_fast32_t rows, uint_fast32_t columns) :
+        brick(std::make_unique<Brick>())
+{
+    //reserveCapacity()
+    playingField.resize(rows);
+    for (auto& row : playingField) {
+        row.resize(columns);
     }
 
-    std::stringstream buffer{};
-    for (int row = 0; row < ROWS; ++row) {
-        for (int column = 0; column < COLUMNS; ++column) {
-            buffer << playground[row][column];
+    //initializePlayingField()
+    uint_fast32_t forelastRowIndex = rows - 2;
+    for (uint_fast32_t row = 0; row <= forelastRowIndex; ++row) {
+        for (uint_fast32_t column = 0; column < columns; ++column) {
+            //check first and forelast column - fill them with WALL character
+            if (column == 0 || column == columns - 1) {
+                playingField.at(row).at(column) = WALL;
+                continue;
+            }
+
+            //fill the rest with BLANK character
+            playingField.at(row).at(column) = BLANK;
+        }
+    }
+
+    //iterate the last line in a separate loop - fill it with FLOOR character
+    uint_fast32_t lastRowIndex = rows - 1;
+    auto& lastRow = playingField.at(lastRowIndex);
+    for (int column = 0; column < columns; ++column) {
+        lastRow.at(column).assign(FLOOR);
+    }
+}
+
+void ConstructionSite::makeBrickVisible() {
+    brick->makeVisible();
+}
+
+std::string ConstructionSite::getCurrentPlayingField() {
+    if (brick->isVisible()) {
+        addBrickToPlayingField();
+    }
+
+    std::stringstream buffer;
+    for (const auto& row : playingField) {
+        for (const auto& column : row) {
+            buffer << column;
         }
         buffer << "\n";
     }
     return buffer.str();
 }
 
-void ConstructionSite::showBrick() {
-    playground[brick->getRow()][brick->getColumn()] = brick->getBrickSign();
+void ConstructionSite::addBrickToPlayingField() {
+    playingField.at(brick->getRow()).at(brick->getColumn()).assign(brick->getBrickSign());
 }
 
-void ConstructionSite::moveBrickOneStepDown() {
-    playground[brick->getRow()][brick->getColumn()] = " ";  // clearBrickFromPreviousPosition
+void ConstructionSite::moveBrickLower() {
+    playingField.at(brick->getRow()).at(brick->getColumn()).assign(BLANK);  // clearBrickFromPreviousPosition()
     brick->fallOneStepDown();
 }

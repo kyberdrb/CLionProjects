@@ -5,21 +5,31 @@
 #include <iostream>
 
 Game::Game() :
-    constructionSite(std::make_unique<ConstructionSite>())
+    constructionSite(std::make_unique<ConstructionSite>(3, 5))
 {}
 
 void Game::runGame() {
     clearTerminal();
 
-    constructionSite->showFirstStep();
+    // TODO transform linear steps in Game into a for/while loop
+    //while (true) {
+        //loadInputFromTerminal();
+        //recalculateGameLogic();
+        //drawFrameOnTerminal();
+        //clearTerminal();
+    //}
+
+    drawFrameOnTerminal();
     waitForBrickDescent();
     clearTerminal();
 
-    constructionSite->showSecondStep();
+    constructionSite->makeBrickVisible();
+    drawFrameOnTerminal();
     waitForBrickDescent();
     clearTerminal();
 
-    constructionSite->showFinalStep();
+    constructionSite->moveBrickLower(); // loadInputFromTerminal()
+    drawFrameOnTerminal();
 }
 
 void Game::clearTerminal() {
@@ -34,6 +44,6 @@ void Game::waitForBrickDescent() {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 };
 
-void Game::showConstructionSite() const {
-    std::cout << constructionSite->getCurrentPlayground() << std::endl;
+void Game::drawFrameOnTerminal() const {
+    std::cout << constructionSite->getCurrentPlayingField() << std::flush;
 }

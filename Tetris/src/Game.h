@@ -5,13 +5,14 @@
 #include <memory>
 
 class Game {
-public:
+private:
     std::unique_ptr<ConstructionSite> constructionSite;
 
+public:
     Game();
 
     void runGame();
     void clearTerminal();
     void waitForBrickDescent();
-    void showConstructionSite() const;
+    void drawFrameOnTerminal() const;
 };

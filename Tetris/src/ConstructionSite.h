@@ -2,33 +2,32 @@
 
 #include "Brick.h"
 
-#include <string>
 #include <memory>
+#include <string>
+#include <vector>
 
 class ConstructionSite {
 private:
     std::unique_ptr<Brick> brick;
 
-public:
+    // TODO parametrize with args, i.e. "argv" and with constructor, and maybe add a setter to dynamically resize the playground during the game
+    // TODO manually enlarge the playingField in order to test multiple descends and/or input commands - preparation for testing in a while loop
     static constexpr uint_fast32_t ROWS = 3;
     static constexpr uint_fast32_t  COLUMNS = 5;
 
     const std::string FLOOR = "‾"; // OVERLINE
     const std::string WALL = "|"; // PIPE
+    const std::string BLANK = " "; // PIPE
 
-    std::string playground[ROWS][COLUMNS] = {
-            {WALL, " ", " ", " ", WALL},
-            {WALL,  " ", " ", " ", WALL},
-            {FLOOR, FLOOR, FLOOR, FLOOR, FLOOR}
-    };
+    std::vector<std::vector<std::string>> playingField;
 
-    ConstructionSite();
+public:
+    ConstructionSite(uint_fast32_t rows, uint_fast32_t columns);
 
-    void showFirstStep();
-    void showSecondStep();
-    void showFinalStep();
+    void makeBrickVisible();
 
-    std::string getCurrentPlayground();
-    void showBrick();
-    void moveBrickOneStepDown();
+    std::string getCurrentPlayingField();
+    void addBrickToPlayingField();
+
+    void moveBrickLower();
 };
