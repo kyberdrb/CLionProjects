@@ -1,5 +1,7 @@
-# Tetris
+= Tetris
 
 . ConstructionSite (stavenisko - hracia plocha)
-. Brick (one part of a Tetromino - tehlička)
+. BuildingBlock
+    - Brick (one part of a Tetromino - tehlička)
+    - CompositeBrick/Tetromino (multiple Bricks together in various shapes)
 . Brick has fallen to the bottom - this brick stops moving and next brick starts falling

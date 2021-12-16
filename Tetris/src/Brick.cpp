@@ -15,7 +15,7 @@ int_fast32_t Brick::getColumn() const {
 }
 
 std::string Brick::getBrickSign() const {
-    return "⎕"; // '⎕ - Apl Functional Symbol Quad' or '□ - White Square' or '⌷ - Apl Functional Symbol Squish Quad'
+    return "■"; // '■' - BLACK SQUARE; '⎕ - Apl Functional Symbol Quad'; '□ - White Square'; '⌷ - Apl Functional Symbol Squish Quad'
 }
 
 bool Brick::isVisible() const {

@@ -6,7 +6,7 @@
 class TetrisTestSuite : public ::testing::Test {};
 
 TEST_F(TetrisTestSuite, test_brick_character) {
-    EXPECT_EQ("⎕", Brick().getBrickSign());
+    EXPECT_EQ("■", Brick().getBrickSign());
 }
 
 TEST_F(TetrisTestSuite, test_playingField) {
