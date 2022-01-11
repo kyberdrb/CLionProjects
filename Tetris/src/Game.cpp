@@ -23,6 +23,7 @@ void Game::runGame() {
     loadInputFromTerminal();
     clearTerminal();
 
+    // TODO at first when integrating the steps into the while loop make the brick visible before entering the loop to make implementation easier
     constructionSite->makeBrickVisible();
     drawFrameOnTerminal();
     loadInputFromTerminal();
@@ -35,9 +36,11 @@ void Game::runGame() {
 void Game::loadInputFromTerminal() {
     std::cout << "enter command(s): ";
     std::cin >> keyboardInputCharacters;
+    // TODO process input
 };
 
 void Game::recalculateGameLogic() {
+    // TODO recalculate game logic according to the user's input
     // if brick is not visible
         // make it visible
         // return / switch to other state?
