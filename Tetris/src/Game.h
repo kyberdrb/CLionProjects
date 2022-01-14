@@ -12,7 +12,9 @@ private:
 public:
     Game();
 
-    void runGame();
+    void startGame();
+
+private:
     void loadInputFromTerminal();
     void recalculateGameLogic();
     void clearTerminal();

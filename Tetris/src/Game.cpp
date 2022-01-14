@@ -6,9 +6,10 @@
 
 Game::Game() :
     constructionSite(std::make_unique<ConstructionSite>(3, 5))
+    //constructionSite(std::make_unique<ConstructionSite>(5, 7))
 {}
 
-void Game::runGame() {
+void Game::startGame() {
     clearTerminal();
 
     // TODO transform linear steps in Game into a for/while loop
