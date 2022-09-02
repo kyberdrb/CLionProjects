@@ -1,0 +1,16 @@
+0 Cifer 287.001
+1 Bratislava 253.786
+0 Nosice 434.981
+1 Bratislava-Vinohrady 257.882
+0 Bahon 283.891
+1 Zilina 476.234
+0 Senkvice 275.143
+1 Trnava 299.882
+0 Brestovany 308.784
+1 Piestany 349.019
+0 Pezinok 272.437
+1 Leopoldov 326.581
+1 Puchov 432.651
+0 Milochov 438.563
+1 Trencin 392.765
+0 Predmier 460.231

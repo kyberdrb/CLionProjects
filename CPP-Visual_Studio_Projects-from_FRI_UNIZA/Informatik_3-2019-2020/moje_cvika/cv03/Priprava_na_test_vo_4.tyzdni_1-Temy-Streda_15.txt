@@ -1,0 +1,12 @@
+Test bude v jazyku C++.
+Na teste sa mozu vyskytnut tieto oblasti:
+- smerniky
+- metody: prenos parametrov hodnotou, odkazom (smernikom)
+- triedy, struct-y: spolu s atributmi, aj smernikovymi, dynamicka alokacia pamati (new), konstruktor, destruktor
+- polia
+- const
+
+Vsetkym oblastiam sme sa venovali na cviceniach.
+Ak budete chciet konzultovat ohladom tem na zapocet, 
+mozete poslat mail na andrej.sisila@fri.uniza.sk 
+alebo prist osobne do RA316.

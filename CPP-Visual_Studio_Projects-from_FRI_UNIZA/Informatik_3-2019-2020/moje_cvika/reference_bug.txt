@@ -1,0 +1,30 @@
+// c.cpp
+
+class C {
+    // vyriesila by to rvalue?
+    const string& dgb_;
+
+    C(const string& dbg {}) :
+        dbg_(dbg){} // temporal value referencing - destroyed at the end of ctor block
+
+public:
+    // ...
+
+    void func() {
+        if(!dbg_.empty()) {  // valgrind: invalid read
+            write_to_file(dbg_ + "output");
+        }
+
+        // ...
+    }
+}
+
+// main.cpp
+
+C c1("123");
+c1.func();
+
+C c2;
+c2.func();
+c1.func();  // works by coincidence - the memory wasn't been overwritten
+c2.func();  // crash

@@ -1,0 +1,6 @@
+- Vytvorit program, ktory bude obsahovat:
+    - dedicnost
+    - pretazeny lubovolne dva operatory v triede potomka
+    - nacitanie zo suboru
+    - polymorfny kontajner
+    - for each pre polymorfny kontajner

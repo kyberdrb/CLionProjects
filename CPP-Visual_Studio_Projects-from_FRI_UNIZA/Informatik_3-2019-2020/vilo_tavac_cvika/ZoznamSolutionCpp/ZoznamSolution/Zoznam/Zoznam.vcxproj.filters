@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Uzol.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vstup.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vystup.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Zoznam.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Test.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Uzol.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vstup.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vystup.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Zoznam.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{09cdbb6a-5010-4bb4-ba6f-cd49a1be9729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{3ac58915-f07b-4e22-9d43-f25e6bfebafc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

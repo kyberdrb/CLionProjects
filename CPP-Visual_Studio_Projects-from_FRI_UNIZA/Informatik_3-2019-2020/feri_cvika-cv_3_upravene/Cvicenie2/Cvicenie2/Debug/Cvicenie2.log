@@ -1,0 +1,5 @@
+﻿  Matica.cpp
+  main.cpp
+  Generating Code...
+C:\Users\kajanek6\Documents\Cvicenie2\Cvicenie2\main.cpp(10,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Cvicenie2.vcxproj -> C:\Users\kajanek6\Documents\Cvicenie2\Debug\Cvicenie2.exe

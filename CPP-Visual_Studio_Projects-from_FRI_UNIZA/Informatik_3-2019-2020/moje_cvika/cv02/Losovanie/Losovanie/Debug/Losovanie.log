@@ -1,0 +1,3 @@
+﻿  main.c
+C:\Users\IEUser\Visual_Studio_Projects\Losovanie\Losovanie\main.c(66,26): warning C4013: 'time' undefined; assuming extern returning int
+  Losovanie.vcxproj -> C:\Users\IEUser\Visual_Studio_Projects\Losovanie\Debug\Losovanie.exe

@@ -1,0 +1,7 @@
+pure virtual base class = abstract base class
+    - alternativa pre Interface v Jave
+
+Vlastny objekt sa moze spravat ako zabudovany objekt
+C++ je navrhnuty s myslienkou, aby sa program vykonaval co najrychlejsie
+
+- <iomanip>

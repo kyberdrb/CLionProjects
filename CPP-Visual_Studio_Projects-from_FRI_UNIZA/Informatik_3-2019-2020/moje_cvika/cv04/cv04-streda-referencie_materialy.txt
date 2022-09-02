@@ -1,0 +1,6 @@
+Referencie - materialy:
+    - https://www.youtube.com/watch?v=sxHng1iufQE
+    - https://www.educba.com/c-plus-plus-reference-vs-pointer/
+    - https://www.geeksforgeeks.org/pointers-vs-references-cpp/
+    - https://stackoverflow.com/questions/57483/what-are-the-differences-between-a-pointer-variable-and-a-reference-variable-in/57492#57492
+    - https://stackoverflow.com/questions/35594378/address-of-operator-vs-reference-operator/35594562#35594562

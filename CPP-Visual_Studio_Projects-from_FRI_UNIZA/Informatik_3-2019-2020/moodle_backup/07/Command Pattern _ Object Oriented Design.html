@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)https://www.oodesign.com/command-pattern.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command Pattern | Object Oriented Design</title>
+<meta name="title" content="Command Pattern">
+<meta name="author" content="oodesign">
+<meta name="description" content="Intent
+- encapsulate a request in an object
+- allows the parameterization of clients with different requests
+- allows saving the requests in a queue">
+<meta name="keywords" content="Design Patterns, Design Principles, Object Oriented Design, Java, C#, VB, OO Design Patterns, Behavioral Patterns, Command, Java, .NET, C#">
+<meta name="Generator" content="Joomla! - Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved.">
+<meta name="robots" content="index, follow">
+<!--<base href="https://www.oodesign.com/">--><base href=".">
+<link rel="shortcut icon" href="https://www.oodesign.com/images/favicon.ico">
+<link rel="amphtml" href="https://www.oodesign.com/amp/command-pattern/">
+<link rel="stylesheet" href="./Command Pattern _ Object Oriented Design_files/template_css.css" type="text/css">
+<script async="" src="./Command Pattern _ Object Oriented Design_files/analytics.js.stiahnuť"></script><script type="text/javascript">
+		var isMobi = (function(a){return(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)));})(navigator.userAgent||navigator.vendor||window.opera);
+</script>
+<link rel="stylesheet" type="text/css" href="./Command Pattern _ Object Oriented Design_files/highslide.css">
+<!-- script type="text/javascript" src="https://www.oodesign.com/templates/oodesign7/js/jquery-1.2.6.min.js"></script -->
+<script type="text/javascript">
+	function addEvent( obj, type, fn ) {
+		if ( obj.attachEvent ) {
+			obj['e'+type+fn] = fn;
+			obj[type+fn] = function(){obj['e'+type+fn]( window.event );}
+			obj.attachEvent( 'on'+type, obj[type+fn] );
+		} else
+			obj.addEventListener( type, fn, false );
+	}
+	
+	addEvent(window, 'scroll', function(event) {
+
+		var scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+
+		var positionizer = function(ban){
+			if (ban != null)
+			{
+				if (scrollPosition < 100)
+				{
+					ban.style.position = "absolute";
+					ban.style.top = 0;
+					ban.style.paddingTop = "100px";
+				}
+				else
+				{
+					ban.style.position = "fixed";
+					ban.style.top = 0;
+					ban.style.paddingTop = 0;		
+				}
+			}	
+		}
+		
+		positionizer(document.getElementById("moduletablebanl"));
+		positionizer(document.getElementById("moduletablebanr"));
+		var elemClass = document.getElementsByClassName("moduletablebanr");
+		if (elemClass != null)
+			positionizer(elemClass[0]);
+	});
+
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noindex>
+</noindex><noindex>
+</noindex><div style="display:none">
+<a href="https://www.oodesign.com/">1</a>
+<a href="https://www.oodesign.com/structural-patterns/">2</a>
+<a href="https://www.oodesign.com/creational-patterns/">3</a>
+<a href="https://www.oodesign.com/observer-pattern.html">4</a>
+<a href="https://www.oodesign.com/prototype-pattern.html">5</a>
+<a href="https://www.oodesign.com/iterator-pattern.html">6</a>
+<a href="https://www.oodesign.com/adapter-pattern.html">7</a>
+<a href="https://www.oodesign.com/composite-pattern.html">8</a>
+<a href="https://www.oodesign.com/flyweight-pattern.html">9</a>
+<a href="https://www.oodesign.com/interpreter-pattern.html">10</a>
+<a href="https://www.oodesign.com/decorator-pattern.html">11</a>
+<a href="https://www.oodesign.com/singleton-pattern.html">12</a>
+<a href="https://www.oodesign.com/memento-pattern.html">13</a>
+<a href="https://www.oodesign.com/command-pattern.html">14</a>
+<a href="https://www.oodesign.com/design-principles.html">15</a>
+<a href="https://www.oodesign.com/visitor-pattern.html">16</a>
+<a href="https://www.oodesign.com/factory-pattern.html">17</a>
+<a href="https://www.oodesign.com/strategy-pattern.html">18</a>
+<a href="https://www.oodesign.com/mediator-pattern.html">19</a>
+<a href="https://www.oodesign.com/builder-pattern.html">20</a>
+<a href="https://www.oodesign.com/bridge-pattern.html">21</a>
+<a href="https://www.oodesign.com/proxy-pattern.html">22</a>
+<a href="https://www.oodesign.com/design-pattern-books/">23</a>
+<a href="https://www.oodesign.com/factory-method-pattern.html">24</a>
+<a href="https://www.oodesign.com/template-method-pattern.html">25</a>
+<a href="https://www.oodesign.com/abstract-factory-pattern.html">26</a>
+<a href="https://www.oodesign.com/single-responsibility-principle.html">27</a>
+<a href="https://www.oodesign.com/interface-segregation-principle.html">28</a>
+<a href="https://www.oodesign.com/dependency-inversion-principle.html">29</a>
+<a href="https://www.oodesign.com/open-close-principle.html">30</a>
+<a href="https://www.oodesign.com/object-pool-pattern.html">31</a>
+<a href="https://www.oodesign.com/null-object-pattern.html">32</a>
+<a href="https://www.oodesign.com/chain-of-responsibility-pattern.html">33</a>
+<a href="https://www.oodesign.com/liskov-s-substitution-principle.html">34</a>
+<a href="https://www.oodesign.com/o-reilly-headfirst-design-patterns.html">35</a>
+<a href="https://www.oodesign.com/memento-pattern-calculator-example-java-sourcecode.html">36</a>
+<a href="https://www.oodesign.com/decorator-pattern-gui-example-java-sourcecode.html">37</a>
+<a href="https://www.oodesign.com/visitor-pattern-customers-report-java-sourcecode.html">38</a>
+<a href="https://www.oodesign.com/flyweight-pattern-wargame-example-java-sourcecode.html">39</a>
+<a href="https://www.oodesign.com/composite-pattern-shapes-example-java-sourcecode.html">40</a>
+<a href="https://www.oodesign.com/bridge-pattern-object-persistence-api-example-java-sourcecode.html">41</a>
+<a href="https://www.oodesign.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=24">42</a>
+<a href="https://www.oodesign.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=43">43</a>
+<a href="https://www.oodesign.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=30">44</a>
+<a href="https://www.oodesign.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=7">45</a>
+<a href="https://www.oodesign.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=33">46</a>
+</div><table border="0" align="center" cellpadding="0" cellspacing="0" class="tblmain">
+<tbody><tr align="left" valign="bottom">
+<td colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tblheader">
+<tbody><tr>
+<td align="left" valign="bottom" background="./Command Pattern _ Object Oriented Design_files/oo-design-header.jpg">
+<img src="./Command Pattern _ Object Oriented Design_files/spacer_header.gif" alt="header image">
+</td>
+</tr>
+</tbody></table></td>
+</tr>
+<tr><td align="left" valign="top" id="sidebar-left"> <table cellpadding="0" cellspacing="0" class="moduletable">
+<tbody><tr>
+<td>
+<form action="https://www.oodesign.com/index.php?option=com_search" method="get">
+<div class="search">
+<input name="searchword" id="mod_search_searchword" maxlength="20" alt="search" class="inputbox" type="text" size="20" value="search..." onblur="if(this.value==&#39;&#39;) this.value=&#39;search...&#39;;" onfocus="if(this.value==&#39;search...&#39;) this.value=&#39;&#39;;"> </div>
+<input type="hidden" name="option" value="com_search">
+<input type="hidden" name="Itemid" value="">
+</form> </td>
+</tr>
+</tbody></table>
+<table cellpadding="0" cellspacing="0" class="moduletable">
+<tbody><tr>
+<th valign="top">
+Main Menu </th>
+</tr>
+<tr>
+<td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr align="left"><td><a href="https://www.oodesign.com/" class="mainlevel">Home</a></td></tr>
+<tr align="left"><td><a href="https://www.oodesign.com/design-principles.html" class="mainlevel">Design Principles</a>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/open-close-principle.html" class="sublevel">Open Close Principle</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/dependency-inversion-principle.html" class="sublevel">Dependency Inversion Principle</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/interface-segregation-principle.html" class="sublevel">Interface Segregation Principle</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/single-responsibility-principle.html" class="sublevel">Single Responsibility Principle</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/liskov-s-substitution-principle.html" class="sublevel">Liskov's Substitution Principle</a></div>
+</td></tr>
+<tr align="left"><td><a href="https://www.oodesign.com/creational-patterns/" class="mainlevel">Creational Patterns</a>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/singleton-pattern.html" class="sublevel">Singleton</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/factory-pattern.html" class="sublevel">Factory</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/factory-method-pattern.html" class="sublevel">Factory Method</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/abstract-factory-pattern.html" class="sublevel">Abstract Factory</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/builder-pattern.html" class="sublevel">Builder</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/prototype-pattern.html" class="sublevel">Prototype</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/object-pool-pattern.html" class="sublevel">Object Pool</a></div>
+</td></tr>
+<tr align="left"><td><a href="https://www.oodesign.com/behavioral-patterns/" class="mainlevel">Behavioral Patterns</a>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/chain-of-responsibility-pattern.html" class="sublevel">Chain of Responsibility</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/command-pattern.html" class="sublevel" id="active_menu">Command</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/interpreter-pattern.html" class="sublevel">Interpreter</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/iterator-pattern.html" class="sublevel">Iterator</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/mediator-pattern.html" class="sublevel">Mediator</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/memento-pattern.html" class="sublevel">Memento</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/observer-pattern.html" class="sublevel">Observer</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/strategy-pattern.html" class="sublevel">Strategy</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/template-method-pattern.html" class="sublevel">Template Method</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/visitor-pattern.html" class="sublevel">Visitor</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/null-object-pattern.html" class="sublevel">Null Object</a></div>
+</td></tr>
+<tr align="left"><td><a href="https://www.oodesign.com/structural-patterns/" class="mainlevel">Structural Patterns</a>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/adapter-pattern.html" class="sublevel">Adapter</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/bridge-pattern.html" class="sublevel">Bridge</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/composite-pattern.html" class="sublevel">Composite</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/decorator-pattern.html" class="sublevel">Decorator</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/flyweight-pattern.html" class="sublevel">Flyweight</a></div>
+<div style="padding-left: 4px"><img src="./Command Pattern _ Object Oriented Design_files/indent1.png" alt=""><a href="https://www.oodesign.com/proxy-pattern.html" class="sublevel">Proxy</a></div>
+</td></tr>
+<tr align="left"><td><a href="https://www.oodesign.com/design-pattern-books/" class="mainlevel">Design Pattern Books</a></td></tr>
+</tbody></table> </td>
+</tr>
+</tbody></table>
+<table cellpadding="0" cellspacing="0" class="moduletable">
+<tbody><tr>
+<th valign="top">
+Forum </th>
+</tr>
+<tr>
+<td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr align="left"><td><a href="http://forum.oodesign.com/?CategoryID=2" class="mainlevel">What Design Pattern To Choose?</a></td></tr>
+<tr align="left"><td><a href="http://forum.oodesign.com/?CategoryID=3" class="mainlevel">Design Principles and Patterns</a></td></tr>
+<tr align="left"><td><a href="http://forum.oodesign.com/?CategoryID=4" class="mainlevel">Enterprise Patterns</a></td></tr>
+<tr align="left"><td><a href="http://forum.oodesign.com/?CategoryID=5" class="mainlevel">Books</a></td></tr>
+</tbody></table> </td>
+</tr>
+</tbody></table>
+<table cellpadding="0" cellspacing="0" class="moduletable">
+<tbody><tr>
+<td>
+</td>
+</tr>
+</tbody></table>
+</td>
+<td width="100%" align="center" valign="top">
+<table width="97%" height="100%" border="0" cellpadding="0" cellspacing="0" class="tblpathway">
+<tbody><tr>
+<td><span class="pathway"><a href="https://www.oodesign.com/" class="pathway">Home</a> <img src="./Command Pattern _ Object Oriented Design_files/arrow.png" border="0" alt="arrow"> <a href="https://www.oodesign.com/behavioral-patterns/" class="pathway">Behavioral Patterns</a> <img src="./Command Pattern _ Object Oriented Design_files/arrow.png" border="0" alt="arrow"> Command </span> </td>
+<td>
+<div id="delicio">
+<img src="./Command Pattern _ Object Oriented Design_files/delicious.small.gif" height="10" width="10" alt="Delicious">
+<a href="http://delicious.com/save" onclick="window.open(&#39;http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=&#39;+encodeURIComponent(location.href)+&#39;&amp;title=&#39;+encodeURIComponent(document.title), &#39;delicious&#39;,&#39;toolbar=no,width=550,height=550&#39;); return false;"> Bookmark this on Delicious</a>
+</div>
+</td>
+</tr>
+</tbody></table>
+<table width="97%" height="100%" border="0" cellpadding="0" cellspacing="0" class="tblbody" id="main-content-container">
+<tbody><tr>
+<td>
+<table class="contentpaneopen">
+<tbody><tr>
+<td valign="top" colspan="2">
+<div style="float:right;padding:4px;margin:4px;border:1px solid #555;background-color:#B7CBD5;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4452501840155972";
+/* oodesign */
+google_ad_slot = "5751116154";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="./Command Pattern _ Object Oriented Design_files/f.txt">
+</script></div>
+<div class="content">
+<h1>Command Pattern</h1><br>
+“An object that contains a symbol, name or key that represents a list of commands, actions or keystrokes”. This is the definition of a macro, one that should be familiar to any computer user. From this idea the Command design pattern was given birth. <br>The Macro represents, at some extent, a command that is built from the reunion of a set of other commands, in a given order. Just as a macro, the Command design pattern encapsulates commands (method calls) in objects allowing us to issue requests without knowing the requested operation or the requesting object. Command design pattern provides the options to queue commands, undo/redo actions and other manipulations.<br> <h2>Intent</h2>- encapsulate a request in an object<br>- allows the parameterization of clients with different requests<br>- allows saving the requests in a queue<br><br><h2>Implementation</h2><div class="content">The idea and implementation of the Command design pattern is quite simple, as we will see in the diagram below, needing only few extra classes implemented.<br><br><img src="./Command Pattern _ Object Oriented Design_files/command_implementation_-_uml_class_diagram.gif" alt="Class diagram for the classic implementation of the command pattern (command design pattern)" title="Command Implementation - UML Class Diagram" width="600" height="244"><br><br>The classes participating in the pattern are:<br>- Command - declares an interface for executing an operation;<br>- ConcreteCommand - extends the Command interface, implementing the Execute method by invoking the corresponding operations on Receiver. It defines a link between the Receiver and the action.<br>- Client - creates a ConcreteCommand object and sets its receiver;<br>- Invoker - asks the command to carry out the request;<br>- Receiver - knows how to perform the operations;<br><br>The Client asks for a command to be executed. The Invoker takes the command, encapsulates it and places it in a queue, in case there is something else to do first, and the ConcreteCommand that is in charge of the requested command, sending its result to the Receiver.<br><br>Here is a sample code of a classic implementation of this pattern for placing orders for buying and selling stocks:</div><div class="content"><img src="./Command Pattern _ Object Oriented Design_files/command_example_stocks_-_uml_class_diagram_s.gif" alt="Class diagram for a sample Stock Trading system iimplementing the command pattern." title="Command Example StockTrading - UML Class Diagram" width="548" height="343"><br><br>The client creates some orders for buying and selling stocks (ConcreteCommands). Then the orders are sent to the agent (Invoker).The agent takes the orders and place them to the StockTrade system (Receiver). The agent keeps an internal queue with the order to be placed. Let's assume that the StockTrade system is closed each Monday, but the agent accepts orders, and queue them to be processed later on.<br><br></div><table border="0" class="code"><tbody><tr><td class="code">public interface Order {<br>&nbsp;&nbsp;&nbsp;&nbsp;public abstract void execute ( );<br>}<br><br>// Receiver class.<br>class StockTrade {<br>&nbsp;&nbsp;&nbsp;&nbsp;public void buy() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("You want to buy stocks");<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public void sell() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("You want to sell stocks ");<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br>// Invoker.<br>class Agent {<br>&nbsp;&nbsp;&nbsp;&nbsp;private m_ordersQueue = new ArrayList();<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public Agent() {<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;void placeOrder(Order order) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ordersQueue.addLast(order);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order.execute(ordersQueue.getFirstAndRemove());<br>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;<br>}<br><br>//ConcreteCommand Class.<br>class BuyStockOrder implements Order {<br>&nbsp;&nbsp;&nbsp;&nbsp;private StockTrade stock;<br>&nbsp;&nbsp;&nbsp;&nbsp;public BuyStockOrder ( StockTrade st) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stock = st;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public void execute( ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stock . buy( );<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br>//ConcreteCommand Class.<br>class SellStockOrder implements Order { <br>&nbsp;&nbsp;&nbsp;&nbsp;private StockTrade stock;<br>&nbsp;&nbsp;&nbsp;&nbsp;public SellStockOrder ( StockTrade st) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stock = st;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public void execute( ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stock . sell( );<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br>// Client<br>public class Client {<br>&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StockTrade stock = new StockTrade();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BuyStockOrder bsc = new BuyStockOrder (stock);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SellStockOrder ssc = new SellStockOrder (stock);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agent agent = new Agent();<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;agent.placeOrder(bsc); // Buy Shares<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;agent.placeOrder(ssc); // Sell Shares<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></td></tr></tbody></table><br><br><h2>Applicability &amp; Examples</h2><div class="content"><br>The applicability of the Command design pattern can be found in these cases below:<br>- parameterizes objects depending on the action they must perform<br>- specifies or adds in a queue and executes requests at different moments in time<br>- offers support for undoable actions (the Execute method can memorize the state and allow going back to that state)<br>- structures the system in high level operations that based on primitive operations<br>- decouples the object that invokes the action from the object that performs the action. Due to this usage it is also known as Producer - Consumer design pattern.<br><br>The example of the meal order at a restaurant is a very good one when trying to explain better how the pattern works:<br>The waiter (Invoker) takes the order from the customer on his pad. The order is then queued for the order cook and gets to the cook (Receiver) where it is processed.</div><div class="content"><img src="./Command Pattern _ Object Oriented Design_files/command_example_restaurant_-_uml_class_diagram_s.gif" alt="Class diagram for a sample Restaurant iimplementing the command pattern" title="Command Example Restaurant - UML Class Diagram" width="571" height="361"> <br></div><div class="content"><br>In this case the actors in the scenario are the following: The Client is the customer. He sends his request to the receiver through the waiter, who is the Invoker. The waiter encapsulates the command (the order in this case) by writing it on the check and then places it, creating the ConcreteCommand object which is the command itself. The Receiver will be the cook that, after completing work on all the orders that were sent to him before the command in question, starts work on it. Another noticeable aspect of the example is the fact that the pad for the orders does not support only orders from the menu, so it can support commands to cook many different items.<br><br>Just the same way we can consider the example of an auto-repair shop. People come in with different cars that have different problems. The person at the front desk takes their information and places the car in a queue for repair. The information on the order is encapsulated in the paper the car owner will use when he comes back to pick up the fixed car. At some point the car will become the first item in the queue and the mechanic will repair it. Just as in the example above, the Client is the customer. The Invoker is the person at the front desk that takes the information on the car and its problems, the ConcreteCommand is the request for fixing the car and the Receiver is the mechanic.</div><div class="content">&nbsp;&nbsp;&nbsp; </div><div class="content">The most used implementation of the command pattern is the one used to implement the undo options in applications:</div><div class="content">&nbsp;<img src="./Command Pattern _ Object Oriented Design_files/command_example_undo_-_uml_class_diagram_s.gif" alt="Class diagram for a sample calculator application implementing the command design pattern to manage the do/undo operatons." title="Command Example Undo - UML Class Diagram" width="547" height="507"></div><div class="content">Let's consider a calculator application. The application represents the Client. The calculator (Receiver) class is the main class used in the application to perform the commands. This might be as well the document class if we have a text editor application and we want to implement operations like copy/paste/etc.... When the application has to perform a command it creates the command and sent it to the invoker. The invoker calls the execute method of the command and adds it to a list containing all the commands. The execute method of the command delegate the call to the Calculator object. When undo operations are performed the invoker uses the list with all executed commands and calls for each one the unexecuted method. The redo operation works in the same manner.<br><br><br></div><h2>Specific problems and implementation</h2><br>Now that we have understood how the pattern works, it's time to take a look at its advantages and flaws, too.<br><br><h3>The intelligence of a command</h3>There are two extremes that a programmer must avoid when using this pattern: <br>1. The command is just a link between the receiver and the actions that carry out the request<br>2. The command implements everything itself, without sending anything to the receiver.<br>We must always keep in mind the fact that the receiver is the one who knows how to perform the operations needed, the purpose of the command being to help the client to delegate its request quickly and to make sure the command ends up where it should.<br><br><h3>Undo and redo actions</h3>As mentioned above, some implementations of the Command design pattern include parts for supporting undo and redo of actions. In order to do that a mechanism to obtain past states of the Receiver object is needed; in order to achieve this there are two options:<br>- Before running each command a snapshot of the receiver state is stored in memory. This does not require much programming effort but can not be always applied. For example doing this in an image processing application would require storing images in memory after each step, which is practically impossible. <br>- Instead of storing receiver objects states, the set of performed operations are stored in memory. In this case the command and receiver classes should implement the inverse algorithms to undo each action. This will require additional programming effort, but less memory will be required. Sometimes for undo/redo actions the command should store more information about the state of the receiver objects. A good idea in such cases is to use the Memento Pattern.<br><br><h3>Asynchronous Method Invocation</h3>Another usage for the command design pattern is to run commands asynchronous in background of an application. In this case the invoker is running in the main thread and sends the requests to the receiver which is running in a separate thread. The invoker will keep a queue of commands to be run and will send them to the receiver while it finishes running them.<br><br>Instead of using one thread in which the receiver is running more threads can be created for this. But for performance issues (thread creation is consuming) the number of threads should be limited. In this case the invoker will use a pool of receiver threads to run command asynchronously.<br><br><h3>Adding new commands</h3>The command object decouples the object that invokes the action from the object that performs the action. There are implementations of the pattern in which the invoker instantiates the concrete command objects. In this case if we need to add a new command type we need to change the invoker as well. And this would violate the Open Close Principle (OCP). In order to have the ability to add new commands with minimum of effort we have to make sure that the invoker is aware only about the abstract command class or interface.<br><br><h3>Using composite commands</h3>When adding new commands to the application we can use the composite pattern to group existing commands in another new command. This way, macros can be created from existing commands.<br><br><h2>Hot spot</h2><br>The main advantage of the command design pattern is that it decouples the object that invokes the operation from the one that know how to perform it. And this advantage must be kept. There are implementations of this design pattern in which the invoker is aware of the concrete commands classes. This is wrong making the implementation more tightly coupled. The invoker should be aware only about the abstract command class.<br></div>
+<div style="width:730px;margin:0 auto;margin-top:20px;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4452501840155972";
+/* oodesign-leaderboard */
+google_ad_slot = "4870742004";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="./Command Pattern _ Object Oriented Design_files/f.txt">
+</script>
+</div> </td>
+</tr>
+</tbody></table>
+<span class="article_seperator">&nbsp;</span>
+<table align="center" style="margin-top: 25px;">
+<tbody><tr>
+<th class="pagenav_prev">
+<a href="https://www.oodesign.com/chain-of-responsibility-pattern.html">
+&lt; Prev</a>
+</th>
+<td width="50">&nbsp;
+</td>
+<th class="pagenav_next">
+<a href="https://www.oodesign.com/template-method-pattern.html">
+Next &gt;</a>
+</th>
+</tr>
+</tbody></table>
+<div class="back_button">
+<a href="javascript:history.go(-1)">
+[ Back ]</a>
+</div>
+</td>
+</tr>
+</tbody></table></td><td align="left" valign="top" id="sidebar-right"> <table cellpadding="0" cellspacing="0" class="moduletable">
+<tbody><tr>
+<td>
+<script async="" src="./Command Pattern _ Object Oriented Design_files/f(1).txt"></script>
+<!-- oodesign-160x600 -->
+<script>
+if (!isMobi) 
+document.write( '<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-4452501840155972" data-ad-slot="9765671792"></ins>' );
+</script><ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-4452501840155972" data-ad-slot="9765671792"></ins>
+<script>
+if (!isMobi) (adsbygoogle = window.adsbygoogle || []).push({});
+</script> </td>
+</tr>
+</tbody></table>
+</td> <script>		if (isMobi)		{					document.getElementById("sidebar-left").style.display = "none";			document.getElementById("sidebar-right").style.display = "none";			document.getElementById("main-content-container").width = "100%";		}	</script>
+</tr>
+<tr> <td colspan="3">&nbsp;</td>
+</tr>
+</tbody></table>
+<div style="text-align:center;">
+<script type="text/javascript" src="https://xslt.alexa.com/site_stats/js/t/a?url=www.oodesign.com"></script>
+</div><script type="text/javascript" src="./Command Pattern _ Object Oriented Design_files/highslide.js.stiahnuť"></script><script type="text/javascript">hs.graphicsDir = 'https://www.oodesign.com/templates/oodesign7/highslide/graphics/';</script>
+<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-648925-1', 'auto');  ga('send', 'pageview');</script>
+<script type="text/javascript">
+
+	var embed = '';
+	embed += '<div style="float:right;"><div style="float:right;margin-bottom:4px;">';
+
+			embed += '<a href="http://www.amazon.com/gp/product/0321127420/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0321127420&linkCode=as2&tag=wwwconsultguc-20&linkId=CKKUU4KNTCLOYJ7X">';
+		embed += '<img style="border: 1px solid black;margin-left:4px;" alt="Patterns of Enterprise Application Architecture" src="images/books/patterns-of-enterprise-application-architecture-pre.png"></a>';
+			embed += '<a href="http://www.amazon.com/gp/product/0201633612/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0201633612&linkCode=as2&tag=wwwconsultguc-20&linkId=B53D2MJ6G5FL7J5R">';
+		embed += '<img style="border: 1px solid black;margin-left:4px;" alt="Design Patterns: Elements of Reusable Object-Oriented Software" src="images/books/design-patterns-elements-of-reusable-object-oriented-software-pre.png"></a>';
+			embed += '<a href="http://www.amazon.com/gp/product/0596802293/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596802293&linkCode=as2&tag=wwwconsultguc-20&linkId=URCSE46OP4HPVYEN">';
+		embed += '<img style="border: 1px solid black;margin-left:4px;" alt="The Art of Readable Code" src="images/books/the-art-of-readable-code-pre.png"></a>';
+			embed += '<a href="http://www.amazon.com/gp/product/159059388X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=159059388X&linkCode=as2&tag=wwwconsultguc-20&linkId=Q2U34KIMF7QH2VAQ">';
+		embed += '<img style="border: 1px solid black;margin-left:4px;" alt="Holub on Patterns: Learning Design Patterns by Looking at Code" src="images/books/holub-on-patterns-learning-design-patterns-by-looking-at-code-pre.png"></a>';
+			
+	embed += '</div>';
+	embed += '<span style="color:black;">Books We Recommend:</span>';
+	embed += '</div>';
+
+	var where = document.getElementById('books');
+	
+	if (where != null)
+		where.innerHTML = embed;
+	
+</script><script type="text/javascript" src="./Command Pattern _ Object Oriented Design_files/jquery.min.js.stiahnuť"></script><script type="text/javascript">$(document).ready(function(){  $(".body-a").hide();  $(".head-a").click(function() { 	$(this).parents(".item").find(".body-a").slideToggle(100); 	$(this).parents(".item").find(".body-b").slideUp(100); 	});  $(".body-b").hide();  $(".head-b").click(function() { 	$(this).parents(".item").find(".body-b").slideToggle(100); 	$(this).parents(".item").find(".body-a").slideUp(100); 	});  });</script>
+
+
+<!-- 1524609297 --><div class="highslide-container" style="padding: 0px; border: none; margin: 0px; position: absolute; left: 0px; top: 0px; width: 100%; z-index: 1001; direction: ltr;"><a class="highslide-loading" title="Click to cancel" href="javascript:;" style="position: absolute; top: -9999px; opacity: 0.75; z-index: 1;">Loading...</a><div style="display: none;"></div><table cellspacing="0" style="padding: 0px; border: none; margin: 0px; visibility: hidden; position: absolute; border-collapse: collapse; width: 0px;"><tbody style="padding: 0px; border: none; margin: 0px;"><tr style="padding: 0px; border: none; margin: 0px; height: auto;"><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) 0px 0px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -40px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) -20px 0px; height: 20px; width: 20px;"></td></tr><tr style="padding: 0px; border: none; margin: 0px; height: auto;"><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -80px; height: 20px; width: 20px;"></td><td class="drop-shadow highslide-outline" style="padding: 0px; border: none; margin: 0px; position: relative;"></td><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) -20px -80px; height: 20px; width: 20px;"></td></tr><tr style="padding: 0px; border: none; margin: 0px; height: auto;"><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -20px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -60px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: none; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.oodesign.com/templates/oodesign7/highslide/graphics/outlines/drop-shadow.png&quot;) -20px -20px; height: 20px; width: 20px;"></td></tr></tbody></table><img src="./Command Pattern _ Object Oriented Design_files/drop-shadow.png" style="padding: 0px; border: none; margin: 0px; position: absolute; top: -9999px;"></div></body></html>

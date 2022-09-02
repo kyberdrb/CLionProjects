@@ -1,0 +1,23 @@
+Additional resources
+    - Codewars
+        - https://www.codewars.com/
+    - Udemy: C++ From Beginner to Expert
+        - https://www.udemy.com/course/video-course-c-from-beginner-to-expert/
+    - C++ Tutorial for Complete Beginners
+        - https://www.udemy.com/course/free-learn-c-tutorial-beginners/
+    - Learn Advanced C++ Programming
+        - Youtube
+            - free with ads
+            - https://www.youtube.com/playlist?list=PLw_k9CF7hBpJKHeOFXOHOyy_KuR06aLqt
+        - Udemy
+            - paid without ads
+            - https://www.udemy.com/learn-advanced-c-programming/
+        - Source code: https://github.com/caveofprogramming/advanced-cplusplus
+    - Embedded systems - Lectures
+        - https://github.com/kyberdrb/FRI/tree/master/Ing/1.semester/Vstavane_systemy
+    - Codestyle
+        - https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main
+        - https://google.github.io/styleguide/cppguide.html
+
+    - Pointers
+        - https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/

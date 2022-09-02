@@ -1,0 +1,13 @@
+# Kompozicia a dedicnost - Pr 07
+
+Konstruktory sa nededia, ale volaju. Preto potrebujeme zavolat vo vsetkych konstruktoroch potomka aj konstruktor predka.
+
+Metody, ktore chceme, aby sme dedili, oznacime ako `virtual`.
+
+Destruktory sa volaju od poslednej urovne potomkov ku predkovi. Najprv sa zlikviduju zdroje v potomkovi na poslednej urovni, potom sa prechadza vyssie, az kym neprideme ku predkovi.
+
+Destruktor predka je vzdy virtualny. V potomkovi sa destruktor oznaci ako `override`. Ak by konstruktor nebol virtualny a zmazeme objekt potomka, ktory je typu predka, tak sa zavola iba destruktor triedy predka a potomok zostal v pamati. To je unik pamati, memory leak. Ak je destruktor virtualny, tak v predchadzajucom scenari sa zavola destruktor triedy potomka a az potom destruktor v triede predka. Teraz je volanie destruktorov riadene tabulkou virtualnych metod, `vtable`.
+
+Vyhnut sa volaniu virtualnych metod v konstruktoroch aj destruktore potomka. Napriek tomu sa zavola metoda v predkovi, nie prekryta metoda v potomkovi.
+
+Abstraktna trieda, `pure virtual class` je trieda s aspon jednou cisto virtualnou funkciou, `pure virtual method`, napr. `virtual int metoda(int parameter) = 0;`

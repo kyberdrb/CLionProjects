@@ -1,0 +1,12 @@
+Inicializacia atributov v inicializacnom zozname je rychlejsia, pretoze sa vola iba konstruktor.
+Inicializacia atributov v tele konstruktora moze byt pomalsie, pretoze sa najprv zavola konstruktor, a potom sa zavola operator priradenia pre kazdu inicializaciu atributu.
+Aj tak to kompilator zoptimalizuje do 
+
+inicializacia atributov triedy v inicializacnom zozname konstruktora je dana poradim atributov:
+class Stvoruholnik {
+    int a;
+    int b;
+public:
+    Stvoruholnik(int pa = 0, int pb = 0):
+    b(pb), a(b){}
+}

@@ -1,0 +1,5 @@
+https://en.cppreference.com/w/cpp/header/cstdint
+http://www.cplusplus.com/reference/climits/
+https://en.cppreference.com/w/cpp/language/operator_precedence
+https://embeddedartistry.com/blog/2017/2/28/c-casting-or-oh-no-we-broke-malloc
+V playliste "Learn Advanced C++ Programming" su videa, ktore sa zaoberaju ulohami z cvicenia.
