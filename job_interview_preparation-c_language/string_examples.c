@@ -32,6 +32,9 @@ void print_dynamically_allocated_text_examples() {
 
     custom_calloc_example();
     print_delimiter();
+
+    char_array_example();
+    print_delimiter();
 }
 
 void print_delimiter() {
@@ -50,7 +53,7 @@ void malloc_example() {
 }
 
 void calloc_example() {
-    const char* stringOnStack = "string allocated with calloc";
+    const char* stringOnStack = "content for calloc";
     char* stringAllocatedOnHeapWithCalloc = calloc((strlen(stringOnStack) + 1), sizeof(char));
     strcpy(stringAllocatedOnHeapWithCalloc, stringOnStack);
     printf("%s\n", stringOnStack);
@@ -63,48 +66,116 @@ void calloc_example() {
 }
 
 void custom_malloc_example() {
-    char* originalStringForMallocOnStack = "string allocated With Malloc";
+    const char* originalStringForMallocOnStack = "string allocated with malloc";
+    char* destinationStringAllocatedWithMalloc = malloc(sizeof(char) * (strlen(originalStringForMallocOnStack) + 1));
 
-    int32_t numberOfCharacters = strlen(originalStringForMallocOnStack);
-    printf("%s%d\n", "numberOfCharacters: ", numberOfCharacters);
+    // zero-out allocated memory to increase security, i.e. to prevent leaking of sensitive information: passwords, credit card numbers etc.
+    memset(destinationStringAllocatedWithMalloc, 0, strlen(originalStringForMallocOnStack) + 1);
+
+    strcpy(destinationStringAllocatedWithMalloc, originalStringForMallocOnStack);
+
+    printf("%s\n", originalStringForMallocOnStack);
+    printf("%s\n", destinationStringAllocatedWithMalloc);
+
+    free(destinationStringAllocatedWithMalloc);
+    destinationStringAllocatedWithMalloc = NULL;
+}
+
+void custom_calloc_example() {
+    const char* originalStringForCallocOnStack = "string allocated with calloc";
+
+    size_t numberOfCharacters = strlen(originalStringForCallocOnStack);
+    printf("%s%lu\n", "numberOfCharacters: ", numberOfCharacters);
     printf("%s%p\n", "address of numberOfCharacters: ", &numberOfCharacters);
     printf("%s%lu\n", "sizeof(&numberOfCharacters): ", sizeof(&numberOfCharacters));
     printf("%s: %lu\n", "sizeof(numberOfCharacters)", sizeof(numberOfCharacters));
     printf("\n");
 
-    char* stringAllocatedWithMalloc = malloc(sizeof(char) * strlen(originalStringForMallocOnStack) + 1);
+    char* destinationStringAllocatedWithCalloc = calloc(strlen(originalStringForCallocOnStack) + 1, sizeof(char));
+    strcpy(destinationStringAllocatedWithCalloc, originalStringForCallocOnStack);
 
-    printf("%s: %p\n", "pointer to stringAllocatedWithMalloc", stringAllocatedWithMalloc);
-    printf("%s: %p\n", "pointer to stringAllocatedWithMalloc", &stringAllocatedWithMalloc);
+    for(int charIndex = 0; charIndex < strlen(originalStringForCallocOnStack); ++charIndex) {
+        printf("%c", originalStringForCallocOnStack[charIndex]);
+    }
+    printf("\n");
+    printf("\n");
+
+    char* destinationCharPointer = destinationStringAllocatedWithCalloc;
+
     printf("%s: %lu\n", "sizeof(char)", sizeof(char));
-    printf("%s: %lu\n", "sizeof(stringAllocatedWithMalloc)", sizeof(stringAllocatedWithMalloc));
-    printf("%s: %lu\n", "sizeof(*stringAllocatedWithMalloc)", sizeof(*stringAllocatedWithMalloc));
 
-    // zero-out allocated memory to increase security, i.e. to prevent leaking of sensitive information: passwords, credit card numbers etc.
-    memset(stringAllocatedWithMalloc, 0, sizeof(*stringAllocatedWithMalloc));
+    printf("%s: %p\n", "destinationStringAllocatedWithCalloc", destinationStringAllocatedWithCalloc);
+    printf("%s: %p\n", "destinationCharPointer", destinationCharPointer);
 
-//    stringAllocatedWithMalloc = realloc(stringAllocatedWithMalloc, sizeof(char) * (strlen(originalStringForMallocOnStack) + 1));
+    printf("%s: %p\n", "pointer to destinationStringAllocatedWithCalloc", &destinationStringAllocatedWithCalloc);
+    printf("%s: %p\n", "pointer to destinationCharPointer", &destinationCharPointer);
 
-//    strcpy(stringAllocatedWithMalloc, "string Allocated With Malloc");    // SIGSEGV - segmentation fault - program crash and memory leak
-//    strcpy(stringAllocatedWithMalloc, originalStringForMallocOnStack);
+    printf("%s: %lu\n", "strlen(*destinationStringAllocatedWithCalloc)", strlen(destinationStringAllocatedWithCalloc));
+    printf("%s: %lu\n", "strlen(*destinationCharPointer)", strlen(destinationCharPointer));
 
-//    printf("%s\n", *originalStringForMallocOnStack);
-//    printf("%s\n", *stringAllocatedWithMalloc);
+    printf("%s: %lu\n", "sizeof(stringAllocatedWithMalloc)", sizeof(destinationStringAllocatedWithCalloc));
+    printf("%s: %lu\n", "sizeof(*stringAllocatedWithMalloc)", sizeof(*destinationStringAllocatedWithCalloc));
+    printf("%s: %lu\n", "sizeof(stringAllocatedWithMalloc)", sizeof(destinationCharPointer));
+    printf("%s: %lu\n", "sizeof(*stringAllocatedWithMalloc)", sizeof(*destinationCharPointer));
 
-    free(stringAllocatedWithMalloc);    // sanitize memory leak
-    stringAllocatedWithMalloc = NULL;   // sanitize dangling pointer
+    printf("%s: %c\n", "*destinationCharPointer", *destinationCharPointer);
+    printf("%s: %c\n", "*(destinationCharPointer + 1)", *(destinationCharPointer + 1));
+
+    printf("\n");
+
+    for(
+            uint32_t charIndex = 0;
+            charIndex < strlen(destinationStringAllocatedWithCalloc);
+            ++charIndex)
+    {
+        printf("%c", *(destinationCharPointer + charIndex));
+    }
+    printf("\n");
+
+    free(destinationStringAllocatedWithCalloc);
+    destinationStringAllocatedWithCalloc = NULL;
 }
 
-void custom_calloc_example() {
-    char* originalStringForCallocOnStack = "string allocated With Calloc";
+void print_char_array(char* charArray, size_t arrayLength)
+{
+    for (size_t charIndex = 0; charIndex <= arrayLength - 2; ++charIndex) {
+        printf("%c | ", charArray[charIndex]);
+    }
 
-    int32_t numberOfCharacters = strlen(originalStringForCallocOnStack);
+    printf("%c |", charArray[arrayLength - 1]);
+    printf("\n");
+}
 
-    char* stringAllocatedWithCalloc = (char*) calloc(numberOfCharacters, sizeof(char));
-    free(stringAllocatedWithCalloc);
+int char_array_example(){
+    char arr[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+    char arr2[] = "array initialized";
 
-    char* stringAllocatedWithCallocWithReallocation = calloc(numberOfCharacters, sizeof(char));
-    stringAllocatedWithCallocWithReallocation = realloc(stringAllocatedWithCallocWithReallocation, 8 * sizeof(char));
-    free(stringAllocatedWithCallocWithReallocation);
-    stringAllocatedWithCallocWithReallocation = NULL;
+    size_t stringLength = 23;
+    char* arr3 = string_factory_method(stringLength);
+    strcpy(arr3, "calloc-allocated string");
+
+    print_char_array(arr, sizeof arr);
+    printf("size = %lu bytes \n", sizeof arr);
+
+    printf("\n");
+
+    print_char_array(arr2, sizeof arr2-1);
+    printf("size = %lu bytes \n", sizeof(arr2));
+
+    printf("\n");
+
+    print_char_array(arr3, stringLength);
+    printf("size = %zu bytes \n", sizeof(*arr3));
+
+//    free(arr3);
+    custom_free(arr3);
+}
+
+void* string_factory_method(size_t stringLength) {
+    return calloc(stringLength + 1, sizeof(char));
+}
+
+void custom_free(void* something) {
+    free(something);
+    something = NULL;
 }
