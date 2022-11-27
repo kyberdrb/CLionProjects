@@ -28,10 +28,10 @@ void print_dynamically_allocated_text_examples() {
     print_delimiter();
 
     custom_malloc_example();
-
     print_delimiter();
 
     custom_calloc_example();
+    print_delimiter();
 }
 
 void print_delimiter() {
