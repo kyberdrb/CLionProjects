@@ -4,6 +4,8 @@
 
 #include "realloc_example.h"
 
+#include "delimiter.h"
+
 #include <malloc.h>
 #include <string.h>
 
@@ -21,4 +23,6 @@ void string_realloc_example() {
     printf("String = %s,  Address = %u\n", str, str);
 
     free(str);
+
+    print_delimiter();
 }

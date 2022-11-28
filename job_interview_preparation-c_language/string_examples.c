@@ -4,6 +4,8 @@
 
 #include "string_examples.h"
 
+#include "delimiter.h"
+
 // for 'malloc', 'calloc', 'realloc'
 #include <malloc.h>
 
@@ -35,10 +37,6 @@ void print_dynamically_allocated_text_examples() {
 
     char_array_example();
     print_delimiter();
-}
-
-void print_delimiter() {
-    printf("%c%c%c\n", '-', '-', '-');
 }
 
 void malloc_example() {
@@ -172,7 +170,11 @@ int char_array_example(){
 }
 
 void* string_factory_method(size_t stringLength) {
-    return calloc(stringLength + 1, sizeof(char));
+    size_t stringLengthWithNullTerminator = stringLength + 1;
+//    void* string = calloc(stringLengthWithNullTerminator, sizeof(char));
+    void* string = malloc(stringLengthWithNullTerminator * sizeof(char));
+    memset(string, 0, stringLengthWithNullTerminator);
+    return string;
 }
 
 void custom_free(void* something) {

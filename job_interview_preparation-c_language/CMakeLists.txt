@@ -3,4 +3,4 @@ project(job_interview_preparation_c_language C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(job_interview_preparation_c_language main.c realloc_example.h realloc_example.c string_examples.c string_examples.h struct_examples.c struct_examples.h)
+add_executable(job_interview_preparation_c_language main.c realloc_example.h realloc_example.c string_examples.c string_examples.h struct_examples.c struct_examples.h delimiter.c delimiter.h)

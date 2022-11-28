@@ -18,5 +18,3 @@ int char_array_example();
 
 void* string_factory_method(size_t stringLength);
 void custom_free(void* something);
-
-void print_delimiter();

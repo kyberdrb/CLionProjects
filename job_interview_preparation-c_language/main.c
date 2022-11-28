@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 
     string_realloc_example();
 
-    test_passing_by_value_and_pointer();
+    test_passing_stack_allocated_structs_by_value_and_pointer();
 
     return 0;
 }
