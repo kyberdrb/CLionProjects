@@ -14,7 +14,7 @@ typedef struct beispiel_struct {
     int8_t humidity;
 } beispiel_struct_t;
 
-void print_beispiel_struct_instance(const struct beispiel_struct* const beispielStruct);
+void print_beispiel_struct_instance_passed_by_address(const struct beispiel_struct* const beispielStruct);
 void print_beispiel_struct_instance_passed_by_value(struct beispiel_struct beispielStruct);
 
 void test_passing_stack_allocated_structs_by_value_and_pointer();
