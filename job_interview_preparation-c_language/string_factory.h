@@ -9,4 +9,5 @@
 
 char* create_empty_string(uint32_t numberOfCharacters);
 
-void destroy_string(char* text);
+//void destroy_string(char* text);
+void destroy_string(char** text);

@@ -7,29 +7,42 @@
 
 #include <stdint.h>
 
+typedef enum warnings {
+    NONE,
+    ICING,
+    FROST,
+    WIND,
+    HEAT
+} warnings_t;
+
 typedef struct hydro_metheorological_indicators {
     double amountOfCarbonDioxideInAtmosphereIn_ppm;
     char soilQuality;
     float rainfallIn_mm;
+    warnings_t warnings;
     char* currentWeather;
 } hydro_metheorological_indicators_t;
 
 // constructors
-hydro_metheorological_indicators_t createShallowCopyByValue();
-hydro_metheorological_indicators_t* createDeepCopyByPointer();
+//hydro_metheorological_indicators_t createShallowCopyByValue();
+//hydro_metheorological_indicators_t* createDeepCopyByPointer();
 
 void test_shallow_copy_for_stack_allocated_instance();
-void test_deep_copy_for_stack_allocated_instance();
-void test_shallow_copy_for_heap_allocated_instance();
-void test_deep_copy_for_heap_allocated_instance();
+//void test_deep_copy_for_stack_allocated_instance();
+//void test_shallow_copy_for_heap_allocated_instance();
+//void test_deep_copy_for_heap_allocated_instance();
 
-void printShallowCopyPassedByValue(hydro_metheorological_indicators_t hmi);
-void printOriginalPassedByPointer(const hydro_metheorological_indicators_t* const hmi);
+void printStructPassedByValue(hydro_metheorological_indicators_t hmi);
+void printStructPassedByPointer(const hydro_metheorological_indicators_t* const hmi);
 
-void modifyInstanceByValue(hydro_metheorological_indicators_t hmi);
-void modifyInstanceByPointer(hydro_metheorological_indicators_t* hmi);
+void modifyBasicMemberVariablesOfInstancePassedByValue(hydro_metheorological_indicators_t hmi);
+void modifyBasicMemberVariablesOfInstancePassedByAddress(hydro_metheorological_indicators_t* hmi);
+
+void modifyContentOfReferenceMemberVariableOfInstancePassedByValue(hydro_metheorological_indicators_t hmi);
+void modifyContentOfReferenceMemberVariableOfInstancePassedByAddress(hydro_metheorological_indicators_t* hmi);
 
 // destructors
-void destroy(const hydro_metheorological_indicators_t* const hmi);
+void destroy_inner_state(hydro_metheorological_indicators_t* const hmi);
+void destroy(const hydro_metheorological_indicators_t* hmi);
 
 #endif

@@ -16,9 +16,17 @@ char* create_empty_string(uint32_t numberOfCharacters) {
     return text;
 }
 
-void destroy_string(char* text) {
-    if (text != NULL) {   // because deallocating NULL pointer leads to undefined behavior
-        free(text);
-        text = NULL;
+//void destroy_string(char* text) {
+//    if (text != NULL) {   // because deallocating NULL pointer leads to undefined behavior
+//        free(text);
+//        //text = NULL; // DOESN'T ACTUALLY SANITIZES THE DANGLING POINTER: ONLY SETS A COPY OF THE POINTER TO NULL INSTEAD OF THE ORIGINAL POINTER -
+//        // MAYBE USE A POINTER TO POINTER WHEN PASSING THE 'TEXT' PARAMETER AS THE PARAMETER TYPE?
+//    }
+//}
+
+void destroy_string(char** text) {
+    if (*text != NULL) {   // because deallocating NULL pointer leads to undefined behavior
+        free(*text);
+        *text = NULL;
     }
 }
