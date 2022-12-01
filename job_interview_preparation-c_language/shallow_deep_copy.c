@@ -7,12 +7,11 @@
 #include "delimiter.h"
 #include "string_factory.h"
 
-#include <malloc.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
-void test_shallow_copy_for_stack_allocated_instance() {
+void test_shallow_and_deep_copy_for_stack_allocated_instance() {
     hydro_metheorological_indicators_t hydroMetheorologicalIndicatorsOnStack;
 
     // constructor/initialization
@@ -83,34 +82,76 @@ void test_shallow_copy_for_stack_allocated_instance() {
 
     printf("\n");
 
+    printf("%s\n", "Reallocate the reference variable in the shallow copy passing the copy by value "
+                   "to prove that by reallocating the reference attribute a deep copy is created");
+
+    hydro_metheorological_indicators_t* hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy = &hydroMetheorologicalIndicatorsOnStackShallowCopy;
+    reallocateReferenceMemberVariableOfInstancePassedByValue(*hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
+
+    printf("%s\n", "Shallow copy transformed to Deep copy - after reallocation when passing by value - all changes lost");
+    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
+    printf("%s\n", "Original - left as is");
+    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStack);
+
+    printf("\n");
+
+    printf("%s\n", "Reallocate the reference variable in the shallow copy passing the copy by value "
+                   "to prove that by reallocating the reference attribute a deep copy is created");
+
+    reallocateReferenceMemberVariableOfInstancePassedByAddress(hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
+
+    printf("%s\n", "Shallow copy transformed to Deep copy - after reallocation when passing by address/pointer");
+    printStructPassedByPointer(hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
+    printf("%s\n", "Original - left as is");
+    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStack);
+
+    printf("\n");
+
     // destroy inner state of the original
-    destroy_inner_state(&hydroMetheorologicalIndicatorsOnStack);
+    destroy_reference_variables_in_inner_state(&hydroMetheorologicalIndicatorsOnStack);
 
     printf("%s\n", "Original - passed by address");
     printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStack);
 
-    // printing the reference variable of the copy would result in undefined behavior
+    // printing the reference variable of the copy at this moment - after deallocating a shared resource leaving a dangling pointer in the copy - would result in undefined behavior
 //    printf("%s\n", "Shallow copy - passed by address");
 //    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
 
-    printf("\n%s\n%s\n%s\n\n",
-           "Reference attribute in original instance had been deallocated and set to NULL (to sanitize dangling pointer).",
-           "Sanitize dangling pointer in reference member variable in shallow copy, i.e. all shallow copies,",
-           "to prevent undefined behavior by deallocating an already deallocated pointer - a dangling pointer.");
-    hydroMetheorologicalIndicatorsOnStackShallowCopy.currentWeather = NULL;
+//    printf("\n%s\n%s\n%s\n\n",
+//           "Reference attribute in original instance had been deallocated and set to NULL (to sanitize dangling pointer).",
+//           "Sanitize dangling pointer in reference member variable in shallow copy, i.e. all shallow copies,",
+//           "to prevent undefined behavior by deallocating an already deallocated pointer - a dangling pointer.");
+//    hydroMetheorologicalIndicatorsOnStackShallowCopy.currentWeather = NULL;
 
-    printf("%s\n", "Shallow copy - passed by address");
-    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
+//    printf("%s\n", "Shallow copy - passed by address");
+//    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
 
     // destroy inner state of the shallow copy
+//    printf("\n");
+//    destroy_reference_variables_in_inner_state(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
+//
+//    printf("%s\n", "Shallow copy - passed by address");
+//    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
+//
+//    destroy_reference_variables_in_inner_state(hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
+//
+//    printf("%s\n", "Shallow copy transformed to deep copy - passed by address");
+//    printStructPassedByPointer(hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
+
     printf("\n");
-    destroy_inner_state(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
+    printf("%s\n", "Shallow copy transformed to Deep copy - passed by address");
+    printStructPassedByPointer(hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
+
+    // destroy inner state of the shallow copy
+    destroy_reference_variables_in_inner_state(hydroMetheorologicalIndicatorsOnStackShallowCopyTransformedToDeepCopy);
     printf("\n");
 
-    printf("%s\n", "Shallow copy - passed by address");
+    printf("%s\n", "Shallow copy transformed to Deep copy - passed by address");
     printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackShallowCopy);
 
     print_delimiter();
+
+    test_deep_copy_for_stack_allocated_instance();
 }
 
 void printStructPassedByValue(hydro_metheorological_indicators_t hmi) {
@@ -207,7 +248,28 @@ void modifyContentOfReferenceMemberVariableOfInstancePassedByAddress(hydro_methe
     printStructPassedByPointer(hmi);
 }
 
-void destroy_inner_state(hydro_metheorological_indicators_t* const hmi) {
+void reallocateReferenceMemberVariableOfInstancePassedByValue(hydro_metheorological_indicators_t hmi) {
+    hmi.currentWeather = create_empty_string(29);
+    strcpy(hmi.currentWeather, "snow");
+
+    printf("%s\n", "Inside reallocation function - Reallocating the reference member variable of the copy passed to the parameter by value");
+    printStructPassedByPointer(&hmi);
+
+    printf("%s\n%s\n%s\n", "  Inside reallocation function - Deallocating newly allocated space for the reference member variable of the copy:",
+                   "  but the reference variable inside this function differs from the reference variable of the instance passed to this function",
+                   "  thus, when the end of the function is reached, the allocated heap space for the reference variable in the local copy is unrecoverably lost.");
+    destroy_reference_variables_in_inner_state(&hmi);
+}
+
+void reallocateReferenceMemberVariableOfInstancePassedByAddress(hydro_metheorological_indicators_t* hmi) {
+    hmi->currentWeather = create_empty_string(29);
+    strcpy(hmi->currentWeather, "snow");
+
+    printf("%s\n", "Inside reallocation function - Reallocating the reference member variable of the copy passed to the parameter by address/pointer");
+    printStructPassedByPointer(hmi);
+}
+
+void destroy_reference_variables_in_inner_state(hydro_metheorological_indicators_t* const hmi) {
     if (hmi->currentWeather != NULL) { //
 //        destroy_string(&hmi->currentWeather); // used by ineffective 'void destroy_string(char* text);' which only sanitized a copy of the dangling pointer,
                                                 // not the original one passed to the function - therefore using another level of indirection: pointer to pointer to char
@@ -218,34 +280,35 @@ void destroy_inner_state(hydro_metheorological_indicators_t* const hmi) {
     printf("%s\n", "Either the string has not been allocated yet, or the string has already been deallocated.");
 }
 
-//void test_deep_copy_for_stack_allocated_instance() {
-//    // constructor
-//    hydro_metheorological_indicators_t hydroMetheorologicalIndicatorsOnStack;
-//    hydroMetheorologicalIndicatorsOnStack.amountOfCarbonDioxideInAtmosphereIn_ppm = 417.31;
-//    hydroMetheorologicalIndicatorsOnStack.soilQuality = 'B';
-//    hydroMetheorologicalIndicatorsOnStack.rainfallIn_mm = 0.51;
-//
-//    uint8_t currentWeatherLength = 29;
-//    hydroMetheorologicalIndicatorsOnStack.currentWeather = create_empty_string(currentWeatherLength);
-//    strcpy(hydroMetheorologicalIndicatorsOnStack.currentWeather, "cloudy");
-//
-//    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStack);
-//    printStructPassedByValue(hydroMetheorologicalIndicatorsOnStack);
-//
-//    // copy constructor
-//    hydro_metheorological_indicators_t hydroMetheorologicalIndicatorsOnStackCopy = hydroMetheorologicalIndicatorsOnStack;
-//    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackCopy);
-//    printStructPassedByValue(hydroMetheorologicalIndicatorsOnStackCopy);
-//
-//    // deep copy construction
-//    hydroMetheorologicalIndicatorsOnStackCopy.currentWeather = create_empty_string(29);
-//    strcpy(hydroMetheorologicalIndicatorsOnStackCopy.currentWeather, "overcast");
-//    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackCopy);
-//    printStructPassedByValue(hydroMetheorologicalIndicatorsOnStackCopy);
-//
-//    // destructor
-//    destroy_string(hydroMetheorologicalIndicatorsOnStack.currentWeather);
-//    destroy_string(hydroMetheorologicalIndicatorsOnStackCopy.currentWeather);
-//
-//    print_delimiter();
-//}
+void test_deep_copy_for_stack_allocated_instance() {
+    // constructor
+    hydro_metheorological_indicators_t hydroMetheorologicalIndicatorsOnStack;
+    hydroMetheorologicalIndicatorsOnStack.amountOfCarbonDioxideInAtmosphereIn_ppm = 417.31;
+    hydroMetheorologicalIndicatorsOnStack.soilQuality = 'B';
+    hydroMetheorologicalIndicatorsOnStack.warnings = FROST;
+    hydroMetheorologicalIndicatorsOnStack.rainfallIn_mm = 0.51;
+
+    uint8_t currentWeatherLength = 29;
+    hydroMetheorologicalIndicatorsOnStack.currentWeather = create_empty_string(currentWeatherLength);
+    strcpy(hydroMetheorologicalIndicatorsOnStack.currentWeather, "cloudy");
+
+    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStack);
+    printStructPassedByValue(hydroMetheorologicalIndicatorsOnStack);
+
+    // copy constructor
+    hydro_metheorological_indicators_t hydroMetheorologicalIndicatorsOnStackCopy = hydroMetheorologicalIndicatorsOnStack;
+    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackCopy);
+    printStructPassedByValue(hydroMetheorologicalIndicatorsOnStackCopy);
+
+    // deep copy construction
+    hydroMetheorologicalIndicatorsOnStackCopy.currentWeather = create_empty_string(29);
+    strcpy(hydroMetheorologicalIndicatorsOnStackCopy.currentWeather, "overcast");
+    printStructPassedByPointer(&hydroMetheorologicalIndicatorsOnStackCopy);
+    printStructPassedByValue(hydroMetheorologicalIndicatorsOnStackCopy);
+
+    // destructor
+    destroy_string(&hydroMetheorologicalIndicatorsOnStack.currentWeather);
+    destroy_string(&(hydroMetheorologicalIndicatorsOnStackCopy.currentWeather));
+
+    print_delimiter();
+}

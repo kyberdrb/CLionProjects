@@ -13,7 +13,9 @@ int main(int argc, char** argv) {
     test_passing_stack_allocated_structs_by_value_and_pointer();
     test_passing_heap_allocated_structs_by_value_and_pointer();
 
-    test_shallow_copy_for_stack_allocated_instance();
+    test_shallow_and_deep_copy_for_stack_allocated_instance();
+
+    // static function - hidden from the outside
 //    test_deep_copy_for_stack_allocated_instance();
 
     return 0;
