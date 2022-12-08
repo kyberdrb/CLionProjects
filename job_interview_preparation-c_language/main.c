@@ -2,6 +2,7 @@
 #include "realloc_example.h"
 #include "struct_examples.h"
 #include "shallow_deep_copy.h"
+#include "algorithm_exercise.h"
 
 //int main(int argc, char* argv[]) {
 int main(int argc, char** argv) {
@@ -15,8 +16,10 @@ int main(int argc, char** argv) {
 
     test_shallow_and_deep_copy_for_stack_allocated_instance();
 
-    // static function - hidden from the outside
+    // static function - hidden from the outside - private function of the translation unit in which it's declared in
 //    test_deep_copy_for_stack_allocated_instance();
+
+    test_algorithm();
 
     return 0;
 }
