@@ -3,6 +3,8 @@
 #include "struct_examples.h"
 #include "shallow_deep_copy.h"
 #include "algorithm_exercise.h"
+#include "one_dimensional_array.h"
+#include "two_dimensional_array.h"
 
 //int main(int argc, char* argv[]) {
 int main(int argc, char** argv) {
@@ -20,6 +22,9 @@ int main(int argc, char** argv) {
 //    test_deep_copy_for_stack_allocated_instance();
 
     test_algorithm();
+
+    test_one_dimensional_arrays();
+    test_two_dimensional_arrays();
 
     return 0;
 }

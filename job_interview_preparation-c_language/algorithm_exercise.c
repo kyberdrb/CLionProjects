@@ -4,6 +4,8 @@
 
 #include "algorithm_exercise.h"
 
+#include "delimiter.h"
+
 #include <stdio.h>  // 'printf'
 #include <stdlib.h> // 'atoll'
 #include <assert.h>
@@ -30,6 +32,8 @@ void test_algorithm() {
 
     result = algorithm_exercise(111);       // false:
     printf("%d: %d\n", 111, result);
+
+    print_delimiter();
 }
 
 // Máme funkciu ktorá vracia boolean.

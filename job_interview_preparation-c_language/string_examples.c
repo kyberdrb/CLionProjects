@@ -6,8 +6,13 @@
 
 #include "delimiter.h"
 
+#include <assert.h>
+
 // for 'malloc', 'calloc', 'realloc'
 #include <malloc.h>
+
+// for 'bool' data type
+#include <stdbool.h>
 
 // integer types with reliable size/length/memory requirements
 #include <stdint.h>
@@ -134,50 +139,120 @@ void custom_calloc_example() {
     destinationStringAllocatedWithCalloc = NULL;
 }
 
-void print_char_array(char* charArray, size_t arrayLength)
-{
-    for (size_t charIndex = 0; charIndex <= arrayLength - 2; ++charIndex) {
-        printf("%c | ", charArray[charIndex]);
+void print_char_array_by_index(char charArray[], size_t arrayLength) {
+    bool isStringOpen = charArray[arrayLength - 1] != '\0';
+
+    if (isStringOpen) {
+        for (size_t charIndex = 0; charIndex <= arrayLength - 2; ++charIndex) {
+            printf("%c | ", charArray[charIndex]);
+        }
+
+        printf("%c |", charArray[arrayLength - 1]);
+
+        printf("\n");
+        return;
     }
 
-    printf("%c |", charArray[arrayLength - 1]);
+    bool isStringNullTerminated = !isStringOpen;
+    if (isStringNullTerminated) {
+        for (size_t charIndex = 0; charIndex <= arrayLength - 3; ++charIndex) {
+            printf("%c | ", charArray[charIndex]);
+        }
+
+        printf("%c |", charArray[arrayLength - 2]);
+
+        printf("\n");
+        return;
+    }
+}
+
+void print_char_array_by_pointer_arithmetics(char* charArray, size_t arrayLength) {
+    char* charArrayCopy = charArray;
+    for (size_t charIndex = 0; charIndex <= arrayLength - 2; ++charIndex) {
+        printf("%c | ", *charArrayCopy);
+        ++charArrayCopy;
+    }
+
+    printf("%c |", *charArrayCopy);
     printf("\n");
+}
+
+void print_char_array_as_string(char* charArray) {
+    printf("%s: %lu\n", "sizeof(arr) inside print function", sizeof(charArray));
+    printf("%s\n", charArray);
 }
 
 int char_array_example(){
     char arr[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+
+    print_char_array_by_index(arr, sizeof arr);
+    print_char_array_by_pointer_arithmetics(arr, sizeof(arr));
+    printf("%s: %lu\n", "sizeof(arr)", sizeof(arr));
+    printf("%s: %p\n", "arr", arr);
+
+    // can end up with hanging forever or giving inaccurate value or doing other undefined behavior; use 'strclen' instead for OPEN STRINGS, i.e. NON-NULL-TERMINATED char arrays
+//    printf("%s: %lu\n", "strlen(arr)", strlen(arr));
+    printf("%s: %lu\n", "strnlen(arr, sizeof(arr))", strnlen(arr, sizeof(arr)));
+
+    // can end up with hanging forever or giving inaccurate value or doing other undefined behavior; use 'strclen' instead for OPEN STRINGS, i.e. NON-NULL-TERMINATED char arrays
+//    printf("%s: %d\n", "sizeof(arr) != strlen(arr)", sizeof(arr) != strlen(arr));
+
+    printf("%s: %d\n", "sizeof(arr) == strnlen(arr, sizeof(arr))", sizeof(arr) == strnlen(arr, sizeof(arr)));
+
+    // When we try to print a char array without the ending null terminator character, we can read outside of the allocated memory and risk undefined behavior
+    //print_char_array_as_string(arr);
+
+    arr[0] = 'z';
+    print_char_array_by_index(arr, sizeof arr);
+
+    char* arrCopy = arr;
+    *(arrCopy + 1) = 'y';
+    print_char_array_by_pointer_arithmetics(arr, sizeof arr);
+
+    printf("\n");
+
+    char arrWithNullTerminatorCharAtEnd[] = {'h', 'i', 'j', 'k', 'l', 'm', '\0'};
+    print_char_array_as_string(arrWithNullTerminatorCharAtEnd);
+    printf("%s: %lu\n", "sizeof(arrWithNullTerminatorCharAtEnd)", sizeof(arrWithNullTerminatorCharAtEnd));
+    printf("%s: %p\n", "arrWithNullTerminatorCharAtEnd", arrWithNullTerminatorCharAtEnd);
+    printf("%s: %ld\n", "arrWithNullTerminatorCharAtEnd - arr", arrWithNullTerminatorCharAtEnd - arr);
+
+    arrWithNullTerminatorCharAtEnd[0] = 'x';
+    print_char_array_as_string(arrWithNullTerminatorCharAtEnd);
+
+    printf("\n");
+
     char arr2[] = "array initialized";
+
+    print_char_array_by_index(arr2, sizeof arr2);
+    printf("size = %lu bytes \n", sizeof(arr2));
+
+    arr2[0] = 'y';
+    print_char_array_by_pointer_arithmetics(arr2, sizeof(arr2));
+    print_char_array_as_string(arr2);
+
+    printf("\n");
 
     size_t stringLength = 23;
     char* arr3 = string_factory_method(stringLength);
     strcpy(arr3, "calloc-allocated string");
 
-    print_char_array(arr, sizeof arr);
-    printf("size = %lu bytes \n", sizeof arr);
-
-    printf("\n");
-
-    print_char_array(arr2, sizeof arr2-1);
-    printf("size = %lu bytes \n", sizeof(arr2));
-
-    printf("\n");
-
-    print_char_array(arr3, stringLength);
+    print_char_array_by_index(arr3, stringLength);
     printf("size = %zu bytes \n", sizeof(*arr3));
 
 //    free(arr3);
-    custom_free(arr3);
+    free_with_dangling_pointer_sanitization((void**) &arr3);
 }
 
 void* string_factory_method(size_t stringLength) {
     size_t stringLengthWithNullTerminator = stringLength + 1;
-//    void* string = calloc(stringLengthWithNullTerminator, sizeof(char));
-    void* string = malloc(stringLengthWithNullTerminator * sizeof(char));
-    memset(string, 0, stringLengthWithNullTerminator);
-    return string;
+//    void* dynamically_allocated_string = calloc(stringLengthWithNullTerminator, sizeof(char));
+    void* dynamically_allocated_string = malloc(stringLengthWithNullTerminator * sizeof(char));
+    memset(dynamically_allocated_string, 0, stringLengthWithNullTerminator);
+    return dynamically_allocated_string;
 }
 
-void custom_free(void* something) {
-    free(something);
-    something = NULL;
+void free_with_dangling_pointer_sanitization(void** something) {
+    free(*something);
+    *something = NULL;
 }
