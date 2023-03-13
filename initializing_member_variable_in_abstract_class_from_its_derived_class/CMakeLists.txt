@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.25)
+project(initializing_member_variable_in_abstract_class_from_its_derived_class)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(initializing_member_variable_in_abstract_class_from_its_derived_class Client.cpp Base.cpp Base.h Derived.cpp Derived.h)

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.24)
+project(state_design_pattern)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(state_design_pattern Client.cpp documentAsIfElseStateMachine/DocumentAsIfElseStateMachine.cpp documentAsIfElseStateMachine/DocumentAsIfElseStateMachine.h documentAsStateDesignPattern/Draft.cpp documentAsStateDesignPattern/Draft.h documentAsStateDesignPattern/Document.cpp documentAsStateDesignPattern/Document.h documentAsStateDesignPattern/User.cpp documentAsStateDesignPattern/User.h documentAsStateDesignPattern/State.cpp documentAsStateDesignPattern/State.h documentAsStateDesignPattern/Moderation.cpp documentAsStateDesignPattern/Moderation.h documentAsStateDesignPattern/Published.cpp documentAsStateDesignPattern/Published.h)
