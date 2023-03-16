@@ -3,3 +3,7 @@
 //
 
 #include "User.h"
+
+bool User::isAdmin() const {
+    return this->role == "admin";
+}

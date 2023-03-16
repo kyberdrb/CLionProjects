@@ -2,7 +2,6 @@
 
 #include "documentAsStateDesignPattern/Document.h"
 
-#include <cassert>
 #include <iostream>
 
 void exampleOfPublishingDocumentAsIfElseStateMachine();
@@ -53,31 +52,46 @@ void exampleOfPublishingDocumentAsIfElseStateMachine() {
 }
 
 void exampleOfPublishingDocumentAsStateDesignPattern() {
-    User user;
-//    auto user = std::make_unique<User>(); // TODO rework user from stack allocated instance to an unique_ptr
-    user.role = "user";
-    Document document(user);
+    auto user = std::make_unique<User>(); // TODO rework user from stack allocated instance to an unique_ptr
+    user->role = "user";
+    Document document(*user);
 
     std::cout
             << document.getCurrentUser()
             << " is publishing a document"
             << '\n';
 
-    std::cout << "Initial state:\t" << document.getCurrentState() << '\n';
+    std::cout << "Initial state:\t\t\t" << document.getCurrentState() << '\n';
 
     document.publish();
-    std::cout << "Next state:\t\t" << document.getCurrentState() << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+
+    document.returnDocAfterReview();
+    std::cout << "Transition type: returnDocAfterReview" << '\n';
+    std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
 
     document.publish();
-    std::cout << "Next state:\t\t" << document.getCurrentState() << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
 
     document.publish();
-    std::cout << "Next state:\t\t" << document.getCurrentState() << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
 
     document.publish();
-    std::cout << "Next state:\t\t" << document.getCurrentState() << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
 
-    // TOOO add more forward transitions
-    // TODO add backwards transitions
+    document.expire();
+    std::cout << "Transition type: expire" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
 
+    // TODO test state machine for an User in 'admin' role
+    // TODO make 'ADMIN' and 'USER' an enum class that will the User class accept
+    //  - as a constructor parameter?
+    //  - as a 'promoteToAdmin' function?
+
+    // TODO remember previous state on 'changeState'?
+    // TODO make State virtual functions return a Transition object/instance for the client to print it out to terminal
 }

@@ -12,7 +12,9 @@ public:
         State(document)
     {}
 
-    virtual void publish() override;
+    void publish() override;
+    void returnDocAfterReview() override;
+    void expire() override;
 
     ~Published() override = default;
 

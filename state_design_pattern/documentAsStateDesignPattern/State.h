@@ -20,6 +20,8 @@ public:
     {}
 
     virtual void publish() = 0;
+    virtual void returnDocAfterReview() = 0;
+    virtual void expire() = 0;
 
     virtual ~State() = default;
 

@@ -10,6 +10,8 @@ class User {
 public:
     std::string role;
 
+    bool isAdmin() const;
+
     friend std::ostream& operator<<(std::ostream& out, const User& user);
 };
 

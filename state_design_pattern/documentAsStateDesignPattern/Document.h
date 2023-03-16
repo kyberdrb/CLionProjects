@@ -8,7 +8,7 @@
 
 //#include "State.h"
 class State;    // Cyclic/Circular dependency / cyclic header include: Document includes State AND State includes Document
-// Using forward declaration of 'State' instead of include
+                //  Using forward declaration of 'State' instead of include
                 //  Forward declaration breaks the cycle and lets the code compile.
 
 #include "Draft.h"
@@ -17,13 +17,14 @@ class State;    // Cyclic/Circular dependency / cyclic header include: Document 
 
 class Document {
 public:
-    explicit Document(User currentUser) :
+    explicit Document(User& currentUser) :
             _currentUser(currentUser)
-//            ,_state(std::make_unique<Draft>())
             ,_state(std::make_unique<Draft>(*this))
     {}
 
     void publish();
+    void returnDocAfterReview();
+    void expire();
 
     void changeState(std::unique_ptr<State> state);
 
@@ -31,6 +32,6 @@ public:
     const State& getCurrentState() const;
 
 private:
-    User _currentUser;
+    User& _currentUser;
     std::unique_ptr<State> _state;
 };

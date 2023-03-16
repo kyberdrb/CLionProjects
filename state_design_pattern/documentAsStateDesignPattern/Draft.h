@@ -13,6 +13,8 @@ public:
     {}
 
     void publish() override;
+    void returnDocAfterReview() override;
+    void expire() override;
 
     ~Draft() override = default;
 
