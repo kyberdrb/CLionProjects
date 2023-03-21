@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'autonumber
+
+Client -> user: User()
+user --> Client: user
+
+Client -> document: Document(user)
+document -> draft: Draft(document)
+draft -> State: State(document)
+draft -> document: state
+document --> Client: document
+
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: publish()
+document -> State: publish()
+State -> draft: publish()
+draft -> moderation: Moderation(document)
+draft -> document: changeState(moderation)
+
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: returnDocAfterReview()
+document -> State: returnDocAfterReview()
+State -> moderation: returnDocAfterReview()
+moderation -> draft: Draft(document)
+moderation -> document: changeState(draft)
+
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: publish()
+document -> State: publish()
+State -> moderation: publish()
+moderation -> published: Published(document)
+moderation -> document: changeState(published)
+
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: publish()
+document -> State: publish()
+State -> published: publish()
+published -> published: Published(document)
+published -> document: changeState(published)
+
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: expire()
+document -> State: expire()
+State -> published: expire()
+published -> draft: Draft(document)
+published -> document: changeState(draft)
+
+' PUBLISHING DOCUMENT AS ADMIN
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: publish()
+document -> State: publish()
+State -> draft: publish()
+draft -> published: Draft(document)
+draft -> document: changeState(published)
+
+'TODO add divider, e.g. '---', more free vertical space, ...
+
+Client -> document: expire()
+document -> State: expire()
+State -> published: expire()
+published -> draft: Draft(document)
+published -> document: changeState(draft)
+
+@enduml

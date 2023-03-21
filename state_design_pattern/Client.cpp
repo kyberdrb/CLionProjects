@@ -22,22 +22,34 @@ void exampleOfPublishingDocumentAsIfElseStateMachine() {
     ifElseStateMachine::DocumentAsIfElseStateMachine documentAsIfElseStateMachine(user);
 
     std::cout
-        << documentAsIfElseStateMachine._currentUser
-        << " has taken over the document"
-        << '\n';
+            << documentAsIfElseStateMachine._currentUser
+            << " is publishing a document"
+            << '\n';
 
-    std::cout << documentAsIfElseStateMachine.state << '\n';
-
-    documentAsIfElseStateMachine.publish();
-    std::cout << documentAsIfElseStateMachine.state << '\n';
+    std::cout << "Initial state:\t\t\t" << documentAsIfElseStateMachine.state << '\n';
 
     documentAsIfElseStateMachine.publish();
-    std::cout << documentAsIfElseStateMachine.state << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << documentAsIfElseStateMachine.state << '\n';
 
-    ifElseStateMachine::User publisher;
-    publisher.role = "admin";
+    documentAsIfElseStateMachine.returnedFromReview = true;
+    documentAsIfElseStateMachine.publish();
+    std::cout << "Transition type: returnDocAfterReview" << '\n';
+    std::cout << "State change:\t\t\tmoderation -> " << documentAsIfElseStateMachine.state << '\n';
+    documentAsIfElseStateMachine.resetSpecialAttributes();
 
-    documentAsIfElseStateMachine.switchCurrentUser(publisher);
+    documentAsIfElseStateMachine.publish();
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << documentAsIfElseStateMachine.state << '\n';
+
+    documentAsIfElseStateMachine.publish();
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tmoderation -> " << documentAsIfElseStateMachine.state << '\n';
+
+    std::cout << "...\n";
+
+    documentAsIfElseStateMachine._currentUser.role = "admin";
+    documentAsIfElseStateMachine.resetSpecialAttributes();
 
     std::cout
             << documentAsIfElseStateMachine._currentUser
@@ -45,14 +57,32 @@ void exampleOfPublishingDocumentAsIfElseStateMachine() {
             << '\n';
 
     documentAsIfElseStateMachine.publish();
-    std::cout << documentAsIfElseStateMachine.state << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tmoderation -> " << documentAsIfElseStateMachine.state << '\n';
 
     documentAsIfElseStateMachine.publish();
-    std::cout << documentAsIfElseStateMachine.state << '\n';
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << documentAsIfElseStateMachine.state << '\n';
+
+    documentAsIfElseStateMachine.expired = true;
+    documentAsIfElseStateMachine.publish();
+    std::cout << "Transition type: expire" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << documentAsIfElseStateMachine.state << '\n';
+    documentAsIfElseStateMachine.resetSpecialAttributes();
+
+    documentAsIfElseStateMachine.publish();
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << documentAsIfElseStateMachine.state << '\n';
+
+    documentAsIfElseStateMachine.expired = true;
+    documentAsIfElseStateMachine.publish();
+    std::cout << "Transition type: expire" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << documentAsIfElseStateMachine.state << '\n';
+    documentAsIfElseStateMachine.resetSpecialAttributes();
 }
 
 void exampleOfPublishingDocumentAsStateDesignPattern() {
-    auto user = std::make_unique<User>(); // TODO rework user from stack allocated instance to an unique_ptr
+    auto user = std::make_unique<User>();
     user->role = "user";
     Document document(*user);
 
@@ -87,11 +117,28 @@ void exampleOfPublishingDocumentAsStateDesignPattern() {
     std::cout << "Transition type: expire" << '\n';
     std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
 
-    // TODO test state machine for an User in 'admin' role
-    // TODO make 'ADMIN' and 'USER' an enum class that will the User class accept
-    //  - as a constructor parameter?
-    //  - as a 'promoteToAdmin' function?
+    std::cout << "...\n";
 
-    // TODO remember previous state on 'changeState'?
-    // TODO make State virtual functions return a Transition object/instance for the client to print it out to terminal
+    user->role = "admin";
+
+    std::cout
+            << document.getCurrentUser()
+            << " is publishing a document"
+            << '\n';
+
+    document.publish();
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+
+    document.expire();
+    std::cout << "Transition type: expire" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
+
+    // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
+        // TODO make 'ADMIN' and 'USER' an enum class that will the User class accept
+        //  - as a constructor parameter?
+        //  - as a 'promoteToAdmin' function?
+
+        // TODO remember previous state on 'changeState'?
+        // TODO make State virtual functions return a Transition object/instance for the client to print it out to terminal
 }

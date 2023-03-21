@@ -19,13 +19,18 @@ namespace ifElseStateMachine {
     public:
         DocumentAsIfElseStateMachine(User currentUser) :
                 state("draft"),
-                _currentUser(currentUser) {}
+                _currentUser(currentUser),
+                returnedFromReview(false),
+                expired(false)
+            {}
 
         void publish();
-
-        void switchCurrentUser(User user);
+        void resetSpecialAttributes();
 
         std::string state;
         User _currentUser;
+
+        bool returnedFromReview;
+        bool expired;
     };
 }
