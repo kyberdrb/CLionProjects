@@ -6,6 +6,7 @@
 
 #include "State.h"
 
+// The 'ConcreteState1' class equivalent in the reference State design pattern UML class diagram
 class Draft : public State {
 public:
     explicit Draft(Document& document) :

@@ -15,11 +15,12 @@ class State;    // Cyclic/Circular dependency / cyclic header include: Document 
 
 #include <memory>
 
+// The 'Context' class equivalent in the reference State design pattern UML class diagram
 class Document {
 public:
     explicit Document(User& currentUser) :
-            _currentUser(currentUser)
-            ,_state(std::make_unique<Draft>(*this))
+            _currentUser(currentUser),
+            _state(std::make_unique<Draft>(*this))
     {}
 
     void publish();

@@ -6,6 +6,7 @@
 
 #include "State.h"
 
+// The 'ConcreteState3' class equivalent in the reference State design pattern UML class diagram
 class Published : public State {
 public:
     explicit Published(Document& document) :

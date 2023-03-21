@@ -6,6 +6,7 @@
 
 #include "State.h"
 
+// The 'ConcreteState2' class equivalent in the reference State design pattern UML class diagram
 class Moderation : public State {
 public:
     explicit Moderation(Document& document) :

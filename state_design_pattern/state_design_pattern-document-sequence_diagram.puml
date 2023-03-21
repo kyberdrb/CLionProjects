@@ -3,70 +3,82 @@
 
 'autonumber
 
-Client -> user: User()
-user --> Client: user
+group create_regular_user
+    Client -> user: User()
+    user --> Client: user
+end
 
-Client -> document: Document(user)
-document -> draft: Draft(document)
-draft -> State: State(document)
-draft -> document: state
-document --> Client: document
+group initialize_state_machine
+    Client -> document: Document(user)
+    document -> draft: Draft(document)
+    draft -> State: State(document)
+    draft -> document: state
+    document --> Client: document
+end
 
-'TODO add divider, e.g. '---', more free vertical space, ...
+group transition: send_document_to_review_as_user
+    Client -> document: publish()
+    document -> State: publish()
+    State -> draft: publish()
+    draft -> moderation: Moderation(document)
+    draft -> document: changeState(moderation)
+end
 
-Client -> document: publish()
-document -> State: publish()
-State -> draft: publish()
-draft -> moderation: Moderation(document)
-draft -> document: changeState(moderation)
+group transition: return_document_to_user_after_failed_review
+    Client -> document: returnDocAfterReview()
+    document -> State: returnDocAfterReview()
+    State -> moderation: returnDocAfterReview()
+    moderation -> draft: Draft(document)
+    moderation -> document: changeState(draft)
+end
 
-'TODO add divider, e.g. '---', more free vertical space, ...
+group transition: send_document_to_review_again_as_user
+    Client -> document: publish()
+    document -> State: publish()
+    State -> draft: publish()
+    draft -> moderation: Moderation(document)
+    draft -> document: changeState(moderation)
+end
 
-Client -> document: returnDocAfterReview()
-document -> State: returnDocAfterReview()
-State -> moderation: returnDocAfterReview()
-moderation -> draft: Draft(document)
-moderation -> document: changeState(draft)
-
-'TODO add divider, e.g. '---', more free vertical space, ...
-
-Client -> document: publish()
-document -> State: publish()
-State -> moderation: publish()
-moderation -> published: Published(document)
-moderation -> document: changeState(published)
-
-'TODO add divider, e.g. '---', more free vertical space, ...
-
-Client -> document: publish()
-document -> State: publish()
-State -> published: publish()
-published -> published: Published(document)
-published -> document: changeState(published)
-
-'TODO add divider, e.g. '---', more free vertical space, ...
-
-Client -> document: expire()
-document -> State: expire()
-State -> published: expire()
-published -> draft: Draft(document)
-published -> document: changeState(draft)
+group transition: publish_reviewed_document_as_user
+    Client -> document: publish()
+    document -> State: publish()
+    State -> moderation: publish()
+    moderation -> moderation: Moderation(document)
+    moderation -> document: changeState(moderation)
+end
 
 ' PUBLISHING DOCUMENT AS ADMIN
 'TODO add divider, e.g. '---', more free vertical space, ...
 
-Client -> document: publish()
-document -> State: publish()
-State -> draft: publish()
-draft -> published: Draft(document)
-draft -> document: changeState(published)
+group transition: admin_continues_to_publish_document
+    Client -> document: publish()
+    document -> State: publish()
+    State -> moderation: publish()
+    moderation -> published: Published(document)
+    moderation -> document: changeState(published)
+end
 
-'TODO add divider, e.g. '---', more free vertical space, ...
+group transition: document_validity_expired
+    Client -> document: expire()
+    document -> State: expire()
+    State -> published: expire()
+    published -> draft: Draft(document)
+    published -> document: changeState(draft)
+end
 
-Client -> document: expire()
-document -> State: expire()
-State -> published: expire()
-published -> draft: Draft(document)
-published -> document: changeState(draft)
+group transition: publish_expired_document_again_in_later_deadline
+    Client -> document: publish()
+    document -> State: publish()
+    State -> draft: publish()
+    draft -> published: Published(document)
+    draft -> document: changeState(published)
+
+    Client -> document: publish()
+    document -> State: publish()
+    State -> published: publish()
+    published -> published: Published(document)
+    published -> document: changeState(published)
+end
 
 @enduml

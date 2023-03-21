@@ -60,10 +60,6 @@ void exampleOfPublishingDocumentAsIfElseStateMachine() {
     std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tmoderation -> " << documentAsIfElseStateMachine.state << '\n';
 
-    documentAsIfElseStateMachine.publish();
-    std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tpublished -> " << documentAsIfElseStateMachine.state << '\n';
-
     documentAsIfElseStateMachine.expired = true;
     documentAsIfElseStateMachine.publish();
     std::cout << "Transition type: expire" << '\n';
@@ -74,11 +70,9 @@ void exampleOfPublishingDocumentAsIfElseStateMachine() {
     std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tdraft -> " << documentAsIfElseStateMachine.state << '\n';
 
-    documentAsIfElseStateMachine.expired = true;
     documentAsIfElseStateMachine.publish();
-    std::cout << "Transition type: expire" << '\n';
+    std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tpublished -> " << documentAsIfElseStateMachine.state << '\n';
-    documentAsIfElseStateMachine.resetSpecialAttributes();
 }
 
 void exampleOfPublishingDocumentAsStateDesignPattern() {
@@ -109,14 +103,6 @@ void exampleOfPublishingDocumentAsStateDesignPattern() {
     std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
 
-    document.publish();
-    std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
-
-    document.expire();
-    std::cout << "Transition type: expire" << '\n';
-    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
-
     std::cout << "...\n";
 
     user->role = "admin";
@@ -128,10 +114,18 @@ void exampleOfPublishingDocumentAsStateDesignPattern() {
 
     document.publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+    std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
 
     document.expire();
     std::cout << "Transition type: expire" << '\n';
+    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
+
+    document.publish();
+    std::cout << "Transition type: publish" << '\n';
+    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+
+    document.publish();
+    std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
 
     // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site

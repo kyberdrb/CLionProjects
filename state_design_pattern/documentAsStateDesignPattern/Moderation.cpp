@@ -10,7 +10,12 @@
 #include <ostream>
 
 void Moderation::publish() {
-    State::_document.changeState(std::make_unique<Published>(State::_document));
+    if (State::_document.getCurrentUser().isAdmin()) {
+        State::_document.changeState(std::make_unique<Published>(State::_document));
+        return;
+    }
+
+    State::_document.changeState(std::make_unique<Moderation>(State::_document));
 }
 
 void Moderation::returnDocAfterReview() {

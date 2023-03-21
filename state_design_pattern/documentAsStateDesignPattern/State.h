@@ -11,6 +11,7 @@ class Document; // Cyclic/Circular dependency / cyclic header include: Document 
 
 #include <iosfwd>
 
+// The 'State' class equivalent in the reference State design pattern UML class diagram
 class State {
 public:
 //    State() = default;
