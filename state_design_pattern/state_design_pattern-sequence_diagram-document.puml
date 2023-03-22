@@ -49,8 +49,6 @@ group transition: publish_reviewed_document_as_user
 end
 
 ' PUBLISHING DOCUMENT AS ADMIN
-'TODO add divider, e.g. '---', more free vertical space, ...
-
 group transition: admin_continues_to_publish_document
     Client -> document: publish()
     document -> State: publish()

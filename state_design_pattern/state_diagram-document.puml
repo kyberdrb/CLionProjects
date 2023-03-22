@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 350 width
+
+[*] --> Draft
+Draft --> Moderation : Published\nby user
+Moderation --> Draft : Review\nfailed
+Moderation --> Published : Approved\nby admin
+
+Draft --> Published : Published\nby admin
+
+Published --> Draft : Publication\nexpired
+
+@enduml
