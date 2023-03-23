@@ -2,34 +2,31 @@
 'https://plantuml.com/activity-diagram-beta
 
 start
-:ClickServlet.handleRequest();
-:new page;
-if (Page.onSecurityCheck) then (true)
-  :Page.onInit();
-  if (isForward?) then (no)
-    :Process controls;
-    if (continue processing?) then (no)
-      stop
+:User user;
+:Document document(user);
+:document.publish();
+if (state == "draft") then (true)
+    if (currentUser.role == "admin") then (true)
+        :state = "published";
+    else (false)
+        :state = "moderation";
     endif
-
-    if (isPost?) then (yes)
-      :Page.onPost();
-    else (no)
-      :Page.onGet();
-    endif
-    :Page.onRender();
-  endif
-else (false)
+    stop
 endif
 
-if (do redirect?) then (yes)
-  :redirect process;
-else
-  if (do forward?) then (yes)
-    :Forward request;
-  else (no)
-    :Render page template;
-  endif
+if (state == "moderation") then (true)
+    if (currentUser.role == "admin") then (true)
+        :state = "published";
+    else if (this->returnedFromReview) then (true)
+        :state = "draft";
+    endif
+    stop
+endif
+
+if (state == "published") then (true)
+    if (document.expired) then (true)
+        :state = "draft";
+    endif
 endif
 
 stop
