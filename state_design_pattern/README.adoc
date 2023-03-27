@@ -1,0 +1,53 @@
+# State Design Pattern
+
+## Further development
+
+Implement production-ready State design pattern to another directory under another namespace according to belowmentioned hints:
+
+```
+// TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
+        // TODO make 'ADMIN' and 'USER' an enum class that will the User class accept
+        //  - as a constructor parameter?
+        //  - as a 'promoteToAdmin' function?
+
+        // TODO remember previous state on 'changeState'?
+        // TODO make State virtual functions return a Transition object/instance for the client to print it out to terminal
+```
+
+## Sources
+
+### Design
+
+- https://refactoring.guru/design-patterns/state
+- https://duckduckgo.com/?t=ffab&q=state+design+pattern+example&ia=web
+
+### Implementation
+
+- https://refactoring.guru/design-patterns/state/cpp/example
+- https://duckduckgo.com/?t=ffab&q=initialize+member+of+abstract+class+c%2B%2B&ia=web
+- https://stackoverflow.com/questions/9458253/how-do-you-initialize-protected-members-of-an-abstract-base-class
+- https://stackoverflow.com/questions/4113815/initializing-an-abstract-class
+- https://stackoverflow.com/questions/524641/how-do-i-create-my-own-ostream-streambuf
+- https://duckduckgo.com/?t=ffab&q=virtual+stream+output+operator&ia=web
+- https://stackoverflow.com/questions/4571611/making-operator-virtual
+- https://duckduckgo.com/?t=ffab&q=initialize+unique_ptr+initializer+list&ia=web
+- https://stackoverflow.com/questions/38985127/unique-ptr-in-member-initialization-list
+- https://duckduckgo.com/?t=ffab&q=make_unique+member+initializer+list&ia=web
+- https://stackoverflow.com/questions/68375942/use-make-unique-make-shared-in-member-initializer-lists-or-in-class-initializati
+- https://duckduckgo.com/?t=ffab&q=overriding+default+virtual+destructor&ia=web
+- https://stackoverflow.com/questions/40999791/default-override-of-virtual-destructor
+- https://duckduckgo.com/?t=ffab&q=c%2B%2B+not+overriding+virtual+destructor&ia=web
+- https://stackoverflow.com/questions/11002135/error-class-was-not-declared-in-this-scope
+- https://duckduckgo.com/?t=ffab&q=initialize+member+of+abstract+class+c%2B%2B&ia=web
+- https://stackoverflow.com/questions/4113815/initializing-an-abstract-class
+- https://stackoverflow.com/questions/9458253/how-do-you-initialize-protected-members-of-an-abstract-base-class
+- *https://duckduckgo.com/?t=ffab&q=error%3A+expected+class-name+before+%E2%80%98%7B%E2%80%99+token&ia=web*
+- *https://stackoverflow.com/questions/5319906/error-expected-class-name-before-token/5319927#5319927*
+    ** solution for cyclic/circular/mutual dependency between `Document` and `State` class
+- https://duckduckgo.com/?q=state+design+pattern+cyclic+circular+dependency&t=ffab&ia=web
+- https://stackoverflow.com/questions/5198788/resolving-circular-dependency-in-the-state-pattern-with-c
+
+### UML diagrams
+
+- https://duckduckgo.com/?t=ffab&q=plantuml+sequence+diagram&ia=web
+- https://plantuml.com/sequence-diagram

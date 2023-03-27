@@ -127,12 +127,4 @@ void exampleOfPublishingDocumentAsStateDesignPattern() {
     document.publish();
     std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
-
-    // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
-        // TODO make 'ADMIN' and 'USER' an enum class that will the User class accept
-        //  - as a constructor parameter?
-        //  - as a 'promoteToAdmin' function?
-
-        // TODO remember previous state on 'changeState'?
-        // TODO make State virtual functions return a Transition object/instance for the client to print it out to terminal
 }
