@@ -47,7 +47,25 @@ Implement production-ready State design pattern to another directory under anoth
 - https://duckduckgo.com/?q=state+design+pattern+cyclic+circular+dependency&t=ffab&ia=web
 - https://stackoverflow.com/questions/5198788/resolving-circular-dependency-in-the-state-pattern-with-c
 
+---
+
+- https://duckduckgo.com/?q=state+design+pattern+example&ia=web
+- https://duckduckgo.com/?q=state+machine+example&iax=images&ia=images&iai=https%3A%2F%2Fi.stack.imgur.com%2FtLbXm.png
+- https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
+- https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
+- https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
+- https://stackoverflow.com/questions/7714345/forward-declaration-with-vector-of-class-type-pointer-to-incomplete-class-type
+- https://stackoverflow.com/questions/7714345/forward-declaration-with-vector-of-class-type-pointer-to-incomplete-class-type/7714388#7714388
+- https://duckduckgo.com/?q=c%2B%2B+cyclic+include&ia=web
+- https://duckduckgo.com/?q=c%2B%2B+cyclical+header+dependency&ia=web
+
 ### UML diagrams
 
 - https://duckduckgo.com/?t=ffab&q=plantuml+sequence+diagram&ia=web
 - https://plantuml.com/sequence-diagram
+- https://itcsworld.blogspot.com/2013/09/sequence-diagram-examples.html
+- https://duckduckgo.com/?t=ffab&q=plantuml+sequence+diagram&ia=web
+- https://plantuml.com/sequence-diagram#425ba4350c02142c
+- https://plantuml.com/activity-diagram-legacy
+- https://plantuml.com/activity-diagram-beta
+- https://plantuml.com/state-diagram
