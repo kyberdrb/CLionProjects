@@ -2,10 +2,14 @@
 
 #include "documentAsStateDesignPattern/Document.h"
 
+#include "documentAsStateDesignPatternProduction/Document.h"
+#include "documentAsStateDesignPatternProduction/UserRole.h"
+
 #include <iostream>
 
 void exampleOfPublishingDocumentAsIfElseStateMachine();
 void exampleOfPublishingDocumentAsStateDesignPattern();
+void exampleOfPublishingDocumentAsStateDesignPatternProduction();
 
 int main() {
     exampleOfPublishingDocumentAsIfElseStateMachine();
@@ -13,6 +17,11 @@ int main() {
     std::cout << '\n' << "---" << "\n\n";
 
     exampleOfPublishingDocumentAsStateDesignPattern();
+
+    std::cout << '\n' << "---" << "\n\n";
+
+    exampleOfPublishingDocumentAsStateDesignPatternProduction();
+
     return 0;
 }
 
@@ -127,4 +136,16 @@ void exampleOfPublishingDocumentAsStateDesignPattern() {
     document.publish();
     std::cout << "Transition type: publish" << '\n';
     std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
+}
+
+void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
+    auto user = std::make_unique<production::User>(production::UserRole::USER);
+    auto document = std::make_unique<production::Document>(*user);
+
+    //...
+
+    auto admin = std::make_unique<production::User>(production::UserRole::ADMIN);
+    document->changeUser(*admin);
+
+    //...
 }

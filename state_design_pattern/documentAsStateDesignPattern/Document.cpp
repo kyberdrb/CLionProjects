@@ -4,8 +4,6 @@
 
 #include "Document.h"
 
-//#include "State.h"
-
 void Document::publish() {
     this->_state->publish();
 }
