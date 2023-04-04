@@ -142,10 +142,52 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
     auto user = std::make_unique<production::User>(production::UserRole::USER);
     auto document = std::make_unique<production::Document>(*user);
 
-    //...
+//    std::cout
+//            << document.getCurrentUser()
+//            << " is publishing a document"
+//            << '\n';
+//
+//    std::cout << "Initial state:\t\t\t" << document.getCurrentState() << '\n';
+//
+//    document.publish();
+//    std::cout << "Transition type: publish" << '\n';
+//    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+//
+//    document.returnDocAfterReview();
+//    std::cout << "Transition type: returnDocAfterReview" << '\n';
+//    std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
+//
+//    document.publish();
+//    std::cout << "Transition type: publish" << '\n';
+//    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+//
+//    document.publish();
+//    std::cout << "Transition type: publish" << '\n';
+//    std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
+//
+//    std::cout << "...\n";
 
     auto admin = std::make_unique<production::User>(production::UserRole::ADMIN);
     document->changeUser(*admin);
 
-    //...
+//    std::cout
+//            << document.getCurrentUser()
+//            << " is publishing a document"
+//            << '\n';
+//
+//    document.publish();
+//    std::cout << "Transition type: publish" << '\n';
+//    std::cout << "State change:\t\t\tmoderation -> " << document.getCurrentState() << '\n';
+//
+//    document.expire();
+//    std::cout << "Transition type: expire" << '\n';
+//    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
+//
+//    document.publish();
+//    std::cout << "Transition type: publish" << '\n';
+//    std::cout << "State change:\t\t\tdraft -> " << document.getCurrentState() << '\n';
+//
+//    document.publish();
+//    std::cout << "Transition type: publish" << '\n';
+//    std::cout << "State change:\t\t\tpublished -> " << document.getCurrentState() << '\n';
 }
