@@ -2,10 +2,11 @@
 // Created by AndrejŠišila on 3/30/2023.
 //
 
-#ifndef STATE_DESIGN_PATTERN_USER_H
-#define STATE_DESIGN_PATTERN_USER_H
+#pragma once
 
 #include "UserRole.h"
+
+#include <iostream>
 
 namespace production {
     class User {
@@ -14,10 +15,20 @@ namespace production {
                 _role(userRole)
         {}
 
+        bool isAdmin() const;
+
+        friend std::ostream& operator<<(std::ostream& out, const User& user) {
+            if (user._role == UserRole::USER) {
+                out << "user";
+            }
+            else if (user._role == UserRole::ADMIN) {
+                out << "admin";
+            }
+
+            return out;
+        }
+
     private:
         UserRole _role;
     };
-
-} // production
-
-#endif //STATE_DESIGN_PATTERN_USER_H
+}

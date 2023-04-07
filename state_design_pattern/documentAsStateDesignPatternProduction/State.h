@@ -26,7 +26,6 @@ namespace production {
     protected:
         virtual void streamOutputOperator(std::ostream& out) const = 0;
 
-    private:
         Document& _document;
     };
 

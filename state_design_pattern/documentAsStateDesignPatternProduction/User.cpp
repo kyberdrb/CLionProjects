@@ -5,4 +5,7 @@
 #include "User.h"
 
 namespace production {
-} // production
+    bool User::isAdmin() const {
+        return this->_role == UserRole::ADMIN;
+    }
+}
