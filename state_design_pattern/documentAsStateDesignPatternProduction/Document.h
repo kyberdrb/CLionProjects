@@ -16,7 +16,7 @@ namespace production {
     public:
         explicit Document(User& currentUser) :
                 _currentUser(currentUser)
-                ,_state(std::make_unique<Draft>(*this))
+                , _currentState(std::make_unique<Draft>(*this))
         {}
 
         void publish();
@@ -24,14 +24,17 @@ namespace production {
         void expire();
 
         void changeState(std::unique_ptr<State> state);
+        void getStateChange() const;
 
         const User& getCurrentUser() const;
         void changeUser(const User& otherUser);
 
         const State& getCurrentState() const;
+        const State& getPreviousState() const;
 
     private:
         User& _currentUser;
-        std::unique_ptr<State> _state;
+        std::unique_ptr<State> _currentState;
+        std::unique_ptr<State> _previousState;
     };
 }

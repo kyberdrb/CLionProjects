@@ -11,6 +11,8 @@ void exampleOfPublishingDocumentAsIfElseStateMachine();
 void exampleOfPublishingDocumentAsStateDesignPattern();
 void exampleOfPublishingDocumentAsStateDesignPatternProduction();
 
+void getStateChange();
+
 int main() {
     exampleOfPublishingDocumentAsIfElseStateMachine();
 
@@ -151,19 +153,19 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
 
     document->publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tdraft -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     document->returnDocAfterReview();
     std::cout << "Transition type: returnDocAfterReview" << '\n';
-    std::cout << "State change:\t\t\tmoderation -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     document->publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tdraft -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     document->publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tmoderation -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     std::cout << "...\n";
 
@@ -177,17 +179,17 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
 
     document->publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tmoderation -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     document->expire();
     std::cout << "Transition type: expire" << '\n';
-    std::cout << "State change:\t\t\tpublished -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     document->publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tdraft -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 
     document->publish();
     std::cout << "Transition type: publish" << '\n';
-    std::cout << "State change:\t\t\tpublished -> " << document->getCurrentState() << '\n';
+    document->getStateChange();
 }
