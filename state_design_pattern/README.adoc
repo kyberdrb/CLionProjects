@@ -6,12 +6,11 @@ Implement production-ready State design pattern to another directory under anoth
 
 ```
 // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
-        // TODO make 'ADMIN' and 'USER' an enum class that will the User class accept
-        //  - as a constructor parameter?
-        //  - as a 'promoteToAdmin' function?
-
-        // TODO remember previous state on 'changeState'?
-        // TODO make State virtual functions return a Transition object/instance for the client to print it out to terminal
+        // TODO v2: make Document's function 'changeState' return a Transition object/instance for the client to print it out to terminal
+        // TODO v3: encapsulate 'std::cout' calls into 'Terminal' singleton class
+        // TODO v3: encapsulate 'std::stringstream' calls into 'Message' class
+        // TODO v3: make 'StateFactory' class as a (static) Factory method
+        // TODO v4: Precreate all states and save them to 'vector<State>'/'hashmap<StateEnum, State>' and then change references at transitions instead of creating new instance at each transition
 ```
 
 ## Sources

@@ -24,13 +24,23 @@ namespace production {
         void expire();
 
         void changeState(std::unique_ptr<State> state);
-        void getStateChange() const;
+        std::string getStateChange() const;
 
         const User& getCurrentUser() const;
         void changeUser(const User& otherUser);
 
         const State& getCurrentState() const;
         const State& getPreviousState() const;
+
+        std::string dividerBeforeChangingPublisher() const;
+        std::string whoIsPublishingDocument() const;
+
+        // Reports starting state after creating the state machine
+        std::string getInitialState() const;
+
+        std::string getTransitionDetailsPublish() const;
+        std::string getTransitionDetailsExpire() const;
+        std::string getTransitionDetailsReturnDocAfterReview() const;
 
     private:
         User& _currentUser;

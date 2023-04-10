@@ -11,20 +11,6 @@ void exampleOfPublishingDocumentAsIfElseStateMachine();
 void exampleOfPublishingDocumentAsStateDesignPattern();
 void exampleOfPublishingDocumentAsStateDesignPatternProduction();
 
-void getStateChange();
-
-void whoIsPublishingDocument(const std::unique_ptr<production::Document>& document);
-
-void getInitialState(std::unique_ptr<production::Document>& document);
-
-void getTransitionDetailsPublish(std::unique_ptr<production::Document>& document);
-
-void getTransitionDetailsReturnDocAfterReview(std::unique_ptr<production::Document>& document);
-
-void getTransitionDetailsExpire(std::unique_ptr<production::Document>& document);
-
-void dividerBeforeChangingPublisher();
-
 int main() {
     exampleOfPublishingDocumentAsIfElseStateMachine();
 
@@ -156,64 +142,38 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
     auto user = std::make_unique<production::User>(production::UserRole::USER);
     auto document = std::make_unique<production::Document>(*user);
 
-    whoIsPublishingDocument(document);
+    std::cout << document->whoIsPublishingDocument();
 
-    getInitialState(document);
+    std::cout << document->getInitialState();
 
     document->publish();
-    getTransitionDetailsPublish(document);
+    std::cout << document->getTransitionDetailsPublish();
 
     document->returnDocAfterReview();
-    getTransitionDetailsReturnDocAfterReview(document);
+    std::cout << document->getTransitionDetailsReturnDocAfterReview();
 
     document->publish();
-    getTransitionDetailsPublish(document);
+    std::cout << document->getTransitionDetailsPublish();
 
     document->publish();
-    getTransitionDetailsPublish(document);
+    std::cout << document->getTransitionDetailsPublish();
 
-    dividerBeforeChangingPublisher();
+    std::cout << document->dividerBeforeChangingPublisher();
 
     auto admin = std::make_unique<production::User>(production::UserRole::ADMIN);
     document->changeUser(*admin);
 
-    whoIsPublishingDocument(document);
+    std::cout << document->whoIsPublishingDocument();
 
     document->publish();
-    getTransitionDetailsPublish(document);
+    std::cout << document->getTransitionDetailsPublish();
 
     document->expire();
-    getTransitionDetailsExpire(document);
+    std::cout << document->getTransitionDetailsExpire();
 
     document->publish();
-    getTransitionDetailsPublish(document);
+    std::cout << document->getTransitionDetailsPublish();
 
     document->publish();
-    getTransitionDetailsPublish(document);
-}
-
-void dividerBeforeChangingPublisher() { std::cout << "...\n"; }
-
-void getTransitionDetailsExpire(std::unique_ptr<production::Document>& document) {
-    std::cout << "Transition type: expire" << '\n';
-    document->getStateChange();
-}
-
-void getTransitionDetailsReturnDocAfterReview(std::unique_ptr<production::Document>& document) {
-    std::cout << "Transition type: returnDocAfterReview" << '\n';
-    document->getStateChange();
-}
-
-void getTransitionDetailsPublish(std::unique_ptr<production::Document>& document) {
-    std::cout << "Transition type: publish" << '\n';
-    document->getStateChange();
-}
-
-void getInitialState(std::unique_ptr<production::Document>& document) { std::cout << "Initial state:\t\t\t" << document->getCurrentState() << '\n'; }
-
-void whoIsPublishingDocument(const std::unique_ptr<production::Document>& document) {
-    std::cout
-            << document->getCurrentUser()
-            << " is publishing a document"
-            << '\n';
+    std::cout << document->getTransitionDetailsPublish();
 }
