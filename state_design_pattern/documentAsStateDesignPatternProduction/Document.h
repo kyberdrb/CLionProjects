@@ -6,6 +6,7 @@
 
 #include "User.h"
 #include "Draft.h"
+#include "Transition.h"
 
 #include <memory>
 
@@ -24,13 +25,10 @@ namespace production {
         void expire();
 
         void changeState(std::unique_ptr<State> state);
-        std::string getStateChange() const;
+        void setTransitionType(std::string transitionType);
 
         const User& getCurrentUser() const;
         void changeUser(const User& otherUser);
-
-        const State& getCurrentState() const;
-        const State& getPreviousState() const;
 
         std::string dividerBeforeChangingPublisher() const;
         std::string whoIsPublishingDocument() const;
@@ -38,13 +36,12 @@ namespace production {
         // Reports starting state after creating the state machine
         std::string getInitialState() const;
 
-        std::string getTransitionDetailsPublish() const;
-        std::string getTransitionDetailsExpire() const;
-        std::string getTransitionDetailsReturnDocAfterReview() const;
+        std::string getTransitionDetails() const;
 
     private:
         User& _currentUser;
         std::unique_ptr<State> _currentState;
         std::unique_ptr<State> _previousState;
+        std::unique_ptr<Transition> transition;
     };
 }

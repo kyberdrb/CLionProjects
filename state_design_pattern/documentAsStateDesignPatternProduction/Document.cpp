@@ -22,12 +22,11 @@ namespace production {
     void Document::changeState(std::unique_ptr<State> state) {
         this->_previousState = std::move(this->_currentState);
         this->_currentState = std::move(state);
+        this->transition = std::make_unique<Transition>(*(this->_previousState), *(this->_currentState));
     }
 
-    std::string Document::getStateChange() const {
-        std::stringstream message;
-        message << "State change:\t\t\t" << this->getPreviousState() << " -> " << this->getCurrentState() << '\n';
-        return message.str();
+    void Document::setTransitionType(std::string transitionType) {
+        this->transition->setTransitionType(transitionType);
     }
 
     const User& Document::getCurrentUser() const {
@@ -36,14 +35,6 @@ namespace production {
 
     void Document::changeUser(const User& otherUser) {
         this->_currentUser = otherUser;
-    }
-
-    const State& Document::getCurrentState() const {
-        return *(this->_currentState);
-    }
-
-    const State& Document::getPreviousState() const {
-        return *(this->_previousState);
     }
 
     std::string Document::dividerBeforeChangingPublisher() const {
@@ -62,28 +53,13 @@ namespace production {
 
     std::string Document::getInitialState() const {
         std::stringstream message;
-        message << "Initial state:\t\t\t" << this->getCurrentState() << '\n';
+        message << "Initial state:\t\t\t" << *(this->_currentState) << '\n';
         return message.str();
     }
 
-    std::string Document::getTransitionDetailsPublish() const {
+    std::string Document::getTransitionDetails() const {
         std::stringstream message;
-        message << "Transition type: publish" << '\n';
-        message << this->getStateChange();
-        return message.str();
-    }
-
-    std::string Document::getTransitionDetailsExpire() const {
-        std::stringstream message;
-        message << "Transition type: expire" << '\n';
-        message << this->getStateChange();
-        return message.str();
-    }
-
-    std::string Document::getTransitionDetailsReturnDocAfterReview() const {
-        std::stringstream message;
-        message << "Transition type: returnDocAfterReview" << '\n';
-        message << this->getStateChange();
+        message << *(this->transition);
         return message.str();
     }
 }

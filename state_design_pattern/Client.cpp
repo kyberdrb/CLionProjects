@@ -147,16 +147,16 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
     std::cout << document->getInitialState();
 
     document->publish();
-    std::cout << document->getTransitionDetailsPublish();
+    std::cout << document->getTransitionDetails();
 
     document->returnDocAfterReview();
-    std::cout << document->getTransitionDetailsReturnDocAfterReview();
+    std::cout << document->getTransitionDetails();
 
     document->publish();
-    std::cout << document->getTransitionDetailsPublish();
+    std::cout << document->getTransitionDetails();
 
     document->publish();
-    std::cout << document->getTransitionDetailsPublish();
+    std::cout << document->getTransitionDetails();
 
     std::cout << document->dividerBeforeChangingPublisher();
 
@@ -166,14 +166,14 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
     std::cout << document->whoIsPublishingDocument();
 
     document->publish();
-    std::cout << document->getTransitionDetailsPublish();
+    std::cout << document->getTransitionDetails();
 
     document->expire();
-    std::cout << document->getTransitionDetailsExpire();
+    std::cout << document->getTransitionDetails();
 
     document->publish();
-    std::cout << document->getTransitionDetailsPublish();
+    std::cout << document->getTransitionDetails();
 
     document->publish();
-    std::cout << document->getTransitionDetailsPublish();
+    std::cout << document->getTransitionDetails();
 }
