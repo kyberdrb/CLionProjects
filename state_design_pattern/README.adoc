@@ -6,8 +6,6 @@ Implement production-ready State design pattern to another directory under anoth
 
 ```
 // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
-        // TODO v2: make each of the virtual functions in 'State' class set a transition type, the Transition instance is created in the 'Document' class in function 'changeState' WITHOUT CHANGING THE SIGNATURE OF THE 'changeState' function, then the transition instance is returned to the client to print the transition details out to the terminal via the 'getTransitionDetails' function. The 'getTransitionDetails' unifies the printing of the transation details for the Client class
-        // TODO v2.1 same as v2, but WITH CHANGING THE SIGNATURE OF THE 'changeState' class - safer, easier to use - create the entire Transition instance at once from one place with all the information about the transition, including the transition type which is passed to the 'changeState' function from the individual states
         // TODO v3: encapsulate 'std::cout' calls into 'Terminal' singleton class
         // TODO v3: encapsulate 'std::stringstream' calls into 'Message' class
         // TODO v3: make 'StateFactory' class as a (static) Factory method
