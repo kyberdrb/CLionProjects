@@ -7,13 +7,14 @@
 #include "Document.h"
 #include "Moderation.h"
 #include "Published.h"
+#include "TransitionType.h"
 
 #include <iostream>
 
 namespace production {
     void Draft::publish() {
         if (State::_document.getCurrentUser().isAdmin()) {
-            State::_document.changeState(std::make_unique<Published>(State::_document), "publish");
+            State::_document.changeState(std::make_unique<Published>(State::_document), TransitionType::PUBLISH);
             return;
         }
 
@@ -22,18 +23,18 @@ namespace production {
         //  and produces following errors:
         //    error: invalid use of incomplete type ‘class Document’
         //    note: forward declaration of ‘class Document’
-        State::_document.changeState(std::make_unique<Moderation>(State::_document), "publish");
+        State::_document.changeState(std::make_unique<Moderation>(State::_document), TransitionType::PUBLISH);
 
         // Accessing the '_document' attribute in the parent/base class via 'this' pointer is working equivalently:
 //    this->_document.changeState(std::make_unique<Moderation>());
     }
 
     void Draft::returnDocAfterReview() {
-        State::_document.changeState(std::make_unique<Draft>(State::_document), "returnDocAfterReview");
+        State::_document.changeState(std::make_unique<Draft>(State::_document), TransitionType::RETURN_DOC_AFTER_REVIEW);
     }
 
     void Draft::expire() {
-        State::_document.changeState(std::make_unique<Draft>(State::_document), "ехpire");
+        State::_document.changeState(std::make_unique<Draft>(State::_document), TransitionType::EXPIRE);
     }
 
     void Draft::streamOutputOperator(std::ostream& out) const {
