@@ -6,18 +6,15 @@
 
 namespace production {
     void Published::publish() {
-        State::_document.changeState(std::make_unique<Published>(State::_document));
-        State::_document.setTransitionType("publish");
+        State::_document.changeState(std::make_unique<Published>(State::_document), "publish");
     }
     
     void Published::returnDocAfterReview() {
-        State::_document.changeState(std::make_unique<Published>(State::_document));
-        State::_document.setTransitionType("returnDocAfterReview");
+        State::_document.changeState(std::make_unique<Published>(State::_document), "returnDocAfterReview");
     }
     
     void Published::expire() {
-        State::_document.changeState(std::make_unique<Draft>(State::_document));
-        State::_document.setTransitionType("ехpire");
+        State::_document.changeState(std::make_unique<Draft>(State::_document), "ехpire");
     }
     
     void Published::streamOutputOperator(std::ostream& out) const {

@@ -11,9 +11,11 @@ namespace production {
     class Transition {
     public:
         Transition(
+                std::string transitionType,
                 const State& sourceState,
                 const State& destinationState)
         :
+            _transitionType(transitionType),
             _sourceState(sourceState),
             _destinationState(destinationState)
         {}
