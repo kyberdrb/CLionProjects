@@ -2,14 +2,19 @@
 
 ## Further development
 
-Implement production-ready State design pattern to another directory under another namespace according to belowmentioned hints:
+Implement production-ready State design pattern to another directory under another namespace according to below-mentioned hints:
 
 ```
 // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
-        // TODO v3: encapsulate 'std::cout' calls into 'Terminal' singleton class
-        // TODO v3: encapsulate 'std::stringstream' calls into 'Message' class
-        // TODO v3: make 'StateFactory' class as a (static) Factory method
-        // TODO v4: Precreate all states and save them to 'vector<State>'/'hashmap<StateEnum, State>' and then change references at transitions instead of creating new instance at each transition
+        // State Design Pattern - Variations:
+        // TODO v2: in 'Transition' class change references to pointers to avoid duplicate code for setting transition type from enum in concrete states
+        // TODO v2.1: make 'State' class a Template, that will call a private transition-instance-setter first ('transition' will be a member of the 'Document' class) and then will have a pure virtual hook function overriden in derived classes
+        // TODO v3: Precreate all states and save them to 'vector<State>'/'hashmap<StateEnum, State>' and then change references at transitions instead of creating new instance at each transition
+
+        // State Design Pattern - SRP applications:
+        // TODO v4.1: encapsulate 'std::cout' calls into 'Terminal' singleton class
+        // TODO v4.2: encapsulate 'std::stringstream' calls into 'Message' class
+        // TODO v4.3: make 'StateFactory' class as a (static) Factory method
 ```
 
 ## Sources
