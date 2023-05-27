@@ -13,9 +13,9 @@ namespace production {
             : State(document)
         {}
 
-        void publish() override;
-        void returnDocAfterReview() override;
-        void expire() override;
+        void publishImplementation() override;
+        void returnDocAfterReviewImplementation() override;
+        void expireImplementation() override;
 
         ~Moderation() override = default;
 

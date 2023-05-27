@@ -6,16 +6,16 @@
 #include "TransitionType.h"
 
 namespace production {
-    void Published::publish() {
-        State::_document.changeState(std::make_unique<Published>(State::_document), TransitionType::PUBLISH);
+    void Published::publishImplementation() {
+        State::_document.changeState(std::make_unique<Published>(State::_document));
     }
     
-    void Published::returnDocAfterReview() {
-        State::_document.changeState(std::make_unique<Published>(State::_document), TransitionType::RETURN_DOC_AFTER_REVIEW);
+    void Published::returnDocAfterReviewImplementation() {
+        State::_document.changeState(std::make_unique<Published>(State::_document));
     }
     
-    void Published::expire() {
-        State::_document.changeState(std::make_unique<Draft>(State::_document), TransitionType::EXPIRE);
+    void Published::expireImplementation() {
+        State::_document.changeState(std::make_unique<Draft>(State::_document));
     }
     
     void Published::streamOutputOperator(std::ostream& out) const {

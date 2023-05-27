@@ -5,6 +5,7 @@
 #pragma once
 
 #include <iosfwd>
+#include "TransitionType.h"
 
 namespace production {
     class Document;
@@ -15,9 +16,13 @@ namespace production {
                 _document(document)
         {}
 
-        virtual void publish() = 0;
-        virtual void returnDocAfterReview() = 0;
-        virtual void expire() = 0;
+        void publish();
+        void returnDocAfterReview();
+        void expire();
+
+        TransitionType getTransitionType() const {
+            return this->transitionType;
+        }
 
         virtual ~State() = default;
 
@@ -27,6 +32,13 @@ namespace production {
         virtual void streamOutputOperator(std::ostream& out) const = 0;
 
         Document& _document;
+
+    private:
+        TransitionType transitionType;
+
+        virtual void publishImplementation() = 0;
+        virtual void returnDocAfterReviewImplementation() = 0;
+        virtual void expireImplementation() = 0;
     };
 
     inline std::ostream& operator<<(std::ostream& out, const State& state) {

@@ -19,10 +19,16 @@ namespace production {
         this->_currentState->expire();
     }
 
-    void Document::changeState(std::unique_ptr<State> state, TransitionType transitionType) {
+//    void Document::changeState(std::unique_ptr<State> state, TransitionType transitionType) {
+//        this->_previousState = std::move(this->_currentState);
+//        this->_currentState = std::move(state);
+//        this->transition = std::make_unique<Transition>(transitionType, *(this->_previousState), *(this->_currentState));
+//    }
+
+    void Document::changeState(std::unique_ptr<State> state) {
         this->_previousState = std::move(this->_currentState);
         this->_currentState = std::move(state);
-        this->transition = std::make_unique<Transition>(transitionType, *(this->_previousState), *(this->_currentState));
+        this->transition = std::make_unique<Transition>(*(this->_previousState), *(this->_currentState));
     }
 
     const User& Document::getCurrentUser() const {
@@ -54,8 +60,24 @@ namespace production {
     }
 
     std::string Document::getTransitionDetails() const {
-        std::stringstream message;
-        message << *(this->transition);
-        return message.str();
+        std::stringstream out;
+
+        out << "Transition type: ";
+
+        if (this->_previousState->getTransitionType() == TransitionType::PUBLISH) {
+            out << "publish";
+        }
+        else if (this->_previousState->getTransitionType() == TransitionType::RETURN_DOC_AFTER_REVIEW) {
+            out << "returnDocAfterReview";
+        }
+        else if (this->_previousState->getTransitionType() == TransitionType::EXPIRE) {
+            out << "expire";
+        }
+
+        out << '\n';
+
+        out << *(this->transition);
+
+        return out.str();
     }
 }

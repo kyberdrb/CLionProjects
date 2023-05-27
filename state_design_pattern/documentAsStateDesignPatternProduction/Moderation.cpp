@@ -11,21 +11,21 @@
 #include <iostream>
 
 namespace production {
-    void Moderation::publish() {
+    void Moderation::publishImplementation() {
         if (State::_document.getCurrentUser().isAdmin()) {
-            State::_document.changeState(std::make_unique<Published>(State::_document), TransitionType::PUBLISH);
+            State::_document.changeState(std::make_unique<Published>(State::_document));
             return;
         }
 
-        State::_document.changeState(std::make_unique<Moderation>(State::_document), TransitionType::PUBLISH);
+        State::_document.changeState(std::make_unique<Moderation>(State::_document));
     }
 
-    void Moderation::returnDocAfterReview() {
-        State::_document.changeState(std::make_unique<Draft>(State::_document), TransitionType::RETURN_DOC_AFTER_REVIEW);
+    void Moderation::returnDocAfterReviewImplementation() {
+        State::_document.changeState(std::make_unique<Draft>(State::_document));
     }
 
-    void Moderation::expire() {
-        State::_document.changeState(std::make_unique<Moderation>(State::_document), TransitionType::EXPIRE);
+    void Moderation::expireImplementation() {
+        State::_document.changeState(std::make_unique<Moderation>(State::_document));
     }
 
     void Moderation::streamOutputOperator(std::ostream& out) const {
