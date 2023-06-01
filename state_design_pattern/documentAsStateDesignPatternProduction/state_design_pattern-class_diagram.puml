@@ -1,0 +1,113 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Client
+hide Client members
+
+Client *-> Document
+Client -> User
+Client .> UserRole
+
+class Document {
+    + Document(currentUser : User)
+    + publish() : void
+    + returnDocAfterReview() : void
+    + expire() : void
+    + changeState(State state) : void
+    + getCurrentUser() : User
+    + changeUser(User otherUser) : void
+    + dividerBeforeChangingPublisher() : string
+    + whoIsPublishingDocument() : string
+    + getInitialState() : string
+    + getTransitionDetails() : string
+
+    - _currentUser : User
+    - _currentState : State
+    - _previousState : State
+    - transition : Transition
+}
+
+Document *-> User
+Document *-> State
+Document *-> Transition
+Document .> TransitionType
+
+abstract class State {
+    + State(document : Document)
+
+    + publish() : void
+    + returnDocAfterReview() : void
+    + expire() : void
+
+  - {abstract} publishImplementation() : void
+  - {abstract} returnDocAfterReviewImplementation() : void
+  - {abstract} expireImplementation() : void
+
+  + getTransitionType() : TransitionType
+
+  + {abstract} ~State()
+
+  + ostream operator<<(\n\
+  out : ostream,\n\
+  state : State)
+
+    # _document : Document
+    - transitionType : TransitionType
+}
+
+State *-> TransitionType
+
+State <|-- Draft
+State <|-- Moderation
+State <|-- Published
+
+class Draft
+
+class Moderation
+
+class Published
+
+class Transition {
+    + Transition(\n\
+  sourceState : State,\n\
+  destinationState : State)
+
+    + ostream operator<<(\n\
+  out : ostream,\n\
+  transition : Transition)
+
+    - _sourceState : State
+    - _destinationState : State
+}
+
+Transition -> State
+
+enum TransitionType {
+    PUBLISH
+    RETURN_DOC_AFTER_REVIEW
+    EXPIRE
+}
+
+hide TransitionType methods
+
+class User {
+    + User(userRole : UserRole)
+    + isAdmin() : bool
+
+    + ostream operator<<(\n\
+      out : ostream,\n\
+      user : User)
+
+    - _role : UserRole
+}
+
+User -> UserRole
+
+enum UserRole {
+    USER
+    ADMIN
+}
+
+hide UserRole methods
+
+@enduml
