@@ -1,0 +1,80 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'autonumber
+
+boundary Client
+entity user
+entity UserRole
+control document
+control State
+control draft
+control moderation
+control published
+control transition
+entity TransitionType
+
+Client -> UserRole : USER
+UserRole --> Client : USER
+Client -> user : User(UserRole)
+user --> Client : user
+
+Client -> document : Document(user)
+document -> document : _currentUser
+document -> draft : Draft(document)
+draft -> State : State(document)
+State --> draft : draft
+draft --> document : _currentState
+document --> Client : document
+
+Client -> document : whoIsPublishingDocument()
+document --> Client : string
+
+Client -> document : getInitialState()
+document -> Client : string
+
+Client -> document : publish()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : returnDocAfterReview()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : publish()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : publish()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : dividerBeforeChangingPublisher()
+document -> Client : string
+
+Client -> UserRole : ADMIN
+UserRole -> Client : ADMIN
+Client -> user : User(UserRole)
+user -> Client : admin
+
+Client -> document : changeUser(admin)
+
+Client -> document : whoIsPublishingDocument()
+
+Client -> document : publish()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : expire()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : publish()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+Client -> document : publish()
+Client -> document : getTransitionDetails()
+document -> Client : string
+
+@enduml
