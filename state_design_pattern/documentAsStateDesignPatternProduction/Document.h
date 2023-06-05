@@ -24,8 +24,8 @@ namespace production {
         void returnDocAfterReview();
         void expire();
 
-//        void changeState(std::unique_ptr<State> state, TransitionType transitionType);
-        void changeState(std::unique_ptr<State> state);
+//        void changeStateTo(std::unique_ptr<State> state, TransitionType transitionType);
+        void changeStateTo(std::unique_ptr<State> state);
 
         const User& getCurrentUser() const;
         void changeUser(const User& otherUser);

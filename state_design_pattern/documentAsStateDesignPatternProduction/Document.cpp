@@ -19,13 +19,7 @@ namespace production {
         this->_currentState->expire();
     }
 
-//    void Document::changeState(std::unique_ptr<State> state, TransitionType transitionType) {
-//        this->_previousState = std::move(this->_currentState);
-//        this->_currentState = std::move(state);
-//        this->transition = std::make_unique<Transition>(transitionType, *(this->_previousState), *(this->_currentState));
-//    }
-
-    void Document::changeState(std::unique_ptr<State> state) {
+    void Document::changeStateTo(std::unique_ptr<State> state) {
         this->_previousState = std::move(this->_currentState);
         this->_currentState = std::move(state);
         this->transition = std::make_unique<Transition>(*(this->_previousState), *(this->_currentState));

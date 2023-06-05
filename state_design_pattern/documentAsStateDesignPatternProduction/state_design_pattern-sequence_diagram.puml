@@ -5,6 +5,7 @@
 
 boundary Client
 entity user
+entity admin
 entity UserRole
 control document
 control State
@@ -14,67 +15,118 @@ control published
 control transition
 entity TransitionType
 
-Client -> UserRole : USER
-UserRole --> Client : USER
-Client -> user : User(UserRole)
-user --> Client : user
+group init
+    Client -> UserRole : USER
+    UserRole --> Client : USER
+    Client -> user : User(USER)
+    user --> Client : user
 
-Client -> document : Document(user)
-document -> document : _currentUser
-document -> draft : Draft(document)
-draft -> State : State(document)
-State --> draft : draft
-draft --> document : _currentState
-document --> Client : document
+    Client -> document : Document(user)
+    document -> document : _currentUser
+    document -> draft : Draft(document)
+    draft -> State : State(document)
+    State --> draft : draft
+    draft --> document : _currentState
+    document --> Client : document
 
-Client -> document : whoIsPublishingDocument()
-document --> Client : string
+    Client -> document : whoIsPublishingDocument()
+    document -> document : getCurrentUser()
+    document --> Client : user
 
-Client -> document : getInitialState()
-document -> Client : string
+    Client -> document : getInitialState()
+    document --> Client : draft
+end
 
-Client -> document : publish()
-Client -> document : getTransitionDetails()
-document -> Client : string
+group publish
+    Client -> document : publish()
+    document -> State : publish()
+    State -> TransitionType : PUBLISH
+    TransitionType --> State : transitionType = PUBLISH
+    State -> draft : publishImplementation()
+    draft -> document : getCurrentUser()
+    document -> user : isAdmin()
+    user --> draft : bool
+    draft -> State : getDocument()
 
-Client -> document : returnDocAfterReview()
-Client -> document : getTransitionDetails()
-document -> Client : string
+    alt from Draft state
+        alt isAdmin
+            State -> document : changeStateTo(published)
+            document -> transition : Transition(draft, published)
+        else
+            State -> document : changeStateTo(moderation)
+            document -> transition : Transition(draft, moderation)
+        end
+    else from Moderation state
+        alt isAdmin
+            State -> document : changeStateTo(published)
+            document -> transition : Transition(moderation, published)
+        end
+    end
+    transition --> document : transition
 
-Client -> document : publish()
-Client -> document : getTransitionDetails()
-document -> Client : string
+    Client -> document : getTransitionDetails()
+    document -> document : getTransitionType()
+    document -> transition : toString()
+    transition --> document : string
+    document --> Client : string
+end
 
-Client -> document : publish()
-Client -> document : getTransitionDetails()
-document -> Client : string
+group return document after review
+    Client -> document : returnDocAfterReview()
+    document -> State : returnDocAfterReview()
+    State -> TransitionType : RETURN_DOC_AFTER_REVIEW
+    TransitionType --> State : transitionType = RETURN_DOC_AFTER_REVIEW
+    State -> draft : returnDocAfterReviewImplementation()
+    draft -> State : getDocument()
 
-Client -> document : dividerBeforeChangingPublisher()
-document -> Client : string
+    alt from Moderation state
+        State -> document : changeStateTo(draft)
+        document -> transition : Transition(moderation, draft)
+    end
+    transition --> document : transition
 
-Client -> UserRole : ADMIN
-UserRole -> Client : ADMIN
-Client -> user : User(UserRole)
-user -> Client : admin
+    Client -> document : getTransitionDetails()
+    document -> document : getTransitionType()
+    document -> transition : toString()
+    transition --> document : string
+    document --> Client : string
+end
 
-Client -> document : changeUser(admin)
+group change user for admin
+    Client -> UserRole : ADMIN
+    UserRole --> Client : ADMIN
+    Client -> user : User(ADMIN)
+    user -> Client : admin
 
-Client -> document : whoIsPublishingDocument()
+    Client -> document : changeUser(admin)
 
-Client -> document : publish()
-Client -> document : getTransitionDetails()
-document -> Client : string
+    Client -> document : whoIsPublishingDocument()
+    document -> document : getCurrentUser()
+    document --> Client : admin
+end
 
-Client -> document : expire()
-Client -> document : getTransitionDetails()
-document -> Client : string
+group expire
+    Client -> document : expire()
+    document -> State : expire()
+    State -> TransitionType : EXPIRE
+    TransitionType --> State : transitionType = EXPIRE
+    State -> draft : publishImplementation()
+    draft -> document : getCurrentUser()
+    document -> user : isAdmin()
+    user --> draft : bool
+    draft -> State : getDocument()
 
-Client -> document : publish()
-Client -> document : getTransitionDetails()
-document -> Client : string
+    alt from Published state
+        State -> document : changeStateTo(published)
+        document -> transition : Transition(published, draft)
+    end
+    transition --> document : transition
 
-Client -> document : publish()
-Client -> document : getTransitionDetails()
-document -> Client : string
+    Client -> document : getTransitionDetails()
+    document -> document : getTransitionType()
+    document -> transition : toString()
+    transition --> document : string
+    document --> Client : string
+end
 
 @enduml

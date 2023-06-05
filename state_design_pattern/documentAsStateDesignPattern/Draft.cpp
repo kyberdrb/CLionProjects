@@ -15,7 +15,7 @@ void Draft::publish() {
         State::_document.changeState(std::make_unique<Published>(State::_document));
         return;
     }
-    // We need to '#include "Document.h"' in order to call the 'changeState' function
+    // We need to '#include "Document.h"' in order to call the 'changeStateTo' function
     //  because we're dereferencing a forward declared type 'Document', which is incomplete
     //  and produces following errors:
     //    error: invalid use of incomplete type ‘class Document’
@@ -23,7 +23,7 @@ void Draft::publish() {
     State::_document.changeState(std::make_unique<Moderation>(State::_document));
 
     // Accessing the '_document' attribute in the parent/base class via 'this' pointer is working equivalently:
-//    this->_document.changeState(std::make_unique<Moderation>());
+//    this->_document.changeStateTo(std::make_unique<Moderation>());
 }
 
 void Draft::returnDocAfterReview() {

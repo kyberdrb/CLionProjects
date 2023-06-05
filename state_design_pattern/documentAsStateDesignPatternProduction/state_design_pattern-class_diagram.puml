@@ -13,9 +13,9 @@ class Document {
     + publish() : void
     + returnDocAfterReview() : void
     + expire() : void
-    + changeState(State state) : void
+    + changeStateTo(state : State) : void
     + getCurrentUser() : User
-    + changeUser(User otherUser) : void
+    + changeUser(otherUser : User) : void
     + dividerBeforeChangingPublisher() : string
     + whoIsPublishingDocument() : string
     + getInitialState() : string
@@ -62,10 +62,13 @@ State <|-- Moderation
 State <|-- Published
 
 class Draft
+hide Draft members
 
 class Moderation
+hide Moderation members
 
 class Published
+hide Published members
 
 class Transition {
     + Transition(\n\
@@ -111,3 +114,4 @@ enum UserRole {
 hide UserRole methods
 
 @enduml
+clear
