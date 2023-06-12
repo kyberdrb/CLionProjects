@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+@startuml
+
+[*] -r-> Draft
+Draft --> Moderation : ←publish as user:\nsend to review
+Draft --> Published : ←publish\nas admin
+Moderation --> Published : ←review passed\n(moved by admin)
+Moderation --> Draft : ←review\nfailed
+Published -> [*]
+Published --> Draft : ←document\nexpired
+
+@enduml
