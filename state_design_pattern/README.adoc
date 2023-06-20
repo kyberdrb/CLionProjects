@@ -7,7 +7,14 @@ Implement production-ready State design pattern to another directory under anoth
 ```
 // TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
         // State Design Pattern - Variations:
-        // TODO v3: Precreate all states and save them to 'vector<State>'/'hashmap<StateEnum, State>' and then change references at transitions instead of creating new instance at each transition
+        // TODO v3: Precreate all states and save them to 'hashmap<StateEnum, State>' and then change references at transitions instead of creating new instance at each transition
+        //  Create a member variable of unique_ptr<States> type in 'State' class
+        //  Then in concrete state classes replace (e.g. for 'Moderation' class in 'publishImplementation' function)
+        //      State::_document.changeStateTo(std::make_unique<Published>(State::_document));
+        //  with
+        //      State::_document.changeStateTo(this->states->getState(StateTypes::PUBLISHED));
+        //  or even simpler
+        //      State::_document.changeStateTo(this->states->getPublishedState());
 
         // State Design Pattern - SRP applications:
         // TODO v4.1: encapsulate 'std::cout' calls into 'Terminal' singleton class

@@ -12,17 +12,22 @@
 //#include "State.h"
 namespace production {
     class State;
+    class Document;
 
     class States {
     public:
-        //States& getInstance();
+
 
         //State& getState(StateType stateType);
 
-    private:
-        States() = default;
+        State& getPublishedState();
 
-        std::unique_ptr<States> _statesSingleton;
-        std::map<StateType, State> states;
+    private:
+        States(Document& document);
+//        States& createInstance();
+//
+        Document& _document;
+        static std::unique_ptr<States> _statesSingleton;
+        std::map<StateType, std::unique_ptr<State>> states;
     };
 }

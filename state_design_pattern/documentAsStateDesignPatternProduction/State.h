@@ -6,8 +6,10 @@
 
 #include <iosfwd>
 #include "TransitionType.h"
+#include "States.h"
 
 namespace production {
+
     class Document;
 
     class State {
@@ -35,6 +37,7 @@ namespace production {
 
     private:
         TransitionType transitionType;
+        std::unique_ptr<States> states;
 
         virtual void publishImplementation() = 0;
         virtual void returnDocAfterReviewImplementation() = 0;
