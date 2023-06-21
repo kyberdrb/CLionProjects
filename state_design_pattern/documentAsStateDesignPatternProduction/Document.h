@@ -6,6 +6,8 @@
 
 #include "User.h"
 #include "Draft.h"
+//#include "InitialState.h"
+#include "States.h"
 #include "Transition.h"
 
 #include <memory>
@@ -17,14 +19,22 @@ namespace production {
     public:
         explicit Document(User& currentUser) :
                 _currentUser(currentUser)
+                ,states(std::make_unique<States>(*this))
                 , _currentState(std::make_unique<Draft>(*this))
+//                , _currentState(states->getDraftState())
+//                , _currentState(States::getDraftState())
+
+//                , _previousState(std::make_unique<InitialState>(*this))
         {}
 
         void publish();
         void returnDocAfterReview();
         void expire();
 
+        States& getStates();
+
         void changeStateTo(std::unique_ptr<State> state);
+        void changeStateTo(State& state);
 
         const User& getCurrentUser() const;
         void changeUser(const User& otherUser);
@@ -39,8 +49,13 @@ namespace production {
 
     private:
         User& _currentUser;
+        std::unique_ptr<States> states;
         std::unique_ptr<State> _currentState;
+//        State& _currentState;
+//        std::reference_wrapper<State> _currentState;
         std::unique_ptr<State> _previousState;
+//        State& _previousState;
+//        std::reference_wrapper<State> _previousState;
         std::unique_ptr<Transition> transition;
     };
 }

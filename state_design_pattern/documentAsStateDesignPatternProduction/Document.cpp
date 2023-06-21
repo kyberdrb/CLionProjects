@@ -9,20 +9,33 @@
 namespace production {
     void Document::publish() {
         this->_currentState->publish();
+//        this->_currentState.publish();
     }
 
     void Document::returnDocAfterReview() {
         this->_currentState->returnDocAfterReview();
+//        this->_currentState.returnDocAfterReview();
     }
 
     void Document::expire() {
         this->_currentState->expire();
+//        this->_currentState.expire();
+    }
+
+    States& Document::getStates() {
+        return *(this->states);
     }
 
     void Document::changeStateTo(std::unique_ptr<State> state) {
         this->_previousState = std::move(this->_currentState);
         this->_currentState = std::move(state);
         this->transition = std::make_unique<Transition>(*(this->_previousState), *(this->_currentState));
+    }
+
+    void Document::changeStateTo(State& state) {
+//        this->_previousState = this->_currentState;
+//        this->_currentState = state;
+//        this->transition = std::make_unique<Transition>(this->_previousState, this->_currentState);
     }
 
     const User& Document::getCurrentUser() const {

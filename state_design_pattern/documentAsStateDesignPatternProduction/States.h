@@ -9,23 +9,23 @@
 #include <memory>
 #include <map>
 
-//#include "State.h"
 namespace production {
     class State;
     class Document;
 
     class States {
     public:
+//        friend std::unique_ptr<States> std::make_unique<States>();
 
-
-        //State& getState(StateType stateType);
-
+        State& getDraftState();
+        State& getModerationState();
         State& getPublishedState();
 
-    private:
+    public:
         States(Document& document);
-//        States& createInstance();
-//
+    private:
+//        static States& createInstance();
+
         Document& _document;
         static std::unique_ptr<States> _statesSingleton;
         std::map<StateType, std::unique_ptr<State>> states;

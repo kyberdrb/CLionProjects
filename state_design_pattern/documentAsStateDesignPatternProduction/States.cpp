@@ -9,21 +9,35 @@
 #include "Published.h"
 
 namespace production {
-    //std::unique_ptr<States> States::_statesSingleton = std::make_unique<States>();
+    // Can't do Singleton like this: _document reference cannot be accessed without an instance,
+    //  but static variable cannot have an instance
+//    std::unique_ptr<States> States::_statesSingleton = std::make_unique<States>(_document);
 
 //    States::States() = default;
     States::States(Document& document)
     :
         _document(document)
     {
-        this->states.at(StateType::DRAFT) = std::make_unique<Draft>(this->_document);
-        this->states.at(StateType::MODERATION) = std::make_unique<Moderation>(this->_document);
-        this->states.at(StateType::PUBLISHED) = std::make_unique<Published>(this->_document);
+//        this->states.at(StateType::DRAFT) = std::make_unique<Draft>(this->_document);
+//        this->states[StateType::DRAFT] = std::make_unique<Draft>(this->_document);
+        this->states.emplace(StateType::DRAFT, std::make_unique<Draft>(this->_document));
+//        this->states.at(StateType::MODERATION) = std::make_unique<Moderation>(this->_document);
+        this->states.emplace(StateType::MODERATION, std::make_unique<Moderation>(this->_document));
+//        this->states.at(StateType::PUBLISHED) = std::make_unique<Published>(this->_document);
+        this->states.emplace(StateType::PUBLISHED, std::make_unique<Published>(this->_document));
     }
 
 //    States& States::createInstance() {
 //        return *this->_statesSingleton;
 //    }
+
+    State& States::getDraftState() {
+        return *(this->states.at(StateType::PUBLISHED));
+    }
+
+    State& States::getModerationState() {
+        return *(this->states.at(StateType::PUBLISHED));
+    }
 
     State& States::getPublishedState() {
         return *(this->states.at(StateType::PUBLISHED));
