@@ -14,7 +14,6 @@ namespace production {
     public:
         explicit State(Document& document) :
                 _document(document)
-//                ,states(std::make_unique<States>(document))
         {}
 
         void publish();
@@ -33,7 +32,6 @@ namespace production {
         virtual void streamOutputOperator(std::ostream& out) const = 0;
 
         Document& _document;
-//        States& states;
 
     private:
         TransitionType transitionType;

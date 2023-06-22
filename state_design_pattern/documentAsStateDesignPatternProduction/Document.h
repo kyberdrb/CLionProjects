@@ -5,8 +5,6 @@
 #pragma once
 
 #include "User.h"
-//#include "Draft.h"
-//#include "InitialState.h"
 #include "States.h"
 #include "Transition.h"
 
@@ -20,13 +18,11 @@ namespace production {
         explicit Document(User& currentUser) :
                 _currentUser(currentUser)
                 ,states(std::make_unique<States>(*this))
-//                , _currentState(std::make_unique<Draft>(*this))
                 , _currentState(states->getDraftState())
-//                , _currentState(States::getDraftState())
-
-//                , _previousState(std::make_unique<InitialState>(*this))
                 , _previousState(states->getInitialState())
-        {}
+        {
+            this->transition = std::make_unique<Transition>(this->_previousState, this->_currentState);
+        }
 
         void publish();
         void returnDocAfterReview();
@@ -34,7 +30,6 @@ namespace production {
 
         States& getStates();
 
-//        void changeStateTo(std::unique_ptr<State> state);
         void changeStateTo(State& state);
 
         const User& getCurrentUser() const;
@@ -48,16 +43,10 @@ namespace production {
 
         std::string getTransitionDetails() const;
 
-//        Document& operator=(const Document&);
-
     private:
         User& _currentUser;
         std::unique_ptr<States> states;
-//        std::unique_ptr<State> _currentState;
-//        State& _currentState;
         std::reference_wrapper<State> _currentState;
-//        std::unique_ptr<State> _previousState;
-//        State& _previousState;
         std::reference_wrapper<State> _previousState;
         std::unique_ptr<Transition> transition;
     };
