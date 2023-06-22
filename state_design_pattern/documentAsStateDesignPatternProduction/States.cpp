@@ -4,8 +4,8 @@
 
 #include "States.h"
 
-#include "InitialState.h"
 #include "Draft.h"
+#include "InitialState.h"
 #include "Moderation.h"
 #include "Published.h"
 

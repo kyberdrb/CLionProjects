@@ -6,6 +6,7 @@
 
 namespace production {
     enum class TransitionType {
+        NONE,
         PUBLISH,
         RETURN_DOC_AFTER_REVIEW,
         EXPIRE

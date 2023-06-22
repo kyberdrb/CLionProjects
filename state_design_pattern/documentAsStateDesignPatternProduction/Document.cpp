@@ -51,18 +51,14 @@ namespace production {
         return message.str();
     }
 
-    std::string Document::getInitialState() const {
-        std::stringstream message;
-        message << "Initial state:\t\t\t" << this->_previousState << '\n';
-        message << *this->transition;
-        return message.str();
-    }
-
     std::string Document::getTransitionDetails() const {
         std::stringstream out;
 
         out << "Transition type: ";
 
+        if (this->_previousState.get().getTransitionType() == TransitionType::NONE) {
+            out << "initialization";
+        }
         if (this->_previousState.get().getTransitionType() == TransitionType::PUBLISH) {
             out << "publish";
         }

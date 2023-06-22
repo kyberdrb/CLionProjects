@@ -4,8 +4,9 @@
 
 #pragma once
 
-#include <iosfwd>
 #include "TransitionType.h"
+
+#include <iosfwd>
 
 namespace production {
     class Document;
@@ -13,7 +14,8 @@ namespace production {
     class State {
     public:
         explicit State(Document& document) :
-                _document(document)
+                _document(document),
+                transitionType(TransitionType::NONE)
         {}
 
         void publish();

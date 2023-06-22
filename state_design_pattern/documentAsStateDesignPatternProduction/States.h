@@ -15,16 +15,14 @@ namespace production {
 
     class States {
     public:
+        States(Document& document);
+
         State& getInitialState();
         State& getDraftState();
         State& getModerationState();
         State& getPublishedState();
 
-    public:
-        States(Document& document);
     private:
-//        static States& createInstance();
-
         Document& _document;
         static std::unique_ptr<States> _statesSingleton;
         std::map<StateType, std::unique_ptr<State>> states;

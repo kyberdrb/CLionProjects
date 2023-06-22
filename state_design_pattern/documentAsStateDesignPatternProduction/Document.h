@@ -18,11 +18,10 @@ namespace production {
         explicit Document(User& currentUser) :
                 _currentUser(currentUser)
                 ,states(std::make_unique<States>(*this))
-                , _currentState(states->getDraftState())
-                , _previousState(states->getInitialState())
-        {
-            this->transition = std::make_unique<Transition>(this->_previousState, this->_currentState);
-        }
+                ,_currentState(states->getDraftState())
+                ,_previousState(states->getInitialState())
+                ,transition(std::make_unique<Transition>(this->_previousState, this->_currentState))
+        {}
 
         void publish();
         void returnDocAfterReview();
@@ -37,9 +36,6 @@ namespace production {
 
         std::string dividerBeforeChangingPublisher() const;
         std::string whoIsPublishingDocument() const;
-
-        // Reports starting state after creating the state machine
-        std::string getInitialState() const;
 
         std::string getTransitionDetails() const;
 

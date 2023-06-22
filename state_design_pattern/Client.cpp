@@ -143,8 +143,7 @@ void exampleOfPublishingDocumentAsStateDesignPatternProduction() {
     auto document = std::make_unique<production::Document>(*user);
 
     std::cout << document->whoIsPublishingDocument();
-
-    std::cout << document->getInitialState();
+    std::cout << document->getTransitionDetails();
 
     document->publish();
     std::cout << document->getTransitionDetails();
