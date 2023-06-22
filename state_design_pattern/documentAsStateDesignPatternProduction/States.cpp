@@ -4,6 +4,7 @@
 
 #include "States.h"
 
+//#include "InitialState.h"
 #include "Draft.h"
 #include "Moderation.h"
 #include "Published.h"
@@ -18,18 +19,22 @@ namespace production {
     :
         _document(document)
     {
-//        this->states.at(StateType::DRAFT) = std::make_unique<Draft>(this->_document);
+//        this->states.emplace(StateType::INIT, std::make_unique<InitialState>(this->_document));
+
 //        this->states[StateType::DRAFT] = std::make_unique<Draft>(this->_document);
         this->states.emplace(StateType::DRAFT, std::make_unique<Draft>(this->_document));
-//        this->states.at(StateType::MODERATION) = std::make_unique<Moderation>(this->_document);
+
         this->states.emplace(StateType::MODERATION, std::make_unique<Moderation>(this->_document));
-//        this->states.at(StateType::PUBLISHED) = std::make_unique<Published>(this->_document);
         this->states.emplace(StateType::PUBLISHED, std::make_unique<Published>(this->_document));
     }
 
 //    States& States::createInstance() {
 //        return *this->_statesSingleton;
 //    }
+
+    State& States::getInitialState() {
+        return *(this->states.at(StateType::INIT));
+    }
 
     State& States::getDraftState() {
         return *(this->states.at(StateType::PUBLISHED));

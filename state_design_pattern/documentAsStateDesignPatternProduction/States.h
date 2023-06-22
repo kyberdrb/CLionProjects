@@ -17,6 +17,7 @@ namespace production {
     public:
 //        friend std::unique_ptr<States> std::make_unique<States>();
 
+        State& getInitialState();
         State& getDraftState();
         State& getModerationState();
         State& getPublishedState();

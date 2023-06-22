@@ -6,6 +6,7 @@
 
 namespace production {
     enum class StateType {
+        INIT,
         DRAFT,
         MODERATION,
         PUBLISHED

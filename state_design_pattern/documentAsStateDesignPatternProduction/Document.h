@@ -25,6 +25,7 @@ namespace production {
 //                , _currentState(States::getDraftState())
 
 //                , _previousState(std::make_unique<InitialState>(*this))
+//                , _previousState(states->getInitialState())
         {}
 
         void publish();
