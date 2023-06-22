@@ -22,6 +22,8 @@ namespace production {
         State& getModerationState();
         State& getPublishedState();
 
+//        State& operator=(const State&);
+
     public:
         States(Document& document);
     private:

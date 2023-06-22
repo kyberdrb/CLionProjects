@@ -8,34 +8,37 @@
 
 namespace production {
     void Document::publish() {
-        this->_currentState->publish();
+//        this->_currentState->publish();
 //        this->_currentState.publish();
+        this->_currentState.get().publish();
     }
 
     void Document::returnDocAfterReview() {
-        this->_currentState->returnDocAfterReview();
+//        this->_currentState->returnDocAfterReview();
 //        this->_currentState.returnDocAfterReview();
+        this->_currentState.get().returnDocAfterReview();
     }
 
     void Document::expire() {
-        this->_currentState->expire();
+//        this->_currentState->expire();
 //        this->_currentState.expire();
+        this->_currentState.get().expire();
     }
 
     States& Document::getStates() {
         return *(this->states);
     }
 
-    void Document::changeStateTo(std::unique_ptr<State> state) {
-        this->_previousState = std::move(this->_currentState);
-        this->_currentState = std::move(state);
-        this->transition = std::make_unique<Transition>(*(this->_previousState), *(this->_currentState));
-    }
+//    void Document::changeStateTo(std::unique_ptr<State> state) {
+//        this->_previousState = std::move(this->_currentState);
+//        this->_currentState = std::move(state);
+//        this->transition = std::make_unique<Transition>(*(this->_previousState), *(this->_currentState));
+//    }
 
     void Document::changeStateTo(State& state) {
-//        this->_previousState = this->_currentState;
-//        this->_currentState = state;
-//        this->transition = std::make_unique<Transition>(this->_previousState, this->_currentState);
+        this->_previousState = this->_currentState;
+        this->_currentState = state;
+        this->transition = std::make_unique<Transition>(this->_previousState, this->_currentState);
     }
 
     const User& Document::getCurrentUser() const {
@@ -62,7 +65,7 @@ namespace production {
 
     std::string Document::getInitialState() const {
         std::stringstream message;
-        message << "Initial state:\t\t\t" << *(this->_currentState) << '\n';
+        message << "Initial state:\t\t\t" << this->_previousState << " -> " << this->_currentState << '\n';
         return message.str();
     }
 
@@ -71,13 +74,13 @@ namespace production {
 
         out << "Transition type: ";
 
-        if (this->_previousState->getTransitionType() == TransitionType::PUBLISH) {
+        if (this->_previousState.get().getTransitionType() == TransitionType::PUBLISH) {
             out << "publish";
         }
-        else if (this->_previousState->getTransitionType() == TransitionType::RETURN_DOC_AFTER_REVIEW) {
+        else if (this->_previousState.get().getTransitionType() == TransitionType::RETURN_DOC_AFTER_REVIEW) {
             out << "returnDocAfterReview";
         }
-        else if (this->_previousState->getTransitionType() == TransitionType::EXPIRE) {
+        else if (this->_previousState.get().getTransitionType() == TransitionType::EXPIRE) {
             out << "expire";
         }
 
@@ -87,4 +90,9 @@ namespace production {
 
         return out.str();
     }
+
+//    Document& Document::operator=(const Document& other) {
+//        other._currentState = this->_currentState;
+//        other._previousState = this->_previousState;
+//    }
 }

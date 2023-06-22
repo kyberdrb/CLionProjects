@@ -4,7 +4,7 @@
 
 #include "States.h"
 
-//#include "InitialState.h"
+#include "InitialState.h"
 #include "Draft.h"
 #include "Moderation.h"
 #include "Published.h"
@@ -19,7 +19,7 @@ namespace production {
     :
         _document(document)
     {
-//        this->states.emplace(StateType::INIT, std::make_unique<InitialState>(this->_document));
+        this->states.emplace(StateType::INIT, std::make_unique<InitialState>(this->_document));
 
 //        this->states[StateType::DRAFT] = std::make_unique<Draft>(this->_document);
         this->states.emplace(StateType::DRAFT, std::make_unique<Draft>(this->_document));
@@ -37,14 +37,18 @@ namespace production {
     }
 
     State& States::getDraftState() {
-        return *(this->states.at(StateType::PUBLISHED));
+        return *(this->states.at(StateType::DRAFT));
     }
 
     State& States::getModerationState() {
-        return *(this->states.at(StateType::PUBLISHED));
+        return *(this->states.at(StateType::MODERATION));
     }
 
     State& States::getPublishedState() {
         return *(this->states.at(StateType::PUBLISHED));
     }
+
+//    State& State::operator=(const State& other) noexcept{
+//        other._document = this->_document;
+//    }
 }
