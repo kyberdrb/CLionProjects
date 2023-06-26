@@ -1,9 +1,9 @@
 @startuml
 'https://plantuml.com/state-diagram
 
-@startuml
+hide empty description
 
-[*] -r-> Draft
+Initialization -r-> Draft : none
 Draft --> Moderation : ←publish as user:\nsend to review
 Draft --> Published : ←publish\nas admin
 Moderation --> Published : ←review passed\n(moved by admin)

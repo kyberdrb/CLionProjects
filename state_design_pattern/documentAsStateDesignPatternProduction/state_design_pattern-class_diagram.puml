@@ -32,6 +32,10 @@ Document *-> State
 Document *-> Transition
 Document .> TransitionType
 
+class States {
+
+}
+
 abstract class State {
     + State(document : Document)
 

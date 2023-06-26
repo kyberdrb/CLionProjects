@@ -8,6 +8,7 @@ entity user
 entity admin
 entity UserRole
 control document
+control states
 control State
 control draft
 control moderation
