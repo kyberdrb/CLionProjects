@@ -9,7 +9,9 @@ entity admin
 entity UserRole
 control document
 control states
+entity StateType
 control State
+control initialState
 control draft
 control moderation
 control published
@@ -24,18 +26,49 @@ group init
 
     Client -> document : Document(user)
     document -> document : _currentUser
-    document -> draft : Draft(document)
-    draft -> State : State(document)
-    State --> draft : draft
-    draft --> document : _currentState
+    document -> states : States(document)
+
+    states -> initialState : InitialState(document)
+    initialState --> states : initialState
+    states -> StateType : INIT
+    StateType --> states : INIT
+
+    states -> draft : Draft(document)
+    draft --> states : draft
+    states -> StateType : DRAFT
+    StateType --> states : DRAFT
+
+    states -> moderation : Moderation(document)
+    moderation --> states : moderation
+    states -> StateType : MODERATION
+    StateType --> states : MODERATION
+
+    states -> published : Published(document)
+    published --> states : published
+    states -> StateType : PUBLISHED
+    StateType --> states : PUBLISHED
+
+    document -> states : getDraftState()
+    states --> document : _currentState
+
+    document -> states : getInitialState()
+    states --> document : _previousState
+
+    document -> transition : Transition(_previousState, _currentState)
+    transition --> document : _transition
+
     document --> Client : document
 
     Client -> document : whoIsPublishingDocument()
     document -> document : getCurrentUser()
     document --> Client : user
 
-    Client -> document : getInitialState()
-    document --> Client : draft
+    Client -> document : getTransitionDetails()
+    document -> State : _previousState.getTransitionType()
+    State -> document : TransitionType
+    document -> transition
+    transition --> document
+    document --> Client : string
 end
 
 group publish
