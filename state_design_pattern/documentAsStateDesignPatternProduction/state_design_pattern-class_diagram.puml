@@ -4,8 +4,8 @@
 class Client
 hide Client members
 
-Client *-> Document
-Client -> User
+Client *--> Document
+Client *--> User
 Client .> UserRole
 
 class Document {
@@ -22,19 +22,46 @@ class Document {
     + getTransitionDetails() : string
 
     - _currentUser : User
+    - states : States
     - _currentState : State
     - _previousState : State
     - transition : Transition
 }
 
-Document *-> User
-Document *-> State
-Document *-> Transition
-Document .> TransitionType
+Document --> State
+Document *--> User
+Document *--> Transition
+Document ..> TransitionType
+Document *--> States
+
+enum StateType {
+    INIT
+    DRAFT
+    MODERATION
+    PUBLISHED
+}
+
+hide StateType methods
 
 class States {
+    + States(document : Document)
+    + getInitialState() : State
+    + getDraftState() : State
+    + getModerationState() : State
+    + getPublishedState() : State
 
+    - _document : Document
+    /'- _statesSingleton : States'/
+    - map<StateType, State>  states
 }
+
+States --> StateType
+States *--> State
+
+/'States *--> InitialState
+States *--> Draft
+States *--> Moderation
+States *--> Published'/
 
 abstract class State {
     + State(document : Document)
@@ -59,11 +86,17 @@ abstract class State {
     - transitionType : TransitionType
 }
 
-State *-> TransitionType
+State --> Document
+State --> TransitionType
+State ..> StateType
 
+State <|-- InitialState
 State <|-- Draft
 State <|-- Moderation
 State <|-- Published
+
+class InitialState
+hide InitialState members
 
 class Draft
 hide Draft members
@@ -90,6 +123,7 @@ class Transition {
 Transition -> State
 
 enum TransitionType {
+    NONE
     PUBLISH
     RETURN_DOC_AFTER_REVIEW
     EXPIRE

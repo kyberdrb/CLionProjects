@@ -24,7 +24,7 @@ namespace production {
 
     private:
         Document& _document;
-        static std::unique_ptr<States> _statesSingleton;
+        //static std::unique_ptr<States> _statesSingleton;
         std::map<StateType, std::unique_ptr<State>> states;
     };
 }
