@@ -49,12 +49,12 @@ group init
     StateType --> states : PUBLISHED
 
     document -> states : getDraftState()
-    states --> document : _currentState
+    states --> document : draft
 
     document -> states : getInitialState()
-    states --> document : _previousState
+    states --> document : initialState
 
-    document -> transition : Transition(_previousState, _currentState)
+    document -> transition : Transition(initialState, draft)
     transition --> document : _transition
 
     document --> Client : document
@@ -65,9 +65,9 @@ group init
 
     Client -> document : getTransitionDetails()
     document -> State : _previousState.getTransitionType()
-    State -> document : TransitionType
-    document -> transition
-    transition --> document
+    State -> document : NONE
+    document -> transition : toString()
+    transition --> document : string
     document --> Client : string
 end
 
@@ -79,19 +79,32 @@ group publish
     State -> draft : publishImplementation()
     draft -> document : getCurrentUser()
     document -> user : isAdmin()
-    user --> draft : bool
+    user --> document : bool
+    document --> draft : bool
     draft -> State : getDocument()
 
     alt from Draft state
         alt isAdmin
+            State -> document : getStates()
+            document -> states : getPublishedState()
+            states --> document : published
+            document --> State : published
             State -> document : changeStateTo(published)
             document -> transition : Transition(draft, published)
         else
+            State -> document : getStates()
+            document -> states : getModerationState()
+            states --> document : moderation
+            document --> State : moderation
             State -> document : changeStateTo(moderation)
             document -> transition : Transition(draft, moderation)
         end
     else from Moderation state
         alt isAdmin
+            State -> document : getStates()
+            document -> states : getPublishedState()
+            states --> document : published
+            document --> State : published
             State -> document : changeStateTo(published)
             document -> transition : Transition(moderation, published)
         end
@@ -99,7 +112,8 @@ group publish
     transition --> document : transition
 
     Client -> document : getTransitionDetails()
-    document -> document : getTransitionType()
+    document -> State : _previousState.getTransitionType()
+    State --> document : PUBLISH
     document -> transition : toString()
     transition --> document : string
     document --> Client : string
@@ -114,13 +128,18 @@ group return document after review
     draft -> State : getDocument()
 
     alt from Moderation state
+        State -> document : getStates()
+        document -> states : getDraftState()
+        states --> document : draft
+        document --> State : draft
         State -> document : changeStateTo(draft)
         document -> transition : Transition(moderation, draft)
     end
     transition --> document : transition
 
     Client -> document : getTransitionDetails()
-    document -> document : getTransitionType()
+    document -> State : _previousState.getTransitionType()
+    State --> document : RETURN_DOC_AFTER_REVIEW
     document -> transition : toString()
     transition --> document : string
     document --> Client : string
@@ -144,20 +163,25 @@ group expire
     document -> State : expire()
     State -> TransitionType : EXPIRE
     TransitionType --> State : transitionType = EXPIRE
-    State -> draft : publishImplementation()
+    State -> draft : expireImplementation()
     draft -> document : getCurrentUser()
     document -> user : isAdmin()
     user --> draft : bool
     draft -> State : getDocument()
 
     alt from Published state
-        State -> document : changeStateTo(published)
+        State -> document : getStates()
+        document -> states : getPublishedState()
+        states --> document : draft
+        document --> State : draft
+        State -> document : changeStateTo(draft)
         document -> transition : Transition(published, draft)
     end
     transition --> document : transition
 
     Client -> document : getTransitionDetails()
-    document -> document : getTransitionType()
+    document -> State : _previousState.getTransitionType()
+    State --> document : EXPIRE
     document -> transition : toString()
     transition --> document : string
     document --> Client : string
