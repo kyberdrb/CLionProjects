@@ -51,7 +51,6 @@ class States {
     + getPublishedState() : State
 
     - _document : Document
-    /'- _statesSingleton : States'/
     - map<StateType, State>  states
 }
 
