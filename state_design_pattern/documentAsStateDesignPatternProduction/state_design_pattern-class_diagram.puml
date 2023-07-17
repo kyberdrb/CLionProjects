@@ -4,8 +4,8 @@
 class Client
 hide Client members
 
-Client *--> Document
-Client *--> User
+Client *---> "1\ndocument" Document : owns
+Client *--> "2 users:\n1 user, 1 admin" User : owns
 Client .> UserRole
 
 class Document {
@@ -28,11 +28,11 @@ class Document {
     - transition : Transition
 }
 
-Document --> State
-Document *--> User
-Document *--> Transition
+Document --> "previous and\ncurrent state" State : remembers
+Document --> "1 _currentUser" User : remembers
+Document *--> "1 transition" Transition : keeps track of
 Document ..> TransitionType
-Document *--> States
+Document *--> "1 states" States : owns
 
 enum StateType {
     INIT
@@ -55,7 +55,7 @@ class States {
 }
 
 States --> StateType
-States *--> State
+States *--> "2..* states" State : stores
 
 /'States *--> InitialState
 States *--> Draft
@@ -85,8 +85,8 @@ abstract class State {
     - transitionType : TransitionType
 }
 
-State --> Document
-State --> TransitionType
+State --> "1 _document" Document : changes to further states via
+State --> "1 transitionType" TransitionType : is described by
 State ..> StateType
 
 State <|-- InitialState
