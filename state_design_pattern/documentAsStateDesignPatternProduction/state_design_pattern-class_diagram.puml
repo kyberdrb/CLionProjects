@@ -28,11 +28,11 @@ class Document {
     - transition : Transition
 }
 
-Document --> "previous and\ncurrent state" State : remembers
-Document --> "1 _currentUser" User : remembers
+Document --> "2: previous and\ncurrent state" State : remembers
+Document --> "1 _currentUser" User : belongs to
 Document *--> "1 transition" Transition : keeps track of
-Document ..> TransitionType
-Document *--> "1 states" States : owns
+Document ..> "1" TransitionType : uses
+Document *--> "1 states" States : has
 
 enum StateType {
     INIT
@@ -54,7 +54,7 @@ class States {
     - map<StateType, State>  states
 }
 
-States --> StateType
+States --> "1" StateType : uses for each state\nas unique key
 States *--> "2..* states" State : stores
 
 /'States *--> InitialState
@@ -86,8 +86,7 @@ abstract class State {
 }
 
 State --> "1 _document" Document : changes to further states via
-State --> "1 transitionType" TransitionType : is described by
-State ..> StateType
+State --> "1 transitionType" TransitionType : gets set with\neach transition
 
 State <|-- InitialState
 State <|-- Draft
@@ -119,7 +118,7 @@ class Transition {
     - _destinationState : State
 }
 
-Transition -> State
+Transition -> "2" State : remembers
 
 enum TransitionType {
     NONE
@@ -141,7 +140,7 @@ class User {
     - _role : UserRole
 }
 
-User -> UserRole
+User -> "1" UserRole : has
 
 enum UserRole {
     USER
