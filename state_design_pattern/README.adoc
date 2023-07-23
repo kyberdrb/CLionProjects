@@ -4,21 +4,7 @@
 
 Implement production-ready State design pattern to another directory under another namespace according to below-mentioned hints:
 
-```
-// TODO further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
-        // State Design Pattern - Variations:
-        // v3: Precreate all states and save them to 'std::map<StateEnum, State>' and then relink references from 'States' class at transitions instead of creating new instance at each transition
-        //  Create a member variable of unique_ptr<States> type in 'Document' class
-        //  Then in concrete state classes replace (e.g. for 'Moderation' class in 'publishImplementation' function)
-        //      State::_document.changeStateTo(std::make_unique<Published>(State::_document));
-        //  with
-        //      State::_document.changeStateTo(State::_document.getStates().getInitialState());
 
-        // State Design Pattern - SRP applications:
-        // TODO v4.1: encapsulate 'std::cout' calls into 'Terminal' singleton class
-        // TODO v4.2: encapsulate 'std::stringstream' calls into 'Message' class
-        // TODO v4.3: make 'StateFactory' class as a (static) Factory method
-```
 
 ## Sources
 
@@ -47,14 +33,19 @@ Implement production-ready State design pattern to another directory under anoth
 - https://duckduckgo.com/?t=ffab&q=initialize+member+of+abstract+class+c%2B%2B&ia=web
 - https://stackoverflow.com/questions/4113815/initializing-an-abstract-class
 - https://stackoverflow.com/questions/9458253/how-do-you-initialize-protected-members-of-an-abstract-base-class
+- https://duckduckgo.com/?q=c%2B%2B+using+include+inside+namespace&t=ffab&ia=web
+- https://duckduckgo.com/?t=ffab&q=c%2B%2B+shielding+include+with+namespace&ia=web
+
+---
+
+Cyclical/Circular header/class dependency +
+Mutual dependency of headers/translation units
+
 - *https://duckduckgo.com/?t=ffab&q=error%3A+expected+class-name+before+%E2%80%98%7B%E2%80%99+token&ia=web*
 - *https://stackoverflow.com/questions/5319906/error-expected-class-name-before-token/5319927#5319927*
     ** solution for cyclic/circular/mutual dependency between `Document` and `State` class
 - https://duckduckgo.com/?q=state+design+pattern+cyclic+circular+dependency&t=ffab&ia=web
 - https://stackoverflow.com/questions/5198788/resolving-circular-dependency-in-the-state-pattern-with-c
-
----
-
 - https://duckduckgo.com/?q=state+design+pattern+example&ia=web
 - https://duckduckgo.com/?q=state+machine+example&iax=images&ia=images&iai=https%3A%2F%2Fi.stack.imgur.com%2FtLbXm.png
 - https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
@@ -75,3 +66,12 @@ Implement production-ready State design pattern to another directory under anoth
 - https://plantuml.com/activity-diagram-legacy
 - https://plantuml.com/activity-diagram-beta
 - https://plantuml.com/state-diagram
+
+## TODOs
+
+Further development - tasks postponed in order to keep accuracy with the original state machine diagram on refactoring.guru site
+
+-  State Design Pattern - SRP applications:
+    ** v4.1: encapsulate 'std::cout' calls into 'Terminal' singleton class
+    ** v4.2: encapsulate 'std::stringstream' calls into 'Message' class
+    ** v4.3: make 'StateFactory' class as a (static) Factory method

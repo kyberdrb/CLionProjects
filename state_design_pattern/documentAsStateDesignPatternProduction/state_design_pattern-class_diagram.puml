@@ -86,7 +86,7 @@ abstract class State {
 }
 
 State --> "1 _document" Document : changes to further states via
-State --> "1 transitionType" TransitionType : gets set with\neach transition
+State --> "1 transitionType" TransitionType : sets with\neach transition
 
 State <|-- InitialState
 State <|-- Draft
