@@ -12,6 +12,8 @@ Implement production-ready State design pattern to another directory under anoth
 
 - https://refactoring.guru/design-patterns/state
 - https://duckduckgo.com/?t=ffab&q=state+design+pattern+example&ia=web
+- https://duckduckgo.com/?q=state+design+pattern+example&ia=web
+- https://duckduckgo.com/?q=state+machine+example&iax=images&ia=images&iai=https%3A%2F%2Fi.stack.imgur.com%2FtLbXm.png
 
 ### Implementation
 
@@ -42,14 +44,14 @@ Cyclical/Circular header/class dependency +
 Mutual dependency of headers/translation units
 
 - *https://duckduckgo.com/?t=ffab&q=error%3A+expected+class-name+before+%E2%80%98%7B%E2%80%99+token&ia=web*
+- *https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web&iax=qa*
 - *https://stackoverflow.com/questions/5319906/error-expected-class-name-before-token/5319927#5319927*
-    ** solution for cyclic/circular/mutual dependency between `Document` and `State` class
+    ** solution for cyclic/circular/mutual dependency between `Document` and `State` class: +
+        *forward declare `class` in the header file, `include` in the source file;* +
+        *forward declare in the header, `include` in the source;*
 - https://duckduckgo.com/?q=state+design+pattern+cyclic+circular+dependency&t=ffab&ia=web
 - https://stackoverflow.com/questions/5198788/resolving-circular-dependency-in-the-state-pattern-with-c
-- https://duckduckgo.com/?q=state+design+pattern+example&ia=web
-- https://duckduckgo.com/?q=state+machine+example&iax=images&ia=images&iai=https%3A%2F%2Fi.stack.imgur.com%2FtLbXm.png
-- https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
-- https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
+- https://stackoverflow.com/questions/625799/resolve-build-errors-due-to-circular-dependency-amongst-classes
 - https://duckduckgo.com/?q=expected+class-name+before+%27%7B%27+token&ia=web
 - https://stackoverflow.com/questions/7714345/forward-declaration-with-vector-of-class-type-pointer-to-incomplete-class-type
 - https://stackoverflow.com/questions/7714345/forward-declaration-with-vector-of-class-type-pointer-to-incomplete-class-type/7714388#7714388
