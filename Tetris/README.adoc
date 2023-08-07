@@ -4,4 +4,4 @@
 . BuildingBlock
     - Brick (one part of a Tetromino - tehlička)
     - CompositeBrick/Tetromino (multiple Bricks together in various shapes)
-. Brick has fallen to the bottom - this brick stops moving and next brick starts falling
+. Brick has fallen to the bottom OR Brick has fallen onto another Brick - this (active/moving/falling) brick stops moving (deactivates/freezes) and next brick starts falling
