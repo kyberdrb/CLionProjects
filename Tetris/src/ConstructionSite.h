@@ -7,6 +7,19 @@
 #include <vector>
 
 class ConstructionSite {
+public:
+    ConstructionSite(uint_fast32_t rows, uint_fast32_t columns);
+
+    uint_fast32_t getNumberOfRows() const;
+    uint_fast32_t getNumberOfColumns() const;
+
+    std::string getCurrentPlayingField();
+
+    void makeBrickVisible();
+    void moveActiveBrickLower();
+    void moveActiveBrickLeft();
+    void moveActiveBrickRight();
+
 private:
     uint_fast32_t rows;
     uint_fast32_t columns;
@@ -22,17 +35,8 @@ private:
     const std::string WALL = "|"; // PIPE
     const std::string BLANK = " "; // PIPE
 
-public:
-    ConstructionSite(uint_fast32_t rows, uint_fast32_t columns);
-
-    uint_fast32_t getNumberOfRows() const;
-    uint_fast32_t getNumberOfColumns() const;
-
-    std::string getCurrentPlayingField();
-
-    void makeBrickVisible();
-    void moveBrickLower();
-
-private:
     void addBrickToPlayingField();
+    uint_fast32_t bottomRowOfUsablePlayingArea() const;
+    uint_fast32_t leftColumnOfUsablePlayingArea() const;
+    uint_fast32_t rightColumnOfUsablePlayingArea() const;
 };

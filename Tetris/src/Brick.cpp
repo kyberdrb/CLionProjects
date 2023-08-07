@@ -7,11 +7,11 @@ Brick::Brick() :
 {}
 
 int_fast32_t Brick::getRow() const {
-    return row;
+    return this->row;
 }
 
 int_fast32_t Brick::getColumn() const {
-    return column;
+    return this->column;
 }
 
 std::string Brick::getBrickSign() const {
@@ -19,13 +19,21 @@ std::string Brick::getBrickSign() const {
 }
 
 bool Brick::isVisible() const {
-    return isBrickVisible;
+    return this->isBrickVisible;
 }
 
 void Brick::makeVisible() {
-    isBrickVisible = true;
+    this->isBrickVisible = true;
 }
 
 void Brick::fallOneStepDown() {
-    row += 1;
+    this->row += 1;
+}
+
+void Brick::moveLeft() {
+    this->column -= 1;
+}
+
+void Brick::moveRight() {
+    this->column += 1;
 }

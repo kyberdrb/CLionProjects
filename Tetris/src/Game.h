@@ -5,16 +5,15 @@
 #include <memory>
 
 class Game {
-private:
-    std::unique_ptr<ConstructionSite> constructionSite;
-    std::string keyboardInputCharacters;
-
 public:
     Game();
 
     void startGame();
 
 private:
+    std::unique_ptr<ConstructionSite> constructionSite;
+    std::string keyboardInputCharacters;
+
     void loadInputFromTerminal();
     void recalculateGameLogic();
     void clearTerminal();

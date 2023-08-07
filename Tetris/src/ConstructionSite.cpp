@@ -25,7 +25,10 @@ ConstructionSite::ConstructionSite(uint_fast32_t rows, uint_fast32_t columns) :
         for (uint_fast32_t column = 0; column < columns; ++column) {
             // check first and forelast column - fill them with WALL character
             // TODO encapsulate condition to 'bool isSideBorder = isLeftBorder || isRightBorder;
-            if (column == 0 || column == columns - 1) {
+            bool isLeftBorder = column == 0;
+            bool isRightBorder = column == columns - 1;
+            bool isSideBorder = isLeftBorder || isRightBorder;
+            if (isSideBorder) {
                 playingField.at(row).at(column) = WALL;
                 continue;
             }
@@ -50,10 +53,6 @@ uint_fast32_t ConstructionSite::getNumberOfColumns() const {
     return this->columns;
 }
 
-void ConstructionSite::makeBrickVisible() {
-    brick->makeVisible();
-}
-
 std::string ConstructionSite::getCurrentPlayingField() {
     if (brick->isVisible()) {
         addBrickToPlayingField();
@@ -76,7 +75,51 @@ void ConstructionSite::addBrickToPlayingField() {
         .assign(brick->getBrickSign());
 }
 
-void ConstructionSite::moveBrickLower() {
-    playingField.at(brick->getRow()).at(brick->getColumn()).assign(BLANK);  // clearBrickFromPreviousPosition()
-    brick->fallOneStepDown();
+void ConstructionSite::makeBrickVisible() {
+    brick->makeVisible();
+}
+
+uint_fast32_t ConstructionSite::bottomRowOfUsablePlayingArea() const {
+    return this->rows - 2;
+}
+
+void ConstructionSite::moveActiveBrickLower() {
+    playingField
+        .at(brick->getRow())
+        .at(brick->getColumn())
+        .assign(BLANK);  // clearBrickFromPreviousPosition()
+
+    if (this->brick->getRow() < this->bottomRowOfUsablePlayingArea() ) {
+        this->brick->fallOneStepDown();
+    }
+}
+
+uint_fast32_t ConstructionSite::leftColumnOfUsablePlayingArea() const {
+    return 1;
+}
+
+void ConstructionSite::moveActiveBrickLeft() {
+    playingField
+        .at(brick->getRow())
+        .at(brick->getColumn())
+        .assign(BLANK);  // clearBrickFromPreviousPosition()
+
+    if(this->brick->getColumn() > this->leftColumnOfUsablePlayingArea() ) {
+        this->brick->moveLeft();
+    }
+}
+
+uint_fast32_t ConstructionSite::rightColumnOfUsablePlayingArea() const {
+    return this->columns - 2;
+}
+
+void ConstructionSite::moveActiveBrickRight() {
+    playingField
+            .at(brick->getRow())
+            .at(brick->getColumn())
+            .assign(BLANK);  // clearBrickFromPreviousPosition()
+
+    if(this->brick->getColumn() < this->rightColumnOfUsablePlayingArea() ) {
+        this->brick->moveRight();
+    }
 }

@@ -21,4 +21,6 @@ public:
     void makeVisible();
 
     void fallOneStepDown();
+    void moveLeft();
+    void moveRight();
 };
