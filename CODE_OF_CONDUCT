@@ -1,0 +1,11 @@
+- I'm following the principles of Clean Code and SOLID.
+- Minimum of _wheel reinvention_, maximum of code reuse.
+- Minimum of duplicate code, maximum code expressiveness and uniqueness.
+- Duplicate code is alright at the beginning. It's okay to write 'bad code' and make mistakes at every beginning.
+- At first, the purpose is to 'get it working sufficiently'.
+- Not 'efficiently', 'ideally', 'optimally', 'perfectly', ... that would do more harm than good.
+- Sometimes it's good to break rules to learn the consequences and to find the meaning behind the solution.
+- The code can be always gradually refactored to the principles mentioned above for easier maintenance and extensibility.
+- Gradually, with testing and refactoring, the duplicate code is abstracted into language features, e.g. variables, functions, classes, design patterns, templates, etc. until most of the lines of code are unique.
+- Writing the documentation with UML diagrams with completeness, simplicity, brewity, accuracy.
+

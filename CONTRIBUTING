@@ -1,0 +1,7 @@
+If you find anything that I can add, extend, fix, clarify, reorder or even delete, send me an email listed in my GitHub's profile, or send a pull request.
+Make sure you mention the directory within the repository and as concrete implementation of a change as possible.
+
+Example:
+Directory: Breaking_external_linkage
+Change proposal: Simulate linker error "Unresolved external symbol" - add another example, where some function is called, the function is defined, but it's not declared, i. e. call a function that has missing prototype/function header but has an implementation.
+
