@@ -11,7 +11,7 @@ Game::Game() :
 {}
 
 void Game::startGame() {
-    clearTerminal();
+//    clearTerminal();
 
     // TODO transform linear steps in Game into a for/while loop
     //while (true) {
@@ -20,37 +20,86 @@ void Game::startGame() {
         //drawFrameOnTerminal();
         //clearTerminal();
     //}
-
-    drawFrameOnTerminal();
-    loadInputFromTerminal();
-    clearTerminal();
-
-    // TODO at first when integrating the steps into the while loop make the brick visible before entering the loop to make implementation easier
-    this->constructionSite->makeBrickVisible();
-    this->drawFrameOnTerminal();
-    this->loadInputFromTerminal();
-    this->clearTerminal();
-
-    while (this->keyboardInputCharacters != "q") {
-        if (this->keyboardInputCharacters == "d") {
-            this->constructionSite->moveActiveBrickLower();
-        }
-        if (this->keyboardInputCharacters == "l") {
-            this->constructionSite->moveActiveBrickLeft();
-        }
-        if (this->keyboardInputCharacters == "r") {
-            this->constructionSite->moveActiveBrickRight();
-        }
-
-        this->drawFrameOnTerminal();
-        this->loadInputFromTerminal();
-        this->clearTerminal();
-    }
-
-//    constructionSite->moveActiveBrickLower();
+//
 //    drawFrameOnTerminal();
 //    loadInputFromTerminal();
 //    clearTerminal();
+
+    // TODO at first when integrating the steps into the while loop make the brick visible before entering the loop to make implementation easier
+//    this->constructionSite->makeBrickVisible();
+//    this->drawFrameOnTerminal();
+//    this->loadInputFromTerminal();
+//    this->clearTerminal();
+
+//    while (this->keyboardInputCharacters != "q") {
+//        if (this->keyboardInputCharacters == "d") {
+//            this->constructionSite->moveBrickDown();
+//        }
+//        if (this->keyboardInputCharacters == "l") {
+//            this->constructionSite->moveActiveBrickLeft();
+//        }
+//        if (this->keyboardInputCharacters == "r") {
+//            this->constructionSite->moveActiveBrickRight();
+//        }
+//
+//        this->drawFrameOnTerminal();
+//        this->loadInputFromTerminal();
+//        this->clearTerminal();
+//    }
+
+    // INIT
+    clearTerminal();
+    drawFrameOnTerminal();
+    loadInputFromTerminal();
+
+    // BRICK 1
+    this->constructionSite->makeBrickVisible();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    this->constructionSite->moveBrickDown();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    this->constructionSite->moveBrickDown();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    this->constructionSite->moveBrickDown();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    // FREEZE/ACTIVATE-CONDITION 1: brick falls on the floor
+    // if brick reaches the bottom of the usable playing field
+        // deactivate/freeze the current brick
+        // and make another brick
+
+    // BRICK 2
+    this->constructionSite->makeBrick2Visible();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    this->constructionSite->moveBrick2Down();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    this->constructionSite->moveBrick2Down();
+    this->clearTerminal();
+    this->drawFrameOnTerminal();
+    this->loadInputFromTerminal();
+
+    // FREEZE/ACTIVATE-CONDITION 2: two bricks are on top of each other
+    // if brick falls on another (deactivated?) brick
+        // deactivate/freeze the current brick
+        // and make another brick
+
+    // TODO join FREEZE/ACTIVATE-CONDITIONs into one if-statement, because the body/behavior is the same in both cases
 }
 
 void Game::loadInputFromTerminal() {

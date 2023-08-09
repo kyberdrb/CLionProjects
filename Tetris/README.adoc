@@ -2,6 +2,6 @@
 
 . ConstructionSite (stavenisko - hracia plocha)
 . BuildingBlock
-    - Brick (one part of a Tetromino - tehlička)
-    - CompositeBrick/Tetromino (multiple Bricks together in various shapes)
-. Brick has fallen to the bottom OR Brick has fallen onto another Brick - this (active/moving/falling) brick stops moving (deactivates/freezes) and next brick starts falling
+    - Brick (one part of a Monomino - tehlička)
+    - CompositeBrick/Monomino (multiple Bricks together in various shapes)
+. Brick has fallen to the bottom OR Brick has fallen onto another Brick (two brick are on top of each other) - this (active/moving/falling) brick stops moving (deactivates/freezes) and next brick is created, appears and starts falling

@@ -20,7 +20,7 @@ public:
     bool isVisible() const;
     void makeVisible();
 
-    void fallOneStepDown();
+    void moveDown();
     void moveLeft();
     void moveRight();
 };

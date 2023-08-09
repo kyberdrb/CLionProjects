@@ -26,7 +26,7 @@ void Brick::makeVisible() {
     this->isBrickVisible = true;
 }
 
-void Brick::fallOneStepDown() {
+void Brick::moveDown() {
     this->row += 1;
 }
 
