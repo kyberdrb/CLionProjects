@@ -22,6 +22,10 @@ bool Brick::isVisible() const {
     return this->isBrickVisible;
 }
 
+bool Brick::isHidden() const {
+    return this->isBrickVisible == false;
+}
+
 void Brick::makeVisible() {
     this->isBrickVisible = true;
 }

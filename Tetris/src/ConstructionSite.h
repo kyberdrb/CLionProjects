@@ -15,21 +15,36 @@ public:
 
     std::string getCurrentPlayingField();
 
-    void makeBrickVisible();
+    void makeBrick1Visible();
     void makeBrick2Visible();
+    // ---
+//    bool isActiveBrickHidden();
+//    void makeActiveBrickVisible();
 
-    void moveBrickDown();
+    void moveBrick1Down();
     void moveBrick2Down();
+    // ---
+//    void moveActiveBrickDown();
 
-    void moveActiveBrickLeft();
-    void moveActiveBrickRight();
+    void moveBrick1Left();
+    void moveBrick1Right();
+    // ---
+//    void moveActiveBrickLeft();
+//    void moveActiveBrickRight();
+
+    // ---
+//    bool isActiveBrickOnFloor();
+//    bool isActiveBrickOnTopOfAnotherBrick();
 
 private:
     uint_fast32_t rows;
     uint_fast32_t columns;
 
-    std::unique_ptr<Brick> brick;
+    std::unique_ptr<Brick> brick_1;
     std::unique_ptr<Brick> brick_2;
+    // ---
+//    std::unique_ptr<Brick> activeBrick;
+//    std::vector<std::unique_ptr<Brick>> bricks;
 
     std::vector<std::vector<std::string>> playingField;
 
@@ -42,8 +57,10 @@ private:
     const std::string WALL = "|"; // PIPE
     const std::string BLANK = " "; // PIPE
 
-    void addBrickToPlayingField();
-    void addBrick2ToPlayingField();
+    void showBrick1OnPlayingField();
+    void showBrick2OnPlayingField();
+    // ---
+//    void showBrickOnPlayingField();
 
     uint_fast32_t bottomRowOfUsablePlayingArea() const;
     uint_fast32_t leftColumnOfUsablePlayingArea() const;

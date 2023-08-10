@@ -9,10 +9,10 @@ ConstructionSite::ConstructionSite(uint_fast32_t rows, uint_fast32_t columns) :
         rows(rows),
         columns(columns),
         // TODO calculate middle Y-coordinate (horizontal center) for Brick + adjust constructor for that matter for Brick class
-        brick(std::make_unique<Brick>()),
+        brick_1(std::make_unique<Brick>()),
         brick_2(std::make_unique<Brick>())
 {
-    // TODO adjustPlaygroundDimensions() - check if at least one brick fits in the playground: rows is greater or equal than 3; columns are greater or equal than 3
+    // TODO adjustPlaygroundDimensions() - check if at least one brick_1 fits in the playground: rows is greater or equal than 3; columns are greater or equal than 3
 
     // TODO encapsulate to function reserveCapacity()
     playingField.resize(rows);
@@ -55,12 +55,12 @@ uint_fast32_t ConstructionSite::getNumberOfColumns() const {
 }
 
 std::string ConstructionSite::getCurrentPlayingField() {
-    if (brick->isVisible()) {
-        addBrickToPlayingField();
+    if (brick_1->isVisible()) {
+        showBrick1OnPlayingField();
     }
 
     if (brick_2->isVisible()) {
-        addBrick2ToPlayingField();
+        showBrick2OnPlayingField();
     }
 
     std::stringstream buffer;
@@ -73,22 +73,22 @@ std::string ConstructionSite::getCurrentPlayingField() {
     return buffer.str();
 }
 
-void ConstructionSite::addBrickToPlayingField() {
+void ConstructionSite::showBrick1OnPlayingField() {
     playingField
-        .at(brick->getRow())
-        .at(brick->getColumn())
-        .assign(brick->getBrickSign());
+        .at(brick_1->getRow())
+        .at(brick_1->getColumn())
+        .assign(brick_1->getBrickSign());
 }
 
-void ConstructionSite::addBrick2ToPlayingField() {
+void ConstructionSite::showBrick2OnPlayingField() {
     playingField
             .at(brick_2->getRow())
             .at(brick_2->getColumn())
             .assign(brick_2->getBrickSign());
 }
 
-void ConstructionSite::makeBrickVisible() {
-    brick->makeVisible();
+void ConstructionSite::makeBrick1Visible() {
+    brick_1->makeVisible();
 }
 
 void ConstructionSite::makeBrick2Visible() {
@@ -99,14 +99,14 @@ uint_fast32_t ConstructionSite::bottomRowOfUsablePlayingArea() const {
     return this->rows - 2;
 }
 
-void ConstructionSite::moveBrickDown() {
+void ConstructionSite::moveBrick1Down() {
     playingField
-        .at(brick->getRow())
-        .at(brick->getColumn())
+        .at(brick_1->getRow())
+        .at(brick_1->getColumn())
         .assign(BLANK);  // clearBrickFromPreviousPosition()
 
-    if (this->brick->getRow() < this->bottomRowOfUsablePlayingArea() ) {
-        this->brick->moveDown();
+    if (this->brick_1->getRow() < this->bottomRowOfUsablePlayingArea() ) {
+        this->brick_1->moveDown();
     }
 }
 
@@ -125,15 +125,15 @@ uint_fast32_t ConstructionSite::leftColumnOfUsablePlayingArea() const {
     return 1;
 }
 
-void ConstructionSite::moveActiveBrickLeft() {
+void ConstructionSite::moveBrick1Left() {
     playingField
-        .at(brick->getRow())
-        .at(brick->getColumn())
+        .at(brick_1->getRow())
+        .at(brick_1->getColumn())
         .assign(BLANK);  // clearBrickFromPreviousPosition()
 
-    if(this->brick->getColumn() > this->leftColumnOfUsablePlayingArea() ) {
-        this->brick->moveLeft();
-        this->brick->moveDown();
+    if(this->brick_1->getColumn() > this->leftColumnOfUsablePlayingArea() ) {
+        this->brick_1->moveLeft();
+        this->brick_1->moveDown();
     }
 }
 
@@ -141,14 +141,14 @@ uint_fast32_t ConstructionSite::rightColumnOfUsablePlayingArea() const {
     return this->columns - 2;
 }
 
-void ConstructionSite::moveActiveBrickRight() {
+void ConstructionSite::moveBrick1Right() {
     playingField
-            .at(brick->getRow())
-            .at(brick->getColumn())
+            .at(brick_1->getRow())
+            .at(brick_1->getColumn())
             .assign(BLANK);  // clearBrickFromPreviousPosition()
 
-    if(this->brick->getColumn() < this->rightColumnOfUsablePlayingArea() ) {
-        this->brick->moveRight();
-        this->brick->moveDown();
+    if(this->brick_1->getColumn() < this->rightColumnOfUsablePlayingArea() ) {
+        this->brick_1->moveRight();
+        this->brick_1->moveDown();
     }
 }

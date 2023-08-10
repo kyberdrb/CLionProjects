@@ -18,6 +18,7 @@ public:
     std::string getBrickSign() const;
 
     bool isVisible() const;
+    bool isHidden() const;
     void makeVisible();
 
     void moveDown();

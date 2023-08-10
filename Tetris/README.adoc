@@ -4,4 +4,9 @@
 . BuildingBlock
     - Brick (one part of a Monomino - tehlička)
     - CompositeBrick/Monomino (multiple Bricks together in various shapes)
-. Brick has fallen to the bottom OR Brick has fallen onto another Brick (two brick are on top of each other) - this (active/moving/falling) brick stops moving (deactivates/freezes) and next brick is created, appears and starts falling
+. Brick has fallen to the bottom OR Brick has fallen onto another Brick (two brick_1 are on top of each other) - this (active/moving/falling) brick_1 stops moving (deactivates/freezes) and next brick_1 is created, appears and starts falling
+
+== Sources
+
+- https://duckduckgo.com/?t=ffab&q=game+loop&iax=images&ia=images&iai=https%3A%2F%2Fcontent.byui.edu%2Ffile%2F2315e65e-a34a-48d3-814d-4175a2b74ed5%2F1%2Fcourse%2Fgameloop.png
+- https://content.byui.edu/file/2315e65e-a34a-48d3-814d-4175a2b74ed5/1/intro/165-gameloop.html
