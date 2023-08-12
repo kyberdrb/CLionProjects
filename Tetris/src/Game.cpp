@@ -105,8 +105,12 @@ void Game::startGame() {
     // TODO join FREEZE/ACTIVATE-CONDITIONs into one if-statement, because the body/behavior is the same in both cases
 
 // WHILE LOOP - GAME LOOP - BEGIN
-    initGame();
+//    initGame();
     while (this->keyboardInputCharacters != "q") {
+        // GAME LOOP: DRAW / REDRAW
+        this->clearTerminal();
+        this->drawFrameOnTerminal();
+
         // GAME LOOP: LOAD INPUT
         this->loadInputFromTerminal();
 
@@ -120,18 +124,9 @@ void Game::startGame() {
         // GAME LOOP: MODIFY GAME STATE / RECALCULATE GAME STATE
         if (this->constructionSite->isActiveBrickHidden() ) {
             this->constructionSite->makeActiveBrickVisible();
-
-            this->clearTerminal();
-            this->drawFrameOnTerminal();
-
             continue;
         }
 //        this->constructionSite->moveActiveBrickDown();
-
-        // GAME LOOP: DRAW / REDRAW
-        //   would it be better to move the redrawing to the top of the loop to avoid duplicate code?
-        this->clearTerminal();
-        this->drawFrameOnTerminal();
 
 //        // more intuitive because of chronology BUT less coherent: detached from the other check ''
 //        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {
@@ -142,11 +137,11 @@ void Game::startGame() {
 // WHILE LOOP - GAME LOOP - END
 }
 
-void Game::initGame() {
-    clearTerminal();
-    drawFrameOnTerminal();
-//    loadInputFromTerminal();
-}
+//void Game::initGame() {
+//    clearTerminal();
+//    drawFrameOnTerminal();
+////    loadInputFromTerminal();
+//}
 
 void Game::loadInputFromTerminal() {
     std::cout << "enter command(s): ";
