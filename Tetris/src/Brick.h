@@ -8,6 +8,7 @@ private:
     int_fast32_t row;
     int_fast32_t column;
     bool isBrickVisible;
+    bool isBrickActive;
 
 public:
     Brick();
@@ -18,8 +19,10 @@ public:
     std::string getBrickSign() const;
 
     bool isVisible() const;
-    bool isHidden() const;
     void makeVisible();
+
+    bool isActive();
+    void deactivate();
 
     void moveDown();
     void moveLeft();

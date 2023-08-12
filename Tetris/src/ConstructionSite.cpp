@@ -108,14 +108,14 @@ void ConstructionSite::makeBrick2Visible() {
 }
 
 bool ConstructionSite::isActiveBrickHidden() {
-    return this->activeBrick->isHidden();
+    return !(this->activeBrick->isVisible());
 }
 
 void ConstructionSite::makeActiveBrickVisible() {
     this->activeBrick->makeVisible();
 }
 
-uint_fast32_t ConstructionSite::bottomRowOfUsablePlayingArea() const {
+uint_fast32_t ConstructionSite::bottomRowIndexOfUsablePlayingArea() const {
     return this->rows - 2;
 }
 
@@ -125,7 +125,7 @@ void ConstructionSite::moveBrick1Down() {
         .at(brick_1->getColumn())
         .assign(BLANK);  // clearBrickFromPreviousPosition()
 
-    if (this->brick_1->getRow() < this->bottomRowOfUsablePlayingArea() ) {
+    if (this->brick_1->getRow() < this->bottomRowIndexOfUsablePlayingArea() ) {
         this->brick_1->moveDown();
     }
 }
@@ -136,7 +136,7 @@ void ConstructionSite::moveBrick2Down() {
         .at(this->brick_2->getColumn())
         .assign(BLANK);
 
-    if (this->brick_2->getRow() < this->bottomRowOfUsablePlayingArea()) {
+    if (this->brick_2->getRow() < this->bottomRowIndexOfUsablePlayingArea()) {
         this->brick_2->moveDown();
     }
 }
@@ -147,9 +147,22 @@ void ConstructionSite::moveActiveBrickDown() {
             .at(this->activeBrick->getColumn())
             .assign(BLANK);
 
-    if (this->activeBrick->getRow() < this->bottomRowOfUsablePlayingArea()) {
+    bool isActiveBrickAboveFloor = !(isActiveBrickOnFloor() );
+    if (isActiveBrickAboveFloor) {
         this->activeBrick->moveDown();
     }
+}
+
+bool ConstructionSite::isActiveBrickOnFloor() {
+    return this->activeBrick->getRow() == this->bottomRowIndexOfUsablePlayingArea();
+}
+
+void ConstructionSite::freezeActiveBrick() {
+    this->activeBrick->deactivate();
+}
+
+bool ConstructionSite::isBrickActive() {
+    return this->activeBrick->isActive();
 }
 
 uint_fast32_t ConstructionSite::leftColumnOfUsablePlayingArea() const {

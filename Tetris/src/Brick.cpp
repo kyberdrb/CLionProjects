@@ -3,7 +3,8 @@
 Brick::Brick() :
     row(0),
     column(2),
-    isBrickVisible(false)
+    isBrickVisible(false),
+    isBrickActive(true)
 {}
 
 int_fast32_t Brick::getRow() const {
@@ -22,12 +23,16 @@ bool Brick::isVisible() const {
     return this->isBrickVisible;
 }
 
-bool Brick::isHidden() const {
-    return this->isBrickVisible == false;
-}
-
 void Brick::makeVisible() {
     this->isBrickVisible = true;
+}
+
+bool Brick::isActive() {
+    return this->isBrickActive;
+}
+
+void Brick::deactivate() {
+    this->isBrickActive = false;
 }
 
 void Brick::moveDown() {

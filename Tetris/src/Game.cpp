@@ -128,11 +128,13 @@ void Game::startGame() {
         }
         this->constructionSite->moveActiveBrickDown();
 
-//        // more intuitive because of chronology BUT less coherent: detached from the other check ''
+        // more intuitive because of chronology BUT less coherent: detached from the other check ''
 //        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {
-//            this->constructionSite->freezeActiveBrick();
+//        if (this->constructionSite->isActiveBrickOnFloor() ) {
+        if (this->constructionSite->isBrickActive() && this->constructionSite->isActiveBrickOnFloor() ) {
+            this->constructionSite->freezeActiveBrick();
 //            this->constructionSite->createNewActiveBrick();
-//        }
+        }
     }
 // WHILE LOOP - GAME LOOP - END
 }

@@ -33,8 +33,12 @@ public:
 //    void moveActiveBrickRight();
 
     // ---
-//    bool isActiveBrickOnFloor();
+    bool isActiveBrickOnFloor();
 //    bool isActiveBrickOnTopOfAnotherBrick();
+
+    // ---
+    void freezeActiveBrick();
+    bool isBrickActive();
 
 private:
     uint_fast32_t rows;
@@ -63,7 +67,7 @@ private:
     // ---
     void showActiveBrickOnPlayingField();
 
-    uint_fast32_t bottomRowOfUsablePlayingArea() const;
+    uint_fast32_t bottomRowIndexOfUsablePlayingArea() const;
     uint_fast32_t leftColumnOfUsablePlayingArea() const;
     uint_fast32_t rightColumnOfUsablePlayingArea() const;
 };
