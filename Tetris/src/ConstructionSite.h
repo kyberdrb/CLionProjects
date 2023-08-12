@@ -24,7 +24,7 @@ public:
     void moveBrick1Down();
     void moveBrick2Down();
     // ---
-//    void moveActiveBrickDown();
+    void moveActiveBrickDown();
 
     void moveBrick1Left();
     void moveBrick1Right();

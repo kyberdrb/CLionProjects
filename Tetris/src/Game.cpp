@@ -126,7 +126,7 @@ void Game::startGame() {
             this->constructionSite->makeActiveBrickVisible();
             continue;
         }
-//        this->constructionSite->moveActiveBrickDown();
+        this->constructionSite->moveActiveBrickDown();
 
 //        // more intuitive because of chronology BUT less coherent: detached from the other check ''
 //        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {

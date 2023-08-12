@@ -141,6 +141,17 @@ void ConstructionSite::moveBrick2Down() {
     }
 }
 
+void ConstructionSite::moveActiveBrickDown() {
+    this->playingField
+            .at(this->activeBrick->getRow())
+            .at(this->activeBrick->getColumn())
+            .assign(BLANK);
+
+    if (this->activeBrick->getRow() < this->bottomRowOfUsablePlayingArea()) {
+        this->activeBrick->moveDown();
+    }
+}
+
 uint_fast32_t ConstructionSite::leftColumnOfUsablePlayingArea() const {
     return 1;
 }
