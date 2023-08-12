@@ -9,8 +9,9 @@ ConstructionSite::ConstructionSite(uint_fast32_t rows, uint_fast32_t columns) :
         rows(rows),
         columns(columns),
         // TODO calculate middle Y-coordinate (horizontal center) for Brick + adjust constructor for that matter for Brick class
-        brick_1(std::make_unique<Brick>()),
-        brick_2(std::make_unique<Brick>())
+        brick_1(std::make_unique<Brick>() ),
+        brick_2(std::make_unique<Brick>() ),
+        activeBrick(std::make_unique<Brick>() )
 {
     // TODO adjustPlaygroundDimensions() - check if at least one brick_1 fits in the playground: rows is greater or equal than 3; columns are greater or equal than 3
 
@@ -63,6 +64,10 @@ std::string ConstructionSite::getCurrentPlayingField() {
         showBrick2OnPlayingField();
     }
 
+    if (this->activeBrick->isVisible()) {
+        this->showActiveBrickOnPlayingField();
+    }
+
     std::stringstream buffer;
     for (const auto& row : playingField) {
         for (const auto& column : row) {
@@ -87,12 +92,27 @@ void ConstructionSite::showBrick2OnPlayingField() {
             .assign(brick_2->getBrickSign());
 }
 
+void ConstructionSite::showActiveBrickOnPlayingField() {
+    playingField
+            .at(this->activeBrick->getRow())
+            .at(this->activeBrick->getColumn())
+            .assign(this->activeBrick->getBrickSign());
+}
+
 void ConstructionSite::makeBrick1Visible() {
     brick_1->makeVisible();
 }
 
 void ConstructionSite::makeBrick2Visible() {
     brick_2->makeVisible();
+}
+
+bool ConstructionSite::isActiveBrickHidden() {
+    return this->activeBrick->isHidden();
+}
+
+void ConstructionSite::makeActiveBrickVisible() {
+    this->activeBrick->makeVisible();
 }
 
 uint_fast32_t ConstructionSite::bottomRowOfUsablePlayingArea() const {

@@ -47,84 +47,99 @@ void Game::startGame() {
 //        this->clearTerminal();
 //    }
 
-    // INIT
-    initGame();
+// ANOTHER TRY TO TRANSITION TO WHILE LOOP - BEGIN
+//    // INIT
+//    initGame();
+//
+//    // BRICK 1
+//    this->loadInputFromTerminal();
+//    this->constructionSite->makeBrick1Visible();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    this->loadInputFromTerminal();
+//    this->constructionSite->moveBrick1Down();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    this->loadInputFromTerminal();
+//    this->constructionSite->moveBrick1Down();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    this->loadInputFromTerminal();
+//    this->constructionSite->moveBrick1Down();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    // FREEZE/ACTIVATE-CONDITION 1: brick_1 falls on the floor
+//    // if brick_1 reaches the bottom of the usable playing field
+//        // deactivate/freeze the current brick_1
+//        // and make another brick_1
+//
+//    // BRICK 2
+//    this->loadInputFromTerminal();
+//    this->constructionSite->makeBrick2Visible();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    this->loadInputFromTerminal();
+//    this->constructionSite->moveBrick2Down();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    this->loadInputFromTerminal();
+//    this->constructionSite->moveBrick2Down();
+//    this->clearTerminal();
+//    this->drawFrameOnTerminal();
+//
+//    this->loadInputFromTerminal();
+//
+//    // FREEZE/ACTIVATE-CONDITION 2: two bricks are on top of each other
+//    // if brick_1 falls on another (deactivated?) brick_1
+//        // deactivate/freeze the current brick_1
+//        // and make another brick_1
 
-    // BRICK 1
-    this->loadInputFromTerminal();
-    this->constructionSite->makeBrick1Visible();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    this->loadInputFromTerminal();
-    this->constructionSite->moveBrick1Down();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    this->loadInputFromTerminal();
-    this->constructionSite->moveBrick1Down();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    this->loadInputFromTerminal();
-    this->constructionSite->moveBrick1Down();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    // FREEZE/ACTIVATE-CONDITION 1: brick_1 falls on the floor
-    // if brick_1 reaches the bottom of the usable playing field
-    // deactivate/freeze the current brick_1
-    // and make another brick_1
-
-    // BRICK 2
-    this->loadInputFromTerminal();
-    this->constructionSite->makeBrick2Visible();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    this->loadInputFromTerminal();
-    this->constructionSite->moveBrick2Down();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    this->loadInputFromTerminal();
-    this->constructionSite->moveBrick2Down();
-    this->clearTerminal();
-    this->drawFrameOnTerminal();
-
-    this->loadInputFromTerminal();
-
-    // FREEZE/ACTIVATE-CONDITION 2: two bricks are on top of each other
-    // if brick_1 falls on another (deactivated?) brick_1
-        // deactivate/freeze the current brick_1
-        // and make another brick_1
+// ANOTHER TRY TO TRANSITION TO WHILE LOOP - END
 
     // TODO join FREEZE/ACTIVATE-CONDITIONs into one if-statement, because the body/behavior is the same in both cases
 
-//    while (this->keyboardInputCharacters != "q") {
-//        this->loadInputFromTerminal();
-//
+// WHILE LOOP - GAME LOOP - BEGIN
+    initGame();
+    while (this->keyboardInputCharacters != "q") {
+        // GAME LOOP: LOAD INPUT
+        this->loadInputFromTerminal();
+
 //          // more coherent: better overview of surrounding conditions BUT less intuitive, than when on the bottom: breaking chronology
 ////        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {
 ////            this->constructionSite->freezeActiveBrick();
 ////            this->constructionSite->createNewActiveBrick();
 ////            continue;
 ////        }
-//        if (this->constructionSite->isActiveBrickHidden() ) {
-//            this->constructionSite->makeActiveBrickVisible();
-//            continue;
-//        }
+
+        // GAME LOOP: MODIFY GAME STATE / RECALCULATE GAME STATE
+        if (this->constructionSite->isActiveBrickHidden() ) {
+            this->constructionSite->makeActiveBrickVisible();
+
+            this->clearTerminal();
+            this->drawFrameOnTerminal();
+
+            continue;
+        }
 //        this->constructionSite->moveActiveBrickDown();
-//
-//        this->clearTerminal();
-//        this->drawFrameOnTerminal();
-//
+
+        // GAME LOOP: DRAW / REDRAW
+        //   would it be better to move the redrawing to the top of the loop to avoid duplicate code?
+        this->clearTerminal();
+        this->drawFrameOnTerminal();
+
 //        // more intuitive because of chronology BUT less coherent: detached from the other check ''
 //        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {
 //            this->constructionSite->freezeActiveBrick();
 //            this->constructionSite->createNewActiveBrick();
 //        }
-//    }
+    }
+// WHILE LOOP - GAME LOOP - END
 }
 
 void Game::initGame() {

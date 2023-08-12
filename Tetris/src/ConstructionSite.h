@@ -18,8 +18,8 @@ public:
     void makeBrick1Visible();
     void makeBrick2Visible();
     // ---
-//    bool isActiveBrickHidden();
-//    void makeActiveBrickVisible();
+    bool isActiveBrickHidden();
+    void makeActiveBrickVisible();
 
     void moveBrick1Down();
     void moveBrick2Down();
@@ -42,6 +42,7 @@ private:
 
     std::unique_ptr<Brick> brick_1;
     std::unique_ptr<Brick> brick_2;
+    std::unique_ptr<Brick> activeBrick;
     // ---
 //    std::unique_ptr<Brick> activeBrick;
 //    std::vector<std::unique_ptr<Brick>> bricks;
@@ -60,7 +61,7 @@ private:
     void showBrick1OnPlayingField();
     void showBrick2OnPlayingField();
     // ---
-//    void showBrickOnPlayingField();
+    void showActiveBrickOnPlayingField();
 
     uint_fast32_t bottomRowOfUsablePlayingArea() const;
     uint_fast32_t leftColumnOfUsablePlayingArea() const;
