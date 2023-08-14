@@ -58,7 +58,10 @@ private:
 //    static constexpr uint_fast32_t ROWS = 3;
 //    static constexpr uint_fast32_t  COLUMNS = 5;
 
-    const std::string FLOOR = "‾"; // OVERLINE
+//    const std::string FLOOR = "‾"; // OVERLINE
+//    const std::string FLOOR = "_"; // UNDERSCORE
+//    const std::string FLOOR = "-"; // DASH
+    const std::string FLOOR = "`"; // BACKTICK
     const std::string WALL = "|"; // PIPE
     const std::string BLANK = " "; // PIPE
 
