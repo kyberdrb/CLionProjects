@@ -33,23 +33,22 @@ public:
 //    void moveActiveBrickRight();
 
     // ---
+    bool isBrickActive();
     bool isActiveBrickOnFloor();
 //    bool isActiveBrickOnTopOfAnotherBrick();
-
-    // ---
+//    bool isAnyFrozenBrickOverreachingCeiling();
     void freezeActiveBrick();
-    bool isBrickActive();
+    void createNewActiveBrick();
 
 private:
     uint_fast32_t rows;
     uint_fast32_t columns;
 
-    std::unique_ptr<Brick> brick_1;
-    std::unique_ptr<Brick> brick_2;
-    std::unique_ptr<Brick> activeBrick;
+//    std::unique_ptr<Brick> brick_1;
+//    std::unique_ptr<Brick> brick_2;
     // ---
-//    std::unique_ptr<Brick> activeBrick;
-//    std::vector<std::unique_ptr<Brick>> bricks;
+    std::unique_ptr<Brick> activeBrick;
+    std::vector<std::unique_ptr<Brick>> frozenBricks;
 
     std::vector<std::vector<std::string>> playingField;
 
@@ -69,6 +68,7 @@ private:
     void showBrick2OnPlayingField();
     // ---
     void showActiveBrickOnPlayingField();
+    void showFrozenBrickOnPlayingField(const Brick& brick);
 
     uint_fast32_t bottomRowIndexOfUsablePlayingArea() const;
     uint_fast32_t leftColumnOfUsablePlayingArea() const;

@@ -68,6 +68,12 @@ std::string ConstructionSite::getCurrentPlayingField() {
         this->showActiveBrickOnPlayingField();
     }
 
+    for (const auto& frozenBrick : this->frozenBricks ) {
+        if (frozenBrick->isVisible() ) {
+            showFrozenBrickOnPlayingField(*frozenBrick);
+        }
+    }
+
     std::stringstream buffer;
     for (const auto& row : playingField) {
         for (const auto& column : row) {
@@ -93,10 +99,17 @@ void ConstructionSite::showBrick2OnPlayingField() {
 }
 
 void ConstructionSite::showActiveBrickOnPlayingField() {
-    playingField
+    this->playingField
             .at(this->activeBrick->getRow())
             .at(this->activeBrick->getColumn())
             .assign(this->activeBrick->getBrickSign());
+}
+
+void ConstructionSite::showFrozenBrickOnPlayingField(const Brick& brick) {
+    this->playingField
+        .at(brick.getRow() )
+        .at(brick.getColumn() )
+        .assign(brick.getBrickSign() );
 }
 
 void ConstructionSite::makeBrick1Visible() {
@@ -153,6 +166,10 @@ void ConstructionSite::moveActiveBrickDown() {
     }
 }
 
+bool ConstructionSite::isBrickActive() {
+    return this->activeBrick->isActive();
+}
+
 bool ConstructionSite::isActiveBrickOnFloor() {
     return this->activeBrick->getRow() == this->bottomRowIndexOfUsablePlayingArea();
 }
@@ -161,8 +178,9 @@ void ConstructionSite::freezeActiveBrick() {
     this->activeBrick->deactivate();
 }
 
-bool ConstructionSite::isBrickActive() {
-    return this->activeBrick->isActive();
+void ConstructionSite::createNewActiveBrick() {
+    this->frozenBricks.emplace_back(std::move(this->activeBrick));
+    this->activeBrick = std::make_unique<Brick>();
 }
 
 uint_fast32_t ConstructionSite::leftColumnOfUsablePlayingArea() const {
