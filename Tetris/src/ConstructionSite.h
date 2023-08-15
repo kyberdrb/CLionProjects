@@ -34,8 +34,7 @@ public:
 
     // ---
     bool isBrickActive();
-    bool isActiveBrickOnFloor();
-//    bool isActiveBrickOnTopOfAnotherBrick();
+    bool isActiveBrickOnFloorOrOnTopOfAnotherBrick();
 //    bool isAnyFrozenBrickOverreachingCeiling();
     void freezeActiveBrick();
     void createNewActiveBrick();
@@ -62,13 +61,16 @@ private:
 //    const std::string FLOOR = "-"; // DASH
     const std::string FLOOR = "`"; // BACKTICK
     const std::string WALL = "|"; // PIPE
-    const std::string BLANK = " "; // PIPE
+    const std::string BLANK = " "; // SPACE
 
     void showBrick1OnPlayingField();
     void showBrick2OnPlayingField();
     // ---
     void showActiveBrickOnPlayingField();
     void showFrozenBrickOnPlayingField(const Brick& brick);
+
+    // ---
+//    bool isActiveBrickOnFloor();
 
     uint_fast32_t bottomRowIndexOfUsablePlayingArea() const;
     uint_fast32_t leftColumnOfUsablePlayingArea() const;

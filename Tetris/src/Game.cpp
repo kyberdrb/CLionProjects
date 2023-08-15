@@ -115,7 +115,7 @@ void Game::startGame() {
         this->loadInputFromTerminal();
 
 //          // more coherent: better overview of surrounding conditions BUT less intuitive, than when on the bottom: breaking chronology
-////        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {
+////        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnFloorOrOnTopOfAnotherBrick() ) {
 ////            this->constructionSite->freezeActiveBrick();
 ////            this->constructionSite->createNewActiveBrick();
 ////            continue;
@@ -126,15 +126,26 @@ void Game::startGame() {
             this->constructionSite->makeActiveBrickVisible();
             continue;
         }
-        this->constructionSite->moveActiveBrickDown();
 
         // more intuitive because of chronology BUT less coherent: detached from the other check ''
-//        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnTopOfAnotherBrick() ) {
+//        if (this->constructionSite->isActiveBrickOnFloor() || this->constructionSite->isActiveBrickOnFloorOrOnTopOfAnotherBrick() ) {
 //        if (this->constructionSite->isActiveBrickOnFloor() ) {
-        if (this->constructionSite->isBrickActive() && this->constructionSite->isActiveBrickOnFloor() ) {
+//        if (this->constructionSite->isBrickActive() && this->constructionSite->isActiveBrickOnFloor() ) {
+//        if  (this->constructionSite->isBrickActive()
+//                &&
+//                ( this->constructionSite->isActiveBrickOnFloor()
+//                  || this->constructionSite->isActiveBrickOnFloorOrOnTopOfAnotherBrick() )
+//            )
+//        {
+        if (this->constructionSite->isBrickActive()
+            && this->constructionSite->isActiveBrickOnFloorOrOnTopOfAnotherBrick() )
+        {
             this->constructionSite->freezeActiveBrick();
-//            this->constructionSite->createNewActiveBrick();
+            this->constructionSite->createNewActiveBrick();
+            continue;
         }
+
+        this->constructionSite->moveActiveBrickDown();
     }
 // WHILE LOOP - GAME LOOP - END
 }
