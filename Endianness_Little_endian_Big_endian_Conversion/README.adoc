@@ -1,0 +1,27 @@
+= Endianness
+
+little endian -> big endian
+
+    uint32_t bigEndianNumber = littleToBigEndian(0x01020304);
+    ...
+    uint32_t littleToBigEndian(uint32_t littleEndianNumber)
+
+    uint8_t littleEndianNumberArray[4];
+    littleEndianNumberArray[0] = 0x40;
+    littleEndianNumberArray[1] = 0x30;
+    littleEndianNumberArray[2] = 0x20;
+    littleEndianNumberArray[3] = 0x10;
+    uint32_t bigEndianNumber = littleToBigEndian(littleEndianNumberArray)
+    ...
+    uint32_t littleToBigEndian(uint8_t  littleEndianNumberArray[4])
+
+big endian -> little endian
+
+    uint32_t littleEndianNumber = bigToLittleEndian(0x01020304);
+    ---
+    uint32_t bigToLittleEndian(uint32_t bigEndianNumber)
+    uint32_t bigToLittleEndian(uint8_t  bigEndianNumberArray[4])
+
+== Sources
+
+-  Lecture 22. Big Endian and Little Endian - Embedded Systems and Deep Learning: https://www.youtube.com/watch?v=T1C9Kj_78ek
