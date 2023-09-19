@@ -1,7 +1,70 @@
 #include <iostream>
-#include <cstdint>
+
+#include "EndiannessConverter.h"
+
+#include <cassert>
+
+void testEndiannessConversions();
+
+uint32_t reconstructNumberAsLittleEndian(const uint8_t numberByteArray[4]);
 
 int main() {
+    //testEndiannessConversions();
+
+    EndiannessConverter endiannessConverter;
+    uint32_t baseNumber{0x10203040};
+    std::cout << "baseNumber (dec): " << std::dec << baseNumber << "\n";
+    std::cout << "baseNumber (hex): " << std::hex << "0x" << baseNumber << "\n";
+
+    uint8_t baseNumberByteArrayOutput[4];
+    assert(sizeof(uint32_t) == 4);
+    endiannessConverter.deconstructNumberByBytesInLittleEndian(baseNumber, baseNumberByteArrayOutput);
+
+    std::cout << "\n";
+    uint32_t reconstructedNumber = reconstructNumberAsLittleEndian(baseNumberByteArrayOutput);
+    std::cout << "\n";
+    std::cout << "reconstructedNumber (dec): " << std::dec << reconstructedNumber << "\n";
+    std::cout << "reconstructedNumber (hex): " << std::hex << "0x" << reconstructedNumber << "\n";
+    assert(reconstructedNumber == baseNumber);
+
+    std::cout << "...\n";
+
+    uint32_t numberConvertedFromLittleToBigEndian = endiannessConverter.littleToBigEndian(baseNumber);
+    std::cout << std::hex << "0x" << numberConvertedFromLittleToBigEndian << "\n";
+    std::cout << std::dec << numberConvertedFromLittleToBigEndian << "\n";
+
+    std::cout << ":\n";
+
+    uint8_t convertedNumberFromlittleToBigEndianArray[4] {0};
+    endiannessConverter.littleToBigEndian(baseNumber, convertedNumberFromlittleToBigEndianArray);
+    uint32_t convertedNumberFromlittleToBigEndian = *(reinterpret_cast<uint32_t*>(convertedNumberFromlittleToBigEndianArray) );
+    std::cout << std::hex << "0x" << convertedNumberFromlittleToBigEndian << "\n";
+    std::cout << std::dec << convertedNumberFromlittleToBigEndian << "\n";
+
+    return 0;
+}
+
+uint32_t reconstructNumberAsLittleEndian(const uint8_t numberByteArray[4]) {
+    union NumberUnion {
+        uint32_t raw;
+        uint8_t array[4];
+    };
+
+    NumberUnion numberUnionLittleEndian {};
+
+    std::cout << "Reconstruct number as little endian:\n";
+    for (int16_t byteNumber = 0; byteNumber < 4; ++byteNumber) {
+        std::cout << "Byte " << byteNumber << ": " << static_cast<const void*>( &(numberByteArray[byteNumber] ) ) << ": " << "0x" << std::hex << static_cast<uint16_t>(numberByteArray[byteNumber]) << std::dec << "\n";
+        numberUnionLittleEndian.array[byteNumber] = numberByteArray[byteNumber];
+    }
+
+    const uint32_t reconstructedNumberWithReinterpretCast = *reinterpret_cast<const uint32_t*>(numberByteArray);
+    const uint32_t reconstructedNumberWithUnion = numberUnionLittleEndian.raw;
+    assert(reconstructedNumberWithReinterpretCast == reconstructedNumberWithUnion);
+    return reconstructedNumberWithReinterpretCast;
+}
+
+void testEndiannessConversions() {
     uint32_t number_raw = 0x10203040;
 
     std::cout << "uint32_t number_raw = " << std::hex << "0x" << number_raw << "\n";
@@ -33,9 +96,9 @@ int main() {
     std::cout << "Convert 'number_raw' to big endian format:\n";
 
     uint8_t number_array_big_endian[4];
-                                                           // byte:   0th      1st      2nd      3rd
-                                                           // note:  (MSB)                      (LSB)
-                                                           // value:  0x10     0x20     0x30     0x40
+    // byte:   0th      1st      2nd      3rd
+// note:  (MSB)                      (LSB)
+// value:  0x10     0x20     0x30     0x40
     number_array_big_endian[0] = number_raw >> 24;              //  00010000 00100000 00110000 01000000 >> 24                                                              = 00000000 00000000 00000000 00010000 = 0x10 (0th byte = MSB)
     number_array_big_endian[1] = (number_raw >> 16) & 0xFF;     // (00010000 00100000 00110000 01000000 >> 16) & 11111111 = 00000000 00000000 00010000 00100000 & 11111111 = 00000000 00000000 00000000 00100000 = 0x20 (1st byte)
     number_array_big_endian[2] = (number_raw >> 8) & 0xFF;      // (00010000 00100000 00110000 01000000 >>  8) & 11111111 = 00000000 00010000 00100000 00110000 & 11111111 = 00000000 00000000 00000000 00110000 = 0x30 (2nd byte)
@@ -123,5 +186,4 @@ int main() {
 //    uint32_t decodedNumberBigEndianDirect = *reinterpret_cast<uint32_t*>(&number_array_big_endian);
 //    std::cout << std::hex << "0x" << decodedNumberBigEndianDirect << "\n";
 
-    return 0;
 }
