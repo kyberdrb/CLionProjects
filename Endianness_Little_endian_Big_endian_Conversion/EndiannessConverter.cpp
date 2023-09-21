@@ -5,15 +5,19 @@
 #include "EndiannessConverter.h"
 
 #include <cassert>
+#include <iomanip>
+#include <iostream>
 
 void EndiannessConverter::deconstructNumberByBytesInLittleEndian(
-        uint32_t number,
+        uint32_t littleEndianNumber,
         uint8_t arrayForNumberDeconstructionByBytes[4])
 {
-    arrayForNumberDeconstructionByBytes[0] =  number        & 0xFF;
-    arrayForNumberDeconstructionByBytes[1] = (number >>  8) & 0xFF;
-    arrayForNumberDeconstructionByBytes[2] = (number >> 16) & 0xFF;
-    arrayForNumberDeconstructionByBytes[3] =  number >> 24;
+    std::cout << std::setw(35) << "&arrayForNumberDeconstructionByBytes[0]: " << static_cast<void*>(arrayForNumberDeconstructionByBytes) << "\n";
+
+    arrayForNumberDeconstructionByBytes[0] = littleEndianNumber & 0xFF;
+    arrayForNumberDeconstructionByBytes[1] = (littleEndianNumber >> 8) & 0xFF;
+    arrayForNumberDeconstructionByBytes[2] = (littleEndianNumber >> 16) & 0xFF;
+    arrayForNumberDeconstructionByBytes[3] =  littleEndianNumber >> 24;
 }
 
 uint32_t EndiannessConverter::littleToBigEndian(uint32_t littleEndianNumber) {
@@ -26,6 +30,7 @@ uint32_t EndiannessConverter::littleToBigEndian(uint32_t littleEndianNumber) {
     numberConvertedFromLittleToBigEndianArray[3] =  littleEndianNumber        & 0xFF;
 
     uint32_t numberConvertedFromLittleToBigEndian = *(reinterpret_cast<uint32_t*>(numberConvertedFromLittleToBigEndianArray) );
+    // TODO recostruct with union too and assert for equality
     return numberConvertedFromLittleToBigEndian;
 }
 
@@ -36,14 +41,30 @@ void EndiannessConverter::littleToBigEndian(uint32_t littleEndianNumber, uint8_t
     bigEndianNumberArrayOutput[3] =  littleEndianNumber        & 0xFF;
 }
 
-uint32_t EndiannessConverter::littleToBigEndian(uint8_t *littleEndianNumberArray) {
-    return 0;
+void EndiannessConverter::deconstructNumberByBytesInBigEndian(
+        uint32_t bigEndianNumber,
+        uint8_t arrayForNumberDeconstructionByBytes[4])
+{
+    std::cout << std::setw(35) << "&arrayForNumberDeconstructionByBytes[0]: " << static_cast<void*>(arrayForNumberDeconstructionByBytes) << "\n";
+
+    arrayForNumberDeconstructionByBytes[0] =  bigEndianNumber & 0xFF;
+    arrayForNumberDeconstructionByBytes[1] = (bigEndianNumber >> 8) & 0xFF;
+    arrayForNumberDeconstructionByBytes[2] = (bigEndianNumber >> 16) & 0xFF;
+    arrayForNumberDeconstructionByBytes[3] =  bigEndianNumber >> 24;
 }
 
 uint32_t EndiannessConverter::bigToLittleEndian(uint32_t bigEndianNumber) {
-    return 0;
+    uint8_t littleEndianNumberArray[4] {};
+
+    littleEndianNumberArray[0] =  bigEndianNumber & 0xFF;
+    littleEndianNumberArray[1] = (bigEndianNumber >> 8) & 0xFF;
+    littleEndianNumberArray[2] = (bigEndianNumber >> 16) & 0xFF;
+    littleEndianNumberArray[3] =  bigEndianNumber >> 24;
+
+    uint32_t littleEndianNumber = *(reinterpret_cast<uint32_t*>(littleEndianNumberArray) );
+    return littleEndianNumber;
 }
 
-uint32_t EndiannessConverter::bigToLittleEndian(uint8_t *bigEndianNumberArray) {
+uint32_t EndiannessConverter::bigToLittleEndian(uint8_t bigEndianNumberArray[4]) {
     return 0;
 }

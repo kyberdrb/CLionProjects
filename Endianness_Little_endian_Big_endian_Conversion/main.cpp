@@ -1,7 +1,7 @@
-#include <iostream>
-
 #include "EndiannessConverter.h"
 
+#include <iomanip>
+#include <iostream>
 #include <cassert>
 
 void testEndiannessConversions();
@@ -11,35 +11,63 @@ uint32_t reconstructNumberAsLittleEndian(const uint8_t numberByteArray[4]);
 int main() {
     //testEndiannessConversions();
 
+    std::cout << "MAP NUMBER AS LITTLE ENDIAN\n\n";
+
     EndiannessConverter endiannessConverter;
     uint32_t baseNumber{0x10203040};
     std::cout << "baseNumber (dec): " << std::dec << baseNumber << "\n";
     std::cout << "baseNumber (hex): " << std::hex << "0x" << baseNumber << "\n";
 
-    uint8_t baseNumberByteArrayOutput[4];
+    uint8_t baseNumberByteArrayLittleEndianOutput[4] {0};
+    std::cout << "&baseNumberByteArrayLittleEndianOutput[0]: "
+        //<< "          "
+        << std::setw(22)
+              << static_cast<void*>(baseNumberByteArrayLittleEndianOutput) << "\n";
     assert(sizeof(uint32_t) == 4);
-    endiannessConverter.deconstructNumberByBytesInLittleEndian(baseNumber, baseNumberByteArrayOutput);
+    endiannessConverter.deconstructNumberByBytesInLittleEndian(baseNumber, baseNumberByteArrayLittleEndianOutput);
 
     std::cout << "\n";
-    uint32_t reconstructedNumber = reconstructNumberAsLittleEndian(baseNumberByteArrayOutput);
+    uint32_t reconstructedNumber = reconstructNumberAsLittleEndian(baseNumberByteArrayLittleEndianOutput);
     std::cout << "\n";
     std::cout << "reconstructedNumber (dec): " << std::dec << reconstructedNumber << "\n";
     std::cout << "reconstructedNumber (hex): " << std::hex << "0x" << reconstructedNumber << "\n";
     assert(reconstructedNumber == baseNumber);
 
-    std::cout << "...\n";
+    std::cout << "\nCONVERT NUMBER FROM LITTLE ENDIAN TO BIG ENDIAN\n\n";
 
-    uint32_t numberConvertedFromLittleToBigEndian = endiannessConverter.littleToBigEndian(baseNumber);
-    std::cout << std::hex << "0x" << numberConvertedFromLittleToBigEndian << "\n";
-    std::cout << std::dec << numberConvertedFromLittleToBigEndian << "\n";
+    uint32_t numberConvertedFromLittleToBigEndianFromBaseNumber = endiannessConverter.littleToBigEndian(baseNumber);
+    std::cout << "numberConvertedFromLittleToBigEndianFromBaseNumber (hex): " << "     " << std::hex << "0x" << numberConvertedFromLittleToBigEndianFromBaseNumber << "\n";
+    std::cout << "numberConvertedFromLittleToBigEndianFromBaseNumber (dec): " << "     " << std::dec << numberConvertedFromLittleToBigEndianFromBaseNumber << "\n";
 
-    std::cout << ":\n";
+    uint8_t numberConvertedFromLittleToBigEndianFromBaseNumberArray[4] {0};
+    endiannessConverter.littleToBigEndian(baseNumber, numberConvertedFromLittleToBigEndianFromBaseNumberArray);
+    uint32_t convertedNumberFromlittleToBigEndianFromBaseNumberArray = *(reinterpret_cast<uint32_t*>(numberConvertedFromLittleToBigEndianFromBaseNumberArray) );
+    assert(numberConvertedFromLittleToBigEndianFromBaseNumber == convertedNumberFromlittleToBigEndianFromBaseNumberArray);
+    std::cout << "numberConvertedFromLittleToBigEndianFromBaseNumberArray (hex): " << std::hex << "0x" << convertedNumberFromlittleToBigEndianFromBaseNumberArray << "\n";
+    std::cout << "numberConvertedFromLittleToBigEndianFromBaseNumberArray (dec): " << std::dec << convertedNumberFromlittleToBigEndianFromBaseNumberArray << "\n";
 
-    uint8_t convertedNumberFromlittleToBigEndianArray[4] {0};
-    endiannessConverter.littleToBigEndian(baseNumber, convertedNumberFromlittleToBigEndianArray);
-    uint32_t convertedNumberFromlittleToBigEndian = *(reinterpret_cast<uint32_t*>(convertedNumberFromlittleToBigEndianArray) );
-    std::cout << std::hex << "0x" << convertedNumberFromlittleToBigEndian << "\n";
-    std::cout << std::dec << convertedNumberFromlittleToBigEndian << "\n";
+    std::cout << "\nMAP NUMBER AS BIG ENDIAN\n\n";
+
+    uint8_t baseNumberByteArrayBigEndianOutput[4] {0};
+    endiannessConverter.deconstructNumberByBytesInBigEndian(
+        numberConvertedFromLittleToBigEndianFromBaseNumber,
+        baseNumberByteArrayBigEndianOutput);
+
+    uint32_t bigEndianNumber = *(reinterpret_cast<uint32_t*>(baseNumberByteArrayBigEndianOutput) );
+    std::cout << std::hex << "0x" << bigEndianNumber << "\n";
+    std::cout << std::dec << bigEndianNumber << "\n";
+    // TODO add printouts
+
+    std::cout << "\nCONVERT NUMBER FROM BIG ENDIAN TO LITTLE ENDIAN\n\n";
+
+    uint32_t numberConvertedFromBigToLittleEndianFromBaseNumber = endiannessConverter.bigToLittleEndian(baseNumber);
+    std::cout << std::hex << "0x" << numberConvertedFromBigToLittleEndianFromBaseNumber << "\n";
+    std::cout << std::dec << numberConvertedFromBigToLittleEndianFromBaseNumber << "\n";
+    // TODO add printouts
+
+    uint8_t numberConvertedFromBigToLittleEndianFromBaseNumberArray[4] {0};
+    endiannessConverter.bigToLittleEndian(numberConvertedFromBigToLittleEndianFromBaseNumberArray);
+    // TODO add printouts
 
     return 0;
 }
