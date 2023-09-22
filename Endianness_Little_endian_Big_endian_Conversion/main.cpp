@@ -18,15 +18,15 @@ int main() {
     std::cout << "baseNumber (dec): " << std::dec << baseNumber << "\n";
     std::cout << "baseNumber (hex): " << std::hex << "0x" << baseNumber << "\n";
 
-    uint8_t baseNumberByteArrayLittleEndianOutput[4] {0};
-    std::cout << "&baseNumberByteArrayLittleEndianOutput[0]: "
-              << static_cast<void*>(baseNumberByteArrayLittleEndianOutput) << "\n";
+    uint8_t baseNumberLittleEndianOutputByteArray[4] {0};
+    std::cout << "&baseNumberLittleEndianOutputByteArray[0]: "
+              << static_cast<void*>(baseNumberLittleEndianOutputByteArray) << "\n";
 
     assert(sizeof(uint32_t) == 4);
-    endiannessConverter.deconstructNumberByBytesInLittleEndian(baseNumber, baseNumberByteArrayLittleEndianOutput);
+    endiannessConverter.deconstructNumberByBytesInLittleEndian(baseNumber, baseNumberLittleEndianOutputByteArray);
 
     std::cout << "\n";
-    uint32_t reconstructedLittleEndianNumber = reconstructNumberAsLittleEndian(baseNumberByteArrayLittleEndianOutput);
+    uint32_t reconstructedLittleEndianNumber = reconstructNumberAsLittleEndian(baseNumberLittleEndianOutputByteArray);
     std::cout << "\n";
     std::cout << "reconstructedLittleEndianNumber (dec): " << std::dec << reconstructedLittleEndianNumber << "\n";
     std::cout << "reconstructedLittleEndianNumber (hex): " << std::hex << "0x" << reconstructedLittleEndianNumber << "\n";

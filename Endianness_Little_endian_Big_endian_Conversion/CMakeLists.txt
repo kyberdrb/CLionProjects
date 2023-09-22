@@ -6,4 +6,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic")
 
 add_executable(Endianness_Little_endian_Big_endian_Conversion main.cpp
         EndiannessConverter.cpp
-        EndiannessConverter.h)
+        EndiannessConverter.h
+        NumberUnion.h)
