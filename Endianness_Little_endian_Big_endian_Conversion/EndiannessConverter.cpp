@@ -12,7 +12,7 @@ void EndiannessConverter::deconstructNumberByBytesInLittleEndian(
         uint32_t littleEndianNumber,
         uint8_t arrayForNumberDeconstructionByBytes[4])
 {
-    std::cout << std::setw(35) << "&arrayForNumberDeconstructionByBytes[0]: " << static_cast<void*>(arrayForNumberDeconstructionByBytes) << "\n";
+    std::cout << std::setw(35) << "&arrayForNumberDeconstructionByBytes[0]:   " << static_cast<void*>(arrayForNumberDeconstructionByBytes) << "\n";
 
     arrayForNumberDeconstructionByBytes[0] = littleEndianNumber & 0xFF;
     arrayForNumberDeconstructionByBytes[1] = (littleEndianNumber >> 8) & 0xFF;
@@ -65,6 +65,9 @@ uint32_t EndiannessConverter::bigToLittleEndian(uint32_t bigEndianNumber) {
     return littleEndianNumber;
 }
 
-uint32_t EndiannessConverter::bigToLittleEndian(uint8_t bigEndianNumberArray[4]) {
-    return 0;
+void EndiannessConverter::bigToLittleEndian(uint32_t bigEndianNumber, uint8_t littleEndianNumberArrayOutput[4]) {
+    littleEndianNumberArrayOutput[0] =  bigEndianNumber >> 24;
+    littleEndianNumberArrayOutput[1] = (bigEndianNumber >> 16) & 0xFF;
+    littleEndianNumberArrayOutput[2] = (bigEndianNumber >>  8) & 0xFF;
+    littleEndianNumberArrayOutput[3] =  bigEndianNumber & 0xFF;
 }

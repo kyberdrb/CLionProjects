@@ -10,5 +10,5 @@ public:
 
     void deconstructNumberByBytesInBigEndian(uint32_t bigEndianNumber, uint8_t arrayForNumberDeconstructionByBytes[4]);
     uint32_t bigToLittleEndian(uint32_t bigEndianNumber);
-    uint32_t bigToLittleEndian(uint8_t  bigEndianNumberArray[4]);
+    void bigToLittleEndian(uint32_t bigEndianNumber, uint8_t littleEndianNumberArrayOutput[4]);
 };
