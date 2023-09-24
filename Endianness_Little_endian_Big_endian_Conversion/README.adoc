@@ -24,4 +24,14 @@ big endian -> little endian
 
 == Sources
 
--  Lecture 22. Big Endian and Little Endian - Embedded Systems and Deep Learning: https://www.youtube.com/watch?v=T1C9Kj_78ek
+* Lecture 22. Big Endian and Little Endian - Embedded Systems and Deep Learning: https://www.youtube.com/watch?v=T1C9Kj_78ek
+* https://duckduckgo.com/?t=ffab&q=cmake+cxx+compiler+flags&ia=web&iax=qa
+* https://stackoverflow.com/questions/11783932/how-do-i-add-a-linker-or-compile-flag-in-a-cmake-file
+* https://duckduckgo.com/?q=CMAKE_CXX_FLAGS+-Wall+-Wpedantic&t=ffab&ia=web
+* https://duckduckgo.com/?t=ffab&q=c%2B%2B+print+address+of+uint8_t+pointer&ia=web
+* https://stackoverflow.com/questions/52058386/meaning-and-debuging-print-of-uint8-t-value-in-c
+* https://duckduckgo.com/?t=ffab&q=std+cout+print+pointer+address&ia=web
+* https://stackoverflow.com/questions/2064692/how-to-print-function-pointers-with-cout
+* https://duckduckgo.com/?t=ffab&q=little+endian+big+endian+benefits&ia=web
+* https://softwareengineering.stackexchange.com/questions/95556/what-is-the-advantage-of-little-endian-format
+* https://stackoverflow.com/questions/914394/what-are-the-benefits-of-the-different-endiannesses
