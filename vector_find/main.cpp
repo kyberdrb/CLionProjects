@@ -24,15 +24,19 @@ int main() {
     items.emplace_back(std::make_unique<Phone>("ProBook"));
 
     std::unique_ptr<Item> searchedItem = std::make_unique<Phone>("Edge");
-    auto itemReturnedFromSearch = std::find(items.begin(), items.end(), *searchedItem);
-    // TODO occurences
+    auto searchedItemIterator = std::find(items.begin(), items.end(), *searchedItem);
+    auto occurences = std::count(items.begin(), items.end(), *searchedItem);
 
-    // TODO evaluation
-    if (itemReturnedFromSearch != items.end()) {
+    std::cout << "Is item '" << *searchedItem << "' present? ";
 
+    std::string result = "No";
+    if (searchedItemIterator != items.end()) {
+        result = "Yes";
     }
 
-    // TODO sort + overloading less-than-operator
+    std::cout << result << " " << occurences << " times" << '\n';
+
+    std::sort(items.begin(), items.end());
 
     return 0;
 }
