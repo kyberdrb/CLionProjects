@@ -12,32 +12,12 @@
 
 void vector_find_integer();
 void vector_find_custom_class();
+void vector_find_polymorphic_class();
 
 int main() {
     vector_find_integer();
     vector_find_custom_class();
-
-    std::vector<std::unique_ptr<Item>> items;
-    items.emplace_back(std::make_unique<Phone>("Edge"));
-    items.emplace_back(std::make_unique<Phone>("Xperia"));
-    items.emplace_back(std::make_unique<Phone>("Latitude"));
-    items.emplace_back(std::make_unique<Phone>("ProBook"));
-
-    std::unique_ptr<Item> searchedItem = std::make_unique<Phone>("Edge");
-    auto searchedItemIterator = std::find(items.begin(), items.end(), *searchedItem);
-    auto occurences = std::count(items.begin(), items.end(), *searchedItem);
-
-    std::cout << "Is item '" << *searchedItem << "' present? ";
-
-    std::string result = "No";
-    if (searchedItemIterator != items.end()) {
-        result = "Yes";
-    }
-
-    std::cout << result << " " << occurences << " times" << '\n';
-
-    std::sort(items.begin(), items.end());
-
+    vector_find_polymorphic_class();
     return 0;
 }
 
@@ -96,4 +76,27 @@ void vector_find_custom_class() {
     std::cout << result << " " << occurences << " times" << '\n';
 
     std::sort(devices.begin(), devices.end());
+}
+
+void vector_find_polymorphic_class() {
+    std::vector<std::unique_ptr<Item>> items;
+    items.emplace_back(std::make_unique<Phone>("Edge"));
+    items.emplace_back(std::make_unique<Phone>("Xperia"));
+    items.emplace_back(std::make_unique<Phone>("Latitude"));
+    items.emplace_back(std::make_unique<Phone>("ProBook"));
+
+    std::unique_ptr<Item> searchedItem = std::make_unique<Phone>("Edge");
+    auto searchedItemIterator = std::find(items.begin(), items.end(), *searchedItem);
+    auto occurences = std::count(items.begin(), items.end(), *searchedItem);
+
+    std::cout << "Is item '" << *searchedItem << "' present? ";
+
+    std::string result = "No";
+    if (searchedItemIterator != items.end()) {
+        result = "Yes";
+    }
+
+    std::cout << result << " " << occurences << " times" << '\n';
+
+    std::sort(items.begin(), items.end());
 }
