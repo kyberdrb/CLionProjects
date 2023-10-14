@@ -3,6 +3,7 @@
 #include "Device.h"
 
 #include "Item.h"
+#include "Laptop.h"
 #include "Phone.h"
 
 #include <algorithm>
@@ -82,8 +83,8 @@ void vector_find_polymorphic_class() {
     std::vector<std::unique_ptr<Item>> items;
     items.emplace_back(std::make_unique<Phone>("Edge"));
     items.emplace_back(std::make_unique<Phone>("Xperia"));
-    items.emplace_back(std::make_unique<Phone>("Latitude"));
-    items.emplace_back(std::make_unique<Phone>("ProBook"));
+    items.emplace_back(std::make_unique<Laptop>("Latitude"));
+    items.emplace_back(std::make_unique<Laptop>("ProBook"));
 
     std::unique_ptr<Item> searchedItem = std::make_unique<Phone>("Edge");
     auto searchedItemIterator = std::find(items.begin(), items.end(), *searchedItem);
@@ -92,6 +93,32 @@ void vector_find_polymorphic_class() {
     std::cout << "Is item '" << *searchedItem << "' present? ";
 
     std::string result = "No";
+    if (searchedItemIterator != items.end()) {
+        result = "Yes";
+    }
+
+    std::cout << result << " " << occurences << " times" << '\n';
+
+    searchedItem = std::make_unique<Laptop>("Latitude");
+    searchedItemIterator = std::find(items.begin(), items.end(), *searchedItem);
+    occurences = std::count(items.begin(), items.end(), *searchedItem);
+
+    std::cout << "Is item '" << *searchedItem << "' present? ";
+
+    result = "No";
+    if (searchedItemIterator != items.end()) {
+        result = "Yes";
+    }
+
+    std::cout << result << " " << occurences << " times" << '\n';
+
+    searchedItem = std::make_unique<Phone>("Latitude"); // intentionally mistaking the polymorphic type
+    searchedItemIterator = std::find(items.begin(), items.end(), *searchedItem);
+    occurences = std::count(items.begin(), items.end(), *searchedItem);
+
+    std::cout << "Is item '" << *searchedItem << "' present? ";
+
+    result = "No";
     if (searchedItemIterator != items.end()) {
         result = "Yes";
     }
