@@ -1,14 +1,12 @@
-#include <iostream>
-
 #include "Device.h"
 
 #include "Item.h"
 #include "Laptop.h"
 #include "Phone.h"
 
+#include <iostream>
+
 #include <algorithm>
-#include <cstdint>
-#include <memory>
 #include <vector>
 
 void vector_find_integer();
@@ -32,16 +30,27 @@ void vector_find_integer() {
 
     // error: no matching function for call to 'find(std::vector<unsigned int>::iterator, std::vector<unsigned int>::iterator, int)'
     //  solved by including <algorithm>
-    //std::find(numbers.begin(), numbers.end(), 1);
+    auto lookedUpNumberIterator = std::find(numbers.begin(), numbers.end(), 1);
+    auto occurences = std::count(numbers.begin(), numbers.end(), 1);
+
+    std::cout << "Is number " << 1 << " present? ";
+
+    std::string result = "No";
+    bool isNumberPresent = lookedUpNumberIterator != numbers.end();
+    if (isNumberPresent) {
+        result = "Yes";
+    }
+
+    std::cout << result << " " << occurences << " times" << '\n';
 
     uint32_t lookedForNumber = 0;
     //std::find(numbers.begin(), numbers.end(), lookedForNumber);
-    bool isNumberPresent = std::find(numbers.begin(), numbers.end(), lookedForNumber) != numbers.end();
-    auto occurences = std::count(numbers.begin(), numbers.end(), lookedForNumber);
+    isNumberPresent = std::find(numbers.begin(), numbers.end(), lookedForNumber) != numbers.end();
+    occurences = std::count(numbers.begin(), numbers.end(), lookedForNumber);
 
     std::cout << "Is number " << lookedForNumber << " present? ";
 
-    std::string result = "No";
+    result = "No";
     if (isNumberPresent) {
         result = "Yes";
     }
@@ -65,7 +74,6 @@ void vector_find_custom_class() {
     auto occurences = std::count(devices.begin(), devices.end(), *searchedDevice);
 
     bool isDeviceFound = foundDevice != devices.end();
-    std::cout << isDeviceFound << '\n';
 
     std::cout << "Is device " << *searchedDevice << " present? ";
 

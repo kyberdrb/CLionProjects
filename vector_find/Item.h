@@ -21,6 +21,8 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Item& item);
     friend bool operator<(const std::unique_ptr<Item>& item, const std::unique_ptr<Item>& anotherItem);
 
+    virtual ~Item() = default;
+
 private:
     std::string _name;
 };

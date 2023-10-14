@@ -3,4 +3,8 @@ project(set_find)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(set_find main.cpp)
+add_executable(set_find main.cpp
+        Device.h
+        Device.cpp
+        Item.h
+        Phone.h)
