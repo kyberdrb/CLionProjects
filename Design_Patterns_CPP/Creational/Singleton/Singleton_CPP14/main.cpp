@@ -1,5 +1,8 @@
 #include "Singleton.h"
 
+#include <iostream>
+#include <thread>
+
 void threadJob(uint32_t delay){
     for (int i = 0; i < 100; ++i) {
 //    while (true) {
