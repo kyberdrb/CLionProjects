@@ -48,12 +48,18 @@ Singleton::Singleton(std::string value) :
     std::cout << this << ": Constructor: Singleton instance created with value '" << this->_value << "'\n";
 }
 
-void Singleton::doSomething() {
-    // Synchronize access to the std::cout when function 'doSomething' is called from multiple threads
+void Singleton::printTextSynchronously() {
+    // Synchronize access to the std::cout when function 'printTextSynchronously' is called from multiple threads
     //  Comment out to see the multithreading bug: overlapping outputs on multithreaded printing on terminal
     std::lock_guard<std::mutex> lock(this->_mutex);
 
-    std::cout << instance.get() << ": Singleton is doing something.\n";
+    std::cout << instance.get() << ": Singleton is printing text synchronously.\n";
+}
+
+void Singleton::printTextAsynchronously() {
+    // Showcase a bug of a multithreading function access:
+    //  overlapping outputs on multithreaded printing on terminal
+    std::cout << instance.get() << ": Singleton is printing text without synchronization.\n";
 }
 
 std::string Singleton::getValue() const {

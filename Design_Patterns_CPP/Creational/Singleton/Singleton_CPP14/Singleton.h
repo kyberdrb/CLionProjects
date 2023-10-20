@@ -15,7 +15,8 @@ public:
     static Singleton& getInstance(std::string value);
 
     // Singleton's public member functions
-    void doSomething();
+    void printTextSynchronously();
+    void printTextAsynchronously();
     std::string getValue() const;
 
     // Public destructor for std::make_unique
