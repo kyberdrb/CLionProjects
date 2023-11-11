@@ -12,7 +12,7 @@ class RoundHole {
 }
 
 main --> "1" RoundHole : roundHole
-RoundHole ..> RoundPeg
+RoundHole ..> "1" RoundPeg
 
 class RoundPeg {
     + RoundPeg(radius: uint32_t)

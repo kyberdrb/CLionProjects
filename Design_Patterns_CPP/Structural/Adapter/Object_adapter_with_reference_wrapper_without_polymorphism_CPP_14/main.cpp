@@ -1,7 +1,6 @@
-#include "RoundHole.h"
-#include "SquarePeg.h"
 #include "SquareToRoundPegAdapter.h"
 
+#include <cassert>
 #include <iostream>
 #include <memory>
 
@@ -12,6 +11,7 @@ int main() {
     auto roundPeg = std::make_unique<RoundPeg>(5);
     std::cout << "Does " << *roundPeg << " fit into the " << *roundHole << "? "
         << roundPeg->getRadius() << " < " << roundHole->getRadius() << ": " << evaluate(roundHole->fits(*roundPeg)) << '\n';
+    assert(roundHole->fits(*roundPeg) == true);
 
     auto squarePegSmall = std::make_unique<SquarePeg>(5);
 //    std::cout << roundHole->fits(*squarePegSmall) << '\n'; // doesn't compile - incompatible types
@@ -21,11 +21,13 @@ int main() {
     auto squareToRoundPegAdapter = std::make_unique<SquareToRoundPegAdapter>(*squarePegSmall);
     std::cout << "Does " << *squareToRoundPegAdapter << " fit into the " << *roundHole << "? "
         << squareToRoundPegAdapter->getRadius() << " < " << roundHole->getRadius() << ": " << evaluate(roundHole->fits(*squareToRoundPegAdapter)) << '\n';
+    assert(roundHole->fits(*squareToRoundPegAdapter) == true);
 
     auto squarePegLarge = std::make_unique<SquarePeg>(10);
     squareToRoundPegAdapter->plugToDifferentSquarePeg(*squarePegLarge);
     std::cout << "Does " << *squareToRoundPegAdapter << " fit into the " << *roundHole << "? "
         << squareToRoundPegAdapter->getRadius() << " < " << roundHole->getRadius() << ": " << evaluate(roundHole->fits(*squareToRoundPegAdapter)) << '\n';
+    assert(roundHole->fits(*squareToRoundPegAdapter) == false);
 
     return 0;
 }
