@@ -33,7 +33,7 @@ Singleton& Singleton::getInstance(std::string value) {
             SingletonImpl(std::string value) : Singleton(std::move(value)) {}
             // no need to declare the destructor of base class Singleton as virtual,
             //  or overriding it here in the derived class,
-            //  because derived class has no intrinsic state or behavior
+            //  because derived class has no intrinsic state, i.e. no attributes
         };
         std::cout << instance.get() << ": getInstance(): Singleton instance is being created...\n";
         instance = std::make_unique<SingletonImpl>(std::move(value));
