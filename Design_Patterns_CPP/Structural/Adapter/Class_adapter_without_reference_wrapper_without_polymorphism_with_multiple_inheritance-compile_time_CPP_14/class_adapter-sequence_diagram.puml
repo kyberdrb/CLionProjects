@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'autonumber
+
+main -> roundHole : RoundHole(5)
+
+alt fitting roundPeg into roundHole
+    main -> roundPeg : RoundPeg(5)
+    main -> roundHole : fits(roundPeg)
+    roundHole -> roundPeg : getRadius()
+    roundHole -> roundHole : _radius
+    roundHole --> main : bool [true]
+end
+
+alt fitting small squarePeg into roundHole
+    main -> squarePegSmall : SquarePeg(5)
+    main -> squareToRoundPegAdapter : SquareToRoundPegAdapter(squarePegSmall)
+    squareToRoundPegAdapter -> RoundPeg : RoundPeg(0)
+    squareToRoundPegAdapter -> squarePegSmall : getSideLength()
+    squarePegSmall --> squareToRoundPegAdapter : sideLength
+    squareToRoundPegAdapter -> SquarePeg : SquarePeg(sideLength)
+    squareToRoundPegAdapter -> RoundPeg : updateRadius(sideLength)
+
+    main -> roundHole : fits(squareToRoundPegAdapter)
+    roundHole -> RoundPeg : getRadius()
+    RoundPeg --> roundHole : radius
+    roundHole --> main : bool [true]
+end
+
+alt fitting large squarePeg into roundHole
+    main -> squarePegLarge : SquarePeg(10)
+    main -> squareToRoundPegAdapterLarge : SquareToRoundPegAdapter(squarePegLarge)
+    squareToRoundPegAdapterLarge -> RoundPeg : RoundPeg(0)
+    squareToRoundPegAdapterLarge -> squarePegLarge : getSideLength()
+    squarePegLarge --> squareToRoundPegAdapterLarge : sideLength
+    squareToRoundPegAdapterLarge -> SquarePeg : SquarePeg(sideLength)
+    squareToRoundPegAdapterLarge -> RoundPeg : updateRadius(sideLength)
+
+    main -> roundHole : fits(squareToRoundPegAdapter)
+    roundHole -> RoundPeg : getRadius()
+    RoundPeg --> roundHole : radius
+    roundHole --> main : bool [false]
+end
+
+@enduml
