@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class main
+
+class RoundHole {
+    + RoundHole(radiusInInches : double)
+    + getRadius() : double
+    + fits(roundPeg : RoundPeg) : bool
+
+    - _radius : double
+}
+
+main --> "1" RoundHole : roundHole
+RoundHole ..> "1" RoundCompatible
+
+interface RoundCompatible {
+    + {abstract} getRadius() : double
+}
+
+hide RoundCompatible fields
+
+class RoundPeg {
+    + RoundPeg(radius: double)
+    + {abstract} getRadius() : double
+
+    - _radius : double
+}
+
+main --> "1" RoundPeg : roundPeg
+RoundPeg --|> RoundCompatible
+
+class SquarePeg {
+    + SquarePeg(sideLength : double)
+    + getSideLength() : double
+
+    - double _sideLength;
+}
+
+main --> "2" SquarePeg : squarePegSmall\nsquarePegLarge
+
+class SquareToRoundPegAdapter {
+    + SquareToRoundPegAdapter(squarePegAdaptee : SquarePeg)
+    + getRadius() : double
+}
+
+hide SquareToRoundPegAdapter fields
+
+main --> "2" SquareToRoundPegAdapter : squareToRoundPegAdapter\nsquareToRoundPegAdapterLarge
+SquareToRoundPegAdapter --|> RoundCompatible
+SquareToRoundPegAdapter --|> SquarePeg
+
+@enduml
