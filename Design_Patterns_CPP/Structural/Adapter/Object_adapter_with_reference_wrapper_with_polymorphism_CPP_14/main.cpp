@@ -1,3 +1,4 @@
+#include "RoundHole.h"
 #include "SquareToRoundPegAdapter.h"
 
 #include <cassert>

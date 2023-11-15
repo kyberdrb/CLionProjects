@@ -5,10 +5,10 @@
 #pragma once
 
 #include "RoundPeg.h"
-#include "SquarePeg.h"
 
 #include <iosfwd>
 
+// Client class: using the Target class and Adaptee class via the Target class
 class RoundHole {
 public:
     explicit RoundHole(double radiusInInches);

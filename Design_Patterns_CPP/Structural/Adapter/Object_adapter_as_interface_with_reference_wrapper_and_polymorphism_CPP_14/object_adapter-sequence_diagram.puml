@@ -1,8 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-'autonumber
-
 main -> roundHole : RoundHole(5)
 
 alt fitting roundPeg into roundHole

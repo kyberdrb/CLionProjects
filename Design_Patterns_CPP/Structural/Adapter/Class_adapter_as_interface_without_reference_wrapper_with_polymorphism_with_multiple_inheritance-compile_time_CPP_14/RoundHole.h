@@ -8,9 +8,10 @@
 
 #include <iosfwd>
 
+// Client class: using the Target class and Adaptee class via the Adapter Interface
 class RoundHole {
 public:
-    explicit RoundHole(double radiusInInches);
+    explicit RoundHole(double radius);
 
     double getRadius() const;
     bool fits(const RoundCompatible& roundCompatiblePeg) const;

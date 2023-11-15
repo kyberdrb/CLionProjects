@@ -5,8 +5,8 @@ _Adapter / Converter / Wrapper / Compatibility Layer / Impostor_
 Reference implementation of an Adapter design pattern
 
 - implementation of an Adapter as a **Class Adapter** - **_compile-time Adapter_**
-- compile-time usability only
-- with `virtual` function, polymorphism and multiple inheritance
+- compile-time usability only - not reassignable to another Adaptee instance: once assigned to a specific Adaptee instance, will be assigned to the Adapter until the end of the Adapter's lifetime
+- adapter implemented with an Interface: a class with only pure `virtual` function and multiple inheritance
 
 ## Sources
 

@@ -4,17 +4,18 @@
 
 #pragma once
 
-#include "RoundHole.h"
+#include "RoundPeg.h"
 #include "SquarePeg.h"
 
 #include <functional>
 #include <iosfwd>
 
-// Adapter class implementing the Adapter Interface
+// Adapter class: implements the Adapter Interface
 class SquareToRoundPegAdapter : public RoundCompatible {
 public:
     explicit SquareToRoundPegAdapter(SquarePeg& squarePegAdaptee);
 
+    // augment Adaptee class with additional behavior by overriding the function from the Adapter Interface
     double getRadius() const override;
 
     // plug adapter to another square peg

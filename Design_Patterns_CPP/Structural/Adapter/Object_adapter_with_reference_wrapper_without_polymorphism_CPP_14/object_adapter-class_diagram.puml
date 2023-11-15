@@ -6,23 +6,23 @@ class main
 class RoundHole {
     + RoundHole(radiusInInches : double)
     + getRadius() : double
-    + bool fits(roundPeg : RoundPeg)
+    + fits(roundPeg : RoundPeg) : bool
 
     - _radius : double
 }
 
-main --> "1" RoundHole : roundHole
+main *--> "1" RoundHole : roundHole
 RoundHole ..> "1" RoundPeg
 
 class RoundPeg {
-    + RoundPeg(radius: uint32_t)
+    + RoundPeg(radius : double)
     + getRadius() : double
-    + setRadius(newRadius : double) : void
+    # updateRadius(radius : double) : void
 
     - _radius : double
 }
 
-main --> "1" RoundPeg : roundPeg
+main *--> "1" RoundPeg : roundPeg
 
 class SquarePeg {
     + SquarePeg(sideLength : double)
@@ -31,7 +31,7 @@ class SquarePeg {
     - double _sideLength;
 }
 
-main --> "2" SquarePeg : squarePegSmall\nsquarePegLarge
+main *--> "2" SquarePeg : squarePegSmall\nsquarePegLarge
 
 class SquareToRoundPegAdapter {
     + SquareToRoundPegAdapter(squarePegAdaptee : SquarePeg)
@@ -41,7 +41,7 @@ class SquareToRoundPegAdapter {
     - updateRadius(squareSideLength : double) : void
 }
 
-main --> "1" SquareToRoundPegAdapter : squareToRoundPegAdapter
+main *--> "1" SquareToRoundPegAdapter : squareToRoundPegAdapter
 SquareToRoundPegAdapter --|> RoundPeg
 SquareToRoundPegAdapter --> "1" SquarePeg
 

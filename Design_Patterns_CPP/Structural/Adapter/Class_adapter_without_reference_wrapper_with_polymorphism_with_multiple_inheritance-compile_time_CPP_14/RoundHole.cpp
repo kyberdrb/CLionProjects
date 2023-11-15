@@ -6,8 +6,8 @@
 
 #include <ostream>
 
-RoundHole::RoundHole(double radiusInInches) :
-    _radius(radiusInInches)
+RoundHole::RoundHole(double radius) :
+    _radius(radius)
 {}
 
 double RoundHole::getRadius() const {

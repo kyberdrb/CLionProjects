@@ -4,9 +4,9 @@ _Adapter / Converter / Wrapper / Compatibility Layer / Impostor_
 
 Reference implementation of an Adapter design pattern
 
-- implementation of an Adapter as an **Object Adapter**
-- run-time reusability: reassignable Adaptee via `std::reference_wrapper`
-- adapter implemented as an Interface: a class with only pure virtual function
+- implementation of an Adapter as an **Object Adapter** - **_run-time Adapter_**
+- run-time reusability: reassignable Adaptee instance via `std::reference_wrapper`
+- adapter implemented with an Interface: a class with only pure `virtual` function and single inheritance
 
 ## Sources
 

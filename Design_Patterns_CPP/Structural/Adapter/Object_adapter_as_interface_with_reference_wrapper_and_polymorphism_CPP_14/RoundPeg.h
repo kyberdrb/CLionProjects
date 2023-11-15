@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <iosfwd>
 
-// Existing class implementing the Adapter Interface
+// Target class: Existing class that's already implementing the Adapter Interface and which interface the Adapter adapts to
 class RoundPeg : public RoundCompatible {
 public:
     explicit RoundPeg(double radius);

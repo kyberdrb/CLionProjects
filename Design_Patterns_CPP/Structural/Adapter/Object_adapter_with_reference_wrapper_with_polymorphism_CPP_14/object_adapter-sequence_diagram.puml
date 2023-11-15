@@ -1,8 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-'autonumber
-
 main -> roundHole : RoundHole(5)
 
 alt fitting roundPeg into roundHole
@@ -21,7 +19,7 @@ alt fitting small squarePeg into roundHole
     main -> roundHole : fits(squareToRoundPegAdapter)
     roundHole -> squareToRoundPegAdapter : getRadius()
     squareToRoundPegAdapter -> squarePeg : getSideLength()
-    squarePeg --> squareToRoundPegAdapter : radius
+    squarePeg --> squareToRoundPegAdapter : sideLength
     squareToRoundPegAdapter --> roundHole : radius
     roundHole --> main : bool [true]
 
@@ -34,7 +32,7 @@ alt fitting large squarePeg into roundHole
     main -> roundHole : fits(squareToRoundPegAdapter)
     roundHole -> squareToRoundPegAdapter : getRadius()
     squareToRoundPegAdapter -> squarePeg : getSideLength()
-    squarePeg --> squareToRoundPegAdapter : radius
+    squarePeg --> squareToRoundPegAdapter : sideLength
     squareToRoundPegAdapter --> roundHole : radius
     roundHole -> main : bool [false]
 end

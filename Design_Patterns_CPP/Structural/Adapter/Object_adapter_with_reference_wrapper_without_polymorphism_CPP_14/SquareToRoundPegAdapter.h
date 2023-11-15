@@ -4,12 +4,13 @@
 
 #pragma once
 
-#include "RoundHole.h"
+#include "RoundPeg.h"
 #include "SquarePeg.h"
 
 #include <functional>
 #include <iosfwd>
 
+// Adapter class: extends the Target class
 class SquareToRoundPegAdapter : public RoundPeg {
 public:
     explicit SquareToRoundPegAdapter(SquarePeg& squarePegAdaptee);
@@ -22,5 +23,6 @@ public:
 private:
     std::reference_wrapper<SquarePeg> _squarePegAdaptee;
 
+    // augment Adaptee class with additional behavior by updating the inner state of the Target class, i.e. the Base class of the Adapter
     void updateRadius(double squareSideLength);
 };

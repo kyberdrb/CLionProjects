@@ -5,7 +5,8 @@ _Adapter / Converter / Wrapper / Compatibility Layer / Impostor_
 Reference implementation of an Adapter design pattern
 
 - implementation of an Adapter as a **Class Adapter** - **_compile-time Adapter_**
-- compile-time usability only
+- compile-time usability only - not reassignable to another Adaptee instance: once assigned to a specific Adaptee instance, will be assigned to the Adapter until the end of the Adapter's lifetime
+- without `virtual` function and multiple inheritance
 
 ## Sources
 
@@ -18,3 +19,4 @@ Reference implementation of an Adapter design pattern
     - https://www.programiz.com/cpp-programming/library-function/cmath/sqrt
     - https://duckduckgo.com/?t=ffab&q=std%3A%3Areference_wrapper+reassign&ia=web
     - https://stackoverflow.com/questions/15463721/assign-a-value-to-a-stdreference-wrapper
+    - https://www.geeksforgeeks.org/visibility-modes-in-c-with-examples/

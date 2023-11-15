@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <iosfwd>
 
+// Adaptee class: implementing different interface than the Target class; may be read-only / provided from external sources
 class SquarePeg {
 public:
     explicit SquarePeg(double sideLength);

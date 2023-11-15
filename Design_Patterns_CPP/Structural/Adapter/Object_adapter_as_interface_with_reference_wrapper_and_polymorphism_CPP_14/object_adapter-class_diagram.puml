@@ -6,22 +6,22 @@ class main
 class RoundHole {
     + RoundHole(radius : double)
     + getRadius() : double
-    + bool fits(roundCompatiblePeg : RoundCompatible)
+    + fits(roundCompatiblePeg : RoundCompatible) : bool
 
     - _radius : double
 }
 
 main *--> "1" RoundHole : roundHole
-RoundHole "1" ..> "1" RoundCompatible
+RoundHole ..> "1" RoundCompatible
 
 interface RoundCompatible {
-    + {abstract}getRadius() : double
+    + {abstract} getRadius() : double
 }
 
 hide RoundCompatible fields
 
 class RoundPeg {
-    + RoundPeg(radius: double)
+    + RoundPeg(radius : double)
     + getRadius() : double
 
     - _radius : double

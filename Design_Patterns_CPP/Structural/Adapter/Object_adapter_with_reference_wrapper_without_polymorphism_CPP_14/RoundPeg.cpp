@@ -14,8 +14,8 @@ double RoundPeg::getRadius() const {
     return this->_radius;
 }
 
-void RoundPeg::setRadius(double newRadius) {
-    this->_radius = newRadius;
+void RoundPeg::updateRadius(double radius) {
+    this->_radius = radius;
 }
 
 std::ostream& operator<<(std::ostream& out, const RoundPeg& roundPeg) {

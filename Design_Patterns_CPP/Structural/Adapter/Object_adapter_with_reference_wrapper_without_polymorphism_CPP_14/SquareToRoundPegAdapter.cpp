@@ -15,7 +15,7 @@ SquareToRoundPegAdapter::SquareToRoundPegAdapter(SquarePeg& squarePegAdaptee) :
 }
 
 void SquareToRoundPegAdapter::updateRadius(double squareSideLength) {
-    RoundPeg::setRadius( (squareSideLength / 2) * std::sqrt(2) );
+    RoundPeg::updateRadius((squareSideLength / 2) * std::sqrt(2));
 }
 
 void SquareToRoundPegAdapter::plugToDifferentSquarePeg(SquarePeg& anotherSquarePegAdaptee) {
