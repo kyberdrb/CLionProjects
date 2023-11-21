@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include <sstream>
+#include <stack>
 #include <vector>
 
 class TreeNode {
@@ -17,10 +18,12 @@ public:
     BinaryTree() : root(nullptr) {}
 
     // Insert a value into the binary tree
+    //  Original implementation
 //    void insert(int value) {
 //        root = insertRecursive(root, value);
 //    }
 
+    // Custom implementation
     void insert(int value) {
         TreeNode* insertedNode = new TreeNode(value);
         root = insertRecursive(root, &insertedNode);
@@ -56,9 +59,14 @@ public:
         return sequence;
     }
 
+    void inOrderTraversalIterative() {
+        inorderIterative(root);
+    }
+
+    // crashes on 'inorderRecursive' call
 //    std::string inorderTraversal() {
 //        std::stringstream sequence;
-//        inorderRecursive(root, sequence);
+//        inorderRecursive(root, sequence); // crash
 //        return sequence.str();
 //    }
 
@@ -91,13 +99,15 @@ private:
 
         if ( (*insertedNode)->data < node->data) {
             node->left = insertRecursive(node->left, insertedNode);
-        } else if ( (*insertedNode)->data > node->data) {
+        }
+        else if ( (*insertedNode)->data > node->data) {
             node->right = insertRecursive(node->right, insertedNode);
         }
 
         return node;
     }
 
+    // ill-formed implementation which overwrites the root node
 //    void insertRecursive(TreeNode** node, int value) {
 //        if (*node == nullptr) {
 //            *node = new TreeNode(value);
@@ -137,6 +147,41 @@ private:
 //            inorderRecursive(node->right); // process right node (child)
 //        }
 //    }
+
+    void inorderIterative(TreeNode* node) {
+        std::stack<TreeNode*> nodes;
+
+        nodes.push(node);
+
+//        TreeNode* nextLeftNode = node->left;
+//        if (nextLeftNode != nullptr) {
+//            nodes.push(nextLeftNode);
+//            nextLeftNode = nextLeftNode->left;
+//        }
+//        if (nextLeftNode != nullptr) {
+//            nodes.push(nextLeftNode);
+//            nextLeftNode = nextLeftNode->left;
+//        }
+//        if (nextLeftNode != nullptr) {
+//            nodes.push(nextLeftNode);
+//            nextLeftNode = nextLeftNode->left;
+//        }
+
+        TreeNode* nextLeftNode = node->left;
+        while (nextLeftNode != nullptr) {
+            nodes.push(nextLeftNode);
+            nextLeftNode = nextLeftNode->left;
+        }
+
+        std::cout << nodes.top() << " ";
+        nodes.pop();
+
+        TreeNode* nextRightNode = node->right;
+        while (nextRightNode != nullptr) {
+            nodes.push(nextRightNode);
+            nextRightNode = nextRightNode->right;
+        }
+    }
 
     void postOrderRecursive(TreeNode* node) {
         if (node != nullptr) {
