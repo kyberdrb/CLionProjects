@@ -11,7 +11,14 @@ public:
     TreeNode* right;
 
     explicit TreeNode(int value) : data(value), left(nullptr), right(nullptr) {}
+
+    friend std::ostream& operator<<(std::ostream& out, const TreeNode& treeNode);
 };
+
+std::ostream& operator<<(std::ostream& out, const TreeNode& treeNode) {
+    out << treeNode.data;
+    return out;
+}
 
 class BinaryTree {
 public:
@@ -149,10 +156,15 @@ private:
 //    }
 
     void inorderIterative(TreeNode* node) {
-        std::stack<TreeNode*> nodes;
+        bool isNodeEmpty = node == nullptr;
+        if (isNodeEmpty) {
+            return;
+        }
 
+        std::stack<TreeNode*> nodes;
         nodes.push(node);
 
+        // Progression
 //        TreeNode* nextLeftNode = node->left;
 //        if (nextLeftNode != nullptr) {
 //            nodes.push(nextLeftNode);
@@ -167,19 +179,38 @@ private:
 //            nextLeftNode = nextLeftNode->left;
 //        }
 
-        TreeNode* nextLeftNode = node->left;
-        while (nextLeftNode != nullptr) {
-            nodes.push(nextLeftNode);
-            nextLeftNode = nextLeftNode->left;
-        }
+        bool areNodesPresent = !(nodes.empty() );
+        while (areNodesPresent) {
+            TreeNode* currentlyProcessedNode = nodes.top();
+            TreeNode* nextLeftNode = currentlyProcessedNode->left;
+            bool hasCurrentlyProcessedNodeLeftChild = nextLeftNode != nullptr;
+            while (hasCurrentlyProcessedNodeLeftChild) {
+                nodes.push(nextLeftNode);
+                nextLeftNode = nextLeftNode->left;
+                hasCurrentlyProcessedNodeLeftChild = nextLeftNode != nullptr;
+            }
 
-        std::cout << nodes.top() << " ";
-        nodes.pop();
+            // Process left child node
+            currentlyProcessedNode = nodes.top();
+            std::cout << *currentlyProcessedNode << " " << std::flush;
+            nodes.pop();
 
-        TreeNode* nextRightNode = node->right;
-        while (nextRightNode != nullptr) {
-            nodes.push(nextRightNode);
-            nextRightNode = nextRightNode->right;
+            // Process parent node
+            bool wasRootNodeProcessed = !(nodes.empty() );
+            if (wasRootNodeProcessed) {
+                currentlyProcessedNode = nodes.top();
+                std::cout << *currentlyProcessedNode << " " << std::flush;
+                nodes.pop();
+            }
+
+            // Process right child
+            TreeNode* nextRightNode = currentlyProcessedNode->right;
+            bool hasCurrentlyProcessedNodeRightChild = nextRightNode != nullptr;
+            if (hasCurrentlyProcessedNodeRightChild) {
+                nodes.push(nextRightNode);
+            }
+
+            areNodesPresent = !(nodes.empty() );
         }
     }
 
@@ -212,6 +243,8 @@ int main() {
         std::cout << nodeData << ' ';
     }
     std::cout << '\n' << std::flush;
+
+    tree.inOrderTraversalIterative();
 
     return 0;
 }

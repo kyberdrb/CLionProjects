@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (isNodeEmpty?) then
+  stop
+else
+  :Initialize stack;
+  :Push node to the stack;
+
+  while (Are nodes present in the stack?)
+    while (Has currently processed node left child?)
+        :Push the left child to the stack;
+        :Move to the next left child node;
+    end while
+
+    :Get the top element of the stack;
+    :Process the top element of the stack;
+    :Pop the top element from the stack;
+
+    :wasRootNodeProcessed = is stack not empty?;
+    if (wasRootNodeProcessed)
+      :Get the top element of the stack;
+      :Process the top element of the stack;
+      :Pop the top element from the stack;
+    endif
+
+    if (hasCurrentlyProcessedNodeRightChild)
+        :Push the right child to the stack;
+    endif
+  end while
+stop
+
+@enduml
