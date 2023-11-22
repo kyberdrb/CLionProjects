@@ -195,9 +195,17 @@ private:
             std::cout << *currentlyProcessedNode << " " << std::flush;
             nodes.pop();
 
+            // Push the right child of the currently removed node to the stack
+            TreeNode* nextRightNodeForLeftmostNode = currentlyProcessedNode->right;
+            bool hasCurrentlyRemovedNodeRightChild = nextRightNodeForLeftmostNode != nullptr;
+            if (hasCurrentlyRemovedNodeRightChild) {
+                nodes.push(nextRightNodeForLeftmostNode);
+                continue;
+            }
+
             // Process parent node
-            bool wasRootNodeProcessed = !(nodes.empty() );
-            if (wasRootNodeProcessed) {
+            bool isRootNodeWaitingForProcessing = !(nodes.empty() );
+            if (isRootNodeWaitingForProcessing) {
                 currentlyProcessedNode = nodes.top();
                 std::cout << *currentlyProcessedNode << " " << std::flush;
                 nodes.pop();
@@ -226,11 +234,106 @@ private:
 int main() {
     BinaryTree tree;
 
-    tree.insert(10);
-    tree.insert(5);
-    tree.insert(15);
-    tree.insert(3);
+    // Test tree 1
+//    tree.insert(10);
+//    tree.insert(5);
+//    tree.insert(15);
+//    tree.insert(3);
+//    tree.insert(7);
+//             10
+//            /  \
+//           5    15
+//          / \
+//         3   7
+
+    // Test tree 2
+//    tree.insert(7);
+//    tree.insert(3);
+//    tree.insert(11);
+//    tree.insert(5);
+//    tree.insert(9);
+//    tree.insert(13);
+//             7
+//            /  \
+//           3    11
+//            \   / \
+//             5 9   13
+
+    // Test tree 3
+//    tree.insert(7);
+//    tree.insert(3);
+//    tree.insert(11);
+//    tree.insert(5);
+//    tree.insert(9);
+//             7
+//            /  \
+//           3    11
+//            \   /
+//             5 9
+
+    // Test tree 4
+//    tree.insert(7);
+//    tree.insert(3);
+//    tree.insert(5);
+//    tree.insert(1);
+//    tree.insert(0);
+//    tree.insert(2);
+//    tree.insert(11);
+//    tree.insert(9);
+//    tree.insert(10);
+//    tree.insert(13);
+//    tree.insert(15);
+//             7
+//            /  \
+//           3    11
+//          / \   / \
+//         1   5 9   13
+//        / \     \    \
+//       0   2     10   15
+
+    // Test tree 5
+//    tree.insert(7);
+//    tree.insert(3);
+//    tree.insert(5);
+//    tree.insert(1);
+//    tree.insert(0);
+//    tree.insert(2);
+//    tree.insert(4);
+//    tree.insert(6);
+//    tree.insert(11);
+//    tree.insert(9);
+//    tree.insert(10);
+//    tree.insert(13);
+//    tree.insert(15);
+//    tree.insert(8);
+//    tree.insert(14);
+//               _____7_____
+//              /           \
+//             3             11
+//          /    \        /      \
+//         1      5      9        13
+//        / \    / \    / \      /  \
+//       0   2  4   6  8   10  14    15
+
+    // Test tree 6
     tree.insert(7);
+    tree.insert(3);
+    tree.insert(5);
+    tree.insert(1);
+    tree.insert(2);
+    tree.insert(6);
+    tree.insert(11);
+    tree.insert(9);
+    tree.insert(10);
+    tree.insert(13);
+    tree.insert(15);
+//               _____7_____
+//              /           \
+//             3             11
+//          /    \        /      \
+//         1      5      9        13
+//          \      \      \         \
+//           2      6      10        15
 
     std::cout << "In-order traversal: ";
     std::cout << '\n';

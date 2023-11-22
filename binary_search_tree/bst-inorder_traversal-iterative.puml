@@ -9,17 +9,31 @@ else
   :Push node to the stack;
 
   while (Are nodes present in the stack?)
+  'repeat
+    label outerLoop
     while (Has currently processed node left child?)
-        :Push the left child to the stack;
-        :Move to the next left child node;
+      :Push the left child to the stack;
+      :Move to the next left child node;
     end while
 
     :Get the top element of the stack;
     :Process the top element of the stack;
     :Pop the top element from the stack;
 
-    :wasRootNodeProcessed = is stack not empty?;
-    if (wasRootNodeProcessed)
+    if (Has currently removed node right child?) then (yes)
+      :Push the right child of the removed node to the stack;
+      :continue\n(go back to the outer loop);
+      ':continue;
+      '-->[left] continue;
+      ':continue;
+      ':continue loop
+      'goto outerLoop;
+      'backward:return;
+      'goto outerLoop
+    endif
+
+    :isRootNodeWaitingForProcessing = is stack not empty?;
+    if (Is root node waiting for processing?)
       :Get the top element of the stack;
       :Process the top element of the stack;
       :Pop the top element from the stack;
@@ -28,7 +42,11 @@ else
     if (hasCurrentlyProcessedNodeRightChild)
         :Push the right child to the stack;
     endif
+
+    ':continue\n(go back to the outer loop);
+    ':continue;
   end while
+  'repeat while (Are nodes present in the stack?)
 stop
 
 @enduml
