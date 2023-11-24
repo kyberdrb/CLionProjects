@@ -1,22 +1,6 @@
 @startuml
 'https://plantuml.com/activity-diagram-beta
 
-
-start
-repeat :foo as starting label;
-  :read data;
-  :generate diagrams;
-backward:This is backward;
-repeat while (more data?)
-
-while (check filesize ?) is (not empty)
-  :read file;
-  backward:log;
-endwhile (empty)
-:close file;
-
-stop
-
 start
 if (isNodeEmpty?) then
   stop
@@ -25,11 +9,7 @@ else
   :Push node to the stack;
 
   label outerLoop
-  'while (Are nodes present in the stack?)
-  'repeat
   while (Are nodes present in the stack?) is (present)
-  'repeat :inlineOuterLoopLabel;
-    'label outerLoop
     while (Has currently processed node left child?) is (yes)
       :Push the left child to the stack;
       :Move to the next left child node;
@@ -41,28 +21,10 @@ else
 
     if (Has currently removed node right child?) then (yes)
       :Push the right child of the removed node to the stack;
-      ':continue\n(go back to the outer loop);
-      ':continue;
-      '-->[left] continue;
-      ':continue;
-      ':continue loop
-      'goto outerLoop;
-      'backward:return;
-      'backward:continue;
-      'backward:log;
-      'goto outerLoop
-    else
-      :if (Currently removed node doesn't have a right child?)\ncontinue (go back to the outer loop);
+    else (no)
+      :continue\ni.e. go back to the outer loop;
       goto outerLoop
-
-      'goto continueFromOuterLoop
-      'goto inlineOuterLoopLabel
-      'goto foo
-      'goto backwardOuterLoopAfter
     endif
-
-    'backward:if (Currently removed node doesn't have a right child?)\ncontinue (go back to the outer loop);
-    'label backwardOuterLoopAfter
 
     :is root or parent node waiting for processing?\ni. e. is stack not empty?;
     if (Is root node waiting for processing?)
@@ -74,12 +36,6 @@ else
     if (hasCurrentlyProcessedNodeRightChild)
         :Push the right child to the stack;
     endif
-
-    ':continue\n(go back to the outer loop);
-    'label foo
-    ':continue;
-  'end while
-  'repeat while (Are nodes present in the stack?)
   endwhile (empty)
 stop
 
