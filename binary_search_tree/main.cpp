@@ -195,17 +195,17 @@ private:
             std::cout << *currentlyProcessedNode << " " << std::flush;
             nodes.pop();
 
-            // Push the right child of the currently removed node to the stack
-            TreeNode* nextRightNodeForLeftmostNode = currentlyProcessedNode->right;
-            bool hasCurrentlyRemovedNodeRightChild = nextRightNodeForLeftmostNode != nullptr;
+            // Push the right child of the currently removed node to the stack            //  useful when the parent node only has right child
+            TreeNode* rightChildOfCurrentlyRemovedNode = currentlyProcessedNode->right;
+            bool hasCurrentlyRemovedNodeRightChild = rightChildOfCurrentlyRemovedNode != nullptr;
             if (hasCurrentlyRemovedNodeRightChild) {
-                nodes.push(nextRightNodeForLeftmostNode);
+                nodes.push(rightChildOfCurrentlyRemovedNode);
                 continue;
             }
 
             // Process parent node
-            bool isRootNodeWaitingForProcessing = !(nodes.empty() );
-            if (isRootNodeWaitingForProcessing) {
+            bool isRootOrParentNodeWaitingForProcessing = !(nodes.empty() );
+            if (isRootOrParentNodeWaitingForProcessing) {
                 currentlyProcessedNode = nodes.top();
                 std::cout << *currentlyProcessedNode << " " << std::flush;
                 nodes.pop();
