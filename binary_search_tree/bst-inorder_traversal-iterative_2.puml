@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (Is ""node"" nonexistent?) is (yes) then
+  stop
+endif
+
+:initialize ""nodes"" stack;
+:initialize ""current node"";
+
+while (Are nodes in the ""nodes"" stack present? OR Does ""current node"" exist? )
+
+  if (Does ""current node"" exist?) is (yes) then
+    group Scan subtree of ""current node""
+    :Push current node to the ""nodes"" stack;
+    :Update ""current node"" with its left child;
+    end group
+  else
+    group Process node
+    :Update ""current node"" with the top element of the ""nodes"" stack;
+    :Pop the top node from the ""nodes"" stack;
+    :Process ""current node"";
+    end group
+
+    group Scan right subtree in next iteration
+    :Update ""current node"" with its right child;
+    end group
+  endif
+endwhile (""nodes"" stack empty)
+
+stop
+
+@enduml
