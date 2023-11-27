@@ -67,7 +67,12 @@ public:
     }
 
     void inOrderTraversalIterative() {
-        inorderIterative(root);
+        inorderIterative_1(root);
+    }
+
+    // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+    void inOrderTraversalIterative_2() {
+        inorderIterative_2(root);
     }
 
     // crashes on 'inorderRecursive' call
@@ -155,7 +160,7 @@ private:
 //        }
 //    }
 
-    void inorderIterative(TreeNode* node) {
+    void inorderIterative_1(TreeNode* node) {
         bool isNodeEmpty = node == nullptr;
         if (isNodeEmpty) {
             return;
@@ -219,6 +224,29 @@ private:
             }
 
             areNodesPresent = !(nodes.empty() );
+        }
+    }
+
+    // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+    void inorderIterative_2(TreeNode* node) {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        TreeNode* currentNode = node;
+
+        while (!(nodes.empty() ) || currentNode != nullptr) {
+            if (currentNode != nullptr) {
+                nodes.push(currentNode);
+                currentNode = currentNode->left;
+                continue;
+            }
+
+            currentNode = nodes.top();
+            nodes.pop();
+            std::cout << currentNode->data << " ";
+            currentNode = currentNode->right;
         }
     }
 
@@ -348,6 +376,10 @@ int main() {
     std::cout << '\n' << std::flush;
 
     tree.inOrderTraversalIterative();
+    std::cout << '\n' << std::flush;
+
+    tree.inOrderTraversalIterative_2();
+    std::cout << '\n' << std::flush;
 
     return 0;
 }
