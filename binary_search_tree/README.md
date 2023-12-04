@@ -5,6 +5,7 @@ Experimental implementation
 ## Sources
 
 - BST
+    - ChatGPT: How would you impelment a binary search tree with in-order traversal in C++?
     - https://duckduckgo.com/?t=ffab&q=std%3A%3Astack&ia=web
     - https://www.geeksforgeeks.org/stack-in-cpp-stl/
     - https://duckduckgo.com/?t=ffab&q=c%2B%2B+std+stack+iterate&ia=web

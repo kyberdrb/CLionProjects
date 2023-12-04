@@ -71,8 +71,13 @@ public:
     }
 
     // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
-    void inOrderTraversalIterative_2() {
-        inorderIterative_2(root);
+    void inOrderTraversalIterative_2_with_continue() {
+        inorderIterative_2_with_continue(root);
+    }
+
+    // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+    void inOrderTraversalIterative_2_with_else() {
+        inorderIterative_2_with_else(root);
     }
 
     // crashes on 'inorderRecursive' call
@@ -228,7 +233,7 @@ private:
     }
 
     // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
-    void inorderIterative_2(TreeNode* node) {
+    void inorderIterative_2_with_continue(TreeNode* node) {
         if (node == nullptr) {
             return;
         }
@@ -247,6 +252,28 @@ private:
             nodes.pop();
             std::cout << currentNode->data << " ";
             currentNode = currentNode->right;
+        }
+    }
+
+    // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+    void inorderIterative_2_with_else(TreeNode* node) {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        TreeNode* currentNode = node;
+
+        while ( !(nodes.empty() ) || currentNode != nullptr ) {
+            if (currentNode != nullptr) {
+                nodes.push(currentNode);
+                currentNode = currentNode->left;
+            } else {
+                currentNode = nodes.top();
+                nodes.pop();
+                std::cout << currentNode->data << " ";
+                currentNode = currentNode->right;
+            }
         }
     }
 
@@ -378,7 +405,10 @@ int main() {
     tree.inOrderTraversalIterative();
     std::cout << '\n' << std::flush;
 
-    tree.inOrderTraversalIterative_2();
+    tree.inOrderTraversalIterative_2_with_continue();
+    std::cout << '\n' << std::flush;
+
+    tree.inOrderTraversalIterative_2_with_else();
     std::cout << '\n' << std::flush;
 
     return 0;

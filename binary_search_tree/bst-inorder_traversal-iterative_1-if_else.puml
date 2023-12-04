@@ -27,14 +27,14 @@ else
       :Push the right child of the removed node to the stack;
     else (no)
       'Duplicate code as opposed to the version with 'continue_goto'
-      group Scan left subtree
+      group Scan left subtree (duplicate)
       while (Has currently removed node left child?) is (yes)
         :Push the left child to the stack;
         :Move to the next left child node;
       end while
       endgroup
 
-      group Process node on ""nodes"" stack
+      group Process node on ""nodes"" stack (duplicate)
       :Get the top element of the stack;
       :Process the top element of the stack;
       :Pop the top element from the stack;
