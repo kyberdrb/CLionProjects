@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (isNodeEmpty?) then
+  stop
+else
+  :Initialize main stack;
+  :Initialize stack for right children;
+  :Initialize current node;
+
+label outerLoop
+while (Are nodes present in the main stack? OR Does current node exist?) is (present)
+
+
+
+end while
+
+stop
+
+@enduml

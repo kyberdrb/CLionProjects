@@ -57,7 +57,7 @@ public:
 //    }
 
     // In-order traversal of the binary tree
-    void inorderTraversal() {
+    void inOrderTraversalRecursive() {
         inorderRecursive(root);
     }
 
@@ -81,15 +81,24 @@ public:
     }
 
     // crashes on 'inorderRecursive' call
-//    std::string inorderTraversal() {
+//    std::string inOrderTraversalRecursive() {
 //        std::stringstream sequence;
 //        inorderRecursive(root, sequence); // crash
 //        return sequence.str();
 //    }
 
+    void postOrderTraversalRecursive() const {
+        postOrderRecursive(root);
+    }
+
+    void postOrderTraversalIterative_1() const {
+        //postOrderIterative_1_BROKEN(root);
+        postOrderIterative(root);
+    }
+
     // Destructor to release memory
     ~BinaryTree() {
-        postOrderRecursive(root);
+        postOrderRecursiveNoOutput(root);
     }
 
 private:
@@ -277,12 +286,83 @@ private:
         }
     }
 
-    void postOrderRecursive(TreeNode* node) {
+    void postOrderRecursiveNoOutput(TreeNode* node) {
         if (node != nullptr) {
-            postOrderRecursive(node->left);  // process left node (child)
-            postOrderRecursive(node->right); // process right node (child)
+            postOrderRecursiveNoOutput(node->left);  // process left node (child)
+            postOrderRecursiveNoOutput(node->right); // process right node (child)
             delete node;                          // process parent node
         }
+    }
+
+    void postOrderRecursive(TreeNode* node) const {
+        if (node != nullptr) {
+            postOrderRecursive(node->left);
+            postOrderRecursive(node->right);
+            std::cout << *node << " ";
+        }
+    }
+
+    void postOrderIterative_1_BROKEN(TreeNode* node) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        nodes.push(node);
+
+        while (!nodes.empty() ) {
+            TreeNode* currentlyProcessedNode = nodes.top();
+
+            while (currentlyProcessedNode->left != nullptr) {
+                nodes.push(currentlyProcessedNode->left);
+                currentlyProcessedNode = currentlyProcessedNode->left;
+            }
+
+            if (currentlyProcessedNode->right != nullptr) {
+                nodes.push(currentlyProcessedNode->right);
+                continue;
+            }
+
+            std::cout << currentlyProcessedNode->data << " " << std::flush;
+            nodes.pop();
+            currentlyProcessedNode = nodes.top();
+            std::cout << currentlyProcessedNode->data << " " << std::flush;
+            nodes.pop();
+        }
+
+        /*
+         * if the node doesn't have a left child and a right child and is a left child
+         *     process node
+         *     pop it from the stack
+         *
+         * if the node doesn't have a left child and a right child and is a right child
+         *     process node
+         *     pop it from the stack
+         *     process node again - its parent
+         *     pop it from the stack
+         */
+    }
+
+    // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+    void postOrderIterative(TreeNode* node) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        std::stack<TreeNode*> rightChildren;
+        TreeNode* currentlyProcessedNode = node;
+
+//        while (!nodes.empty() || currentlyProcessedNode != nullptr) {
+//            nodes.push(node);
+//
+//            currentlyProcessedNode = nodes.top();
+//            if (currentlyProcessedNode->right != nullptr) {
+//                rightChildren.push(currentlyProcessedNode->right);
+//            }
+//
+//            currentlyProcessedNode = currentlyProcessedNode->left;
+//        }
     }
 };
 
@@ -392,7 +472,7 @@ int main() {
 
     std::cout << "In-order traversal: ";
     std::cout << '\n';
-    tree.inorderTraversal();
+    tree.inOrderTraversalRecursive();
     std::cout << std::endl;
 
     std::vector<int> sequence;
@@ -410,6 +490,15 @@ int main() {
 
     tree.inOrderTraversalIterative_2_with_else();
     std::cout << '\n' << std::flush;
+
+    std::cout << '\n';
+    std::cout << "Post-order traversal: ";
+    std::cout << '\n';
+    tree.postOrderTraversalRecursive();
+    std::cout << std::endl;
+
+    tree.postOrderTraversalIterative_1();
+    std::cout << std::endl;
 
     return 0;
 }
