@@ -3,17 +3,32 @@
 
 start
 if (isNodeEmpty?) then
-  stop
+    stop
 else
-  :Initialize main stack;
-  :Initialize stack for right children;
-  :Initialize current node;
+    :Initialize"main stack;
+    :Initialize stack for right children;
+    :Initialize ""current node"";
 
 label outerLoop
-while (Are nodes present in the main stack? OR Does current node exist?) is (present)
+while (Are nodes present in the main stack?\nOR\nDoes ""current node"" exist?) is (nodes left to processing)
+    if (Does ""current node"" exist?) then (yes)
+        if (Has ""current node"" right child?) then (yes)
+            :Push the right child to the right children stack;
+        end if
 
+        :Push ""current node"" to the main stack;
+        :Set ""current node"" to its left child;
+    else
+        :Set ""current node"" to the top node on the main stack;
 
-
+        if (Is right child of ""current node"" the same as the top element in right children stack?) then (yes)
+            :Pop last element from right children stack;
+        else (different)
+            :Process ""current node"";
+            :Pop last element from the main stack;
+            :Set ""current element"" to an empty value;
+        end if
+    end if
 end while
 
 stop

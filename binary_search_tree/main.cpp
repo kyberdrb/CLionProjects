@@ -92,8 +92,8 @@ public:
     }
 
     void postOrderTraversalIterative_1() const {
-        //postOrderIterative_1_BROKEN(root);
-        postOrderIterative(root);
+        //postOrderIterative_1_MY_BROKEN_IMPLEMENTATION(root);
+        postOrderIterative_1(root);
     }
 
     // Destructor to release memory
@@ -302,7 +302,7 @@ private:
         }
     }
 
-    void postOrderIterative_1_BROKEN(TreeNode* node) const {
+    void postOrderIterative_1_MY_BROKEN_IMPLEMENTATION(TreeNode* node) const {
         if (node == nullptr) {
             return;
         }
@@ -344,7 +344,7 @@ private:
     }
 
     // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
-    void postOrderIterative(TreeNode* node) const {
+    void postOrderIterative_1(TreeNode* node) const {
         if (node == nullptr) {
             return;
         }
@@ -353,15 +353,26 @@ private:
         std::stack<TreeNode*> rightChildren;
         TreeNode* currentlyProcessedNode = node;
 
-//        while (!nodes.empty() || currentlyProcessedNode != nullptr) {
-//            nodes.push(node);
-//
+//        while ( !(nodes.empty() ) || currentlyProcessedNode != nullptr) {
 //            currentlyProcessedNode = nodes.top();
 //            if (currentlyProcessedNode->right != nullptr) {
 //                rightChildren.push(currentlyProcessedNode->right);
 //            }
 //
+//            nodes.push(currentlyProcessedNode); // might be before
 //            currentlyProcessedNode = currentlyProcessedNode->left;
+//        }
+//        else {
+//            currentlyProcessedNode = nodes.top();
+//            if ( !(rightChildren.empty() ) && currentlyProcessedNode->right == rightChildren.top() ) {
+//                currentlyProcessedNode = rightChildren.top();
+//                rightChildren.pop();
+//            }
+//            else {
+//                std::cout << currentlyProcessedNode->data << " ";
+//                nodes.pop();
+//                currentlyProcessedNode = nullptr;
+//            }
 //        }
     }
 };
