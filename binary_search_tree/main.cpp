@@ -91,10 +91,14 @@ public:
         postOrderRecursive(root);
     }
 
-    void postOrderTraversalIterative_1() const {
+    void postOrderTraversalIterative_twoStack() const {
         //postOrderIterative_1_MY_BROKEN_IMPLEMENTATION(root);
-        postOrderIterative_1(root);
+        postOrderIterative_twoStack(root);
     }
+
+//    void postOrderTraversalIterative_singleStack() const {
+//        postOrderIterative_singleStack(root);
+//    }
 
     // Destructor to release memory
     ~BinaryTree() {
@@ -344,7 +348,7 @@ private:
     }
 
     // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
-    void postOrderIterative_1(TreeNode* node) const {
+    void postOrderIterative_twoStack(TreeNode* node) const {
         if (node == nullptr) {
             return;
         }
@@ -353,28 +357,63 @@ private:
         std::stack<TreeNode*> rightChildren;
         TreeNode* currentlyProcessedNode = node;
 
-//        while ( !(nodes.empty() ) || currentlyProcessedNode != nullptr) {
-//            currentlyProcessedNode = nodes.top();
-//            if (currentlyProcessedNode->right != nullptr) {
-//                rightChildren.push(currentlyProcessedNode->right);
-//            }
-//
-//            nodes.push(currentlyProcessedNode); // might be before
-//            currentlyProcessedNode = currentlyProcessedNode->left;
-//        }
-//        else {
-//            currentlyProcessedNode = nodes.top();
-//            if ( !(rightChildren.empty() ) && currentlyProcessedNode->right == rightChildren.top() ) {
-//                currentlyProcessedNode = rightChildren.top();
-//                rightChildren.pop();
-//            }
-//            else {
-//                std::cout << currentlyProcessedNode->data << " ";
-//                nodes.pop();
-//                currentlyProcessedNode = nullptr;
-//            }
-//        }
+        while (!(nodes.empty()) || currentlyProcessedNode != nullptr) {
+            if (currentlyProcessedNode != nullptr) {
+                if (currentlyProcessedNode->right != nullptr) {
+                    rightChildren.push(currentlyProcessedNode->right);
+                }
+
+                nodes.push(currentlyProcessedNode); // might be before
+                currentlyProcessedNode = currentlyProcessedNode->left;
+            } else {
+                currentlyProcessedNode = nodes.top();
+
+                if ( !(rightChildren.empty() ) && (currentlyProcessedNode->right == rightChildren.top() ) ) {
+                    currentlyProcessedNode = rightChildren.top();
+                    rightChildren.pop();
+                }
+                else {
+                    std::cout << currentlyProcessedNode->data << " " << std::flush;
+                    nodes.pop();
+                    currentlyProcessedNode = nullptr;
+                }
+            }
+        }
     }
+
+    // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+//    void postOrderIterative_singleStack(TreeNode* node) const {
+//        if (node == nullptr) {
+//            return;
+//        }
+//
+//        std::stack<TreeNode*> nodes;
+//        std::stack<TreeNode*> rightChildren;
+//        TreeNode* currentlyProcessedNode = node;
+//
+//        while (!(nodes.empty()) || currentlyProcessedNode != nullptr) {
+//            if (currentlyProcessedNode != nullptr) {
+//                if (currentlyProcessedNode->right != nullptr) {
+//                    rightChildren.push(currentlyProcessedNode->right);
+//                }
+//
+//                nodes.push(currentlyProcessedNode); // might be before
+//                currentlyProcessedNode = currentlyProcessedNode->left;
+//            } else {
+//                currentlyProcessedNode = nodes.top();
+//
+//                if ( !(rightChildren.empty() ) && (currentlyProcessedNode->right == rightChildren.top() ) ) {
+//                    currentlyProcessedNode = rightChildren.top();
+//                    rightChildren.pop();
+//                }
+//                else {
+//                    std::cout << currentlyProcessedNode->data << " " << std::flush;
+//                    nodes.pop();
+//                    currentlyProcessedNode = nullptr;
+//                }
+//            }
+//        }
+//    }
 };
 
 int main() {
@@ -508,8 +547,11 @@ int main() {
     tree.postOrderTraversalRecursive();
     std::cout << std::endl;
 
-    tree.postOrderTraversalIterative_1();
+    tree.postOrderTraversalIterative_twoStack();
     std::cout << std::endl;
+
+//    tree.postOrderTraversalIterative_singleStack();
+//    std::cout << std::endl;
 
     return 0;
 }

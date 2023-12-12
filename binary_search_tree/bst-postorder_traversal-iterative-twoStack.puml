@@ -21,7 +21,8 @@ while (Are nodes present in the main stack?\nOR\nDoes ""current node"" exist?) i
     else
         :Set ""current node"" to the top node on the main stack;
 
-        if (Is right child of ""current node"" the same as the top element in right children stack?) then (yes)
+        if (Are nodes present in the right children stack?\nAND\nIs right child of ""current node"" the same as the top element in right children stack?) then (yes)
+            :Set ""current node"" to the top element of the right children stack;
             :Pop last element from right children stack;
         else (different)
             :Process ""current node"";
