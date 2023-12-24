@@ -96,9 +96,9 @@ public:
         postOrderIterative_twoStack(root);
     }
 
-//    void postOrderTraversalIterative_singleStack() const {
-//        postOrderIterative_singleStack(root);
-//    }
+    void postOrderTraversalIterative_singleStack_1() const {
+        postOrderIterative_singleStack_1(root);
+    }
 
     // Destructor to release memory
     ~BinaryTree() {
@@ -358,6 +358,7 @@ private:
         TreeNode* currentlyProcessedNode = node;
 
         while (!(nodes.empty()) || currentlyProcessedNode != nullptr) {
+            // pushing
             if (currentlyProcessedNode != nullptr) {
                 if (currentlyProcessedNode->right != nullptr) {
                     rightChildren.push(currentlyProcessedNode->right);
@@ -365,7 +366,9 @@ private:
 
                 nodes.push(currentlyProcessedNode); // might be before
                 currentlyProcessedNode = currentlyProcessedNode->left;
-            } else {
+            }
+            // backtracking
+            else {
                 currentlyProcessedNode = nodes.top();
 
                 if ( !(rightChildren.empty() ) && (currentlyProcessedNode->right == rightChildren.top() ) ) {
@@ -382,38 +385,193 @@ private:
     }
 
     // https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
-//    void postOrderIterative_singleStack(TreeNode* node) const {
-//        if (node == nullptr) {
-//            return;
+    void postOrderIterative_singleStack_1(TreeNode* node) const {
+        if (node == nullptr) { // condition can be ommitted because the condition in while loop contains the check for nullptr
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        TreeNode* previousNode = nullptr;
+
+        while ( (node != nullptr) || !(nodes.empty() ) ) {
+            // pushing
+            if (node != nullptr) {
+                nodes.push(node); // might be before
+                node = node->left;
+            }
+
+            // backtracking
+            else {
+                TreeNode* currentlyProcessedNode = nodes.top();
+                // traverse right subtree
+                if ( (currentlyProcessedNode->right != nullptr) && (currentlyProcessedNode->right != previousNode) ) {
+                    node = currentlyProcessedNode->right;
+                }
+                else { // process node
+                    std::cout << currentlyProcessedNode->data << " " << std::flush;
+                    previousNode = currentlyProcessedNode;
+                    nodes.pop();
+                }
+            }
+        }
+    }
+
+    void postOrderIterative_singleStack_2(TreeNode* node) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        std::stack<TreeNode*> rightChildren;
+        TreeNode* currentlyProcessedNode = node;
+
+//        // pushing
+//        while (currentlyProcessedNode != nullptr) {
+//            nodes.push(currentlyProcessedNode);
+//            currentlyProcessedNode = currentlyProcessedNode->left;
 //        }
 //
-//        std::stack<TreeNode*> nodes;
-//        std::stack<TreeNode*> rightChildren;
-//        TreeNode* currentlyProcessedNode = node;
+//        // backtracking
+//        TreeNode* previousNode = nullptr;
+//        bool wasRightChildVisited = false;
 //
-//        while (!(nodes.empty()) || currentlyProcessedNode != nullptr) {
-//            if (currentlyProcessedNode != nullptr) {
-//                if (currentlyProcessedNode->right != nullptr) {
-//                    rightChildren.push(currentlyProcessedNode->right);
-//                }
+//        while ( !(nodes.empty() ) ) {
+//            currentlyProcessedNode = nodes.top();
 //
-//                nodes.push(currentlyProcessedNode); // might be before
+//            if (currentlyProcessedNode->right != nullptr && !(wasRightChildVisited) ) {
 //                currentlyProcessedNode = currentlyProcessedNode->left;
-//            } else {
-//                currentlyProcessedNode = nodes.top();
-//
-//                if ( !(rightChildren.empty() ) && (currentlyProcessedNode->right == rightChildren.top() ) ) {
-//                    currentlyProcessedNode = rightChildren.top();
-//                    rightChildren.pop();
-//                }
-//                else {
-//                    std::cout << currentlyProcessedNode->data << " " << std::flush;
-//                    nodes.pop();
-//                    currentlyProcessedNode = nullptr;
-//                }
+//                wasRightChildVisited = true;
+//            }
+//            else {
+//                std::cout << currentlyProcessedNode->data << " " << std::flush;
+//                nodes.pop();
+//                wasRightChildVisited = false;
+//                previousNode = currentlyProcessedNode;
+//                currentlyProcessedNode = nullptr;
 //            }
 //        }
-//    }
+
+        // ALTERNATIVE IMPL: pushing and backtracking in one while loop
+        TreeNode* previousNode = nullptr;
+
+        while (!(nodes.empty()) || currentlyProcessedNode != nullptr) {
+            // pushing
+            if (currentlyProcessedNode != nullptr) {
+                nodes.push(currentlyProcessedNode); // might be before
+                currentlyProcessedNode = currentlyProcessedNode->left;
+            }
+
+                // backtracking
+            else {
+                currentlyProcessedNode = nodes.top();
+
+                if ( (currentlyProcessedNode->right != nullptr) && (currentlyProcessedNode->right != previousNode) ) {
+                    currentlyProcessedNode = currentlyProcessedNode->right;
+                }
+                else {
+                    std::cout << currentlyProcessedNode->data << " " << std::flush;
+                    previousNode = currentlyProcessedNode;
+                    nodes.pop();
+                }
+            }
+        }
+    }
+
+    void postOrderIterative_singleStack_3(TreeNode* node) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        std::stack<TreeNode*> rightChildren;
+        TreeNode* currentlyProcessedNode = node;
+
+//        // pushing
+//        while (currentlyProcessedNode != nullptr) {
+//            nodes.push(currentlyProcessedNode);
+//            currentlyProcessedNode = currentlyProcessedNode->left;
+//        }
+//
+//        // backtracking
+//        TreeNode* previousNode = nullptr;
+//        bool wasRightChildVisited = false;
+//
+//        while ( !(nodes.empty() ) ) {
+//            currentlyProcessedNode = nodes.top();
+//
+//            if (currentlyProcessedNode->right != nullptr && !(wasRightChildVisited) ) {
+//                currentlyProcessedNode = currentlyProcessedNode->left;
+//                wasRightChildVisited = true;
+//            }
+//            else {
+//                std::cout << currentlyProcessedNode->data << " " << std::flush;
+//                nodes.pop();
+//                wasRightChildVisited = false;
+//                previousNode = currentlyProcessedNode;
+//                currentlyProcessedNode = nullptr;
+//            }
+//        }
+
+        // ALTERNATIVE IMPL: pushing and backtracking in one while loop
+        TreeNode* previousNode = nullptr;
+
+        while (!(nodes.empty()) || currentlyProcessedNode != nullptr) {
+            // pushing
+            if (currentlyProcessedNode != nullptr) {
+                nodes.push(currentlyProcessedNode); // might be before
+                currentlyProcessedNode = currentlyProcessedNode->left;
+            }
+
+                // backtracking
+            else {
+                currentlyProcessedNode = nodes.top();
+
+                if ( (currentlyProcessedNode->right != nullptr) && (currentlyProcessedNode->right != previousNode) ) {
+                    currentlyProcessedNode = currentlyProcessedNode->right;
+                }
+                else {
+                    std::cout << currentlyProcessedNode->data << " " << std::flush;
+                    previousNode = currentlyProcessedNode;
+                    nodes.pop();
+                }
+            }
+        }
+    }
+
+    void postOrderIterative_singleStack_BROKEN(TreeNode* node) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::stack<TreeNode*> nodes;
+        std::stack<TreeNode*> rightChildren;
+        TreeNode* currentlyProcessedNode = node;
+
+        // pushing
+        while (currentlyProcessedNode != nullptr) {
+            nodes.push(currentlyProcessedNode);
+            currentlyProcessedNode = currentlyProcessedNode->left;
+        }
+
+        // backtracking
+        TreeNode* previousNode = nullptr;
+        bool wasRightChildVisited = false;
+
+        while (!(nodes.empty())) {
+            currentlyProcessedNode = nodes.top();
+
+            if (currentlyProcessedNode->right != nullptr && !(wasRightChildVisited)) {
+                currentlyProcessedNode = currentlyProcessedNode->left;
+                wasRightChildVisited = true;
+            } else {
+                std::cout << currentlyProcessedNode->data << " " << std::flush;
+                nodes.pop();
+                wasRightChildVisited = false;
+                previousNode = currentlyProcessedNode;
+                currentlyProcessedNode = nullptr;
+            }
+        }
+    }
 };
 
 int main() {
@@ -550,8 +708,8 @@ int main() {
     tree.postOrderTraversalIterative_twoStack();
     std::cout << std::endl;
 
-//    tree.postOrderTraversalIterative_singleStack();
-//    std::cout << std::endl;
+    tree.postOrderTraversalIterative_singleStack_1();
+    std::cout << std::endl;
 
     return 0;
 }
