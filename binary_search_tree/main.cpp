@@ -100,6 +100,10 @@ public:
         postOrderIterative_singleStack_1(root);
     }
 
+    std::vector<std::reference_wrapper<int>> postOrderTraversalIterative_singleStack_1_vector() const {
+        return postOrderIterative_singleStack_1_vector(root);
+    }
+
     // Destructor to release memory
     ~BinaryTree() {
         postOrderRecursiveNoOutput(root);
@@ -404,16 +408,59 @@ private:
             else {
                 TreeNode* currentlyProcessedNode = nodes.top();
                 // traverse right subtree
+                //  when the right child of current node exists - to prevent unnecessary operation
+                //  AND
+                //  when the right child of current node is different from the previous node - to prevent infinite loop of pushing the leaf right child with each backtracking
                 if ( (currentlyProcessedNode->right != nullptr) && (currentlyProcessedNode->right != previousNode) ) {
                     node = currentlyProcessedNode->right;
                 }
-                else { // process node
+                // process node
+                else {
                     std::cout << currentlyProcessedNode->data << " " << std::flush;
                     previousNode = currentlyProcessedNode;
                     nodes.pop();
                 }
             }
         }
+    }
+
+    std::vector<std::reference_wrapper<int>> postOrderIterative_singleStack_1_vector(TreeNode* node) const {
+        std::vector<std::reference_wrapper<int>> outputNodes;
+
+        if (node == nullptr) { // condition can be ommitted because the condition in while loop contains the check for nullptr
+            return outputNodes;
+        }
+
+        std::stack<TreeNode*> nodes;
+        TreeNode* previousNode = nullptr;
+
+        while ( (node != nullptr) || !(nodes.empty() ) ) {
+            // pushing
+            if (node != nullptr) {
+                nodes.push(node); // might be before
+                node = node->left;
+            }
+
+            // backtracking
+            else {
+                TreeNode* currentlyProcessedNode = nodes.top();
+                // traverse right subtree
+                //  when the right child of current node exists - to prevent unnecessary operation
+                //  AND
+                //  when the right child of current node is different from the previous node - to prevent infinite loop of pushing the leaf right child with each backtracking
+                if ( (currentlyProcessedNode->right != nullptr) && (currentlyProcessedNode->right != previousNode) ) {
+                    node = currentlyProcessedNode->right;
+                }
+                // process node
+                else {
+                    outputNodes.push_back(currentlyProcessedNode->data);
+                    previousNode = currentlyProcessedNode;
+                    nodes.pop();
+                }
+            }
+        }
+
+        return outputNodes;
     }
 
     void postOrderIterative_singleStack_2(TreeNode* node) const {
@@ -709,6 +756,12 @@ int main() {
     std::cout << std::endl;
 
     tree.postOrderTraversalIterative_singleStack_1();
+    std::cout << std::endl;
+
+    const std::vector<std::reference_wrapper<int>>& postOrderVector_1 = tree.postOrderTraversalIterative_singleStack_1_vector();
+    for (const int& element : postOrderVector_1) {
+        std::cout << element << " ";
+    }
     std::cout << std::endl;
 
     return 0;

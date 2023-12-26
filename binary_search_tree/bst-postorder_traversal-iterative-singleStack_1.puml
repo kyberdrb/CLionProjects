@@ -19,7 +19,7 @@ while (Does ""node"" exist? OR Are nodes left in the stack?)
         group backtracking
         :Initialize ""current node"" to ""node"";
         if (Does right child of ""node"" exist? AND Does ""current node"" matches ""previous node""?)
-            :Set ""current node"" to its right child;
+            :Set ""node"" to the right child of ""current node"";
         else
             :Process ""current node"";
             :Set ""previous node"" to ""current node"";
