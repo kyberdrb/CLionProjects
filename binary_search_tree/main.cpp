@@ -424,43 +424,53 @@ private:
         }
     }
 
-    std::vector<std::reference_wrapper<int>> postOrderIterative_singleStack_1_vector(TreeNode* node) const {
+    std::vector<std::reference_wrapper<int>> postOrderIterative_singleStack_1_vector(const TreeNode* const node) const {
         std::vector<std::reference_wrapper<int>> outputNodes;
-
-        if (node == nullptr) { // condition can be ommitted because the condition in while loop contains the check for nullptr
-            return outputNodes;
-        }
 
         std::stack<TreeNode*> nodes;
         TreeNode* previousNode = nullptr;
+        auto assignableNode = const_cast<TreeNode*>(node);
 
-        while ( (node != nullptr) || !(nodes.empty() ) ) {
+        bool doesNodeExist = (node != nullptr);
+        bool areNodesLeftToProcessing = !(nodes.empty() );
+        while (doesNodeExist || areNodesLeftToProcessing) {
             // pushing
-            if (node != nullptr) {
-                nodes.push(node); // might be before
-                node = node->left;
+            if (doesNodeExist) {
+                nodes.push(const_cast<TreeNode*>(assignableNode) ); // might be before
+                assignableNode = assignableNode->left;
+                updateConditionVariables(assignableNode, nodes, doesNodeExist, areNodesLeftToProcessing);
+                continue;
             }
 
             // backtracking
-            else {
-                TreeNode* currentlyProcessedNode = nodes.top();
-                // traverse right subtree
-                //  when the right child of current node exists - to prevent unnecessary operation
-                //  AND
-                //  when the right child of current node is different from the previous node - to prevent infinite loop of pushing the leaf right child with each backtracking
-                if ( (currentlyProcessedNode->right != nullptr) && (currentlyProcessedNode->right != previousNode) ) {
-                    node = currentlyProcessedNode->right;
-                }
-                // process node
-                else {
-                    outputNodes.push_back(currentlyProcessedNode->data);
-                    previousNode = currentlyProcessedNode;
-                    nodes.pop();
-                }
+            TreeNode* currentlyProcessedNode = nodes.top();
+            // traverse right subtree
+            bool doesRightChildOfCurrentNodeExist = currentlyProcessedNode->right != nullptr; // to prevent unnecessary operation by
+            bool isRightChildOfCurrentNodeDifferentFromPreviousNode = currentlyProcessedNode->right != previousNode; // to prevent infinite loop by pushing the same leaf right child with each backtracking
+            if (doesRightChildOfCurrentNodeExist && isRightChildOfCurrentNodeDifferentFromPreviousNode) {
+                assignableNode = currentlyProcessedNode->right;
+                updateConditionVariables(assignableNode, nodes, doesNodeExist, areNodesLeftToProcessing);
+                continue;
             }
+
+            // process node
+            outputNodes.push_back(currentlyProcessedNode->data);
+            previousNode = currentlyProcessedNode;
+            nodes.pop();
+            updateConditionVariables(assignableNode, nodes, doesNodeExist, areNodesLeftToProcessing);
         }
 
         return outputNodes;
+    }
+
+    void updateConditionVariables(
+            const TreeNode* const& node,
+            const std::stack<TreeNode*>& nodes,
+            bool& doesNodeExist,
+            bool& areNodesLeftToProcessing) const
+    {
+        doesNodeExist = (node != nullptr);
+        areNodesLeftToProcessing = !(nodes.empty() );
     }
 
     void postOrderIterative_singleStack_2(TreeNode* node) const {

@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (Is ""node"" nonexistent?) then
+    stop
+else
+    :Initialize ""nodes"" stack;
+    :Initialize ""previous node"" as empty;
+
+label outerLoop
+while (Does ""node"" exist? OR Are nodes left in the stack?)
+    if (Does ""node"" exist?)
+        group pushing
+        :Push ""node"" to the stack;
+        :Set ""node"" to its left child;
+        goto outerLoop
+        end group
+    end if
+
+    group backtracking
+    :Initialize ""current node"" to ""node"";
+    if (Does right child of ""node"" exist? AND Is ""current node"" different ""previous node""?)
+        :Set ""node"" to the right child of ""current node"";
+        goto outerLoop
+    end if
+
+    :Process ""current node"";
+    :Set ""previous node"" to ""current node"";
+    :Pop last node from the stack;
+    end group
+end while
+stop
+@enduml
