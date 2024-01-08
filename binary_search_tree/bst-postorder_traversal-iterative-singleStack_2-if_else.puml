@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (Is ""node"" empty?) then
+    stop
+else
+    :Initialize ""nodes"" stack;
+    :Initialize ""visited nodes"" set;
+    :Initialize ""current node"" to ""node"";
+
+while (Are in ""nodes"" stack nodes left to process? OR Does ""current node"" exist?)
+    if (Does ""current node"" exist?)
+        if (Does current node occur in visited nodes more than once?)
+            :Process node (the node had already been visited);
+            :Set ""current node"" to ""null pointer""\nOR\nSet ""current node"" to the top element of the stack\nand pop the last element;
+        else
+            :Push ""current node"" to stack;
+
+            if (Has ""current node"" its right child?)
+                :Push right child of ""current node"" to stack;
+            end if
+
+            :Insert ""current node"" to ""visited nodes"";
+            :Set ""current node"" to its left child;
+        end if
+    else
+        :Set ""current node"" to the one from the top of the stack;
+        :Pop the top node from the stack;
+    end if
+end while
+stop
+
+@enduml

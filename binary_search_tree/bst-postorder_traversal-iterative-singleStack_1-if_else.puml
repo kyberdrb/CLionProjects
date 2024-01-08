@@ -8,7 +8,6 @@ else
     :Initialize ""nodes"" stack;
     :Initialize ""previous node"" as empty;
 
-'label outerLoop
 while (Does ""node"" exist? OR Are nodes left in the stack?)
     if (Does ""node"" exist?)
         group pushing
