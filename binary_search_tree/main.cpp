@@ -113,6 +113,22 @@ public:
         return postOrderIterative_singleStack_2_vector(root);
     }
 
+    void preOrderTraversalIterative_singleStack_1() const {
+        preOrderIterative_singleStack_1(root);
+    }
+
+    void preOrderTraversalIterative_singleStack_1_withoutDuplicates() const {
+        preOrderIterative_singleStack_1_withoutDuplicates(root);
+    }
+
+    void preOrderTraversalIterative_singleStack_1_doubleLoop() const {
+        preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly(root);
+    }
+
+    std::vector<std::reference_wrapper<int>> preOrderTraversalIterative_singleStack_1_doubleLoop_vector() const {
+        return preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly_vector(root);
+    }
+
     // Destructor to release memory
     ~BinaryTree() {
         postOrderRecursiveNoOutput(root);
@@ -525,13 +541,15 @@ private:
 
         bool areNodesLeftToProcess = !nodes.empty();
         bool doesNodeExist = currentNode != nullptr;
-        while (!nodes.empty() || currentNode != nullptr) {
+        while (areNodesLeftToProcess || doesNodeExist) {
 
             if (currentNode != nullptr) {
-                bool wasNodeVisited = visitedNodes.count(currentNode) > 0;
-                if (visitedNodes.count(currentNode) > 0) { // pushing
+                bool wasNodeVisited = visitedNodes.count(currentNode) == 1; // if the node address is present in the 'std::set', it will be
+                                                                            // present there in the 'std::set' only once by definition
+                if (wasNodeVisited) { // pushing
                     outputVector.push_back(currentNode->data);
                     currentNode = nullptr;
+                    updateConditionalVariablesPostOrder_singleStack2(nodes, currentNode, areNodesLeftToProcess, doesNodeExist);
                     continue;
                 }
 
@@ -544,16 +562,27 @@ private:
 
                 visitedNodes.insert(currentNode);
                 currentNode = currentNode->left;
-
+                updateConditionalVariablesPostOrder_singleStack2(nodes, currentNode, areNodesLeftToProcess, doesNodeExist);
                 continue;
             }
 
             // backtracking
             currentNode = nodes.top();
             nodes.pop();
+            updateConditionalVariablesPostOrder_singleStack2(nodes, currentNode, areNodesLeftToProcess, doesNodeExist);
         }
 
         return outputVector;
+    }
+
+    void updateConditionalVariablesPostOrder_singleStack2(
+            const std::stack<const TreeNode*>& nodes,
+            const TreeNode*& currentNode,
+            bool& areNodesLeftToProcess,
+            bool& doesNodeExist) const
+    {
+        areNodesLeftToProcess = !(nodes.empty() );
+        doesNodeExist = currentNode != nullptr;
     }
 
     void postOrderIterative_singleStack_BROKEN(TreeNode* node) const {
@@ -588,6 +617,122 @@ private:
                 previousNode = currentlyProcessedNode;
                 currentlyProcessedNode = nullptr;
             }
+        }
+    }
+
+    void preOrderIterative_singleStack_1(TreeNode* node) const {
+        std::stack<TreeNode*> nodes;
+        TreeNode* currentNode = node;
+
+//        std::cout << currentNode->data << " ";
+//        currentNode = currentNode->left;
+//        std::cout << currentNode->data << " ";
+//        currentNode = currentNode->left;
+//        std::cout << currentNode->data << " ";
+//        currentNode = currentNode->right;
+//        std::cout << currentNode->data << " ";
+// ... but how do I get back to the right children/nodes?
+
+        while (currentNode != nullptr) {
+            std::cout << currentNode->data << " " << std::flush;
+
+            if (currentNode->right != nullptr) {
+                nodes.push(currentNode->right);
+            }
+
+            currentNode = currentNode->left;
+        }
+
+        while (!nodes.empty()) {
+            currentNode = nodes.top();
+            nodes.pop();
+            while (currentNode != nullptr) {
+                std::cout << currentNode->data << " " << std::flush;
+
+                if (currentNode->right != nullptr) {
+                    nodes.push(currentNode->right);
+                }
+
+                currentNode = currentNode->left;
+            }
+        }
+    }
+
+    void preOrderIterative_singleStack_1_withoutDuplicates(TreeNode* node) const {
+        std::stack<TreeNode*> nodes;
+        TreeNode* currentNode = node;
+
+        processLeftSubtree_preorderTraversal(currentNode, nodes);
+
+        bool areNodesLeftToProcess = !nodes.empty();
+        while (areNodesLeftToProcess) {
+            currentNode = nodes.top();
+            nodes.pop();
+            processLeftSubtree_preorderTraversal(currentNode, nodes);
+            areNodesLeftToProcess = !nodes.empty();
+        }
+    }
+
+    void processLeftSubtree_preorderTraversal(const TreeNode* const currentNode, std::stack<TreeNode*>& nodes) const {
+        TreeNode* mutableNode = const_cast<TreeNode* const>(currentNode);
+        bool doesCurrentNodeExist = mutableNode != nullptr;
+        while (doesCurrentNodeExist) {
+            std::cout << mutableNode->data << " " << std::flush;
+
+            bool doesRightChildOfCurrentNodeExist = mutableNode->right != nullptr;
+            if (doesRightChildOfCurrentNodeExist) {
+                nodes.push(mutableNode->right);
+            }
+
+            mutableNode = mutableNode->left;
+            doesCurrentNodeExist = mutableNode != nullptr;
+        }
+    }
+
+    void preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly(const TreeNode* const node) const {
+        std::stack<TreeNode*> nodes;
+
+        nodes.push(const_cast<TreeNode*>(node));
+
+        bool areNodesLeftToProcess = !nodes.empty();
+        while (areNodesLeftToProcess) {
+            const TreeNode* const currentNode = nodes.top();
+            nodes.pop();
+            processLeftSubtree_preorderTraversal(currentNode, nodes);
+            areNodesLeftToProcess = !nodes.empty();
+        }
+    }
+
+    std::vector<std::reference_wrapper<int>> preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly_vector(const TreeNode* const node) const {
+        std::stack<const TreeNode*> nodes;
+        std::vector<std::reference_wrapper<int>> output;
+
+        nodes.push(const_cast<TreeNode*>(node));
+
+        bool areNodesLeftToProcess = !nodes.empty();
+        while (areNodesLeftToProcess) {
+            const TreeNode* const currentNode = nodes.top();
+            nodes.pop();
+            processLeftSubtree_preorderTraversal(currentNode, nodes, output);
+            areNodesLeftToProcess = !nodes.empty();
+        }
+
+        return output;
+    }
+
+    void processLeftSubtree_preorderTraversal(const TreeNode* const currentNode, std::stack<const TreeNode*>& nodes, std::vector<std::reference_wrapper<int>>& output) const {
+        TreeNode* mutableNode = const_cast<TreeNode* const>(currentNode);
+        bool doesCurrentNodeExist = mutableNode != nullptr;
+        while (doesCurrentNodeExist) {
+            output.push_back(mutableNode->data);
+
+            bool doesRightChildOfCurrentNodeExist = mutableNode->right != nullptr;
+            if (doesRightChildOfCurrentNodeExist) {
+                nodes.push(mutableNode->right);
+            }
+
+            mutableNode = mutableNode->left;
+            doesCurrentNodeExist = mutableNode != nullptr;
         }
     }
 };
@@ -742,6 +887,21 @@ int main() {
     for (const int& element : postOrderVector_2) {
         std::cout << element << " ";
     }
+    std::cout << std::endl;
+
+    std::cout << "\nPre-Order traversal" << "\n";
+    tree.preOrderTraversalIterative_singleStack_1();
+    std::cout << std::endl;
+    tree.preOrderTraversalIterative_singleStack_1_withoutDuplicates();
+    std::cout << std::endl;
+    tree.preOrderTraversalIterative_singleStack_1_doubleLoop();
+
+    std::cout << std::endl;
+    auto preOrderVector_1 = tree.preOrderTraversalIterative_singleStack_1_doubleLoop_vector();
+    for (const int& element : preOrderVector_1) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
 
     return 0;
 }

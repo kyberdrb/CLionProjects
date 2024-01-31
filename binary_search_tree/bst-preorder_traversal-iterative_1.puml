@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+
+:Initialize ""nodes"" stack;
+:Initialize ""current node"" to ""node"";
+
+'group process left branch
+while (Does ""current node"" exist?)
+    :Process node;
+
+    if (""current node"" has right child?)
+        :Push the right child of ""current node"" to the stack;
+    end if
+
+    :Set ""current node"" to its left child;
+end while
+'end group
+
+'group process branches of right children
+while (Are in ""nodes"" stack nodes left to process?)
+    :Set ""current node"" to node from the top of the stack;
+    :Remove the top node of the stack;
+    'group process left branch
+    while (Does ""current node"" exist?)
+        :Process node;
+
+        if (""current node"" has right child?)
+            :Push the right child of ""current node"" to the stack;
+        end if
+
+        :Set ""current node"" to its left child;
+    end while
+    'end group
+end while
+'end group
+
+stop
+
+@enduml

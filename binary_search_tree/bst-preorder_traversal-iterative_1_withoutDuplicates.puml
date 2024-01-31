@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+
+:Initialize ""nodes"" stack;
+:Initialize ""current node"" to ""node"";
+
+:Process left subtree;
+
+while (Are in ""nodes"" stack nodes left to process?)
+    :Set ""current node"" to node from the top of the stack;
+    :Remove the top node of the stack;
+    :Process left subtree;
+end while
+
+stop
+
+group Process left subtree (subroutine)
+while (Does ""current node"" exist?)
+    :Process node;
+
+    if (""current node"" has right child?)
+        :Push the right child of ""current node"" to the stack;
+    end if
+
+    :Set ""current node"" to its left child;
+end while
+end group
+
+@enduml
