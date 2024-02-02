@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include <queue>
 #include <sstream>
 #include <stack>
 #include <vector>
@@ -122,11 +123,19 @@ public:
     }
 
     void preOrderTraversalIterative_singleStack_1_doubleLoop() const {
-        preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly(root);
+        preOrderIterative_singleStack_1_withoutDuplicates_doubleLoopOnly(root);
     }
 
     std::vector<std::reference_wrapper<int>> preOrderTraversalIterative_singleStack_1_doubleLoop_vector() const {
-        return preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly_vector(root);
+        return preOrderIterative_singleStack_1_withoutDuplicates_doubleLoopOnly_vector(root);
+    }
+
+    void levelOrderTraversalIterative_1() const {
+        levelOrderIterative_1(root);
+    }
+
+    std::vector<std::reference_wrapper<int>> levelOrderTraversalIterative_1_vector() const {
+        return levelOrderIterative_1_vector(root);
     }
 
     // Destructor to release memory
@@ -689,7 +698,7 @@ private:
         }
     }
 
-    void preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly(const TreeNode* const node) const {
+    void preOrderIterative_singleStack_1_withoutDuplicates_doubleLoopOnly(const TreeNode* const node) const {
         std::stack<TreeNode*> nodes;
 
         nodes.push(const_cast<TreeNode*>(node));
@@ -703,7 +712,7 @@ private:
         }
     }
 
-    std::vector<std::reference_wrapper<int>> preOrderTraversalIterative_singleStack_1_withoutDuplicates_doubleLoopOnly_vector(const TreeNode* const node) const {
+    std::vector<std::reference_wrapper<int>> preOrderIterative_singleStack_1_withoutDuplicates_doubleLoopOnly_vector(const TreeNode* const node) const {
         std::stack<const TreeNode*> nodes;
         std::vector<std::reference_wrapper<int>> output;
 
@@ -734,6 +743,88 @@ private:
             mutableNode = mutableNode->left;
             doesCurrentNodeExist = mutableNode != nullptr;
         }
+    }
+
+    // https://www.baeldung.com/cs/level-order-traversal-binary-tree
+    void levelOrderIterative_1(TreeNode* node) const {
+        std::queue<TreeNode*> children;
+
+        if (node == nullptr) {
+            return;
+        }
+
+//        std::cout << node->data << " " << std::flush;
+//
+//        if (node->left != nullptr) {
+//            children.push(node->left);
+//        }
+//        if (node->right != nullptr) {
+//            children.push(node->right);
+//        }
+//
+//        TreeNode* currentNode = nullptr;
+//        currentNode = children.front();
+//        children.pop();
+//        std::cout << currentNode->data << " " << std::flush;
+//
+//        if (currentNode->left != nullptr) {
+//            children.push(node->left);
+//        }
+//        if (currentNode->right != nullptr) {
+//            children.push(node->right);
+//        }
+//
+//        currentNode = children.front();
+//        children.pop();
+//        std::cout << currentNode->data << " " << std::flush;
+//
+//        if (currentNode->left != nullptr) {
+//            children.push(node->left);
+//        }
+//        if (currentNode->right != nullptr) {
+//            children.push(node->right);
+//        }
+
+        children.push(node);
+
+        while ( !children.empty() ) {
+            TreeNode* currentNode = children.front();
+            children.pop();
+            std::cout << currentNode->data << " ";
+
+            if (currentNode->left != nullptr) {
+                children.push(currentNode->left);
+            }
+            if (currentNode->right != nullptr) {
+                children.push(currentNode->right);
+            }
+        }
+    }
+
+    std::vector<std::reference_wrapper<int>> levelOrderIterative_1_vector(TreeNode* node) const {
+        std::vector<std::reference_wrapper<int>> output;
+
+        if (node == nullptr) {
+            return output;
+        }
+
+        std::queue<TreeNode*> children;
+        children.push(node);
+
+        while ( !children.empty() ) {
+            TreeNode* currentNode = children.front();
+            children.pop();
+            output.emplace_back(currentNode->data);
+
+            if (currentNode->left != nullptr) {
+                children.push(currentNode->left);
+            }
+            if (currentNode->right != nullptr) {
+                children.push(currentNode->right);
+            }
+        }
+
+        return output;
     }
 };
 
@@ -902,6 +993,15 @@ int main() {
         std::cout << element << " ";
     }
     std::cout << std::endl;
+
+    std::cout << "\nLevel-Order traversal" << "\n";
+    tree.levelOrderTraversalIterative_1();
+    std::cout << std::endl;
+
+    auto levelOrderVector_1 = tree.levelOrderTraversalIterative_1_vector();
+    for (const int& element : levelOrderVector_1) {
+        std::cout << element << " ";
+    }
 
     return 0;
 }

@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+
+:Initialize ""children"" queue;
+
+if (Is ""node"" nonexistent?)
+    stop
+end if
+
+:Push the ""node"" to the stack;
+
+while (Are in queue nodes left to process?)
+    :Initialize ""current node"" to a node from the top of the queue;
+    :Remove the top node from the queue;
+
+    :Process ""current node"";
+
+    if (""current node"" has left child?)
+        :Push the left child of ""current node"" to the queue;
+    end if
+    if (""current node"" has right child?)
+        :Push the right child of ""current node"" to the queue;
+    end if
+end while
+
+stop
+
+@enduml
