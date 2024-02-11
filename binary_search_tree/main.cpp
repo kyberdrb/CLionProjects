@@ -594,40 +594,40 @@ private:
         doesNodeExist = currentNode != nullptr;
     }
 
-    void postOrderIterative_singleStack_BROKEN(TreeNode* node) const {
-        if (node == nullptr) {
-            return;
-        }
-
-        std::stack<TreeNode*> nodes;
-        std::stack<TreeNode*> rightChildren;
-        TreeNode* currentlyProcessedNode = node;
-
-        // pushing
-        while (currentlyProcessedNode != nullptr) {
-            nodes.push(currentlyProcessedNode);
-            currentlyProcessedNode = currentlyProcessedNode->left;
-        }
-
-        // backtracking
-        TreeNode* previousNode = nullptr;
-        bool wasRightChildVisited = false;
-
-        while (!(nodes.empty())) {
-            currentlyProcessedNode = nodes.top();
-
-            if (currentlyProcessedNode->right != nullptr && !(wasRightChildVisited)) {
-                currentlyProcessedNode = currentlyProcessedNode->left;
-                wasRightChildVisited = true;
-            } else {
-                std::cout << currentlyProcessedNode->data << " " << std::flush;
-                nodes.pop();
-                wasRightChildVisited = false;
-                previousNode = currentlyProcessedNode;
-                currentlyProcessedNode = nullptr;
-            }
-        }
-    }
+//    void postOrderIterative_singleStack_BROKEN(TreeNode* node) const {
+//        if (node == nullptr) {
+//            return;
+//        }
+//
+//        std::stack<TreeNode*> nodes;
+//        std::stack<TreeNode*> rightChildren;
+//        TreeNode* currentlyProcessedNode = node;
+//
+//        // pushing
+//        while (currentlyProcessedNode != nullptr) {
+//            nodes.push(currentlyProcessedNode);
+//            currentlyProcessedNode = currentlyProcessedNode->left;
+//        }
+//
+//        // backtracking
+//        TreeNode* previousNode = nullptr;
+//        bool wasRightChildVisited = false;
+//
+//        while (!(nodes.empty())) {
+//            currentlyProcessedNode = nodes.top();
+//
+//            if (currentlyProcessedNode->right != nullptr && !(wasRightChildVisited)) {
+//                currentlyProcessedNode = currentlyProcessedNode->left;
+//                wasRightChildVisited = true;
+//            } else {
+//                std::cout << currentlyProcessedNode->data << " " << std::flush;
+//                nodes.pop();
+//                wasRightChildVisited = false;
+//                previousNode = currentlyProcessedNode;
+//                currentlyProcessedNode = nullptr;
+//            }
+//        }
+//    }
 
     void preOrderIterative_singleStack_1(TreeNode* node) const {
         std::stack<TreeNode*> nodes;

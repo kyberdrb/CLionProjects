@@ -1,0 +1,37 @@
+- modern c++ (compiler + debugger)
+- cmake (makefile generator)
+    - `/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G Ninja -S /home/laptop/CLionProjects/binary_search_tree -B /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug`
+    - `/usr/bin/cmake --build /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug --target binary_search_tree -j 1`
+    - `/usr/bin/cmake --build /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug --target clean -j 1`
+- ninja (build parallelizer)
+    - `/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G Ninja -S /home/laptop/CLionProjects/binary_search_tree -B /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug`
+- clang static analyzer (static code analyzer)
+    - `scan-build /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G Ninja -S /home/laptop/CLionProjects/binary_search_tree -B /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug`
+- clang-tidy (static code analyzer)
+    - `clang-tidy -checks='modernize*' main.cpp`
+    - `find ./src -maxdepth 1 -type f -regex ".*[cpp|h]" -exec clang-tidy -checks='modernize*' {} \;`
+- cppcheck (static code analyzer)
+    - `cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --library=posix src/`
+- valgrind (runtime memory analyzer)
+    - `/usr/bin/valgrind --tool=memcheck --xml=yes --xml-file=/tmp/clion-valgrind26d38e05-f17d-4d6a-b07d-c2e2e9243e25/valgrind_output_%p --gen-suppressions=all --leak-check=full --leak-resolution=high --track-origins=yes --vgdb=no /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug/binary_search_tree`
+- perf (profiler)
+    - `/usr/bin/perf record --freq=997 --call-graph dwarf -q -o /tmp/clion6625198143434817406perf /home/laptop/CLionProjects/binary_search_tree/cmake-build-debug/binary_search_tree`
+    - `perf mem report --hierarchy --input /tmp/clion1298330048605014989perf`
+- catch2/gtest (unit test framework)
+- cpm/conan (external dependencies manager)
+- doxygen (documentation generator)
+    - generate a configuration file - `Doxyfile` - either with command `doxygen -g myproject.doxyfile` or use below mentioned minimal example:
+
+        ```
+        # Doxyfile configuration file
+
+        # Project information
+        PROJECT_NAME           = "MyProject"
+        OUTPUT_DIRECTORY       = ./docs
+
+        # Input files
+        INPUT                  = ./src
+        ```
+    - generate the Doxygen documentation according to the Doxyfile with `doxygen myproject.doxyfile`
+- plantuml (uml diagrams tool)
+- jenkins/travis (remote build server / CI/CD server)
