@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+main -> tree: begin()
+tree -> BinaryTreeIteratorInOrder: BinaryTreeIteratorInOrder(rootNode)
+BinaryTreeIteratorInOrder -> BinaryTreeIteratorInOrder: pushLeftNodes(root)
+BinaryTreeIteratorInOrder --> tree
+tree --> main: iterator
+main -> iterator: dereference operator
+iterator -> iterator: nodes.top()
+iterator --> main: value of top node from the iterator's stack
+main -> iterator: pre-increment operator
+iterator -> iterator: TODO...
+iterator --> main: go to the next node/element according to the traversal type
+
+@enduml

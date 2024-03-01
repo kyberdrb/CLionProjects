@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.28)
+project(iterator_for_standard_iteration_through_custom_data_structure)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(iterator_for_standard_iteration_through_custom_data_structure main.cpp)

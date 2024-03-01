@@ -22,6 +22,44 @@ std::ostream& operator<<(std::ostream& out, const TreeNode& treeNode) {
     return out;
 }
 
+/** In-Order Iterator for Binary Tree
+ * Designed by OpenAI ChatGPT
+ */
+class BinaryTreeIteratorInOrder {
+private:
+    std::stack<TreeNode*> nodes;
+
+public:
+    explicit BinaryTreeIteratorInOrder(TreeNode* root) {
+        pushLeftNodes(root);
+    }
+
+    int operator*() const {
+        return nodes.top()->data;
+    }
+
+    BinaryTreeIteratorInOrder& operator++() {
+        TreeNode* node = nodes.top();
+        nodes.pop();
+        if (node->right) {
+            pushLeftNodes(node->right);
+        }
+        return *this;
+    }
+
+    bool operator!=(const BinaryTreeIteratorInOrder& other) const {
+        return !nodes.empty() || !other.nodes.empty();
+    }
+
+private:
+    void pushLeftNodes(TreeNode* node) {
+        while (node) {
+            nodes.push(node);
+            node = node->left;
+        }
+    }
+};
+
 class BinaryTree {
 public:
     BinaryTree() : root(nullptr) {}
@@ -136,6 +174,18 @@ public:
 
     std::vector<std::reference_wrapper<int>> levelOrderTraversalIterative_1_vector() const {
         return levelOrderIterative_1_vector(root);
+    }
+
+    auto getRoot() const {
+        return this->root;
+    }
+
+    BinaryTreeIteratorInOrder begin() {
+        return BinaryTreeIteratorInOrder(root);
+    }
+
+    BinaryTreeIteratorInOrder end() {
+        return BinaryTreeIteratorInOrder(nullptr);
     }
 
     // Destructor to release memory
@@ -256,7 +306,7 @@ private:
             std::cout << *currentlyProcessedNode << " " << std::flush;
             nodes.pop();
 
-            // Push the right child of the currently removed node to the stack            //  useful when the parent node only has right child
+            // Push the right child of the currently removed node to the nodes            //  useful when the parent node only has right child
             TreeNode* rightChildOfCurrentlyRemovedNode = currentlyProcessedNode->right;
             bool hasCurrentlyRemovedNodeRightChild = rightChildOfCurrentlyRemovedNode != nullptr;
             if (hasCurrentlyRemovedNodeRightChild) {
@@ -375,13 +425,13 @@ private:
         /*
          * if the node doesn't have a left child and a right child and is a left child
          *     process node
-         *     pop it from the stack
+         *     pop it from the nodes
          *
          * if the node doesn't have a left child and a right child and is a right child
          *     process node
-         *     pop it from the stack
+         *     pop it from the nodes
          *     process node again - its parent
-         *     pop it from the stack
+         *     pop it from the nodes
          */
     }
 
@@ -599,8 +649,8 @@ private:
 //            return;
 //        }
 //
-//        std::stack<TreeNode*> nodes;
-//        std::stack<TreeNode*> rightChildren;
+//        std::nodes<TreeNode*> nodes;
+//        std::nodes<TreeNode*> rightChildren;
 //        TreeNode* currentlyProcessedNode = node;
 //
 //        // pushing
@@ -828,6 +878,66 @@ private:
     }
 };
 
+/** Flattening/Vectorizing Iterator for a Binary Tree */
+class BinaryTreeLevelOrderIterator_Converter {
+public:
+    explicit BinaryTreeLevelOrderIterator_Converter(const BinaryTree& binaryTree) :
+        _binaryTree(binaryTree)
+    {}
+
+    void levelOrderIterative_1() const {
+        std::queue<TreeNode*> children;
+        TreeNode* node = this->_binaryTree.get().getRoot();
+        if (node == nullptr) {
+            return;
+        }
+
+        children.push(node);
+
+        while ( !children.empty() ) {
+            TreeNode* currentNode = children.front();
+            children.pop();
+            std::cout << currentNode->data << " ";
+
+            if (currentNode->left != nullptr) {
+                children.push(currentNode->left);
+            }
+            if (currentNode->right != nullptr) {
+                children.push(currentNode->right);
+            }
+        }
+    }
+
+    std::vector<std::reference_wrapper<int>> levelOrderIterative_1_vector() const {
+        std::vector<std::reference_wrapper<int>> output;
+        auto node = this->_binaryTree.get().getRoot();
+        if (node == nullptr) {
+            return output;
+        }
+
+        std::queue<TreeNode*> children;
+        children.push(node);
+
+        while ( !children.empty() ) {
+            TreeNode* currentNode = children.front();
+            children.pop();
+            output.emplace_back(currentNode->data);
+
+            if (currentNode->left != nullptr) {
+                children.push(currentNode->left);
+            }
+            if (currentNode->right != nullptr) {
+                children.push(currentNode->right);
+            }
+        }
+
+        return output;
+    }
+
+private:
+    std::reference_wrapper<const BinaryTree> _binaryTree;
+};
+
 int main() {
     BinaryTree tree;
 
@@ -1001,6 +1111,28 @@ int main() {
     auto levelOrderVector_1 = tree.levelOrderTraversalIterative_1_vector();
     for (const int& element : levelOrderVector_1) {
         std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    BinaryTreeLevelOrderIterator_Converter levelOrderIterator{tree};
+    levelOrderIterator.levelOrderIterative_1();
+    std::cout << std::endl;
+
+    auto levelOrderVector_1_iterator = levelOrderIterator.levelOrderIterative_1_vector();
+    for (const auto& element : levelOrderVector_1_iterator) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "\nIn-Order traversal - standard for-each iteration" << "\n";
+
+    for (const auto& element : tree) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    for (auto iterator = tree.begin(); iterator != tree.end(); ++iterator) {
+        std::cout << *iterator << " ";
     }
 
     return 0;
