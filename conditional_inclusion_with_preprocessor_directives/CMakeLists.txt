@@ -10,3 +10,6 @@ IF( DEFINED OUTSIDE_CMAKE_VARIABLE )
     MESSAGE(STATUS "variable 'OUTSIDE_CMAKE_VARIABLE' is defined with value ${OUTSIDE_CMAKE_VARIABLE}")
     target_compile_definitions(conditional_inclusion_with_preprocessor_directives PRIVATE OUTSIDE_CMAKE_VARIABLE)
 endif ()
+
+# Disable 'assert' statements evaluation with 'NDEBUG' macro
+target_compile_definitions(conditional_inclusion_with_preprocessor_directives PRIVATE NDEBUG)
