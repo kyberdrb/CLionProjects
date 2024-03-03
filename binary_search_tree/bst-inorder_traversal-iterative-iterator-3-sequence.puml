@@ -9,8 +9,7 @@ tree --> main: iterator
 main -> iterator: dereference operator
 iterator -> iterator: nodes.top()
 iterator --> main: value of top node from the iterator's stack
-main -> iterator: pre-increment operator
-iterator -> iterator: TODO...
+main -> iterator: pre-increment operator :
 iterator --> main: go to the next node/element according to the traversal type
 
 @enduml
