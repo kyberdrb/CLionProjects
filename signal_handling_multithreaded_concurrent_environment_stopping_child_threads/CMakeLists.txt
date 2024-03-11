@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.28)
+project(signal_handling_multithreaded_concurrent_environment_stopping_child_threads)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(signal_handling_multithreaded_concurrent_environment_stopping_child_threads main.cpp)

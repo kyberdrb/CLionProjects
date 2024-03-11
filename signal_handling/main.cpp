@@ -2,22 +2,38 @@
 
 #include <atomic> // for 'std::atomic'
 #include <csignal> // for signal handling structs and routines
+#include <cstring> // for 'memset'
 #include <map>
 #include <thread> // for 'std::this_thread::sleep_for()'
 
 std::atomic<bool> keepAlive = true;
-std::map<uint8_t, std::string> signals;
+std::map<int32_t, std::string> signals;
 
-void signalInterruptHandlerCallback(int32_t signalNumber) {
-    std::cout << "\nInterrupted by signal number: " << signalNumber << " = " << signals.at(signalNumber) << std::endl;
+void signalInterruptHandlerCallback(const int32_t signalNumber) {
+	std::cout << "\nInterrupted by signal number: " << signalNumber << " = ";
+
+    try {
+        std::cout << signals.at(signalNumber);
+    }
+    catch (const std::out_of_range&) {
+        std::cout << "unnamed signal number";
+    }
+    std::cout << std::endl;
+
     keepAlive = false;
     std::cout << "Stopping infinite loop...: " << "keepAlive = " << keepAlive << std::endl;
 }
 
 int main() {
     std::cout << "Setting up signal handler..." << std::endl;
-    struct sigaction sigIntHandler;
-//    memset(&sigIntHandler, 0, sizeof(sigIntHandler) ); // '#include <cstring>' to support 'memset' function
+    struct sigaction sigIntHandler = {nullptr};
+
+    // Initialize the 'sigaction' struct to its default values to prevent undefined behavior
+    //  with 'memset', because it's a C-struct without a constructor, which would initialize the struct's fields.
+    //  'memset' overwrites the struct's values to '0's
+    //  Note: signal handler catches interrupt messages properly even without initializing the struct for it
+    memset(&sigIntHandler, 0, sizeof(sigIntHandler) );
+
     sigIntHandler.sa_handler = signalInterruptHandlerCallback;
     sigemptyset(&sigIntHandler.sa_mask);
     sigIntHandler.sa_flags = 0;

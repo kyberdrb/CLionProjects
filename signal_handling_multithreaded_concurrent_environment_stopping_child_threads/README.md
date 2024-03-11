@@ -1,9 +1,12 @@
-# Handing signal interrupts in POSIX compatible operating systems
+# Handing signal interrupts in POSIX compatible operating systems in multithreaded and concurrent environment
+
+Stopping child threads with infinite loop safely
 
 TODO implement signal handling for Windows platform
 
 ## Sources
 
+- https://github.com/kyberdrb/CLionProjects/tree/main/signal_handling
 - https://github.com/kyberdrb/CLionProjects/tree/main/animation-single_character_circular
 - https://duckduckgo.com/?t=ffab&q=c%2B%2B+measure+time&ia=web
 - https://stackoverflow.com/questions/2808398/easily-measure-elapsed-time
@@ -42,6 +45,3 @@ TODO implement signal handling for Windows platform
 - https://stackoverflow.com/questions/5590381/how-to-convert-int-to-string-in-c#5591169
 - https://duckduckgo.com/?t=ffab&q=c%2B%2B+atomic+function&ia=web
 - https://stackoverflow.com/questions/12407984/c-creating-an-atomic-function
-- https://duckduckgo.com/?t=ffab&q=struct+sigaction+memset+necessary&ia=web
-- https://stackoverflow.com/questions/39502036/why-does-initializing-a-sigint-variable-with-memset-help-prevent-seg-faults
-- https://stackoverflow.com/questions/37105736/is-it-good-style-to-memset-a-struct-before-using-it
