@@ -7,8 +7,8 @@ add_executable(conditional_inclusion_with_preprocessor_directives main.cpp)
 
 #if (OUTSIDE_CMAKE_VARIABLE)
 IF( DEFINED OUTSIDE_CMAKE_VARIABLE )
-    MESSAGE(STATUS "variable 'OUTSIDE_CMAKE_VARIABLE' is defined with value ${OUTSIDE_CMAKE_VARIABLE}")
-    target_compile_definitions(conditional_inclusion_with_preprocessor_directives PRIVATE OUTSIDE_CMAKE_VARIABLE)
+    MESSAGE(STATUS "variable 'OUTSIDE_CMAKE_VARIABLE' is defined and passed to compiler - i. e. source code - with value ${OUTSIDE_CMAKE_VARIABLE}")
+    target_compile_definitions(conditional_inclusion_with_preprocessor_directives PRIVATE OUTSIDE_CMAKE_VARIABLE=${OUTSIDE_CMAKE_VARIABLE})
 endif ()
 
 # Disable 'assert' statements evaluation with 'NDEBUG' macro

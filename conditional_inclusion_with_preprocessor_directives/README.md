@@ -48,3 +48,4 @@ Run the target binary
 - https://duckduckgo.com/?t=ffab&q=pass+cmake+variables+to+source+code&ia=web&iax=qa
 - https://duckduckgo.com/?q=cmake+%22-D%22&t=ffab&ia=web
 - https://discourse.cmake.org/t/cmake-command-line-d-and-using-defined/2264/2
+- ChatGPT: How to convert the value of macro `DEBUG_LEVEL` into string?
