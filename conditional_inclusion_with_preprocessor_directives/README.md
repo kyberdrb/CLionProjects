@@ -9,7 +9,7 @@ a.k.a. passing macro from CMake into compiler into source code as macro
 1. Generate `CMake` makefiles passing the macro name `OUTSIDE_CMAKE_VARIABLE` with `-D` option
 
 ```cmake
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -DOUTSIDE_CMAKE_VARIABLE=EXAMPLE_VALUE -G Ninja -S /home/laptop/CLionProjects/conditional_inclusion_with_preprocessor_directives -B /home/laptop/CLionProjects/conditional_inclusion_with_preprocessor_directives/cmake-build-debug
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -DOUTSIDE_CMAKE_VARIABLE_INTO_CMAKE_FROM_COMMAND_LINE=EXAMPLE_VALUE -G Ninja -S /home/laptop/CLionProjects/conditional_inclusion_with_preprocessor_directives -B /home/laptop/CLionProjects/conditional_inclusion_with_preprocessor_directives/cmake-build-debug
 ```
 
 1. Clean the target binaries

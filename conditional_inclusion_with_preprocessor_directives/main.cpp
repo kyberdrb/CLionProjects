@@ -16,13 +16,13 @@ int main() {
 #endif
 
     // define macro externally, i. e. outside of the source code - from the CMake makefile generator command
-#ifdef OUTSIDE_CMAKE_VARIABLE
-    std::cout << "Custom output message passed from 'cmake' command line as an parameter with '-DOUTSIDE_CMAKE_VARIABLE'" << std::endl;
-    std::cout << "  Printing the value of macro 'OUTSIDE_CMAKE_VARIABLE' with 'stringizing', " << std::endl;
+#ifdef OUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE
+    std::cout << "Custom output message passed from 'cmake' command line as an parameter with '-DOUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE'" << std::endl;
+    std::cout << "  Printing the value of macro 'OUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE' with 'stringizing', " << std::endl;
     std::cout << "    i.e. transformation of macro to 'string' with preprocessor's 'stringizing' operator '#'" << std::endl;
-    std::cout << "  " << STRINGIZE(OUTSIDE_CMAKE_VARIABLE) << " -> " << STRINGIZE_VALUE(OUTSIDE_CMAKE_VARIABLE) << std::endl;
-    std::cout << "  stringized macro name:  " << STRINGIZE(OUTSIDE_CMAKE_VARIABLE) << std::endl;
-    std::cout << "  stringized macro value: " << STRINGIZE_VALUE(OUTSIDE_CMAKE_VARIABLE) << std::endl;
+    std::cout << "  " << STRINGIZE(OUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE) << " -> " << STRINGIZE_VALUE(OUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE) << std::endl;
+    std::cout << "  stringized macro name:  " << STRINGIZE(OUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE) << std::endl;
+    std::cout << "  stringized macro value: " << STRINGIZE_VALUE(OUTSIDE_CMAKE_VARIABLE_PASSED_TO_SOURCE_CODE_FROM_CMAKE) << std::endl;
 #endif
 
 #ifdef NDEBUG
