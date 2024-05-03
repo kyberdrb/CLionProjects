@@ -24,13 +24,23 @@
 
 std::mutex terminalMutex;
 
-//template <typename T>
-//void printMessageWithNewlineSynchronously(const T& message) {
-//    std::lock_guard<std::mutex> lockGuard(terminalMutex);
-//    std::cout << message << std::endl;
-//    //std::cout << message << '\n';
-//}
-//
+template <typename T>
+void printMessageWithNewlineSynchronously(const T& message, bool skipNewline = false, bool debugNewline = true) {
+    std::lock_guard<std::mutex> lockGuard(terminalMutex);
+
+    if (skipNewline) {
+        std::cout << message;
+    }
+
+    if (debugNewline) {
+        std::cout << std::endl;
+    } else {
+        std::cout << '\n';
+    }
+
+    std::cout << message;
+}
+
 //template <typename T>
 //void printMessageWithoutNewline(const T& message) {
 //    std::lock_guard<std::mutex> lockGuard(terminalMutex);
@@ -62,7 +72,8 @@ void signalInterruptHandlerCallback(const int32_t signalNumber) {
 
     keepAlive = false;
     message << "Stopping infinite loop...: " << "keepAlive = " << keepAlive;
-    std::cout << message.str() << std::endl;
+    //std::cout << message.str() << std::endl;
+    printMessageWithNewlineSynchronously(message.str() );
 }
 
 //int main() {
@@ -133,35 +144,47 @@ public:
     // Destructor
     ~ThreadWrapper() {
         const auto threadID = this->_threadID;
-        std::cout << "ThreadWrapper.DESTRUCTOR: Thread [" << threadID << "] [" << this->_data << "]: terminating..." << std::endl;
+//        std::cout << "ThreadWrapper.DESTRUCTOR: Thread [" << threadID << "] [" << this->_data << "]: terminating..." << std::endl;
+        {
+            std::stringstream message;
+            message << "ThreadWrapper.DESTRUCTOR: Thread [" << threadID << "] [" << this->_data << "]: terminating...";
+            printMessageWithNewlineSynchronously(message.str());
+        }
         if (_isRunning) {
             join();
         }
-        std::cout << "ThreadWrapper.DESTRUCTOR: Thread [" << threadID << "] [" << this->_data << "]: terminated." << std::endl;
+//        std::cout << "ThreadWrapper.DESTRUCTOR: Thread [" << threadID << "] [" << this->_data << "]: terminated." << std::endl;
+        {
+            std::stringstream message;
+            message << "ThreadWrapper.DESTRUCTOR: Thread [" << threadID << "] [" << this->_data << "]: terminated.";
+            printMessageWithNewlineSynchronously(message.str());
+        }
     }
 
     // Start the thread
     template<typename Function, typename... Args>
     void start(Function&& func, Args&&... args) {
         if ( !(this->_isRunning ) ) {
+            std::stringstream message;
             this->_thread = std::thread(std::forward<Function>(func), std::forward<Args>(args)...);
             this->_threadID = this->_thread.get_id();
             this->_isRunning = true;
 
-            std::cout << "ThreadWrapper.start: Thread [" << this->_threadID << "] " << "is running in ";
+            message << "ThreadWrapper.start: Thread [" << this->_threadID << "] " << "is running in ";
             switch (this->_threadType) {
                 case ThreadType::JOINABLE:
-                    std::cout << "[joinable]";
+                    message << "[joinable]";
                     break;
                 case ThreadType::DETACHED:
                     this->_thread.detach(); // after detaching the thread, the thread id will no longer be available
-                    std::cout << "[detached]";
+                    message << "[detached]";
                     break;
                 default:
-                    std::cout << "[unknown]";
+                    message << "[unknown]";
                     break;
             }
-            std::cout << " mode." << std::endl;
+            message << " mode.";
+            printMessageWithNewlineSynchronously(message.str());
         }
     }
 
@@ -171,11 +194,15 @@ public:
 
     void internalThreadFunction(int32_t threadData) {
         while (keepAlive) {
-            std::cout << "Thread [" << this->_threadID << "] with member data [" << this->_data << "] and thread data ["
-                      << threadData << "] is running." << std::endl;
+            std::stringstream message;
+            message << "Thread [" << this->_threadID << "] with member data [" << this->_data << "] and thread data ["
+                      << threadData << "] is running.";
+            printMessageWithNewlineSynchronously(message.str());
             std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
         }
-        std::cout << "ThreadWrapper.internalThreadFunction: Thread [" << this->_threadID << "] [" << this->_data << "]: terminated." << std::endl;
+        std::stringstream message;
+        message << "ThreadWrapper.internalThreadFunction: Thread [" << this->_threadID << "] [" << this->_data << "]: terminated.";
+        printMessageWithNewlineSynchronously(message.str());
     }
 
 public:
@@ -186,10 +213,14 @@ public:
 private:
     void internalThreadFunctionInternalStateOnly() const {
         while (keepAlive) {
-            std::cout << "Thread [" << this->_threadID << "] with member data [" << this->_data << "] is running." << std::endl;
+            std::stringstream message;
+            message << "Thread [" << this->_threadID << "] with member data [" << this->_data << "] is running.";
+            printMessageWithNewlineSynchronously(message.str());
             std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
         }
-        std::cout << "ThreadWrapper.internalThreadFunctionInternalStateOnly: Thread [" << this->_threadID << "] terminated." << std::endl;
+        std::stringstream message;
+        message << "ThreadWrapper.internalThreadFunctionInternalStateOnly: Thread [" << this->_threadID << "] terminated.";
+        printMessageWithNewlineSynchronously(message.str());
     }
 
 public:
@@ -199,20 +230,22 @@ public:
             this->_threadID = this->_thread.get_id();
             this->_isRunning = true;
 
-            std::cout << "ThreadWrapper.startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction: Thread [" << this->_threadID << "] " << "is running in ";
+            std::stringstream message;
+            message << "ThreadWrapper.startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction: Thread [" << this->_threadID << "] " << "is running in ";
             switch (this->_threadType) {
                 case ThreadType::JOINABLE:
-                    std::cout << "[joinable]";
+                    message << "[joinable]";
                     break;
                 case ThreadType::DETACHED:
                     this->_thread.detach(); // after detaching the thread, the thread id will no longer be available
-                    std::cout << "[detached]";
+                    message << "[detached]";
                     break;
                 default:
-                    std::cout << "[unknown]";
+                    message << "[unknown]";
                     break;
             }
-            std::cout << " mode." << std::endl;
+            message << " mode." << std::endl;
+            printMessageWithNewlineSynchronously(message.str());
         }
     }
 
@@ -255,7 +288,7 @@ void threadFunction(int32_t threadData, const ThreadWrapper& threadWrapper) {
             std::stringstream message;
             message << "::threadFunction: Thread [" << threadWrapper.getThreadID() << "] with member data [" << threadWrapper
                 << "] and thread data [" << threadData << "] is running.";
-            std::cout << message.str() << std::endl;
+            printMessageWithNewlineSynchronously(message.str());
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
@@ -264,12 +297,12 @@ void threadFunction(int32_t threadData, const ThreadWrapper& threadWrapper) {
     {
         std::stringstream message;
         message << "threadFunction: Thread [" << threadWrapper.getThreadID() << "] [" << threadWrapper.getData() << "] terminated.";
-        std::cout << message.str() << std::endl;
+        printMessageWithNewlineSynchronously(message.str());
     }
 }
 
 int main() {
-    std::cout << "Setting up signal handler..." << std::endl;
+    printMessageWithNewlineSynchronously("main: Setting up signal handler...");
     struct sigaction sigIntHandler = {nullptr};
 
     // Initialize the 'sigaction' struct to its default values to prevent undefined behavior
@@ -331,22 +364,24 @@ int main() {
     {
         std::stringstream message;
         message << "main: Starting infinite idle loop...: " << "keepAlive = " << keepAlive;
-        std::cout << message.str() << std::endl;
+        printMessageWithNewlineSynchronously(message.str());
     }
 
-    std::cout << "main: Main thread idling :) " << std::endl;
+    printMessageWithNewlineSynchronously("main: Main thread idling :)");
     const std::chrono::milliseconds duration(500);
     // Waiting for the thread to finish
     while (keepAlive) {
         // Do something else while waiting
         std::this_thread::sleep_for(duration);
-        std::cout << "=" << std::flush;
+//        std::cout << "=" << std::flush;
+        printMessageWithNewlineSynchronously('=', true);
     }
 
     {
         std::stringstream message;
         message << "main: Main thread has finished.";
-        std::cout << message.str() << std::endl;
+        //std::cout << message.str() << std::endl;
+        printMessageWithNewlineSynchronously(message.str());
     }
 
     return 0;
