@@ -7,6 +7,7 @@
 #include <csignal> // for signal handling structs and routines
 #include <cstring> // for 'memset'
 #include <map>
+#include <sstream>
 #include <thread> // for 'std::this_thread::sleep_for()'
 #include <vector>
 
@@ -21,28 +22,47 @@
 //    std::cout << "data = " << data << std::endl;
 //}
 
+std::mutex terminalMutex;
+
+//template <typename T>
+//void printMessageWithNewlineSynchronously(const T& message) {
+//    std::lock_guard<std::mutex> lockGuard(terminalMutex);
+//    std::cout << message << std::endl;
+//    //std::cout << message << '\n';
+//}
+//
+//template <typename T>
+//void printMessageWithoutNewline(const T& message) {
+//    std::lock_guard<std::mutex> lockGuard(terminalMutex);
+//    std::cout << message << std::flush;
+//    //std::cout << message;
+//}
+
+/*
 static std::mutex terminalMutex;
 void printToTerminal(const std::string& message) {
     std::lock_guard<std::mutex> criticalSectionGuard(terminalMutex);
     std::cout << message << std::endl;
 }
+*/
 
 std::atomic<bool> keepAlive = true;
 std::map<int32_t, std::string> signals;
 
 void signalInterruptHandlerCallback(const int32_t signalNumber) {
-    std::cout << "\nInterrupted by signal number: " << signalNumber << " = ";
+    std::stringstream message;
+    message << "\nInterrupted by signal number: " << signalNumber << " = " << keepAlive;
 
     try {
-        std::cout << signals.at(signalNumber);
+        message << signals.at(signalNumber) << std::endl;
     }
     catch (const std::out_of_range&) {
-        std::cout << "unnamed signal number";
+        message << "unnamed signal number";
     }
-    std::cout << std::endl;
 
     keepAlive = false;
-    std::cout << "Stopping infinite loop...: " << "keepAlive = " << keepAlive << std::endl;
+    message << "Stopping infinite loop...: " << "keepAlive = " << keepAlive;
+    std::cout << message.str() << std::endl;
 }
 
 //int main() {
@@ -128,7 +148,7 @@ public:
             this->_threadID = this->_thread.get_id();
             this->_isRunning = true;
 
-            std::cout << "Thread [" << this->_threadID << "] " << "is running in ";
+            std::cout << "ThreadWrapper.start: Thread [" << this->_threadID << "] " << "is running in ";
             switch (this->_threadType) {
                 case ThreadType::JOINABLE:
                     std::cout << "[joinable]";
@@ -155,7 +175,7 @@ public:
                       << threadData << "] is running." << std::endl;
             std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
         }
-        std::cout << "internalThreadFunction: Thread [" << this->_threadID << "] [" << this->_data << "]: terminated." << std::endl;
+        std::cout << "ThreadWrapper.internalThreadFunction: Thread [" << this->_threadID << "] [" << this->_data << "]: terminated." << std::endl;
     }
 
 public:
@@ -169,7 +189,7 @@ private:
             std::cout << "Thread [" << this->_threadID << "] with member data [" << this->_data << "] is running." << std::endl;
             std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
         }
-        std::cout << "internalThreadFunction: Thread [" << this->_threadID << "] terminated." << std::endl;
+        std::cout << "ThreadWrapper.internalThreadFunctionInternalStateOnly: Thread [" << this->_threadID << "] terminated." << std::endl;
     }
 
 public:
@@ -179,7 +199,7 @@ public:
             this->_threadID = this->_thread.get_id();
             this->_isRunning = true;
 
-            std::cout << "Thread [" << this->_threadID << "] " << "is running in ";
+            std::cout << "ThreadWrapper.startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction: Thread [" << this->_threadID << "] " << "is running in ";
             switch (this->_threadType) {
                 case ThreadType::JOINABLE:
                     std::cout << "[joinable]";
@@ -212,10 +232,6 @@ public:
         return this->_threadID;
     }
 
-    void memberFunction(int id) {
-        std::cout << "Member function of MyThreadWrapper called with ID: " << id << std::endl;
-    }
-
     friend std::ostream& operator<<(std::ostream& out, const ThreadWrapper& threadWrapper);
 
 private:
@@ -235,11 +251,21 @@ std::ostream& operator<<(std::ostream& out, const ThreadWrapper& threadWrapper) 
 // Example thread function
 void threadFunction(int32_t threadData, const ThreadWrapper& threadWrapper) {
     while (keepAlive) {
-        std::cout << "Thread [" << threadWrapper.getThreadID() << "] with member data [" << threadWrapper << "] and thread data ["
-                  << threadData << "] is running." << std::endl;
+        {
+            std::stringstream message;
+            message << "::threadFunction: Thread [" << threadWrapper.getThreadID() << "] with member data [" << threadWrapper
+                << "] and thread data [" << threadData << "] is running.";
+            std::cout << message.str() << std::endl;
+        }
+
         std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
     }
-    std::cout << "threadFunction: Thread [" << threadWrapper.getThreadID() << "] [" << threadWrapper.getData() << "] terminated." << std::endl;
+
+    {
+        std::stringstream message;
+        message << "threadFunction: Thread [" << threadWrapper.getThreadID() << "] [" << threadWrapper.getData() << "] terminated.";
+        std::cout << message.str() << std::endl;
+    }
 }
 
 int main() {
@@ -285,12 +311,30 @@ int main() {
     ThreadWrapper anotherJoinableThreadWrapperWithInternalStateOnly(666);
     anotherJoinableThreadWrapperWithInternalStateOnly.startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction();
 
-    std::vector<std::unique_ptr<ThreadWrapper>> threadPool;
-    // TODO transform thread instances to unique_ptrs, start the threads simply and then add the threads by moving to thread pool
+    std::vector<std::unique_ptr<ThreadWrapper>> joinableThreadPool;
+    joinableThreadPool.emplace_back(std::make_unique<ThreadWrapper>(777) );
+    joinableThreadPool.emplace_back(std::make_unique<ThreadWrapper>(888) );
+    joinableThreadPool.emplace_back(std::make_unique<ThreadWrapper>(999) );
 
-    std::cout << "Starting infinite idle loop...: " << "keepAlive = " << keepAlive << std::endl;
+    for (const auto& thread : joinableThreadPool) {
+        thread->startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction();
+    }
 
-    std::cout << "Main thread idling :) " << std::endl;
+    std::vector<std::unique_ptr<ThreadWrapper>> detachedThreadPool;
+    detachedThreadPool.emplace_back(std::make_unique<ThreadWrapper>(1010) );
+    detachedThreadPool.emplace_back(std::make_unique<ThreadWrapper>(1111) );
+
+    for (const auto& thread : detachedThreadPool) {
+        thread->startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction();
+    }
+
+    {
+        std::stringstream message;
+        message << "main: Starting infinite idle loop...: " << "keepAlive = " << keepAlive;
+        std::cout << message.str() << std::endl;
+    }
+
+    std::cout << "main: Main thread idling :) " << std::endl;
     const std::chrono::milliseconds duration(500);
     // Waiting for the thread to finish
     while (keepAlive) {
@@ -299,7 +343,11 @@ int main() {
         std::cout << "=" << std::flush;
     }
 
-    std::cout << "Main thread has finished." << std::endl;
+    {
+        std::stringstream message;
+        message << "main: Main thread has finished.";
+        std::cout << message.str() << std::endl;
+    }
 
     return 0;
 }
