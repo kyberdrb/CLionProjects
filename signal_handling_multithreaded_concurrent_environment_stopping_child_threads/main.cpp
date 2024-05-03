@@ -30,6 +30,7 @@ void printMessageWithNewlineSynchronously(const T& message, bool skipNewline = f
 
     if (skipNewline) {
         std::cout << message;
+        return;
     }
 
     if (debugNewline) {
@@ -219,7 +220,7 @@ private:
             std::this_thread::sleep_for(std::chrono::milliseconds(1000) );
         }
         std::stringstream message;
-        message << "ThreadWrapper.internalThreadFunctionInternalStateOnly: Thread [" << this->_threadID << "] terminated.";
+        message << "ThreadWrapper.internalThreadFunctionInternalStateOnly: Thread [" << this->_threadID << " [" << this->_data << "] terminated.";
         printMessageWithNewlineSynchronously(message.str());
     }
 
@@ -354,8 +355,8 @@ int main() {
     }
 
     std::vector<std::unique_ptr<ThreadWrapper>> detachedThreadPool;
-    detachedThreadPool.emplace_back(std::make_unique<ThreadWrapper>(1010) );
-    detachedThreadPool.emplace_back(std::make_unique<ThreadWrapper>(1111) );
+    detachedThreadPool.emplace_back(std::make_unique<ThreadWrapper>(1001) );
+    detachedThreadPool.emplace_back(std::make_unique<ThreadWrapper>(1002) );
 
     for (const auto& thread : detachedThreadPool) {
         thread->startInternalFunctionWithInternalStateOnlyThroughSelfContainedFunction();
