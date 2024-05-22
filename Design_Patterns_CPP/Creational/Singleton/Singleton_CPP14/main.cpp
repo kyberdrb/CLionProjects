@@ -26,7 +26,7 @@ void printTextSynchronously(uint32_t delay){
 int main() {
     // Access the Singleton instance...
     //  ...without a parameter
-    //Singleton& singleton = Singleton::getInstance();
+    Singleton& singleton0 = Singleton::getInstance();
 
     // ...with a parameter
     Singleton& singleton = Singleton::getInstance("S1");
@@ -45,8 +45,8 @@ int main() {
     std::cout << singleton2.getValue() << "\n";
 
     std::cout << '\n';
-    std::cout <<"If you see the same value, then singleton was reused (yay!)\n" <<
-              "If you see different values, then 2 singletons were created (booo!!)\n" <<
+    std::cout <<"If you saw the same value, then singleton was reused (yay!)\n" <<
+              "If you saw different values, then 2 singletons were created (booo!!)\n" <<
               "RESULT:\n";
 
     std::cout << "\n\nPRINTING TEXT ASYNCHRONOUSLY\n\n";

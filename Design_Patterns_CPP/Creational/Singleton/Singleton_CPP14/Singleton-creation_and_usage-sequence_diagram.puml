@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+group Parametricless Singleton
+main -> Singleton : getInstance()
+Singleton -> Singleton : make_unique<Singleton>()
+note left
+redeclaring the ""make_unique"" function
+in ""Singleton"" class as ""friend"" makes the
+private default constructor of ""Singleton""
+class accessible to the ""make_unique"" function
+endnote
+
+Singleton --> main : singleton0
+main -> singleton0 : printTextAsynchronously()
+main -> singleton0 : printTextSynchronously()
+end
+
+group Parametric Singleton
+main -> Singleton : getInstance("S1")
+Singleton -> SingletonImpl : make_unique<SingletonImpl>("S1")
+note right
+creating a subclass ""SingletonImpl"" with //public//
+constructor makes the //private// constructor of the
+""Singleton"" base class accessible to ""make_unique""
+endnote
+
+SingletonImpl --> Singleton : instance
+Singleton --> main : singleton1
+main -> singleton1 : printTextAsynchronously()
+main -> singleton1 : printTextSynchronously()
+end
+
+@enduml

@@ -8,13 +8,16 @@
 #include <sstream>
 
 // Static member variable initialization
-std::unique_ptr<Singleton> Singleton::instance = nullptr;
+std::unique_ptr<Singleton> Singleton::instance;
 
 Singleton& Singleton::getInstance() {
     // Lazy initialization: create the instance on the first access
     if (!instance) {
         std::cout << instance.get() << ": getInstance(): Singleton instance is being created...\n";
-        instance = std::make_unique<Singleton>();
+        instance = std::make_unique<Singleton>(); // Declaring following function prototype as a 'friend'
+                                                  //     friend std::unique_ptr<Singleton> std::make_unique<Singleton>();
+                                                  //  to prevent error
+                                                  //     error: ‘Singleton::Singleton()’ is private within this context
         std::cout << instance.get() << ": getInstance(): Singleton instance created." << '\n';;
     }
     return *instance;
@@ -30,7 +33,7 @@ Singleton& Singleton::getInstance(std::string value) {
     // Lazy initialization: create the instance on the first access
     if (!instance) {
         struct SingletonImpl : public Singleton {
-            SingletonImpl(std::string value) : Singleton(std::move(value)) {}
+            explicit SingletonImpl(std::string value) : Singleton(std::move(value)) {}
             // no need to declare the destructor of base class Singleton as virtual,
             //  or overriding it here in the derived class,
             //  because derived class has no intrinsic state, i.e. no attributes
