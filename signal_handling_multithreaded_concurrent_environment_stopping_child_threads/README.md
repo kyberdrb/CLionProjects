@@ -2,7 +2,12 @@
 
 Stopping child threads with infinite loop safely
 
-TODO implement signal handling for Windows platform
+## Note
+If a terminal application has global pointers to dynamically allocated memory and does not handle signals such as Ctrl+C [SIGINT], SIGTERM (the default signal for the 'kill' command), SIGQUIT (like SIGINT, but generates a coredump), or SIGABRT, then the destructors for these variables/classes will not be called, even if destructors are defined for these types/classes.
+
+## TODOs
+
+- implement signal handling for Windows platform
 
 ## Sources
 
