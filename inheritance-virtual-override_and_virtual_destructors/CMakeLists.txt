@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(inheritance_virtual_override_and_virtual_destructors)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(inheritance_virtual_override_and_virtual_destructors main.cpp)
