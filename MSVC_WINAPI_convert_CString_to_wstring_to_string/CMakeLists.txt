@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(MSVC_WINAPI_convert_CString_to_wstring_to_string)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(MSVC_WINAPI_convert_CString_to_wstring_to_string main.cpp)
