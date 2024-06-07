@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(enum_as_key_to_std_map)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(enum_as_key_to_std_map main.cpp)
