@@ -2,6 +2,8 @@
 
 Using `enum` and `enum class` (C++11 onwards) as a key to `std::map` .
 
+In selected getters there is also usage of `std::optional` as a return value
+
 ## Sources
 
 - ChatGPT
