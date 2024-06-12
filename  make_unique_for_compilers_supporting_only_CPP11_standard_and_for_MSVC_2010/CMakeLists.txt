@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 3.29)
-project(_make_unique_for_compilers_supporting_only_CPP11_standard_and_for_MSVC_2010)
-
-set(CMAKE_CXX_STANDARD 11)
-
-add_executable(_make_unique_for_compilers_supporting_only_CPP11_standard_and_for_MSVC_2010 main.cpp)
