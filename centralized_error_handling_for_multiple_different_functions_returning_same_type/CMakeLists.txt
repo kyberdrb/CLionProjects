@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(centralized_error_handling_for_multiple_different_functions_returning_same_type)
+
+set(CMAKE_CXX_STANDARD 98)
+
+add_executable(centralized_error_handling_for_multiple_different_functions_returning_same_type main.cpp)
