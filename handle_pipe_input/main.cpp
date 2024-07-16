@@ -27,7 +27,9 @@ int main(int argc, char** argv) {
     if (TerminalHelper::isInputForwardedFromPipe() ) {
         std::string pipeBuffer;
         while (std::getline(std::cin, pipeBuffer)) { // Read from stdin line by line
-            std::cout << "Received from pipe: " << pipeBuffer << std::endl; // Process the input
+#ifdef _DEBUG
+            std::cout << "Received from pipe: " << pipeBuffer << std::endl;
+#endif
             finalInput = std::move(pipeBuffer);
         }
     }
