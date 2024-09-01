@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(parsing_short_single_letter_and_long_keyword_arguments)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(parsing_short_single_letter_and_long_keyword_arguments main.cpp)
