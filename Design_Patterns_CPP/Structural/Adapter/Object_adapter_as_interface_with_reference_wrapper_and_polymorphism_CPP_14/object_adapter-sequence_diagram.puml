@@ -16,7 +16,7 @@ end
 alt fitting small squarePeg into roundHole
     main -> squarePegSmall : SquarePeg(5)
     main -> squareToRoundPegAdapter : SquareToRoundPegAdapter(squarePegSmall)
-    squareToRoundPegAdapter -> RoundPeg : RoundPeg(0)
+    'squareToRoundPegAdapter -> RoundPeg : RoundPeg(0)
 
     main -> roundHole : fits(squareToRoundPegAdapter)
     roundHole -> RoundCompatible : getRadius()

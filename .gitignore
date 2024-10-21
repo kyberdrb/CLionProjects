@@ -11,6 +11,7 @@
 **/.idea/**/vcs.xml
 **/.idea/**/.gitignore
 **/.idea/**/.name
+**/.idea/
 
 # AWS User-specific
 **/.idea/**/aws.xml
