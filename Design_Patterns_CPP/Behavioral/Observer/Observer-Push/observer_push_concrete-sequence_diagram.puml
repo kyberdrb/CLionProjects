@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+group create entities
+Client -> Observer : Observer("GUI")
+Observer --> Client: eventReceiverForGUI
+
+Client -> Observer : Observer("DB")
+Observer --> Client: eventReceiverForDB
+
+Client -> Observer : Observer("DB")
+Observer --> Client: eventReceiverForHW
+
+Client -> Subject : Subject()
+Subject --> Client : eventEmitter
+end group
+
+group register Observers/Listeners to Subject/EventEmitter/Publisher
+Client -> Subject : registerListener(eventReceiverForGUI)
+Client -> Subject : registerListener(eventReceiverForDB)
+Client -> Subject : registerListener(eventReceiverForHW)
+end group
+
+group trigger state change on the Subject/EventEmitter/Publisher
+    Client -> Subject : changeInternalState("new state")
+    Subject -> Subject : notifyObservers(newState)
+
+    group let the change propagate from the subject into registered Observers/Subscribers
+        loop for each observer
+            Subject -> Observer : update(newState)
+        end
+    end group
+end group
+
+group unsubscribe/unregister/delete/remove one observer from the observers list
+Client -> Subject : removeObserver("GUI")
+end group
+
+group change Subject's state & notify Observers/Subscribers again
+    Client -> Subject : changeInternalState("new state")
+    Subject -> Subject : notifyObservers(newState)
+
+    group let the change propagate from the subject into registered Observers/Subscribers
+        loop for each observer
+            Subject -> Observer : update(newState)
+        end
+    end group
+end group
+
+@enduml
