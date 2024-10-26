@@ -16,9 +16,9 @@ Subject --> Client : eventEmitter
 end group
 
 group register Observers/Listeners to Subject/EventEmitter/Publisher
-Client -> Subject : registerListener(eventReceiverForGUI)
-Client -> Subject : registerListener(eventReceiverForDB)
-Client -> Subject : registerListener(eventReceiverForHW)
+    Client -> Subject : registerListener(eventReceiverForGUI)
+    Client -> Subject : registerListener(eventReceiverForDB)
+    Client -> Subject : registerListener(eventReceiverForHW)
 end group
 
 group trigger state change on the Subject/EventEmitter/Publisher
@@ -33,7 +33,7 @@ group trigger state change on the Subject/EventEmitter/Publisher
 end group
 
 group unsubscribe/unregister/delete/remove one observer from the observers list
-Client -> Subject : removeObserver("GUI")
+    Client -> Subject : removeObserver("GUI")
 end group
 
 group change Subject's state & notify Observers/Subscribers again

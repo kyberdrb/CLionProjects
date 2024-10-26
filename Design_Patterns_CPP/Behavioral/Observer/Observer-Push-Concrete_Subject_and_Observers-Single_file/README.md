@@ -163,3 +163,81 @@ In this refactored example, the `Sensor` no longer has to manually call `update`
 - https://duckduckgo.com/?t=ffab&q=observer+uml+class+diagram&iax=images&ia=images
 - https://duckduckgo.com/?q=observer+uml+sequence+diagram&t=ffab&iax=images&ia=images&iai=https%3A%2F%2Fperfectjpattern.sourceforge.net%2Fimages%2Fobserver_sequence.png
 - https://perfectjpattern.sourceforge.net/dp-observer.html
+- https://en.cppreference.com/w/cpp/utility/optional
+  - (me) Where would you use `std::optional` as a member variable?
+
+    (ChatGPT) Using `std::optional` as a member variable in a class is beneficial when you want to represent the presence or absence of a value within that class. Here are some common use cases where `std::optional` is particularly useful:
+   
+     ### 1. **Representing Optional Data**
+     - Use `std::optional` to represent data that may or may not be set. This is helpful for fields that are conceptually "optional" and do not require a default value.
+       - **Example**: In a `User` class, the `middleName` field may or may not be present:
+         ```cpp
+         class User {
+         public:
+             std::string firstName;
+             std::optional<std::string> middleName;
+             std::string lastName;
+         };
+         ```
+       - This approach avoids having to assign an empty string or special value to indicate absence, which would need extra handling.
+   
+     ### 2. **Lazy Initialization of Expensive Objects**
+     - If creating a member variable is costly (in terms of performance or memory), and it’s only needed sometimes, `std::optional` enables deferred construction.
+       - **Example**: In a `DatabaseConnection` class, a logging connection might only be initialized if certain operations fail.
+         ```cpp
+         class DatabaseConnection {
+         public:
+             std::optional<Logger> logger;  // Initialized only when logging is needed
+   
+             void initLoggerIfNeeded() {
+                 if (!logger) {
+                     logger.emplace("logfile.txt");  // Creates the logger if it wasn't created
+                 }
+             }
+         };
+         ```
+   
+     ### 3. **Error-Prone or Optional Computed Values**
+     - Sometimes a computed value may or may not be available, and `std::optional` can be used to signal when a calculation fails or is unnecessary.
+       - **Example**: A `Rectangle` class that computes an area on demand and caches it only when needed.
+         ```cpp
+         class Rectangle {
+         public:
+             double width;
+             double height;
+             mutable std::optional<double> cachedArea;  // Lazy caching
+   
+             double area() const {
+                 if (!cachedArea) {
+                     cachedArea = width * height;  // Calculate and cache if not available
+                 }
+                 return *cachedArea;
+             }
+         };
+         ```
+   
+     ### 4. **Handling Potentially Null or Absent Relationships**
+     - When a class represents a relationship that might not exist or could be empty, `std::optional` can clarify that the relationship is not always populated.
+       - **Example**: A `TreeNode` class representing nodes in a binary tree:
+         ```cpp
+         class TreeNode {
+         public:
+             int value;
+             std::optional<std::unique_ptr<TreeNode>> left;  // Optional left child
+             std::optional<std::unique_ptr<TreeNode>> right; // Optional right child
+         };
+         ```
+   
+     ### 5. **Conditionally Available Data Based on Business Logic**
+     - For cases where a variable’s presence is dictated by certain business rules or application states, `std::optional` represents the absence or presence of that data clearly.
+       - **Example**: In an e-commerce system, an `Order` might have a `deliveryDate` only if it has been shipped.
+         ```cpp
+         class Order {
+         public:
+             int orderID;
+             std::string customerName;
+             std::optional<std::string> deliveryDate; // Only available after shipment
+         };
+         ```
+   
+     Using `std::optional` improves readability by explicitly stating that certain fields may or may not be present, reducing the need for extra checks or special values and enhancing safety in your code.

@@ -14,7 +14,8 @@ public:
         _name(std::move(name))
     {}
 
-    [[nodiscard]] const std::string& getName() const {
+    [[nodiscard]]
+    const std::string& getName() const {
         return this->_name;
     }
 
@@ -30,9 +31,7 @@ private:
 ///   The creator of events - creates events and sends them to the observers
 class Subject {
 public:
-    Subject() :
-        _state("<empty state>")
-    {}
+    Subject() = default;
 
     // register/add/attach an Observer/Subscriber/Listener/EventReceiver
     void registerObserver(std::unique_ptr<Observer> observer) {
@@ -42,14 +41,18 @@ public:
 
     void changeInternalState(std::string newState) {
         std::stringstream strStream;
-        strStream << "Subject: changing state from '" << this->_state;
+        strStream << "Subject: changing state";
+
+        if (this->_state) {
+            strStream << " from '" << *this->_state << "'";
+        }
 
         this->_state = std::move(newState);
 
-        strStream << "' to '" << this->_state << "'";
+        strStream << " to '" << *this->_state << "'";
         std::cout << strStream.str() << std::endl;
 
-        this->notifyObservers(this->_state);
+        this->notifyObservers(*this->_state);
     }
 
     void removeObserver(std::string observersName) {
@@ -76,7 +79,7 @@ public:
 
 private:
     std::vector<std::unique_ptr<Observer>> observers;
-    std::string _state;
+    std::optional<std::string> _state;
 
     void notifyObservers(std::string_view newState) {
         std::cout << "Subject: sending/pushing update notification to all registered observers/listeners/subscribers" << std::endl;
@@ -107,6 +110,7 @@ int main() {
             std::this_thread::sleep_for(std::chrono::milliseconds(1500));
             eventEmitter->changeInternalState("new value measured/captured/computed>: " + std::to_string(iterationNumber));
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
     });
     eventEmitterThreadForChangingStates.join();
     std::cout << '\n';
