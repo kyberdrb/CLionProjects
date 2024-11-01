@@ -24,3 +24,7 @@
 - https://duckduckgo.com/?t=ffab&q=std%3A%3Alock_guard+unique_lock&ia=web
 - https://duckduckgo.com/?t=ffab&q=c%2B%2B+protect+thread+critical+section+lock_guard&ia=web
 - https://www.apiref.com/cpp/cpp/thread/lock_guard.html
+- https://duckduckgo.com/?t=ffab&q=make_unique+calling+a+private+constructor+singleton&ia=web
+- https://stackoverflow.com/questions/65286678/make-unique-cannot-access-private-constructor-in-static-member
+- https://duckduckgo.com/?t=ffab&q=c%2B%2B+singleton+make_unique&ia=web
+- https://stackoverflow.com/questions/50995599/make-unique-doesnt-compile-for-creating-a-singleton-instance

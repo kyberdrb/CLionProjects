@@ -26,7 +26,7 @@ void printTextSynchronously(uint32_t delay){
 int main() {
     // Access the Singleton instance...
     //  ...without a parameter
-    Singleton& singleton0 = Singleton::getInstance();
+    [[maybe_unused]] Singleton& singleton0 = Singleton::getInstance();
 
     // ...with a parameter
     Singleton& singleton = Singleton::getInstance("S1");
