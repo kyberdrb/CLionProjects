@@ -1,0 +1,15 @@
+Language: Cpp
+
+# base style
+BasedOnStyle: Google
+
+# indent
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# header/using sort
+SortIncludes: CaseInsensitive
+SortUsingDeclarations: true
+
+# for more options, type ctrl + space to bring up the auto-completion list
