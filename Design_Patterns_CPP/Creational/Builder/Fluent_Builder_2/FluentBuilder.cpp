@@ -3,10 +3,11 @@
 #include <iostream>
 
 FluentBuilder FluentBuilder::create() {
+// constexpr FluentBuilder FluentBuilder::create() { // TODO make create() constexpr to construct Builder at compile time
     return FluentBuilder{};
 }
 
-FluentBuilder& FluentBuilder::withNumber(uint32_t something) {
+FluentBuilder& FluentBuilder::withNumber(int32_t something) {
     this->_something = something;
     return *this;
 }
@@ -31,7 +32,7 @@ std::unique_ptr<FluentBuilder> FluentBuilder::createUnique() {
 //     return std::unique_ptr<FluentBuilder>(this);
 // }
 
-FluentBuilder& FluentBuilder::withUniqueNumber(uint32_t something) {
+FluentBuilder& FluentBuilder::withUniqueNumber(int32_t something) {
     this->_something = something;
     return *this;
 }

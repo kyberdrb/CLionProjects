@@ -9,6 +9,11 @@ int main() {
         .withNumber(2)
         .withText("Stack Builder is awesome");
 
+    // TODO make Builder creation constexpr
+    // constexpr auto somethingFluentToBuild = FluentBuilder::create()
+    //     .withNumber(2)
+    //     .withText("Stack Builder is awesome");
+
     auto start = std::chrono::steady_clock::now();
     std::cout << "std::cout: " << somethingFluentToBuild << '\n';
     auto end = std::chrono::steady_clock::now();

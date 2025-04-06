@@ -4,16 +4,17 @@
 #include <iosfwd>
 #include <memory>
 #include <string>
-#include <string_view>
 
 class FluentBuilder {
 public:
     static FluentBuilder create();
-    FluentBuilder& withNumber(uint32_t something);
+    // static constexpr FluentBuilder create(); // TODO make create() constexpr to construct Builder at compile time
+
+    FluentBuilder& withNumber(int32_t something);
     FluentBuilder& withText(std::string somethingElse);
     
     static std::unique_ptr<FluentBuilder> createUnique();
-    FluentBuilder& withUniqueNumber(uint32_t something);
+    FluentBuilder& withUniqueNumber(int32_t something);
     FluentBuilder& withUniqueText(std::string somethingElse);
 
     // std::unique_ptr<FluentBuilder> addSomethingUnique(uint32_t something) &&;
@@ -28,6 +29,12 @@ private:
         _somethingElse(std::string{})
     {};
 
-    int _something;
+    // TODO make constructor constexpr for constexpr create()
+    // constexpr FluentBuilder() :
+    //     _something(0),
+    //     _somethingElse(std::string{})
+    // {};
+
+    int32_t _something;
     std::string _somethingElse;
 };
