@@ -49,6 +49,9 @@
 **/cmake-build-*/
 **/cmake_build_*/
 
+# Build directories
+**/build*/
+
 # Mongo Explorer plugin
 **/.idea/**/mongoSettings.xml
 
